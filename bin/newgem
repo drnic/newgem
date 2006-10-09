@@ -3,7 +3,9 @@
 require 'fileutils'
 require 'active_support'
 
-project_name = ARGV[0]
+templates = File.dirname(__FILE__) + '/../templates/'
+
+gem_name = project_name = ARGV[0]
 module_name  = project_name.classify
 lib = project_name + '/lib'
 lib_project_name = project_name + '/lib/' + project_name
@@ -65,14 +67,9 @@ eos
 end
 
 puts "creating: " + rakefile
+rakefile_template = File.open(templates + 'Rakefile','r') {|f| f.readlines.join}
 File.open(rakefile, 'w') do |file|
-  file << <<-eos
-task :default => :test
-
-task :test do
-  require File.dirname(__FILE__) + '/test/all_tests.rb'
-end
-eos
+  file << eval('"' + rakefile_template.gsub(/"/, '\"') + '"')
 end
 
 
