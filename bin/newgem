@@ -1,3 +1,106 @@
 #!/usr/bin/env ruby
 
-puts "This will generate a new gem structure for you soon"
+require 'fileutils'
+require 'active_support'
+
+project_name = ARGV[0]
+module_name  = project_name.classify
+lib = project_name + '/lib'
+lib_project_name = project_name + '/lib/' + project_name
+version = project_name + "/lib/" + project_name + "/version.rb"
+rakefile, changelog, readme = %w(Rakefile CHANGELOG README).
+												collect {|f| project_name + '/' + f}
+
+test = project_name + "/test"
+all_tests = test + "/all_tests.rb"
+main = project_name + "/lib/" + project_name + ".rb"
+test_helper = test + "/test_helper.rb"
+
+examples = project_name + '/examples'
+bin = project_name + '/bin'
+installer = project_name + '/install.rb'
+
+FileUtils.rm_rf project_name
+
+puts "creating: " + project_name
+Dir.mkdir project_name
+
+puts "creating: " + changelog
+FileUtils.touch changelog
+
+puts "creating: " + readme
+File.open(readme, 'w') do |file|
+  file << <<-eos
+README for #{project_name}
+===========#{'=' * project_name.length}
+
+eos
+end
+
+
+puts "creating: " + lib
+Dir.mkdir lib
+
+puts "creating: " + lib_project_name
+Dir.mkdir lib_project_name
+
+puts "creating: " + main
+File.open(main, 'w') do |file|
+  file << "Dir['#{project_name}/**/*.rb'].each { |lib| require lib }"
+end
+
+puts "creating: " + version
+File.open(version, 'w') do |file|
+  file << <<-eos
+module #{module_name} #:nodoc:
+  module VERSION #:nodoc:
+    MAJOR = 0
+    MINOR = 0
+    TINY  = 1
+
+    STRING = [MAJOR, MINOR, TINY].join('.')
+  end
+end
+eos
+end
+
+puts "creating: " + rakefile
+File.open(rakefile, 'w') do |file|
+  file << <<-eos
+task :default => :test
+
+task :test do
+  require File.dirname(__FILE__) + '/test/all_tests.rb'
+end
+eos
+end
+
+
+puts "creating: " + test
+Dir.mkdir test
+
+puts "creating: " + all_tests
+File.open(all_tests, 'w') do |file|
+  file << "Dir['**/*_test.rb'].each { |test_case| require test_case }"
+end
+
+puts "creating: " + test_helper
+File.open(test_helper, 'w') do |file|
+  file << <<-eos
+require 'test/unit'
+require File.dirname(__FILE__) + '/../lib/#{project_name}'
+eos
+end
+
+puts "creating: " + examples
+Dir.mkdir examples
+
+puts "creating: " + bin
+Dir.mkdir bin
+
+puts "creating: " + installer
+File.open(installer, 'w') do |file|
+  file << <<-eos
+eos
+end
+
