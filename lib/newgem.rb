@@ -1,0 +1,1 @@
+Dir['newgem/**/*.rb'].each { |lib| require lib }
