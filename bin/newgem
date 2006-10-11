@@ -10,7 +10,7 @@ module_name  = project_name.classify
 lib = project_name + '/lib'
 lib_project_name = project_name + '/lib/' + project_name
 version = project_name + "/lib/" + project_name + "/version.rb"
-rakefile, changelog, readme = %w(Rakefile CHANGELOG README).
+rakefile, changelog, readme, setup = %w(Rakefile CHANGELOG README setup.rb).
 												collect {|f| project_name + '/' + f}
 
 test = project_name + "/test"
@@ -101,3 +101,8 @@ Dir.mkdir examples
 puts "creating: " + bin
 Dir.mkdir bin
 
+puts "creating: " + setup
+template = File.open(templates + 'setup.rb','r') {|f| f.readlines.join}
+File.open(setup, 'w') do |file|
+  file << template
+end

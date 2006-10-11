@@ -10,7 +10,7 @@ include FileUtils
 require File.join(File.dirname(__FILE__), 'lib', 'newgem', 'version')
 
 NAME = "newgem"
-REV = File.read(".svn/entries")[/committed-rev="(\d+)"/, 1] rescue nil
+REV = nil #File.read(".svn/entries")[/committed-rev="(\d+)"/, 1] rescue nil
 VERS = ENV['VERSION'] || (Newgem::VERSION::STRING + (REV ? ".#{REV}" : ""))
 CLEAN.include ['**/.*.sw?', '*.gem', '.config']
 RDOC_OPTS = ['--quiet', '--title', "newgem documentation",
