@@ -58,7 +58,7 @@ spec =
     end
 
 Rake::GemPackageTask.new(spec) do |p|
-    p.need_tar = true
+    p.need_tar = false
     p.gem_spec = spec
 end
 

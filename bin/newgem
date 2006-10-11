@@ -17,10 +17,10 @@ test = project_name + "/test"
 all_tests = test + "/all_tests.rb"
 main = project_name + "/lib/" + project_name + ".rb"
 test_helper = test + "/test_helper.rb"
+unit_test = test + "/" + project_name + "_test.rb"
 
 examples = project_name + '/examples'
 bin = project_name + '/bin'
-installer = project_name + '/install.rb'
 
 FileUtils.rm_rf project_name
 
@@ -48,7 +48,7 @@ Dir.mkdir lib_project_name
 
 puts "creating: " + main
 File.open(main, 'w') do |file|
-  file << "Dir['#{project_name}/**/*.rb'].each { |lib| require lib }"
+  file << "Dir['#{project_name}/**/*.rb'].sort.each { |lib| require lib }"
 end
 
 puts "creating: " + version
@@ -67,9 +67,9 @@ eos
 end
 
 puts "creating: " + rakefile
-rakefile_template = File.open(templates + 'Rakefile','r') {|f| f.readlines.join}
+template = File.open(templates + 'Rakefile','r') {|f| f.readlines.join}
 File.open(rakefile, 'w') do |file|
-  file << eval('"' + rakefile_template.gsub(/"/, '\"') + '"')
+  file << eval('"' + template.gsub(/"/, '\"') + '"')
 end
 
 
@@ -89,15 +89,15 @@ require File.dirname(__FILE__) + '/../lib/#{project_name}'
 eos
 end
 
+puts "creating: " + unit_test
+template = File.open(templates + 'test.rb','r') {|f| f.readlines.join}
+File.open(unit_test, 'w') do |file|
+  file << eval('"' + template.gsub(/"/, '\"') + '"')
+end
+
 puts "creating: " + examples
 Dir.mkdir examples
 
 puts "creating: " + bin
 Dir.mkdir bin
-
-puts "creating: " + installer
-File.open(installer, 'w') do |file|
-  file << <<-eos
-eos
-end
 
