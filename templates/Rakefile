@@ -13,6 +13,7 @@ AUTHOR = "you"
 EMAIL = "your contact email for bug fixes and info"
 DESCRIPTION = "description of gem"
 HOMEPATH = 'http://#{gem_name}.rubyforge.org'
+BIN_FILES = %w( )
 
 
 NAME = "#{gem_name}"
@@ -24,7 +25,6 @@ RDOC_OPTS = ['--quiet', '--title', "#{gem_name} documentation",
     "--line-numbers", 
     "--main", "README",
     "--inline-source"]
-BIN_FILES = %w( )
 
 desc "Packages up #{gem_name} gem."
 task :default => [:test]
@@ -64,7 +64,7 @@ spec =
     end
 
 Rake::GemPackageTask.new(spec) do |p|
-    p.need_tar = false
+    p.need_tar = true
     p.gem_spec = spec
 end
 
