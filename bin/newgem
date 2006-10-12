@@ -2,10 +2,41 @@
 
 require 'fileutils'
 require 'active_support'
+require 'optparse'
 
 templates = File.dirname(__FILE__) + '/../templates/'
 
+OPTIONS = {
+  :import_path => nil,
+  :version     => '0.0.1',
+}
+parser = OptionParser.new do |opts|
+  opts.banner = <<BANNER
+Take any library or Rails plugin or command line application,
+gemify it, and easily share it with the Ruby world.
+
+Usage: #{File.basename($0)} [options] <name of gem>
+
+Options are:
+BANNER
+  opts.separator ""
+  opts.on("-i", "--import_path=PATH", String,
+          "Path where your files could be copied from",
+          "Default: none") { |OPTIONS[:import_path]| }
+  opts.separator ""
+  opts.on("-v", "--version=YOUR_VERSION", String,
+          "Version of the gem you are creating",
+          "Default: 0.0.1") { |OPTIONS[:version]| }
+  opts.separator ""
+  opts.on("-h", "--help",
+          "Show this help message.") { puts opts; exit }
+  opts.parse!(ARGV)
+end
+OPTIONS[:version] = OPTIONS[:version].to_s.split(/\./)
+
 gem_name = project_name = ARGV[0]
+parser.parse!(["-h"]) unless gem_name
+
 module_name  = project_name.classify
 lib = project_name + '/lib'
 lib_project_name = project_name + '/lib/' + project_name
@@ -43,6 +74,12 @@ end
 puts "creating: " + lib
 Dir.mkdir lib
 
+if OPTIONS[:import_path]
+  require 'fileutils'
+  OPTIONS[:import_path].chomp! if OPTIONS[:import_path][-1] == 47 # /
+  FileUtils.cp_r OPTIONS[:import_path] + '/.', lib, :preserve => true
+end
+
 puts "creating: " + lib_project_name
 Dir.mkdir lib_project_name
 
@@ -56,9 +93,9 @@ File.open(version, 'w') do |file|
   file << <<-eos
 module #{module_name} #:nodoc:
   module VERSION #:nodoc:
-    MAJOR = 0
-    MINOR = 0
-    TINY  = 1
+    MAJOR = #{OPTIONS[:version][0] || '0'}
+    MINOR = #{OPTIONS[:version][1] || '0'}
+    TINY  = #{OPTIONS[:version][2] || '0'}
 
     STRING = [MAJOR, MINOR, TINY].join('.')
   end
