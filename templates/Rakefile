@@ -13,7 +13,7 @@ AUTHOR = "you"
 EMAIL = "your contact email for bug fixes and info"
 DESCRIPTION = "description of gem"
 HOMEPATH = 'http://#{gem_name}.rubyforge.org'
-BIN_FILES = %w( )
+BIN_FILES = %w( #{bin_names} )
 
 
 NAME = "#{gem_name}"

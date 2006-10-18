@@ -9,6 +9,7 @@ templates = File.dirname(__FILE__) + '/../templates/'
 OPTIONS = {
   :import_path => nil,
   :version     => '0.0.1',
+  :bin_name    => nil
 }
 parser = OptionParser.new do |opts|
   opts.banner = <<BANNER
@@ -20,14 +21,15 @@ Usage: #{File.basename($0)} [options] <name of gem>
 Options are:
 BANNER
   opts.separator ""
+  opts.on("-b", "--bin-name=BIN_NAME[,BIN_NAME2]", String,
+          "Sets up executable scripts in the bin folder.",
+          "Default: none") { |OPTIONS[:bin_name]| }
   opts.on("-i", "--import_path=PATH", String,
-          "Path where your files could be copied from",
+          "Path where your files could be copied from.",
           "Default: none") { |OPTIONS[:import_path]| }
-  opts.separator ""
   opts.on("-v", "--version=YOUR_VERSION", String,
-          "Version of the gem you are creating",
+          "Version of the gem you are creating.",
           "Default: 0.0.1") { |OPTIONS[:version]| }
-  opts.separator ""
   opts.on("-h", "--help",
           "Show this help message.") { puts opts; exit }
   opts.parse!(ARGV)
@@ -103,6 +105,20 @@ end
 eos
 end
 
+puts "creating: " + bin
+Dir.mkdir bin
+
+if OPTIONS[:bin_name]
+  bin_names = OPTIONS[:bin_name].split(',')
+  bin_names.each do |bin_name|
+    puts "creating: " + bin + '/' + bin_name
+    FileUtils.touch bin + '/' + bin_name
+  end
+  bin_names = bin_names.join(' ')
+else
+  bin_names = ''
+end
+
 puts "creating: " + rakefile
 template = File.open(templates + 'Rakefile','r') {|f| f.readlines.join}
 File.open(rakefile, 'w') do |file|
@@ -134,9 +150,6 @@ end
 
 puts "creating: " + examples
 Dir.mkdir examples
-
-puts "creating: " + bin
-Dir.mkdir bin
 
 puts "creating: " + setup
 template = File.open(templates + 'setup.rb','r') {|f| f.readlines.join}
