@@ -9,7 +9,7 @@ require 'fileutils'
 include FileUtils
 require File.join(File.dirname(__FILE__), 'lib', '#{gem_name}', 'version')
 
-AUTHOR = "you"
+AUTHOR = "#{author}"
 EMAIL = "your contact email for bug fixes and info"
 DESCRIPTION = "description of gem"
 HOMEPATH = 'http://#{gem_name}.rubyforge.org'

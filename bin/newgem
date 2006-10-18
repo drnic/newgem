@@ -55,6 +55,9 @@ unit_test = test + "/" + project_name + "_test.rb"
 examples = project_name + '/examples'
 bin = project_name + '/bin'
 
+# Rakefile variables
+author = ENV['USERNAME'] || ENV['USER'] || 'you'
+
 FileUtils.rm_rf project_name
 
 puts "creating: " + project_name
@@ -156,3 +159,5 @@ template = File.open(templates + 'setup.rb','r') {|f| f.readlines.join}
 File.open(setup, 'w') do |file|
   file << template
 end
+
+puts "NOW - update #{gem_name}/Rakefile with gem description, etc"
