@@ -14,6 +14,7 @@ EMAIL = "your contact email for bug fixes and info"
 DESCRIPTION = "description of gem"
 HOMEPATH = 'http://#{gem_name}.rubyforge.org'
 BIN_FILES = %w( #{bin_names} )
+RUBYFORGE_PROJECT = "#{gem_name}"
 
 
 NAME = "#{gem_name}"
@@ -48,6 +49,7 @@ spec =
         s.email = EMAIL
         s.homepage = HOMEPATH
         s.executables = BIN_FILES
+        s.rubyforge_project = RUBYFORGE_PROJECT
         s.bindir = "bin"
         s.require_path = "lib"
         s.autorequire = "#{gem_name}"
