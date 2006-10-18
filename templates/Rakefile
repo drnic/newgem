@@ -12,9 +12,9 @@ require File.join(File.dirname(__FILE__), 'lib', '#{gem_name}', 'version')
 AUTHOR = "#{author}"
 EMAIL = "your contact email for bug fixes and info"
 DESCRIPTION = "description of gem"
-HOMEPATH = 'http://#{gem_name}.rubyforge.org'
-BIN_FILES = %w( #{bin_names} )
 RUBYFORGE_PROJECT = "#{gem_name}"
+HOMEPATH = 'http://\#{RUBYFORGE_PROJECT}.rubyforge.org'
+BIN_FILES = %w( #{bin_names} )
 
 
 NAME = "#{gem_name}"
@@ -58,7 +58,7 @@ spec =
         #s.required_ruby_version = '>= 1.8.2'
 
         s.files = %w(README CHANGELOG Rakefile) +
-          Dir.glob("{bin,doc,test,lib,templates,extras,website,script}/**/*") + 
+          Dir.glob("{bin,doc,test,lib,templates,generator,extras,website,script}/**/*") + 
           Dir.glob("ext/**/*.{h,c,rb}") +
           Dir.glob("examples/**/*.rb") +
           Dir.glob("tools/*.rb")
