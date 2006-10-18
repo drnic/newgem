@@ -87,7 +87,7 @@ Dir.mkdir lib_project_name
 
 puts "creating: " + main
 File.open(main, 'w') do |file|
-  file << "Dir['#{project_name}/**/*.rb'].sort.each { |lib| require lib }"
+  file << "Dir[File.join(File.dirname(__FILE__), '#{project_name}/**/*.rb')].sort.each { |lib| require lib }"
 end
 
 puts "creating: " + version
