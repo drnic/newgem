@@ -1,3 +1,3 @@
 // Announcement JS file
-var version = "0.5.2";
+var version = "0.6.0";
 MagicAnnouncement.show('newgem', version);
