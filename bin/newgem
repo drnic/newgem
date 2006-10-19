@@ -47,7 +47,6 @@ rakefile, changelog, readme, setup = %w(Rakefile CHANGELOG README setup.rb).
 												collect {|f| project_name + '/' + f}
 
 test = project_name + "/test"
-all_tests = test + "/all_tests.rb"
 main = project_name + "/lib/" + project_name + ".rb"
 test_helper = test + "/test_helper.rb"
 unit_test = test + "/" + project_name + "_test.rb"
@@ -131,11 +130,6 @@ end
 
 puts "creating: " + test
 Dir.mkdir test
-
-puts "creating: " + all_tests
-File.open(all_tests, 'w') do |file|
-  file << "Dir['**/*_test.rb'].each { |test_case| require test_case }"
-end
 
 puts "creating: " + test_helper
 File.open(test_helper, 'w') do |file|

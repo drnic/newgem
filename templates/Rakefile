@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'rake'
 require 'rake/clean'
+require 'rake/testtask'
 require 'rake/packagetask'
 require 'rake/gempackagetask'
 require 'rake/rdoctask'
@@ -31,9 +32,11 @@ desc "Packages up #{gem_name} gem."
 task :default => [:test]
 task :package => [:clean]
 
-task :test do
-  require File.dirname(__FILE__) + '/test/all_tests.rb'
-end
+Rake::TestTask.new("test") { |t|
+  t.libs << "test"
+  t.pattern = "test/**/*_test.rb"
+  t.verbose = true
+}
 
 spec =
     Gem::Specification.new do |s|
