@@ -27,6 +27,7 @@ RDOC_OPTS = ['--quiet', '--title', "#{gem_name} documentation",
     "--line-numbers", 
     "--main", "README",
     "--inline-source"]
+RELEASE_TYPES = %w( gem ) # can use: gem, tar, zip
 
 desc "Packages up #{gem_name} gem."
 task :default => [:test]
@@ -70,7 +71,8 @@ spec =
     end
 
 Rake::GemPackageTask.new(spec) do |p|
-    p.need_tar = true
+    p.need_tar = RELEASE_TYPES.include? 'tar'
+    p.need_zip = RELEASE_TYPES.include? 'zip'
     p.gem_spec = spec
 end
 
@@ -82,4 +84,14 @@ end
 
 task :uninstall => [:clean] do
   sh %{sudo gem uninstall \#{NAME}}
+end
+
+desc "Publish the release files to RubyForge."
+task :release => [ :package ] do
+  system('rubyforge login')
+  for ext in RELEASE_TYPES
+    release_command = "rubyforge add_release #{RUBYFORGE_PROJECT} #{NAME} 'REL #{VERS}' pkg/#{NAME}-#{VERS}.#{ext}"
+    puts release_command
+    system(release_command)
+  end
 end
