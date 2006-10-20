@@ -16,6 +16,7 @@ DESCRIPTION = "description of gem"
 RUBYFORGE_PROJECT = "#{gem_name}"
 HOMEPATH = "http://\#{RUBYFORGE_PROJECT}.rubyforge.org"
 BIN_FILES = %w( #{bin_names} )
+RELEASE_TYPES = %w( gem ) # can use: gem, tar, zip
 
 
 NAME = "#{gem_name}"
@@ -27,7 +28,6 @@ RDOC_OPTS = ['--quiet', '--title', "#{gem_name} documentation",
     "--line-numbers", 
     "--main", "README",
     "--inline-source"]
-RELEASE_TYPES = %w( gem ) # can use: gem, tar, zip
 
 desc "Packages up #{gem_name} gem."
 task :default => [:test]
