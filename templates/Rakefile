@@ -76,9 +76,8 @@ Rake::GemPackageTask.new(spec) do |p|
     p.gem_spec = spec
 end
 
-task :install do
+task :install => [ :package ] do
   name = "\#{NAME}-\#{VERS}.gem"
-  sh %{rake package}
   sh %{sudo gem install pkg/\#{name}}
 end
 
