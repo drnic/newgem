@@ -77,7 +77,7 @@ task :install do
 end
 
 task :install_win => [:package] do
-  %x{gem install pkg\\#{NAME}-#{VERS}.gem}
+   system('gem install pkg\\#{NAME}-#{VERS}.gem')
 end
 
 task :uninstall => [:clean] do
