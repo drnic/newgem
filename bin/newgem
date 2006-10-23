@@ -43,8 +43,9 @@ module_name  = project_name.classify
 lib = project_name + '/lib'
 lib_project_name = project_name + '/lib/' + project_name
 version = project_name + "/lib/" + project_name + "/version.rb"
-rakefile, changelog, readme, setup = %w(Rakefile CHANGELOG README setup.rb).
-												collect {|f| project_name + '/' + f}
+rakefile, changelog, readme, setup, manifest = 
+  %w(Rakefile CHANGELOG.txt README.txt setup.rb Manifest.txt).
+	collect {|f| project_name + '/' + f}
 
 test = project_name + "/test"
 main = project_name + "/lib/" + project_name + ".rb"
@@ -111,12 +112,12 @@ puts "creating: " + bin
 Dir.mkdir bin
 
 if OPTIONS[:bin_name]
-  bin_names = OPTIONS[:bin_name].split(',')
-  bin_names.each do |bin_name|
+  bin_names_list = OPTIONS[:bin_name].split(',')
+  bin_names_list.each do |bin_name|
     puts "creating: " + bin + '/' + bin_name
     FileUtils.touch bin + '/' + bin_name
   end
-  bin_names = bin_names.join(' ')
+  bin_names = bin_names_list.join(' ')
 else
   bin_names = ''
 end
@@ -126,6 +127,9 @@ template = File.open(templates + 'Rakefile','r') {|f| f.readlines.join}
 File.open(rakefile, 'w') do |file|
   file << eval('"' + template.gsub(/"/, '\"') + '"')
 end
+
+puts "creating: " + manifest
+FileUtils.touch manifest
 
 
 puts "creating: " + test
