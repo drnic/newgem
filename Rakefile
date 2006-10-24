@@ -14,6 +14,8 @@ EMAIL = "drnicwilliams@gmail.com"
 DESCRIPTION = "Make your own gems at home"
 RUBYFORGE_PROJECT = "newgem"
 HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
+BIN_FILES = %w( newgem )
+RELEASE_TYPES = %w( gem ) # can use: gem, tar, zip
 
 NAME = "newgem"
 REV = nil #File.read(".svn/entries")[/committed-rev="(\d+)"/, 1] rescue nil
@@ -24,8 +26,6 @@ RDOC_OPTS = ['--quiet', '--title', "newgem documentation",
     "--line-numbers", 
     "--main", "README",
     "--inline-source"]
-BIN_FILES = %w( newgem )
-RELEASE_TYPES = %w( gem ) # can use: gem, tar, zip
 
 desc "Packages up newgem gem to make gems."
 task :default => [:test]
