@@ -43,8 +43,8 @@ module_name  = project_name.classify
 lib = project_name + '/lib'
 lib_project_name = project_name + '/lib/' + project_name
 version = project_name + "/lib/" + project_name + "/version.rb"
-rakefile, changelog, readme, setup, manifest = 
-  %w(Rakefile CHANGELOG.txt README.txt setup.rb Manifest.txt).
+rakefile, changelog, readme, setup, manifest, history = 
+  %w(Rakefile CHANGELOG.txt README.txt setup.rb Manifest.txt History.txt).
 	collect {|f| project_name + '/' + f}
 
 test = project_name + "/test"
@@ -65,6 +65,9 @@ Dir.mkdir project_name
 
 puts "creating: " + changelog
 FileUtils.touch changelog
+
+puts "creating: " + history
+FileUtils.touch history
 
 puts "creating: " + readme
 File.open(readme, 'w') do |file|
@@ -134,7 +137,11 @@ File.open(rakefile, 'w') do |file|
 end
 
 puts "creating: " + manifest
-FileUtils.touch manifest
+template = File.open(templates + 'Manifest','r') {|f| f.readlines.join}
+File.open(manifest, 'w') do |file|
+  file << eval('"' + template.gsub(/"/, '\"') + '"')
+end
+
 
 
 puts "creating: " + test
