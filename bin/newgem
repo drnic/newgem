@@ -137,7 +137,7 @@ File.open(rakefile, 'w') do |file|
 end
 
 puts "creating: " + manifest
-template = File.open(templates + 'Manifest','r') {|f| f.readlines.join}
+template = File.open(templates + 'Manifest.txt','r') {|f| f.readlines.join}
 File.open(manifest, 'w') do |file|
   file << eval('"' + template.gsub(/"/, '\"') + '"')
 end

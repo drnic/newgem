@@ -53,8 +53,7 @@ spec =
         s.bindir = "bin"
 
         s.add_dependency('activesupport', '>=1.3.1')
-        s.add_dependency('hoe', '>=1.1.4')
-        #s.required_ruby_version = '>= 1.8.2'
+        s.add_dependency('hoe', '>=1.1.6')
 
         s.files = %w(README Rakefile) +
           Dir.glob("{bin,doc,test,lib,templates,extras,website,script}/**/*") + 
