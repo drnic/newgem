@@ -128,6 +128,7 @@ eos
   bin_names = bin_names_list.join(' ')
 else
   bin_names = ''
+  bin_names_list = []
 end
 
 puts "creating: " + rakefile
