@@ -1,9 +1,0 @@
-History.txt
-Manifest.txt
-README.txt
-Rakefile
-setup.rb
-lib/#{gem_name}.rb
-lib/#{gem_name}/version.rb
-test/test_helper.rb
-test/#{gem_name}_test.rb
