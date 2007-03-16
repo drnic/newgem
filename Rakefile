@@ -18,7 +18,7 @@ RUBYFORGE_PROJECT = "newgem"
 HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
 
 REV = nil #File.read(".svn/entries")[/committed-rev="(\d+)"/, 1] rescue nil
-VERS = ENV['VERSION'] || (Newgem::VERSION::STRING + (REV ? ".#{REV}" : ""))
+VERSION = ENV['VERSION'] || (Newgem::VERSION::STRING + (REV ? ".#{REV}" : ""))
 CLEAN.include ['**/.*.sw?', '*.gem', '.config']
 RDOC_OPTS = ['--quiet', '--title', "newgem documentation",
     "--opname", "index.html",
@@ -28,7 +28,7 @@ RDOC_OPTS = ['--quiet', '--title', "newgem documentation",
 
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
-hoe = Hoe.new(GEM_NAME, VERS) do |p|
+hoe = Hoe.new(GEM_NAME, VERSION) do |p|
   p.author = AUTHOR 
   p.description = DESCRIPTION
   p.email = EMAIL
