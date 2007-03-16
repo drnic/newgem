@@ -1,0 +1,14 @@
+Rakefile
+README
+CHANGELOG
+Manifest.txt
+setup.rb
+lib/newgem/version.rb
+lib/newgem.rb
+test/test_helper.rb
+test/test_newgem.rb
+bin/newgem
+templates/Manifest.txt
+templates/Rakefile
+templates/setup.rb
+templates/test.rb

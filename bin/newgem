@@ -50,7 +50,7 @@ rakefile, changelog, readme, setup, manifest, history =
 test = project_name + "/test"
 main = project_name + "/lib/" + project_name + ".rb"
 test_helper = test + "/test_helper.rb"
-unit_test = test + "/" + project_name + "_test.rb"
+unit_test = test + "/test_" + project_name + ".rb"
 
 examples = project_name + '/examples'
 bin = project_name + '/bin'
