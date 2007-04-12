@@ -1,13 +1,13 @@
 body {
-  background-color: #2F30EE;
+  background-color: #E1D1F1;
   font-family: "Georgia", sans-serif;
   font-size: 16px;
   line-height: 1.6em;
   padding: 1.6em 0 0 0;
-  color: #eee;
+  color: #333;
 }
 h1, h2, h3, h4, h5, h6 {
-  color: #FFEDFA;
+  color: #444;
 }
 h1 { 
   font-family: sans-serif;
@@ -23,14 +23,15 @@ li {
   list-style-type: square;
 }
 a {
-  color: #99f;
+  color: #5E5AFF;
+	background-color: #DAC;
   font-weight: normal;
   text-decoration: underline;
 }
 blockquote {
   font-size: 90%;
   font-style: italic;
-  border-left: 1px solid #eee;
+  border-left: 1px solid #111;
   padding-left: 1em;
 }
 .caps {
@@ -100,12 +101,12 @@ pre, code {
   text-align: right;
   font-family: sans-serif;
   font-weight: normal;
-  background-color: #ff8;
-  color: #66f;
+  background-color: #B3ABFF;
+  color: #141331;
   padding: 15px 20px 10px 20px;
   margin: 0 auto;
 	margin-top: 15px;
-  border: 3px solid #66f;
+  border: 3px solid #141331;
 }
 
 #version .numbers {
@@ -117,6 +118,8 @@ pre, code {
 
 #version a {
   text-decoration: none;
+	color: #141331;
+	background-color: #B3ABFF;
 }
 
 .clickable {
