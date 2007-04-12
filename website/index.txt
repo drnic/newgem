@@ -1,0 +1,35 @@
+h1. New Gem Generator
+
+h1. &#x2192; 'newgem'
+
+
+h2. What
+
+
+h2. Installing
+
+<pre syntax="ruby">sudo gem install newgem</pre>
+
+h2. The basics
+
+
+h2. Demonstration of usage
+
+
+
+h2. Dr Nic's Blog
+
+"http://www.drnicwilliams.com":http://www.drnicwilliams.com - for future announcements and
+other stories and things.
+
+h2. Forum
+
+"http://groups.google.com/group/compositekeys":http://groups.google.com/group/compositekeys
+
+h2. Licence
+
+This code is free to use under the terms of the MIT licence. 
+
+h2. Contact
+
+Comments are welcome. Send an email to "Dr Nic Williams":mailto:drnicwilliams@gmail.com.

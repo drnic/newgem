@@ -35,6 +35,7 @@ BANNER
   opts.parse!(ARGV)
 end
 OPTIONS[:version] = OPTIONS[:version].to_s.split(/\./)
+version_str       = OPTIONS[:version].join('.')
 
 gem_name = project_name = ARGV[0]
 parser.parse!(["-h"]) unless gem_name
@@ -65,9 +66,6 @@ Dir.mkdir project_name
 
 puts "creating: " + changelog
 FileUtils.touch changelog
-
-puts "creating: " + history
-FileUtils.touch history
 
 puts "creating: " + readme
 File.open(readme, 'w') do |file|
@@ -131,19 +129,14 @@ else
   bin_names_list = []
 end
 
-puts "creating: " + rakefile
-template = File.open(templates + 'Rakefile','r') {|f| f.readlines.join}
-File.open(rakefile, 'w') do |file|
-  file << eval('"' + template.gsub(/"/, '\"') + '"')
+template_files = [rakefile, manifest, history]
+template_files.each do |template_file|
+  puts "creating: " + template_file
+  template = File.open(templates + template_file,'r') {|f| f.readlines.join}
+  File.open(template_file, 'w') do |file|
+    file << eval('"' + template.gsub(/"/, '\"') + '"')
+  end  
 end
-
-puts "creating: " + manifest
-template = File.open(templates + 'Manifest.txt','r') {|f| f.readlines.join}
-File.open(manifest, 'w') do |file|
-  file << eval('"' + template.gsub(/"/, '\"') + '"')
-end
-
-
 
 puts "creating: " + test
 Dir.mkdir test

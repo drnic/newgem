@@ -48,7 +48,7 @@ hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.clean_globs = CLEAN  #An array of file patterns to delete on clean.
   
   # == Optional
-  #p.changes        - A description of the release's latest changes.
-  #p.extra_deps     - An array of rubygem dependencies.
-  #p.spec_extras    - A hash of extra values to set in the gemspec.
+  #p.changes = ''        # A description of the release's latest changes.
+  #p.extra_deps = []     # An array of rubygem dependencies.
+  #p.spec_extras = {}    # A hash of extra values to set in the gemspec.
 end

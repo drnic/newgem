@@ -1,0 +1,7 @@
++++ 0.9.0 12/4/2007
+
++ 2 major enhancement:
+  + Includes a basic website template, with rake tasks for generation and upload to rubyforge
+  + Generates a History.txt file, and automatically uses it in Hoe task
++ 1 minor enhancement:
+  + Include History.txt in this gem

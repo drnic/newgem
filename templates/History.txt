@@ -1,0 +1,4 @@
++++ #{version_str} #{Date.today}
+
++ 1 major enhancement:
+  + Initial release

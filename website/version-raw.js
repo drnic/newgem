@@ -1,3 +1,3 @@
 // Announcement JS file
-var version = "0.7.2";
-MagicAnnouncement.show('newgem', version);
+var version = "0.9.0";
+MagicAnnouncement.show('compositekeys', version);
