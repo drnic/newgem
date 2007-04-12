@@ -13,8 +13,13 @@ setup.rb
 templates/History.txt
 templates/Manifest.txt
 templates/Rakefile
+templates/scripts/txt2html
 templates/setup.rb
 templates/test.rb
+templates/website/index.txt
+templates/website/javascripts/rounded_corners_lite.inc.js
+templates/website/stylesheets/screen.css
+templates/website/template.rhtml
 test/test_helper.rb
 test/test_newgem.rb
 website/index.html

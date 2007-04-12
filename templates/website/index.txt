@@ -1,0 +1,30 @@
+h1. #{gem_name.gsub(/\W+/,' ')}
+
+h1. &#x2192; '#{gem_name}'
+
+
+h2. What
+
+
+h2. Installing
+
+<pre syntax="ruby">sudo gem install #{gem_name}</pre>
+
+h2. The basics
+
+
+h2. Demonstration of usage
+
+
+
+h2. Forum
+
+"http://groups.google.com/group/#{gem_name}":http://groups.google.com/group/#{gem_name}
+
+h2. Licence
+
+This code is free to use under the terms of the MIT licence. 
+
+h2. Contact
+
+Comments are welcome. Send an email to "Dr Nic Williams":mailto:drnicwilliams@gmail.com.

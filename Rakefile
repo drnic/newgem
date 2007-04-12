@@ -18,8 +18,8 @@ RUBYFORGE_PROJECT = "newgem"
 HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
 
 REV = nil #File.read(".svn/entries")[/committed-rev="(\d+)"/, 1] rescue nil
-VERSION = ENV['VERSION'] || (Newgem::VERSION::STRING + (REV ? ".#{REV}" : ""))
-CLEAN.include ['**/.*.sw?', '*.gem', '.config']
+VERS = ENV['VERSION'] || (Newgem::VERSION::STRING + (REV ? ".#{REV}" : ""))
+CLEAN.include ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']
 RDOC_OPTS = ['--quiet', '--title', "newgem documentation",
     "--opname", "index.html",
     "--line-numbers", 
@@ -28,7 +28,7 @@ RDOC_OPTS = ['--quiet', '--title', "newgem documentation",
 
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
-hoe = Hoe.new(GEM_NAME, VERSION) do |p|
+hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.author = AUTHOR 
   p.description = DESCRIPTION
   p.email = EMAIL
@@ -39,14 +39,20 @@ hoe = Hoe.new(GEM_NAME, VERSION) do |p|
   p.clean_globs = CLEAN  #An array of file patterns to delete on clean.
 
   # == Optional
-  #p.changes        - A description of the release's latest changes.
-  p.extra_deps = ['hoe']  #An array of rubygem dependencies.
+  p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
+  p.extra_deps = [
+    ['hoe', '>=1.2.0'],
+    ['RedCloth','>=3.0.4'],
+    ['syntax','>=1.0.0']
+  ]
   #p.spec_extras    - A hash of extra values to set in the gemspec.
 end
 
 desc 'Generate website files'
 task :website_generate do
-  sh %{ ruby scripts/txt2html website/index.txt > website/index.html }
+  (Dir['website/**/*.txt'] - Dir['website/version*.txt']).each do |txt|
+    sh %{ ruby scripts/txt2html #{txt} > #{txt.gsub(/txt$/,'html')} }
+  end
   sh %{ ruby scripts/txt2js website/version.txt > website/version.js }
   sh %{ ruby scripts/txt2js website/version-raw.txt > website/version-raw.js }
 end

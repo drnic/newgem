@@ -44,10 +44,11 @@ module_name  = project_name.classify
 lib = project_name + '/lib'
 lib_project_name = project_name + '/lib/' + project_name
 version = project_name + "/lib/" + project_name + "/version.rb"
-rakefile, changelog, readme, setup, manifest, history = 
-  %w(Rakefile CHANGELOG.txt README.txt setup.rb Manifest.txt History.txt).
+changelog, readme, setup = %w(CHANGELOG.txt README.txt setup.rb).
 	collect {|f| project_name + '/' + f}
-template_files = %w(Rakefile Manifest.txt History.txt)
+template_files = %w(Rakefile Manifest.txt History.txt scripts/txt2html website/index.txt website/template.rhtml)
+copy_files = %w(website/javascripts/rounded_corners_lite.inc.js website/stylesheets/screen.css)
+
 
 test = project_name + "/test"
 main = project_name + "/lib/" + project_name + ".rb"
@@ -55,7 +56,8 @@ test_helper = test + "/test_helper.rb"
 unit_test = test + "/test_" + project_name + ".rb"
 
 examples = project_name + '/examples'
-bin = project_name + '/bin'
+bin      = project_name + '/bin'
+folders  = %w( scripts website website/javascripts website/stylesheets)
 
 # Rakefile variables
 author = ENV['USERNAME'] || ENV['USER'] || 'you'
@@ -80,6 +82,12 @@ end
 
 puts "creating: " + lib
 Dir.mkdir lib
+
+folders.each do |folder|
+  new_folder = project_name + '/' + folder
+  puts "creating: " + new_folder
+  Dir.mkdir new_folder
+end
 
 if OPTIONS[:import_path]
   require 'fileutils'
@@ -168,5 +176,15 @@ template_files.each do |template_file|
     file << eval('"' + template.gsub(/"/, '\"') + '"')
   end  
 end
+
+copy_files.each do |file|
+  puts "copying: " + file
+  template = File.open(templates + file,'r') {|f| f.readlines.join}
+  File.open(project_name + '/' + file, 'w') do |file|
+    file << template
+  end  
+end
+
+
 
 puts "NOW - update #{gem_name}/Rakefile with gem description, etc"
