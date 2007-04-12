@@ -3,9 +3,9 @@ History.txt
 Manifest.txt
 README.txt
 Rakefile
-#{bin_names_list.collect {|name| 'bin/' + name }.join('\n')}
-lib/#{project_name}.rb
+#{bin_names_list}lib/#{project_name}.rb
 lib/#{project_name}/version.rb
 setup.rb
-test/test_helper.rb
-test/test_#{project_name}.rb
+#{test_names_list}
+
+

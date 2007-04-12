@@ -47,6 +47,7 @@ version = project_name + "/lib/" + project_name + "/version.rb"
 rakefile, changelog, readme, setup, manifest, history = 
   %w(Rakefile CHANGELOG.txt README.txt setup.rb Manifest.txt History.txt).
 	collect {|f| project_name + '/' + f}
+template_files = %w(Rakefile Manifest.txt History.txt)
 
 test = project_name + "/test"
 main = project_name + "/lib/" + project_name + ".rb"
@@ -129,14 +130,6 @@ else
   bin_names_list = []
 end
 
-template_files = [rakefile, manifest, history]
-template_files.each do |template_file|
-  puts "creating: " + template_file
-  template = File.open(templates + template_file,'r') {|f| f.readlines.join}
-  File.open(template_file, 'w') do |file|
-    file << eval('"' + template.gsub(/"/, '\"') + '"')
-  end  
-end
 
 puts "creating: " + test
 Dir.mkdir test
@@ -162,6 +155,18 @@ puts "creating: " + setup
 template = File.open(templates + 'setup.rb','r') {|f| f.readlines.join}
 File.open(setup, 'w') do |file|
   file << template
+end
+
+bin_names_list = bin_names_list.collect {|name| 'bin/' + name }.join("\n")
+bin_names_list += "\n" if bin_names_list.size > 0
+test_names_list = ['helper.rb',"#{project_name}.rb"].sort.collect {|name| 'test/test_' + name }.join("\n")
+
+template_files.each do |template_file|
+  puts "creating: " + template_file
+  template = File.open(templates + template_file,'r') {|f| f.readlines.join}
+  File.open(project_name + '/' + template_file, 'w') do |file|
+    file << eval('"' + template.gsub(/"/, '\"') + '"')
+  end  
 end
 
 puts "NOW - update #{gem_name}/Rakefile with gem description, etc"
