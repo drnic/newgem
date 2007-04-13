@@ -152,7 +152,13 @@ It can take an hour or two before new gem releases are available via the gem ins
 
 h2. Bonus tasks thanks to Hoe
 
-Your gem uses the Hoe gem to provide a dozen or so useful rake tasks for managing your gem, such as <code>release</code>
+Your gem uses the Hoe gem to provide a dozen or so useful rake tasks for managing your gem, such as <code>release</code>.
+
+See them all with:
+
+<pre>rake -T</pre>
+
+Remember, the Rakefile is yours to extend as you please with more rake tasks, such as the <code>website</code> tasks already added.
 
 h2. Dr Nic's Blog
 
@@ -161,7 +167,7 @@ other stories and things.
 
 h2. Forum
 
-"http://groups.google.com/group/compositekeys":http://groups.google.com/group/compositekeys
+"http://groups.google.com/group/new-gem-generator":http://groups.google.com/group/new-gem-generator
 
 h2. Licence
 
