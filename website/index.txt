@@ -105,6 +105,8 @@ This will repackage your code as a gem and install it as a local gem with the ne
 
 Now pretend to be a user, and do some tests - especially of new functionality - so you are comfortable all the files have been packaged up, and you haven't missed anything in the <code>Manifest.txt</code>.
 
+One set of tests you should do is to repeat any tutorials you include in your website. If your gem is dependent on other gems that are rapidly changing, its possible your tutorial might be invalid even if your unit tests are successful. Best you find any errors before the users start emailing you!
+
 h2. Releasing your gem to the world
 
 Once you're ready for release there are some final steps. 
