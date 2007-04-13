@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <link rel="stylesheet" href="stylesheets/screen.css" type="text/css" media="screen" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>
+      New Gem Generator
+  </title>
+  <script src="javascripts/rounded_corners_lite.inc.js" type="text/javascript"></script>
+<style>
+
+</style>
+  <script type="text/javascript">
+    window.onload = function() {
+      settings = {
+          tl: { radius: 10 },
+          tr: { radius: 10 },
+          bl: { radius: 10 },
+          br: { radius: 10 },
+          antiAlias: true,
+          autoPad: true,
+          validTags: ["div"]
+      }
+      var versionBox = new curvyCorners(settings, document.getElementById("version"));
+      versionBox.applyCornersToAll();
+    }
+  </script>
+</head>
+<body>
+<div id="main">
+
+    <h1>New Gem Generator</h1>
+    <div id="version" class="clickable" onclick='document.location = ""; return false'>
+      Get Version
+      <a href="" class="numbers">0.9.0</a>
+    </div>
+    <h1>&#x2192; using &#8216;rubyforge&#8217;</h1>
+
+
+	<p>The New Gem Generator makes it very easy for you to upload your gems to RubyForge, thanks to the integration of the <code>hoe</code> and <code>rubyforge</code> gems, by <a href="http://blog.zenspider.com/">Ryan Davis</a>.</p>
+
+
+	<p>This page describes how to setup the <em>rubyforge</em> application (lowercase rubyforge = the application), create new RubyForge projects (uppercase RubyForge = the website for hosting gems and homepages), and releasing your gems and their future versions to RubyForge using <em>rubyforge</em>.</p>
+
+
+	<h2>Get a RubyForge project.</h2>
+
+
+	<p>RubyForge is a great site for uploading gems, as the default settings of all RubyGems users is to look for new gems there. You can run your own gem server, but here we&#8217;ll assume you&#8217;re uploading to RubyForge.</p>
+
+
+	<p>Additionally, you can host more than one gem on each project. The Magic Models project hosts several gems, each with different versions.</p>
+
+
+	<p>To host your gems you&#8217;ll need a Project. Apply for it asap as it takes a day or so for the RubyForge admins to accept and generate your project.</p>
+
+
+	<p><strong>Note:</strong> the name of your project does not have to match the name of any of your gems.</p>
+
+
+	<h3>Setup access to RubyForge</h3>
+
+
+	<p>Your new gem will use the rubyforge app to upload your gem. So first we need to set it up.</p>
+
+
+<pre>$ sudo gem install rubyforge
+$ rubyforge setup
+$ mate ~/.rubyforge/user-config.yml
+</pre>
+
+	<p>This creates a configuration folder <code>.rubyforge</code> in your home folder (on Windows it is <span class="caps">XXXXXX</span>). The last line is to edit the config file.</p>
+
+
+	<p>The only two lines to set are your RubyForge <strong>username</strong> and <strong>password</strong>. Ignore the rest.</p>
+
+
+<pre>$ rubyforge config</pre>
+
+	<p>This generates a file <code>~/.rubyforge/auto-config.yml</code> which will be mostly empty now, but one day will be full of projects and all the releases of different versions of gems. One day soon I hope.</p>
+
+
+	<p>Just like the website, all other operations require you to login first.</p>
+
+
+<pre>$ rubyforge login</pre>
+    <p class="coda">
+      <a href="mailto:drnicwilliams@gmail.com">Dr Nic</a>, 13th April 2007<br>
+      Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
+    </p>
+</div>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-567811-2";
+urchinTracker();
+</script>
+
+</body>
+</html>
