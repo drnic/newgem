@@ -1,8 +1,0 @@
-0.8.1 - Generated test file's class name now prefixed with Test, instead of suffixed
-
-0.8.0 - Uses hoe itself - less hypocritical
-      - Generated test files use name 'test_<gemname>.rb' instead of '<gemname>_test.rb' to support
-        ZenTest's autotest expectations of naming. Manifest updated too.
-
-0.7.1 - Installed gems now don't require 'hoe' (based on comments at http://blog.evanweaver.com/articles/2007/01/10/if-you-dont-want-to-hoe-echoe)
-

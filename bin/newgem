@@ -44,7 +44,7 @@ module_name  = project_name.classify
 lib = project_name + '/lib'
 lib_project_name = project_name + '/lib/' + project_name
 version = project_name + "/lib/" + project_name + "/version.rb"
-changelog, readme, setup = %w(CHANGELOG.txt README.txt setup.rb).
+readme, setup = %w(README.txt setup.rb).
 	collect {|f| project_name + '/' + f}
 template_files = %w(Rakefile Manifest.txt History.txt scripts/txt2html website/index.txt website/template.rhtml)
 copy_files = %w(website/javascripts/rounded_corners_lite.inc.js website/stylesheets/screen.css)
@@ -66,9 +66,6 @@ FileUtils.rm_rf project_name
 
 puts "creating: " + project_name
 Dir.mkdir project_name
-
-puts "creating: " + changelog
-FileUtils.touch changelog
 
 puts "creating: " + readme
 File.open(readme, 'w') do |file|
@@ -170,7 +167,7 @@ bin_names_list += "\n" if bin_names_list.size > 0
 test_names_list = ['helper.rb',"#{project_name}.rb"].sort.collect {|name| 'test/test_' + name }.join("\n")
 
 template_files.each do |template_file|
-  puts "creating: " + template_file
+  puts "creating: " + project_name + '/' + template_file
   template = File.open(templates + template_file,'r') {|f| f.readlines.join}
   File.open(project_name + '/' + template_file, 'w') do |file|
     file << eval('"' + template.gsub(/"/, '\"') + '"')
@@ -178,7 +175,7 @@ template_files.each do |template_file|
 end
 
 copy_files.each do |file|
-  puts "copying: " + file
+  puts "copying: " + project_name + '/' + file
   template = File.open(templates + file,'r') {|f| f.readlines.join}
   File.open(project_name + '/' + file, 'w') do |file|
     file << template

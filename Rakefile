@@ -49,7 +49,7 @@ hoe = Hoe.new(GEM_NAME, VERS) do |p|
 end
 
 desc 'Generate website files'
-task :website_generate do
+task :website_generate => :load_consts do
   (Dir['website/**/*.txt'] - Dir['website/version*.txt']).each do |txt|
     sh %{ ruby scripts/txt2html #{txt} > #{txt.gsub(/txt$/,'html')} }
   end
@@ -68,3 +68,12 @@ end
 
 desc 'Generate and upload website files'
 task :website => [:website_generate, :website_upload]
+
+task :load_consts do
+  ENV['AUTHOR'] = AUTHOR
+  ENV['EMAIL'] = EMAIL
+  ENV['DESCRIPTION'] = DESCRIPTION
+  ENV['GEM_NAME'] = GEM_NAME
+  ENV['RUBYFORGE_PROJECT'] = RUBYFORGE_PROJECT
+  ENV['HOMEPATH'] = HOMEPATH
+end
