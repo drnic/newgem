@@ -111,6 +111,9 @@ h2. Releasing your gem to the world
 
 Once you're ready for release there are some final steps. 
 
+<a name="setup_rubyforge"></a>
+	
+
 h3. Setup your environment to upload to RubyForge.
 
 There are several steps you need to perform initially to "setup your environment for uploading gems to RubyForge":rubyforge.html.

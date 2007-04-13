@@ -36,3 +36,37 @@ This generates a file <code>~/.rubyforge/auto-config.yml</code> which will be mo
 Just like the website, all other operations require you to login first.
 
 <pre>$ rubyforge login</pre>
+
+If this fails, check your user-config.yml files for problems with your username/password.
+
+h3. Preparing for a new gem
+
+When you first release a new gem, you need to perform one more step. 
+
+<pre>$ rubyforge login
+$ rubyforge names
+</pre>
+
+This will return the name of your new Project, if you forgot it.
+
+<pre>$ rubyforge create_package #project_name# #gem_name#
+</pre>
+
+Alternately, if you can't get this to work, you can create the new package via the website.
+
+# "Login to RubyForge":https://rubyforge.org/account/login.php
+# Go to your project's page
+# Click on *Files*.
+# Click on *To create new release click here*.
+# Click on *Create a new package*.
+# Go to the bottom of the page, to the form *New Package Name*.
+# Enter a package name, without spaces, and generally in all lowercase letters.
+# Click *Create This Package*
+
+Now return to the console/terminal, and refresh your rubyforge config files using <code>rubyforge config</code>.
+
+Check that the new package has been successfully added to your local config files using <code>rubyforge name</code>. The new package should appear in the list of package names.
+
+h2. You are now ready to release gems!
+
+"Return to releasing your gem":index.html#setup_rubyforge

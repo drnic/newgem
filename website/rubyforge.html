@@ -85,6 +85,51 @@ $ mate ~/.rubyforge/user-config.yml
 
 
 <pre>$ rubyforge login</pre>
+
+	<p>If this fails, check your user-config.yml files for problems with your username/password.</p>
+
+
+	<h3>Preparing for a new gem</h3>
+
+
+	<p>When you first release a new gem, you need to perform one more step.</p>
+
+
+<pre>$ rubyforge login
+$ rubyforge names
+</pre>
+
+	<p>This will return the name of your new Project, if you forgot it.</p>
+
+
+<pre>$ rubyforge create_package #project_name# #gem_name#
+</pre>
+
+	<p>Alternately, if you can&#8217;t get this to work, you can create the new package via the website.</p>
+
+
+	<ol>
+	<li><a href="https://rubyforge.org/account/login.php">Login to RubyForge</a></li>
+		<li>Go to your project&#8217;s page</li>
+		<li>Click on <strong>Files</strong>.</li>
+		<li>Click on <strong>To create new release click here</strong>.</li>
+		<li>Click on <strong>Create a new package</strong>.</li>
+		<li>Go to the bottom of the page, to the form <strong>New Package Name</strong>.</li>
+		<li>Enter a package name, without spaces, and generally in all lowercase letters.</li>
+		<li>Click <strong>Create This Package</strong></li>
+	</ol>
+
+
+	<p>Now return to the console/terminal, and refresh your rubyforge config files using <code>rubyforge config</code>.</p>
+
+
+	<p>Check that the new package has been successfully added to your local config files using <code>rubyforge name</code>. The new package should appear in the list of package names.</p>
+
+
+	<h2>You are now ready to release gems!</h2>
+
+
+	<p><a href="index.html#setup_rubyforge">Return to releasing your gem</a></p>
     <p class="coda">
       <a href="mailto:drnicwilliams@gmail.com">Dr Nic</a>, 13th April 2007<br>
       Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
