@@ -31,9 +31,9 @@
 <div id="main">
 
     <h1>New Gem Generator</h1>
-    <div id="version" class="clickable" onclick='document.location = "http://rubyforge.org/projects/newgem"; return false'>
+    <div id="version" class="clickable" onclick='document.location = ""; return false'>
       Get Version
-      <a href="http://rubyforge.org/projects/newgem" class="numbers">0.9.0</a>
+      <a href="" class="numbers">0.9.0</a>
     </div>
     <h1>&#x2192; &#8216;newgem&#8217;</h1>
 
@@ -41,16 +41,103 @@
 	<h2>What</h2>
 
 
+	<p>Quickly bundle any Ruby libraries into a RubyGem and share it with the world, your colleagues, or perhaps just with yourself amongst your projects.</p>
+
+
+	<p>RubyGems are centrally stored, versioned, and support dependencies between other gems, so they are the ultimate way to bundle libraries, executables, associated tests, examples, and more.</p>
+
+
+	<p>Within this gem, you get one thing &#8211; <code>newgem</code> &#8211; an executable to create your own gems. Your new gems will include designated folders for Ruby code, test files, executables, and even a default website page for you to explain your project, and which instantly uploads to RubyForge website (which looks just like this one by default)</p>
+
+
 	<h2>Installing</h2>
+
+
+	<p>The <code>newgem</code> application is distributed itself as a RubyGem and is available immediately after installation.</p>
 
 
 	<p><pre class="syntax"><span class="ident">sudo</span> <span class="ident">gem</span> <span class="ident">install</span> <span class="ident">newgem</span></pre></p>
 
 
+	<p>Alternately, download the gem and install manually.</p>
+
+
 	<h2>The basics</h2>
 
 
-	<h2>Demonstration of usage</h2>
+	<p>Go to the folder where you want to create your new gem folder structure, and run the <code>newgem</code> command to generate your gem scaffolding.</p>
+
+
+<pre>$ cd ~/ruby_projects
+$ newgem wizzo
+creating: wizzo
+creating: wizzo/CHANGELOG.txt
+creating: wizzo/README.txt
+creating: wizzo/lib
+creating: wizzo/scripts
+creating: wizzo/website
+creating: wizzo/website/javascripts
+creating: wizzo/website/stylesheets
+creating: wizzo/lib/wizzo
+creating: wizzo/lib/wizzo.rb
+creating: wizzo/lib/wizzo/version.rb
+creating: wizzo/bin
+creating: wizzo/test
+creating: wizzo/test/test_helper.rb
+creating: wizzo/test/test_wizzo.rb
+creating: wizzo/examples
+creating: wizzo/setup.rb
+creating: wizzo/Rakefile
+creating: wizzo/Manifest.txt
+creating: wizzo/History.txt
+creating: wizzo/scripts/txt2html
+creating: wizzo/website/index.txt
+creating: wizzo/website/template.rhtml
+copying: wizzo/website/javascripts/rounded_corners_lite.inc.js
+copying: wizzo/website/stylesheets/screen.css
+NOW - update wizzo/Rakefile with gem description, etc
+</pre>
+
+	<h3>Setup</h3>
+
+
+	<p>Now modify the constants at the top of <strong>Rakefile</strong>, with your name, email and the location where you&#8217;ll host your website for the gem. The defaults are tied to RubyForge for uploading the gems and the website (see below).</p>
+
+
+	<h3>Create code and tests</h3>
+
+
+	<p>Then create your libraries (files in <code>lib</code>) and your tests (files in <code>test</code> that look like <code>test_TESTNAME.rb</code>). John Grey <span class="caps">III</span> did a nice video on test-driven design, that&#8217;s worth watching if <span class="caps">TDD</span> is new to you.</p>
+
+
+	<p>If you create any new files, you need to manually add them to the Manifest.txt. Alphabetical order is optional, but it will make the results of <code>rake check_manifest</code> look clean if you keep them ordered. If a file is not in the Manifest.txt it will not be included in the gem when you package and release it.</p>
+
+
+	<h3>Executables</h3>
+
+
+	<p>You can include executable Ruby applications in your gem, which will be accessible on Windows and Unix/Linux/MacOS, by creating scripts in the <code>bin</code> folder. When the gem is deployed by users, these executables will be automatically placed within their path.</p>
+
+
+	<h3>Website</h3>
+
+
+	<p>The final step before releasing your gem to the world is the all-important website. Edit the file <code>website/index.txt</code> using Textile/Redcloth syntax. Syntax highlighting is also supported (see below). If you need more website pages, create more *.txt files in the website folder.</p>
+
+
+	<p>Run the rake task <code>rake website_generate</code> to convert all your website txt files into html files.</p>
+
+
+	<p>The rake task <code>rake website_upload</code> will upload the website into a RubyForge project. The task <code>website</code> performs both the generation and the upload.</p>
+
+
+	<p>If you don&#8217;t want a website, remove the <code>website</code> related files from the Manifest.txt.</p>
+
+
+	<p>Make sure you&#8217;ve generated the <code>website/index.html</code> file before continuing to package and release your gem (unless you remove it from the Manifest.txt).</p>
+
+
+	<h3>Releasing your gem to the world</h3>
 
 
 	<h2>Dr Nic&#8217;s Blog</h2>
@@ -77,7 +164,7 @@ other stories and things.</p>
 
 	<p>Comments are welcome. Send an email to <a href="mailto:drnicwilliams@gmail.com">Dr Nic Williams</a>.</p>
     <p class="coda">
-      <a href="mailto:drnicwilliams@gmail.com">Dr Nic</a>, 12th April 2007<br>
+      <a href="mailto:drnicwilliams@gmail.com">Dr Nic</a>, 13th April 2007<br>
       Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
     </p>
 </div>

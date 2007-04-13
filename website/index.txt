@@ -2,18 +2,83 @@ h1. New Gem Generator
 
 h1. &#x2192; 'newgem'
 
-
 h2. What
 
+Quickly bundle any Ruby libraries into a RubyGem and share it with the world, your colleagues, or perhaps just with yourself amongst your projects.
+
+RubyGems are centrally stored, versioned, and support dependencies between other gems, so they are the ultimate way to bundle libraries, executables, associated tests, examples, and more.
+
+Within this gem, you get one thing - <code>newgem</code> - an executable to create your own gems. Your new gems will include designated folders for Ruby code, test files, executables, and even a default website page for you to explain your project, and which instantly uploads to RubyForge website (which looks just like this one by default)
 
 h2. Installing
 
+The <code>newgem</code> application is distributed itself as a RubyGem and is available immediately after installation.
+
 <pre syntax="ruby">sudo gem install newgem</pre>
+
+Alternately, download the gem and install manually.
 
 h2. The basics
 
+Go to the folder where you want to create your new gem folder structure, and run the <code>newgem</code> command to generate your gem scaffolding.
 
-h2. Demonstration of usage
+<pre>$ cd ~/ruby_projects
+$ newgem wizzo
+creating: wizzo
+creating: wizzo/CHANGELOG.txt
+creating: wizzo/README.txt
+creating: wizzo/lib
+creating: wizzo/scripts
+creating: wizzo/website
+creating: wizzo/website/javascripts
+creating: wizzo/website/stylesheets
+creating: wizzo/lib/wizzo
+creating: wizzo/lib/wizzo.rb
+creating: wizzo/lib/wizzo/version.rb
+creating: wizzo/bin
+creating: wizzo/test
+creating: wizzo/test/test_helper.rb
+creating: wizzo/test/test_wizzo.rb
+creating: wizzo/examples
+creating: wizzo/setup.rb
+creating: wizzo/Rakefile
+creating: wizzo/Manifest.txt
+creating: wizzo/History.txt
+creating: wizzo/scripts/txt2html
+creating: wizzo/website/index.txt
+creating: wizzo/website/template.rhtml
+copying: wizzo/website/javascripts/rounded_corners_lite.inc.js
+copying: wizzo/website/stylesheets/screen.css
+NOW - update wizzo/Rakefile with gem description, etc
+</pre>
+
+h3. Setup
+
+Now modify the constants at the top of *Rakefile*, with your name, email and the location where you'll host your website for the gem. The defaults are tied to RubyForge for uploading the gems and the website (see below).
+
+h3. Create code and tests
+
+Then create your libraries (files in <code>lib</code>) and your tests (files in <code>test</code> that look like <code>test_TESTNAME.rb</code>). John Grey III did a nice video on test-driven design, that's worth watching if TDD is new to you.
+
+If you create any new files, you need to manually add them to the Manifest.txt. Alphabetical order is optional, but it will make the results of <code>rake check_manifest</code> look clean if you keep them ordered. If a file is not in the Manifest.txt it will not be included in the gem when you package and release it.
+
+h3. Executables
+
+You can include executable Ruby applications in your gem, which will be accessible on Windows and Unix/Linux/MacOS, by creating scripts in the <code>bin</code> folder. When the gem is deployed by users, these executables will be automatically placed within their path.
+
+h3. Website
+
+The final step before releasing your gem to the world is the all-important website. Edit the file <code>website/index.txt</code> using Textile/Redcloth syntax. Syntax highlighting is also supported (see below). If you need more website pages, create more *.txt files in the website folder. 
+
+Run the rake task <code>rake website_generate</code> to convert all your website txt files into html files.
+
+The rake task <code>rake website_upload</code> will upload the website into a RubyForge project. The task <code>website</code> performs both the generation and the upload.
+
+If you don't want a website, remove the <code>website</code> related files from the Manifest.txt. 
+
+Make sure you've generated the <code>website/index.html</code> file before continuing to package and release your gem (unless you remove it from the Manifest.txt).
+
+h3. Releasing your gem to the world
 
 
 
