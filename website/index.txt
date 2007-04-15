@@ -160,6 +160,10 @@ See them all with:
 
 Remember, the Rakefile is yours to extend as you please with more rake tasks, such as the <code>website</code> tasks already added.
 
+h2. Related articles
+
+* "Original blog article and tutorial":http://drnicwilliams.com/2006/10/11/generating-new-gems/
+
 h2. Dr Nic's Blog
 
 "http://www.drnicwilliams.com":http://www.drnicwilliams.com - for future announcements and
