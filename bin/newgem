@@ -120,13 +120,12 @@ Dir.mkdir bin
 
 if OPTIONS[:bin_name]
   bin_names_list = OPTIONS[:bin_name].split(',')
+  template = File.open(templates + 'app.rb','r') {|f| f.readlines.join}
+  p template
   bin_names_list.each do |bin_name|
     puts "creating: " + bin + '/' + bin_name
     File.open(bin + '/' + bin_name, 'w') do |file|
-      file << <<-eos
-#!/usr/bin/env ruby
-
-eos
+      file << eval('"' + template.gsub(/"/, '\"') + '"')
     end
   end
   bin_names = bin_names_list.join(' ')

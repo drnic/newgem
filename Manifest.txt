@@ -12,6 +12,7 @@ setup.rb
 templates/History.txt
 templates/Manifest.txt
 templates/Rakefile
+templates/app.rb
 templates/scripts/txt2html
 templates/setup.rb
 templates/test.rb

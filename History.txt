@@ -1,9 +1,10 @@
 +++ 0.9.0 12/4/2007
 
-+ 2 major enhancements:
++ 3 major enhancements:
   + Includes a basic website template, with rake tasks for generation and upload to rubyforge
   + Generates a History.txt file, and automatically uses it in Hoe task
-+ 3 minor enhancementa:
+  + Generated applications include framework for supporting command line options
++ 3 minor enhancements:
   + Include History.txt in this gem
   + test files ordered correctly in generated Manifest.txt
   + no blank line in Manifest.txt if no bin apps
