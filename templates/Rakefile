@@ -11,11 +11,11 @@ require 'hoe'
 include FileUtils
 require File.join(File.dirname(__FILE__), 'lib', '#{gem_name}', 'version')
 
-AUTHOR = "#{author}"  # can also be an array of Authors
+AUTHOR = '#{author}'  # can also be an array of Authors
 EMAIL = "your contact email for bug fixes and info"
 DESCRIPTION = "description of gem"
-GEM_NAME = "#{gem_name}" # what ppl will type to install your gem
-RUBYFORGE_PROJECT = "#{gem_name}" # The unix name for your project
+GEM_NAME = '#{gem_name}' # what ppl will type to install your gem
+RUBYFORGE_PROJECT = '#{gem_name}' # The unix name for your project
 HOMEPATH = "http://\#{RUBYFORGE_PROJECT}.rubyforge.org"
 
 
@@ -23,7 +23,7 @@ NAME = "#{gem_name}"
 REV = nil # UNCOMMENT IF REQUIRED: File.read(".svn/entries")[/committed-rev="(\d+)"/, 1] rescue nil
 VERS = ENV['VERSION'] || (#{module_name}::VERSION::STRING + (REV ? ".\#{REV}" : ""))
 CLEAN.include ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']
-RDOC_OPTS = ['--quiet', '--title', "#{gem_name} documentation",
+RDOC_OPTS = ['--quiet', '--title', '#{gem_name} documentation',
     "--opname", "index.html",
     "--line-numbers", 
     "--main", "README",
@@ -66,7 +66,7 @@ task :website_upload do
   config = YAML.load(File.read(File.expand_path("~/.rubyforge/user-config.yml")))
   host = "\#{config["username"]}@rubyforge.org"
   remote_dir = "/var/www/gforge-projects/\#{RUBYFORGE_PROJECT}/"
-  # remote_dir = "/var/www/gforge-projects/\#{RUBYFORGE_PROJECT}/#{GEM_NAME}"
+  # remote_dir = "/var/www/gforge-projects/\#{RUBYFORGE_PROJECT}/\#{GEM_NAME}"
   local_dir = 'website'
   sh %{rsync -av \#{local_dir}/ \#{host}:\#{remote_dir}}
 end

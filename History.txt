@@ -1,3 +1,8 @@
++++ 0.9.1 16/4/2007
+
++ 1 bugfix:
+  + I thoughtfully added an extra line (commented out) for sending the website to a subfolder... it caused grief at the 13th hour
+
 +++ 0.9.0 12/4/2007
 
 + 3 major enhancements:
