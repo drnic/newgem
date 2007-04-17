@@ -160,6 +160,8 @@ See them all with:
 
 Remember, the Rakefile is yours to extend as you please with more rake tasks, such as the <code>website</code> tasks already added.
 
+For more information about each task, see the "Hoe README":http://seattlerb.rubyforge.org/hoe/
+
 h2. Related articles
 
 * "Original blog article and tutorial":http://drnicwilliams.com/2006/10/11/generating-new-gems/

@@ -70,3 +70,130 @@ Check that the new package has been successfully added to your local config file
 h2. You are now ready to release gems!
 
 "Return to releasing your gem":index.html#setup_rubyforge
+
+h2. rubyforge docco
+
+The best rubyforge command documentation is available via the application itself (see below) and the "RDocs":http://codeforpeople.rubyforge.org/rubyforge/
+
+<pre>$ rubyforge help
+SYNOPSIS
+
+  rubyforge [options]* mode [mode_args]*
+
+DESCRIPTION
+
+  simplistic script which automates a limited set of rubyforge operations
+
+MODES
+
+  setup()
+    initializes your .rubyforge directory.  you need to run this first before
+    doing anything else.
+
+    example :
+      rubyforge setup
+
+  config([project])
+    Helps you populate your auto-config.yml file by scraping rubyforge and
+    getting your groups, projects, and releases.
+
+    example :
+      rubyforge config
+      rubyforge config myproject
+
+  names()
+    Prints out the names of your configured groups and projects.
+
+    example :
+      rubyforge names
+
+  login()
+    sends username and password from config.yml (or --username/--password
+    options) and stores login cookie in cookie.dat.  this is required for
+    subsquent operations work.
+
+    example :
+      rubyforge login
+      rubyforge login --username zaphod --password 42
+
+  create_package(group_id, package_name)
+    creates the named package under the specified group.
+
+    example :
+      rubyforge create_package 1024 traits
+      rubyforge login && rubyforge create_package codeforpeople.com traits
+
+  add_release(group_id, package_id, release_name, userfile)
+    release a file as release_name under the specified group_id and
+    package_id.
+
+    example :
+      rubyforge add_release codeforpeople.com traits 0.8.0 traits-0.8.0.gem
+      rubyforge add_release codeforpeople.com traits 0.8.0 traits-0.8.0.tgz
+      rubyforge add_release 1024 1242 0.8.0 traits-0.8.0.gem
+      rubyforge login && rubyforge add_release 1024 1242 0.8.0 traits-0.8.0.gem
+
+  add_file(group_id, package_id, release_id, userfile)
+    add a file to an existing release under the specified group_id,
+    package_id, and release_id
+
+    example :
+      rubyforge add_file codeforpeople.com traits 0.8.0 traits-0.8.0.gem
+      rubyforge add_file codeforpeople.com traits 0.8.0 traits-0.8.0.tgz
+      rubyforge add_file 1024 1242 0.8.0 traits-0.8.0.gem
+
+  delete_package(group_id, package_name)
+    deletes a package and all its files.
+
+    example :
+      rubyforge delete_package codeforpeople.com traits
+      rubyforge delete_package 1024 traits
+
+NOTES
+
+  - In order to use group_id, package_id, or release_id by name,
+    rather than number, you must edit the rubyforge[group_ids] and
+    rubyforge[package_ids] translation tables in your config.yml. See
+    the config command for more information and help.
+
+  - don't forget to login!  logging in will store a cookie in your
+    .rubyforge directory which expires after a time.  always run the login
+    command before any operation that requires authentication, such as
+    uploading a package.
+
+TODO
+
+  - add error checking.  this requires screen scraping to see of an operation
+    succeeded since 200 is returned from rubyforge even for failed operations
+    and only the html text reveals the status.
+
+OPTIONS
+
+  global :
+    --help            , -h
+      this message
+    --config          , -c
+      specify a config file (default /Users/nicwilliams/.rubyforge/user-config.yml)
+    --username        , -u
+      specify username, taken from config otherwise
+    --password        , -p
+      specify password, taken from config otherwise
+    --cookie_jar      , -C
+      specify cookie storage file (default /Users/nicwilliams/.rubyforge/cookie.dat)
+
+  add_release :
+    --is_private      , -P
+      if true, release is not public
+    --release_date    , -r
+      specify time of release (default 'now')
+    --type_id         , -t
+      specify filetype code (default determined by ext)
+    --processor_id    , -o
+      specify processor (default 'Any')
+    --release_notes   , -n
+      specify release notes as string or file
+    --release_changes , -a
+      specify release changes as string or file
+    --preformatted    , -f
+      specify whether release_notes/changes are preformatted
+</pre>
