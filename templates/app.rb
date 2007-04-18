@@ -3,6 +3,12 @@
 #  Created by MYNAME on #{(now = Time.now).year}-#{now.month}-#{now.day}.
 #  Copyright (c) #{now.year}. All rights reserved.
 
+begin
+  require 'rubygems'
+rescue LoadError
+  # no rubygems to load, so we fail silently
+end
+
 require 'optparse'
 
 # NOTE: the option -p/--path= is given as an example, and should probably be replaced in your application.

@@ -1,3 +1,10 @@
++++ 0.9.2 18/4/2007
+
++ 1 minor improvement:
+  + Generated apps include a "require 'rubygems' line at the top"
++ 1 website fix
+  + Notes that the index.txt file includes Dr Nic details, not their own.[FIXME!!]
+
 +++ 0.9.1 16/4/2007
 
 + 1 bugfix:

@@ -72,6 +72,8 @@ The final step before releasing your gem to the world is the all-important websi
 
 Run the rake task <code>rake website_generate</code> to convert all your website txt files into html files.
 
+NOTE: Currently, the initial <code>index.txt</code> file includes my details not yours. Currently you need to change this manually.
+
 If you don't want a website, remove the <code>website</code> related files from the Manifest.txt. 
 
 Make sure you've generated the <code>website/index.html</code> file before continuing to package and release your gem (unless you remove it from the Manifest.txt).
