@@ -32,7 +32,7 @@ end
 require File.dirname(__FILE__) + '/../lib/newgem/version.rb'
 
 version  = Newgem::VERSION::STRING
-download = ENV['HOMEPAGE']
+download = ENV['DOWNLOAD_PATH']
 
 if ARGV.length >= 1
   src, template = ARGV

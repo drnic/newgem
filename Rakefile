@@ -16,6 +16,7 @@ DESCRIPTION = "Make your own gems at home"
 GEM_NAME = "newgem" # what ppl will type to install your gem
 RUBYFORGE_PROJECT = "newgem"
 HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
+DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 
 REV = nil #File.read(".svn/entries")[/committed-rev="(\d+)"/, 1] rescue nil
 VERS = ENV['VERSION'] || (Newgem::VERSION::STRING + (REV ? ".#{REV}" : ""))
@@ -76,4 +77,5 @@ task :load_consts do
   ENV['GEM_NAME'] = GEM_NAME
   ENV['RUBYFORGE_PROJECT'] = RUBYFORGE_PROJECT
   ENV['HOMEPATH'] = HOMEPATH
+  ENV['DOWNLOAD_PATH'] = DOWNLOAD_PATH
 end
