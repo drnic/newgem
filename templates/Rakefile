@@ -21,7 +21,7 @@ DOWNLOAD_PATH = "http://rubyforge.org/projects/\#{RUBYFORGE_PROJECT}"
 
 NAME = "#{gem_name}"
 REV = nil # UNCOMMENT IF REQUIRED: File.read(".svn/entries")[/committed-rev="(\d+)"/, 1] rescue nil
-VERS = ENV['VERSION'] || (#{module_name}::VERSION::STRING + (REV ? ".\#{REV}" : ""))
+VERS = #{module_name}::VERSION::STRING + (REV ? ".\#{REV}" : "")
 CLEAN.include ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']
 RDOC_OPTS = ['--quiet', '--title', '#{gem_name} documentation',
     "--opname", "index.html",
@@ -73,3 +73,17 @@ end
 
 desc 'Generate and upload website files'
 task :website => [:website_generate, :website_upload]
+
+desc 'Release the website and new gem version'
+task :deploy => [:check_version, :website, :release]
+
+task :check_version do
+  unless ENV['VERSION']
+    puts 'Must pass a VERSION=x.y.z release version'
+    exit
+  end
+  unless ENV['VERSION'] == VERS
+    puts "Please update your version.rb to match the release version, currently \#{VERS}"
+    exit
+  end
+end

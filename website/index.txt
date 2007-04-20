@@ -146,7 +146,7 @@ Or use the task <code>rake website</code>, which performs both the generation an
 
 h3. Release the gem
 
-Run <code>rake release VERSION=X.Y.Z</code> after you've done all these steps, and your gem will be repackaged and released to RubyForge.
+Run <code>rake deploy VERSION=X.Y.Z</code> after you've done all these steps, and your gem will be repackaged and released to RubyForge, PLUS your website will be released with the latest version number.
 
 It can take an hour or two before new gem releases are available via the gem installer. But when they are ready, everyone will be able to download and install your gem using:
 

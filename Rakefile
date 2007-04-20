@@ -19,7 +19,7 @@ HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
 DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 
 REV = nil #File.read(".svn/entries")[/committed-rev="(\d+)"/, 1] rescue nil
-VERS = ENV['VERSION'] || (Newgem::VERSION::STRING + (REV ? ".#{REV}" : ""))
+VERS = Newgem::VERSION::STRING + (REV ? ".#{REV}" : "")
 CLEAN.include ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']
 RDOC_OPTS = ['--quiet', '--title', "newgem documentation",
     "--opname", "index.html",
@@ -78,4 +78,18 @@ task :load_consts do
   ENV['RUBYFORGE_PROJECT'] = RUBYFORGE_PROJECT
   ENV['HOMEPATH'] = HOMEPATH
   ENV['DOWNLOAD_PATH'] = DOWNLOAD_PATH
+end
+
+desc 'Release the website and new gem version'
+task :deploy => [:check_version, :website, :release]
+
+task :check_version do
+  unless ENV['VERSION']
+    puts 'Must pass a VERSION=x.y.z release version'
+    exit
+  end
+  unless ENV['VERSION'] == VERS
+    puts "Please update your version.rb to match the release version, currently #{VERS}"
+    exit
+  end
 end
