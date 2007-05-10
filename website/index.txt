@@ -76,11 +76,13 @@ NOTE: Currently, the initial <code>index.txt</code> file includes my details not
 
 If you don't want a website, remove the <code>website</code> related files from the Manifest.txt. 
 
-Make sure you've generated the <code>website/index.html</code> file before continuing to package and release your gem (unless you remove it from the Manifest.txt).
-
 h2. Package and test locally
 
 Before releasing a new version of a gem, it is a great idea to install the gem locally and do some sanity checks. You know, to limit the chance of you looking like a noob.
+
+<pre>rake local_deploy</pre>
+
+This generates the website into your website folder, and locally installs the gem, ready for testing and local use.
 
 h3. Change the gems version number
 

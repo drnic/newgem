@@ -1,4 +1,4 @@
 // Version JS file
-var version = "0.9.3";
+var version = "0.9.4";
 
 document.write(" - " + version);

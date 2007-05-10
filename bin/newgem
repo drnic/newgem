@@ -52,7 +52,7 @@ lib_project_name = project_name + '/lib/' + project_name
 version = project_name + "/lib/" + project_name + "/version.rb"
 readme, setup = %w(README.txt setup.rb).
 	collect {|f| project_name + '/' + f}
-template_files = %w(Rakefile Manifest.txt History.txt scripts/txt2html website/index.txt website/template.rhtml)
+template_files = %w(Rakefile Manifest.txt History.txt scripts/txt2html website/index.txt website/index.html website/template.rhtml)
 copy_files = %w(website/javascripts/rounded_corners_lite.inc.js website/stylesheets/screen.css)
 
 

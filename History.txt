@@ -1,7 +1,9 @@
 +++ 0.9.4 
 
-+ 1 minor enhancement
++ 3 minor enhancement
   + 'Licence' => 'License' (thx Peter Burns)
+  + Generates a blank index.html so that 'rake package' works straight away
+  + Includes :local_deploy which does tasks :website_generate and :install_gem
 
 +++ 0.9.3 20/4/2007
 

@@ -16,6 +16,7 @@ templates/app.rb
 templates/scripts/txt2html
 templates/setup.rb
 templates/test.rb
+templates/website/index.html
 templates/website/index.txt
 templates/website/javascripts/rounded_corners_lite.inc.js
 templates/website/stylesheets/screen.css
