@@ -177,9 +177,9 @@ h2. Forum
 
 "http://groups.google.com/group/new-gem-generator":http://groups.google.com/group/new-gem-generator
 
-h2. Licence
+h2. License
 
-This code is free to use under the terms of the MIT licence. 
+This code is free to use under the terms of the MIT license. 
 
 h2. Contact
 

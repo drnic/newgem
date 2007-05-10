@@ -1,3 +1,8 @@
++++ 0.9.4 
+
++ 1 minor enhancement
+  + 'Licence' => 'License' (thx Peter Burns)
+
 +++ 0.9.3 20/4/2007
 
 + 1 minor enhancement
