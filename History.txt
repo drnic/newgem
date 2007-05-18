@@ -1,9 +1,11 @@
 +++ 0.9.4 
 
-+ 3 minor enhancement
++ 5 minor enhancements
+	+ Pass your full name into the generator to be inserted into License.txt, index.txt, Rakefile etc
   + 'Licence' => 'License' (thx Peter Burns)
   + Generates a blank index.html so that 'rake package' works straight away
   + Includes :local_deploy which does tasks :website_generate and :install_gem
+  + License.txt generated + this gem has a License.txt file (MIT license)
 
 +++ 0.9.3 20/4/2007
 

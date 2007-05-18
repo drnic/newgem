@@ -15,6 +15,7 @@ templates = File.dirname(__FILE__) + '/../templates/'
 OPTIONS = {
   :import_path => nil,
   :version     => '0.0.1',
+  :full_name   => nil,
   :bin_name    => nil
 }
 parser = OptionParser.new do |opts|
@@ -33,6 +34,9 @@ BANNER
   opts.on("-i", "--import_path=PATH", String,
           "Path where your files could be copied from.",
           "Default: none") { |OPTIONS[:import_path]| }
+  opts.on("-n", "--full_name=PATH", String,
+          "Your name to be inserted into generated files.",
+          "Default: ENV['USERNAME'] || ENV['USER']") { |OPTIONS[:full_name]| }
   opts.on("-v", "--version=YOUR_VERSION", String,
           "Version of the gem you are creating.",
           "Default: 0.0.1") { |OPTIONS[:version]| }
@@ -42,6 +46,7 @@ BANNER
 end
 OPTIONS[:version] = OPTIONS[:version].to_s.split(/\./)
 version_str       = OPTIONS[:version].join('.')
+author            = OPTIONS[:full_name] || ENV['USERNAME'] || ENV['USER']
 
 gem_name = project_name = ARGV[0]
 parser.parse!(["-h"]) unless gem_name
@@ -52,9 +57,8 @@ lib_project_name = project_name + '/lib/' + project_name
 version = project_name + "/lib/" + project_name + "/version.rb"
 readme, setup = %w(README.txt setup.rb).
 	collect {|f| project_name + '/' + f}
-template_files = %w(Rakefile Manifest.txt History.txt scripts/txt2html website/index.txt website/index.html website/template.rhtml)
+template_files = %w(Rakefile History.txt License.txt Manifest.txt scripts/txt2html website/index.txt website/index.html website/template.rhtml)
 copy_files = %w(website/javascripts/rounded_corners_lite.inc.js website/stylesheets/screen.css)
-
 
 test = project_name + "/test"
 main = project_name + "/lib/" + project_name + ".rb"
@@ -64,9 +68,6 @@ unit_test = test + "/test_" + project_name + ".rb"
 examples = project_name + '/examples'
 bin      = project_name + '/bin'
 folders  = %w( scripts website website/javascripts website/stylesheets)
-
-# Rakefile variables
-author = ENV['USERNAME'] || ENV['USER'] || 'you'
 
 FileUtils.rm_rf project_name
 

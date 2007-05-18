@@ -1,4 +1,5 @@
 History.txt
+License.txt
 Manifest.txt
 README
 Rakefile
@@ -10,6 +11,7 @@ scripts/txt2html
 scripts/txt2js
 setup.rb
 templates/History.txt
+templates/License.txt
 templates/Manifest.txt
 templates/Rakefile
 templates/app.rb
