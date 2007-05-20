@@ -12,7 +12,7 @@ include FileUtils
 require File.join(File.dirname(__FILE__), 'lib', '#{gem_name}', 'version')
 
 AUTHOR = '#{author}'  # can also be an array of Authors
-EMAIL = "your contact email for bug fixes and info"
+EMAIL = "#{email}"
 DESCRIPTION = "description of gem"
 GEM_NAME = '#{gem_name}' # what ppl will type to install your gem
 RUBYFORGE_PROJECT = '#{gem_name}' # The unix name for your project

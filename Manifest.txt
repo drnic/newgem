@@ -3,9 +3,11 @@ License.txt
 Manifest.txt
 README
 Rakefile
+Todo.txt
 bin/newgem
 install.rb
 lib/newgem.rb
+lib/newgem/rubyforge.rb
 lib/newgem/version.rb
 scripts/txt2html
 scripts/txt2js
@@ -17,6 +19,7 @@ templates/Rakefile
 templates/app.rb
 templates/scripts/txt2html
 templates/setup.rb
+templates/spec.rb
 templates/test.rb
 templates/website/index.html
 templates/website/index.txt

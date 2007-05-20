@@ -1,4 +1,13 @@
-+++ 0.9.4 
++++ 0.10.0 2007-05-19
+
++ 3 major enhancements
+	+ can generate rspec default tests (or still test::unit tests) using --with-test=rspec [thx Robby Russell]
+  + fetches your full name and email from ~/.rubyforge/user-config.yml (add keys user_name and email)
++ 2 minor enhancements
+  + Generated lib/#{gem_name}.rb includes an empty module
+  + Generated lib/#{gem_name}.rb does not include "require all", instead you do it manually for each included file
+
++++ 0.9.4 2007-05-18
 
 + 5 minor enhancements
 	+ Pass your full name into the generator to be inserted into License.txt, index.txt, Rakefile etc

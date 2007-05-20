@@ -10,13 +10,17 @@ require 'fileutils'
 require 'active_support'
 require 'optparse'
 
+require 'newgem'
+
 templates = File.dirname(__FILE__) + '/../templates/'
 
 OPTIONS = {
   :import_path => nil,
   :version     => '0.0.1',
   :full_name   => nil,
-  :bin_name    => nil
+  :email       => nil,
+  :bin_name    => nil,
+  :test_framework => 'test::unit'
 }
 parser = OptionParser.new do |opts|
   opts.banner = <<BANNER
@@ -36,7 +40,13 @@ BANNER
           "Default: none") { |OPTIONS[:import_path]| }
   opts.on("-n", "--full_name=PATH", String,
           "Your name to be inserted into generated files.",
-          "Default: ENV['USERNAME'] || ENV['USER']") { |OPTIONS[:full_name]| }
+          "Default: ~/.rubyforge/user-config.yml[user_name]") { |OPTIONS[:full_name]| }
+  opts.on("-e", "--email=PATH", String,
+          "Your email to be inserted into generated files.",
+          "Default: ~/.rubyforge/user-config.yml[email]") { |OPTIONS[:email]| }
+  opts.on("-t", "--test-with=TEST_FRAMEWORK", String,
+          "Your preferred testing framework: Options: test::unit (default), rspec.",
+          "Default: test::unit") { |OPTIONS[:test_framework]| }           
   opts.on("-v", "--version=YOUR_VERSION", String,
           "Version of the gem you are creating.",
           "Default: 0.0.1") { |OPTIONS[:version]| }
@@ -46,7 +56,14 @@ BANNER
 end
 OPTIONS[:version] = OPTIONS[:version].to_s.split(/\./)
 version_str       = OPTIONS[:version].join('.')
-author            = OPTIONS[:full_name] || ENV['USERNAME'] || ENV['USER']
+author            = OPTIONS[:full_name]
+email             = OPTIONS[:email]
+unless author && email
+  rubyforge_config = Newgem::Rubyforge.new
+  author ||= rubyforge_config.full_name
+  email  ||= rubyforge_config.email
+end
+test_framework    = OPTIONS[:test_framework]
 
 gem_name = project_name = ARGV[0]
 parser.parse!(["-h"]) unless gem_name
@@ -60,10 +77,7 @@ readme, setup = %w(README.txt setup.rb).
 template_files = %w(Rakefile History.txt License.txt Manifest.txt scripts/txt2html website/index.txt website/index.html website/template.rhtml)
 copy_files = %w(website/javascripts/rounded_corners_lite.inc.js website/stylesheets/screen.css)
 
-test = project_name + "/test"
 main = project_name + "/lib/" + project_name + ".rb"
-test_helper = test + "/test_helper.rb"
-unit_test = test + "/test_" + project_name + ".rb"
 
 examples = project_name + '/examples'
 bin      = project_name + '/bin'
@@ -85,12 +99,12 @@ end
 
 
 puts "creating: " + lib
-Dir.mkdir lib
+FileUtils.mkdir_p lib
 
 folders.each do |folder|
   new_folder = project_name + '/' + folder
   puts "creating: " + new_folder
-  Dir.mkdir new_folder
+  FileUtils.mkdir_p new_folder
 end
 
 if OPTIONS[:import_path]
@@ -100,16 +114,21 @@ if OPTIONS[:import_path]
 end
 
 puts "creating: " + lib_project_name
-Dir.mkdir lib_project_name
+FileUtils.mkdir_p lib_project_name
 
 puts "creating: " + main
 File.open(main, 'w') do |file|
-  file << "Dir[File.join(File.dirname(__FILE__), '#{project_name}/**/*.rb')].sort.each { |lib| require lib }"
+  file << <<-EOS 
+module #{module_name}
+end
+
+require '#{module_name}/version'
+  EOS
 end
 
 puts "creating: " + version
 File.open(version, 'w') do |file|
-  file << <<-eos
+  file << <<-EOS
 module #{module_name} #:nodoc:
   module VERSION #:nodoc:
     MAJOR = #{OPTIONS[:version][0] || '0'}
@@ -119,7 +138,7 @@ module #{module_name} #:nodoc:
     STRING = [MAJOR, MINOR, TINY].join('.')
   end
 end
-eos
+  EOS
 end
 
 puts "creating: " + bin
@@ -140,20 +159,41 @@ else
   bin_names_list = []
 end
 
+# Setup spec/test::unit environments
+# Would like to refactor this...
+if test_framework == 'rspec'
+  test = project_name + "/spec"
+  test_helper = test + "/spec_helper.rb"
+  test_template = 'spec.rb'
+  unit_test = test + "/" + project_name + "_spec.rb"
+  test_file_prefix = 'spec/NAME_spec'
+  unit_test_template = <<-eos
+require 'spec'
+require File.dirname(__FILE__) + '/../lib/#{project_name}'
+eos
+else  
+  test = project_name + "/test"
+  test_helper = test + "/test_helper.rb"
+  test_template = 'test.rb'
+  unit_test = test + "/test_" + project_name + ".rb"
+  test_file_prefix = 'test/test_NAME'
+  unit_test_template = <<-eos
+require 'test/unit'
+require File.dirname(__FILE__) + '/../lib/#{project_name}'
+eos
+end
 
 puts "creating: " + test
 Dir.mkdir test
 
 puts "creating: " + test_helper
 File.open(test_helper, 'w') do |file|
-  file << <<-eos
-require 'test/unit'
-require File.dirname(__FILE__) + '/../lib/#{project_name}'
-eos
+  file << unit_test_template
 end
 
 puts "creating: " + unit_test
-template = File.open(templates + 'test.rb','r') {|f| f.readlines.join}
+
+template = File.open(templates + test_template,'r') {|f| f.readlines.join}
 File.open(unit_test, 'w') do |file|
   file << eval('"' + template.gsub(/"/, '\"') + '"')
 end
@@ -169,7 +209,7 @@ end
 
 bin_names_list = bin_names_list.collect {|name| 'bin/' + name }.join("\n")
 bin_names_list += "\n" if bin_names_list.size > 0
-test_names_list = ['helper.rb',"#{project_name}.rb"].sort.collect {|name| 'test/test_' + name }.join("\n")
+test_names_list = ['helper.rb',"#{project_name}.rb"].sort.collect {|name| test_file_prefix.gsub('NAME', name) + name }.join("\n")
 
 template_files.each do |template_file|
   puts "creating: " + project_name + '/' + template_file
