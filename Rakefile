@@ -52,9 +52,9 @@ hoe = Hoe.new(GEM_NAME, VERS) do |p|
   #p.spec_extras    - A hash of extra values to set in the gemspec.
 end
 
-CHANGES = hoe.paragraphs_of('History.txt', 0..1).join("\\n\\n")
+CHANGES = hoe.paragraphs_of('History.txt', 0..1).join("\n\n")
 PATH    = (RUBYFORGE_PROJECT == GEM_NAME) ? RUBYFORGE_PROJECT : "\#{RUBYFORGE_PROJECT}/\#{GEM_NAME}"
-hoe.remote_rdoc_dir = File.join(PATH.gsub(/^#{RUBYFORGE_PROJECT}/,''), 'rdoc')
+hoe.remote_rdoc_dir = File.join(PATH.gsub(/^#{RUBYFORGE_PROJECT}\/?/,''), 'rdoc')
 
 desc 'Generate website files'
 task :website_generate => :load_consts do
@@ -97,13 +97,7 @@ task :deploy => [:check_version, :website, :publish_docs, :release] do
 end
 
 desc 'Runs tasks website_generate and install_gem as a local deployment of the gem'
-task :local_deploy => [:website_generate, :install_gem] do
-  puts "Remember to create SVN tag:"
-  puts "svn copy svn+ssh://#{RUBYFORGE_USERNAME}@rubyforge.org/var/svn/#{RUBYFORGE_PROJECT}/trunk " +
-    "svn+ssh://#{RUBYFORGE_USERNAME}@rubyforge.org/var/svn/#{RUBYFORGE_PROJECT}/tags/REL-#{VERS} "
-  puts "Suggested comment:"
-  puts "Tagging release #{CHANGES}"
-end
+task :local_deploy => [:website_generate, :install_gem]
 
 task :check_version do
   unless ENV['VERSION']
