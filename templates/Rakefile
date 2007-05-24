@@ -8,6 +8,7 @@ require 'rake/rdoctask'
 require 'rake/contrib/rubyforgepublisher'
 require 'fileutils'
 require 'hoe'
+#{requirements}
 include FileUtils
 require File.join(File.dirname(__FILE__), 'lib', '#{gem_name}', 'version')
 
@@ -75,7 +76,10 @@ desc 'Generate and upload website files'
 task :website => [:website_generate, :website_upload]
 
 desc 'Release the website and new gem version'
-task :deploy => [:check_version, :website, :release]
+task :deploy => [:check_version, :website, :release] do
+  # Create SVN tag
+  puts "Remember to create SVN tag /tags/REL-#{ENV['VERSION']}"
+end
 
 desc 'Runs tasks website_generate and install_gem as a local deployment of the gem'
 task :local_deploy => [:website_generate, :install_gem]
@@ -91,3 +95,4 @@ task :check_version do
   end
 end
 
+#{test_task}

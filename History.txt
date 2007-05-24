@@ -1,3 +1,11 @@
++++ 0.10.1 XXX
++ 2 minor enhancements
+  + Gems using rspec include a #spec task to run all spec tests
+  + Generated rakefile#deploy prompts user to do svn tag
+  + Generated local_deploy prints svn command to tag release
++ 1 dependency update:
+  + Hoe 1.2.1
+
 +++ 0.10.0 2007-05-19
 
 + 3 major enhancements

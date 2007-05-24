@@ -52,6 +52,8 @@ copying: wizzo/website/stylesheets/screen.css
 NOW - update wizzo/Rakefile with gem description, etc
 </pre>
 
+As of 0.10.0 - you can generate test::unit or rspec test stubs via the -t, --test-with options
+
 h3. Setup
 
 Now modify the constants at the top of *Rakefile*, with your name, email and the location where you'll host your website for the gem. The defaults are tied to RubyForge for uploading the gems and the website (see below).

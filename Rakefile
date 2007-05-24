@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'rake'
 require 'rake/clean'
+require 'rake/testtask'
 require 'rake/packagetask'
 require 'rake/gempackagetask'
 require 'rake/rdoctask'
@@ -42,7 +43,7 @@ hoe = Hoe.new(GEM_NAME, VERS) do |p|
   # == Optional
   p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
   p.extra_deps = [
-    ['hoe', '>=1.2.0'],
+    ['hoe', '>=1.2.1'],
     ['RedCloth','>=3.0.4'],
     ['syntax','>=1.0.0']
   ]
@@ -81,7 +82,17 @@ task :load_consts do
 end
 
 desc 'Release the website and new gem version'
-task :deploy => [:check_version, :website, :release]
+task :deploy => [:check_version, :website, :release] do
+  # Create SVN tag
+  puts "Remember to create SVN tag /tags/REL-#{ENV['VERSION']}"
+  # e.g.  svn copy svn+ssh://nicwilliams@rubyforge.org/var/svn/magicmodels/magic_model_generator/trunk
+  # svn+ssh://nicwilliams@rubyforge.org/var/svn/magicmodels/magic_model_generator/tags/REL-#{VERS} 
+  # -m "Tagging release #{VERS}"
+  puts "Remember to create SVN tag:"
+  puts "svn copy svn+ssh://\#{RUBYFORGE_USERNAME}@rubyforge.org/var/svn/\#{RUBYFORGE_PROJECT}/\#{NAME}/trunk " +
+    "svn+ssh://\#{RUBYFORGE_USERNAME}@rubyforge.org/var/svn/\#{RUBYFORGE_PROJECT}/\#{NAME}/tags/REL-\#{VERS} " +
+    "-m \"Tagging release \#{VERS}\""
+end
 
 desc 'Runs tasks website_generate and install_gem as a local deployment of the gem'
 task :local_deploy => [:website_generate, :install_gem]

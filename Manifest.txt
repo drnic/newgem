@@ -19,6 +19,7 @@ templates/Rakefile
 templates/app.rb
 templates/scripts/txt2html
 templates/setup.rb
+templates/spec.opts
 templates/spec.rb
 templates/test.rb
 templates/website/index.html

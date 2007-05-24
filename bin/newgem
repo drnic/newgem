@@ -167,10 +167,20 @@ if test_framework == 'rspec'
   test_template = 'spec.rb'
   unit_test = test + "/" + project_name + "_spec.rb"
   test_file_prefix = 'spec/NAME_spec'
+  spec_opts = 'spec.opts'
   unit_test_template = <<-eos
 require 'spec'
-require File.dirname(__FILE__) + '/../lib/#{project_name}'
 eos
+  requirements = <<-eos
+require 'spec/rake/spectest'
+  eos
+  test_task = <<-eos
+desc "Run the specs under spec/models"
+Spec::Rake::SpecTask.new do |t|
+  t.spec_opts = ['--options', "spec/spec.opts"]
+  t.spec_files = FileList['spec/*_spec.rb']
+end
+  eos
 else  
   test = project_name + "/test"
   test_helper = test + "/test_helper.rb"
@@ -181,6 +191,8 @@ else
 require 'test/unit'
 require File.dirname(__FILE__) + '/../lib/#{project_name}'
 eos
+  requirements = ''
+  test_task = ''
 end
 
 puts "creating: " + test
@@ -196,6 +208,15 @@ puts "creating: " + unit_test
 template = File.open(templates + test_template,'r') {|f| f.readlines.join}
 File.open(unit_test, 'w') do |file|
   file << eval('"' + template.gsub(/"/, '\"') + '"')
+end
+
+if test_framework == 'rspec'
+  spec_opts_file = test + "/" + spec_opts
+  puts "creating: " + spec_opts_file
+  template = File.open(templates + spec_opts, 'r') { |f| f.readlines.join }  
+  File.open(spec_opts_file, 'w') do |file|
+    file << eval('"' + template.gsub(/"/, '\""') + '"')
+  end  
 end
 
 puts "creating: " + examples
