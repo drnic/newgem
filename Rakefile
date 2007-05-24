@@ -15,6 +15,8 @@ AUTHOR = "Dr Nic Williams"
 EMAIL = "drnicwilliams@gmail.com"
 DESCRIPTION = "Make your own gems at home"
 GEM_NAME = "newgem" # what ppl will type to install your gem
+config = YAML.load(File.read(File.expand_path("~/.rubyforge/user-config.yml")))
+RUBYFORGE_USERNAME = config["username"]
 RUBYFORGE_PROJECT = "newgem"
 HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
 DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
@@ -50,6 +52,10 @@ hoe = Hoe.new(GEM_NAME, VERS) do |p|
   #p.spec_extras    - A hash of extra values to set in the gemspec.
 end
 
+CHANGES = hoe.paragraphs_of('History.txt', 0..1).join("\\n\\n")
+PATH    = (RUBYFORGE_PROJECT == GEM_NAME) ? RUBYFORGE_PROJECT : "\#{RUBYFORGE_PROJECT}/\#{GEM_NAME}"
+hoe.remote_rdoc_dir = File.join(PATH.gsub(/^#{RUBYFORGE_PROJECT}/,''), 'rdoc')
+
 desc 'Generate website files'
 task :website_generate => :load_consts do
   (Dir['website/**/*.txt'] - Dir['website/version*.txt']).each do |txt|
@@ -82,20 +88,22 @@ task :load_consts do
 end
 
 desc 'Release the website and new gem version'
-task :deploy => [:check_version, :website, :release] do
-  # Create SVN tag
-  puts "Remember to create SVN tag /tags/REL-#{ENV['VERSION']}"
-  # e.g.  svn copy svn+ssh://nicwilliams@rubyforge.org/var/svn/magicmodels/magic_model_generator/trunk
-  # svn+ssh://nicwilliams@rubyforge.org/var/svn/magicmodels/magic_model_generator/tags/REL-#{VERS} 
-  # -m "Tagging release #{VERS}"
+task :deploy => [:check_version, :website, :publish_docs, :release] do
   puts "Remember to create SVN tag:"
-  puts "svn copy svn+ssh://\#{RUBYFORGE_USERNAME}@rubyforge.org/var/svn/\#{RUBYFORGE_PROJECT}/\#{NAME}/trunk " +
-    "svn+ssh://\#{RUBYFORGE_USERNAME}@rubyforge.org/var/svn/\#{RUBYFORGE_PROJECT}/\#{NAME}/tags/REL-\#{VERS} " +
-    "-m \"Tagging release \#{VERS}\""
+  puts "svn copy svn+ssh://#{RUBYFORGE_USERNAME}@rubyforge.org/var/svn/#{PATH}/trunk " +
+    "svn+ssh://#{RUBYFORGE_USERNAME}@rubyforge.org/var/svn/#{PATH}/tags/REL-#{VERS} "
+  puts "Suggested comment:"
+  puts "Tagging release #{CHANGES}"
 end
 
 desc 'Runs tasks website_generate and install_gem as a local deployment of the gem'
-task :local_deploy => [:website_generate, :install_gem]
+task :local_deploy => [:website_generate, :install_gem] do
+  puts "Remember to create SVN tag:"
+  puts "svn copy svn+ssh://#{RUBYFORGE_USERNAME}@rubyforge.org/var/svn/#{RUBYFORGE_PROJECT}/trunk " +
+    "svn+ssh://#{RUBYFORGE_USERNAME}@rubyforge.org/var/svn/#{RUBYFORGE_PROJECT}/tags/REL-#{VERS} "
+  puts "Suggested comment:"
+  puts "Tagging release #{CHANGES}"
+end
 
 task :check_version do
   unless ENV['VERSION']

@@ -16,6 +16,8 @@ AUTHOR = '#{author}'  # can also be an array of Authors
 EMAIL = "#{email}"
 DESCRIPTION = "description of gem"
 GEM_NAME = '#{gem_name}' # what ppl will type to install your gem
+config = YAML.load(File.read(File.expand_path("~/.rubyforge/user-config.yml")))
+RUBYFORGE_USERNAME = config["username"]
 RUBYFORGE_PROJECT = '#{gem_name}' # The unix name for your project
 HOMEPATH = "http://\#{RUBYFORGE_PROJECT}.rubyforge.org"
 DOWNLOAD_PATH = "http://rubyforge.org/projects/\#{RUBYFORGE_PROJECT}"
@@ -54,6 +56,9 @@ hoe = Hoe.new(GEM_NAME, VERS) do |p|
   #p.spec_extras = {}    # A hash of extra values to set in the gemspec.
 end
 
+CHANGES = hoe.paragraphs_of('History.txt', 0..1).join("\\n\\n")
+PATH    = (RUBYFORGE_PROJECT == GEM_NAME) ? RUBYFORGE_PROJECT : "\#{RUBYFORGE_PROJECT}/\#{GEM_NAME}"
+hoe.remote_rdoc_dir = File.join(PATH.gsub(/^\#{RUBYFORGE_PROJECT}/,''), 'rdoc')
 
 desc 'Generate website files'
 task :website_generate do
@@ -66,8 +71,7 @@ desc 'Upload website files to rubyforge'
 task :website_upload do
   config = YAML.load(File.read(File.expand_path("~/.rubyforge/user-config.yml")))
   host = "\#{config["username"]}@rubyforge.org"
-  remote_dir = "/var/www/gforge-projects/\#{RUBYFORGE_PROJECT}/"
-  # remote_dir = "/var/www/gforge-projects/\#{RUBYFORGE_PROJECT}/\#{GEM_NAME}"
+  remote_dir = "/var/www/gforge-projects/\#{PATH}/"
   local_dir = 'website'
   sh %{rsync -av \#{local_dir}/ \#{host}:\#{remote_dir}}
 end
@@ -77,8 +81,11 @@ task :website => [:website_generate, :website_upload]
 
 desc 'Release the website and new gem version'
 task :deploy => [:check_version, :website, :release] do
-  # Create SVN tag
-  puts "Remember to create SVN tag /tags/REL-#{ENV['VERSION']}"
+  puts "Remember to create SVN tag:"
+  puts "svn copy svn+ssh://\#{RUBYFORGE_USERNAME}@rubyforge.org/var/svn/\#{PATH}/trunk " +
+    "svn+ssh://\#{RUBYFORGE_USERNAME}@rubyforge.org/var/svn/\#{PATH}/tags/REL-\#{VERS} "
+  puts "Suggested comment:"
+  puts "Tagging release \#{CHANGES}"
 end
 
 desc 'Runs tasks website_generate and install_gem as a local deployment of the gem'
