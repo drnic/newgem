@@ -172,7 +172,13 @@ if test_framework == 'rspec'
 require 'spec'
 eos
   requirements = <<-eos
-require 'spec/rake/spectest'
+begin
+  require 'spec/rake/spectask'
+rescue LoadError
+  puts 'To use rspec for testing you must install rspec gem:'
+  puts '$ sudo gem install rspec'
+  exit
+end
   eos
   test_task = <<-eos
 desc "Run the specs under spec/models"
@@ -180,6 +186,9 @@ Spec::Rake::SpecTask.new do |t|
   t.spec_opts = ['--options', "spec/spec.opts"]
   t.spec_files = FileList['spec/*_spec.rb']
 end
+
+desc "Default task is to run specs"
+task :default => :spec
   eos
 else  
   test = project_name + "/test"
