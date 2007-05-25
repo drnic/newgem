@@ -16,8 +16,25 @@ AUTHOR = '#{author}'  # can also be an array of Authors
 EMAIL = "#{email}"
 DESCRIPTION = "description of gem"
 GEM_NAME = '#{gem_name}' # what ppl will type to install your gem
-config = YAML.load(File.read(File.expand_path("~/.rubyforge/user-config.yml")))
-RUBYFORGE_USERNAME = config["username"]
+
+@config_file = "~/.rubyforge/user-config.yml"
+@config = nil
+def rubyforge_username
+  unless @config
+    begin
+      @config = YAML.load(File.read(File.expand_path(@config_file)))
+    rescue
+      puts <<-EOS
+ERROR: No rubyforge config file found: \#{@config_file}"
+Run 'rubyforge setup' to prepare your env for access to Rubyforge
+ - See http://newgem.rubyforge.org/rubyforge.html for more details
+      EOS
+      exit
+    end
+  end
+  @rubyforge_username ||= @config["username"]
+end
+
 RUBYFORGE_PROJECT = '#{gem_name}' # The unix name for your project
 HOMEPATH = "http://\#{RUBYFORGE_PROJECT}.rubyforge.org"
 DOWNLOAD_PATH = "http://rubyforge.org/projects/\#{RUBYFORGE_PROJECT}"
@@ -58,7 +75,7 @@ end
 
 CHANGES = hoe.paragraphs_of('History.txt', 0..1).join("\\n\\n")
 PATH    = (RUBYFORGE_PROJECT == GEM_NAME) ? RUBYFORGE_PROJECT : "\#{RUBYFORGE_PROJECT}/\#{GEM_NAME}"
-hoe.remote_rdoc_dir = File.join(PATH.gsub(/^\#{RUBYFORGE_PROJECT}\/?/,''), 'rdoc')
+hoe.remote_rdoc_dir = File.join(PATH.gsub(/^\#{RUBYFORGE_PROJECT}\\/?/,''), 'rdoc')
 
 desc 'Generate website files'
 task :website_generate do
@@ -69,8 +86,7 @@ end
 
 desc 'Upload website files to rubyforge'
 task :website_upload do
-  config = YAML.load(File.read(File.expand_path("~/.rubyforge/user-config.yml")))
-  host = "\#{config["username"]}@rubyforge.org"
+  host = "\#{rubyforge_username}@rubyforge.org"
   remote_dir = "/var/www/gforge-projects/\#{PATH}/"
   local_dir = 'website'
   sh %{rsync -av \#{local_dir}/ \#{host}:\#{remote_dir}}
@@ -82,8 +98,8 @@ task :website => [:website_generate, :website_upload]
 desc 'Release the website and new gem version'
 task :deploy => [:check_version, :website, :release] do
   puts "Remember to create SVN tag:"
-  puts "svn copy svn+ssh://\#{RUBYFORGE_USERNAME}@rubyforge.org/var/svn/\#{PATH}/trunk " +
-    "svn+ssh://\#{RUBYFORGE_USERNAME}@rubyforge.org/var/svn/\#{PATH}/tags/REL-\#{VERS} "
+  puts "svn copy svn+ssh://\#{rubyforge_username}@rubyforge.org/var/svn/\#{PATH}/trunk " +
+    "svn+ssh://\#{rubyforge_username}@rubyforge.org/var/svn/\#{PATH}/tags/REL-\#{VERS} "
   puts "Suggested comment:"
   puts "Tagging release \#{CHANGES}"
 end
