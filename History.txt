@@ -1,7 +1,7 @@
 == 0.10.3 2007-05-25
 
 * 1 major enhancement
-  * rspec test framework now works via 'spec' task
+  * rspec test framework now works via 'spec' task [Jeroen Janssen]
 * 1 minor improvement
   * For rspec gems, default task => spec task
 
