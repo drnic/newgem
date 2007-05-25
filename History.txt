@@ -4,8 +4,9 @@
   * Generated Rakefile only attempts to discover username from ~/.rubyforge/user-config.yml when its required [thx Jeroen Janssen]
   * Helpful error message produced if 'rubyforge setup' never run
   * Fixed the REV algorithm for subversion [thx Robert Berger]
-* 1 minor enhancement
+* 2 minor enhancement
   * Copied index.txt into README.txt - it looks crap, but at least there is content
+  * Generated Rakefile was missing a \
 
 == 0.10.1 2007-05-24
 
