@@ -4,6 +4,7 @@
   * rspec test framework now works via 'spec' task [Jeroen Janssen]
 * 1 minor improvement
   * For rspec gems, default task => spec task
+  * Generated rakefile checks for existance of rspec gem else shows how to get it
 
 == 0.10.2 2007-05-25
 
