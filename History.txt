@@ -2,10 +2,11 @@
 
 * 1 major enhancement
   * rspec test framework now works via 'spec' task [Jeroen Janssen]
-* 1 minor improvement
+* 3 minor improvement
   * For rspec gems, default task => spec task
   * Generated rakefile checks for existance of rspec gem else shows how to get it
-
+  * The require statement in the lib/<gemname>.rb file now uses lowercase project name [Jeroen Janssen]
+    
 == 0.10.2 2007-05-25
 
 * 3 major enhancements
