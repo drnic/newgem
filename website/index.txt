@@ -132,10 +132,9 @@ Between each version of your gem, you probably changed something. You should doc
   * You only get Wizzos when you ask for them
 </pre>
 
-The two paragraphs will be automatically picked up by the following release process and documented against the release on RubyForge site. To see an example of the end result, look at the "*Changes* section for hoe 1.2":http://rubyforge.org/frs/shownotes.php?release_id=9695.
+The two paragraphs will be automatically picked up by the following release process and documented against the release on RubyForge site. To see an example of the end result, look at the "*History* page for newgem":http://newgem.rubyforge.org/rdoc/files/History_txt.html.
 
 The History.txt notes for your first release have already been started for you.
-
 
 h3. Release the gem and upload the website and rdocs
 
