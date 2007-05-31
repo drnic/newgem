@@ -1,7 +1,7 @@
 == 0.X.Y 2007-05-25
 
 * 1 minor enhancement
-  * website_upload now ignores .svn files
+  * website_upload now ignores .svn files [Thx Jeroen Janssen]
 
 == 0.10.3 2007-05-25
 
