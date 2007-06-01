@@ -1,8 +1,8 @@
-== 0.X.Y 2007-05-25
+== 0.10.4 2007-06-01
 
 * 2 minor enhancement
   * website_upload now ignores .svn files [Thx Jeroen Janssen]
-  * website/index.txt includes link to "8 steps to fix other ppls code"
+  * website/index.txt includes link to "8 steps to fix other ppls code" and a default svn URL
 
 == 0.10.3 2007-05-25
 
