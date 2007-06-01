@@ -1,7 +1,8 @@
 == 0.X.Y 2007-05-25
 
-* 1 minor enhancement
+* 2 minor enhancement
   * website_upload now ignores .svn files [Thx Jeroen Janssen]
+  * website/index.txt includes link to "8 steps to fix other ppls code"
 
 == 0.10.3 2007-05-25
 

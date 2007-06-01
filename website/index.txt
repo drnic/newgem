@@ -183,6 +183,10 @@ h2. Forum
 
 "http://groups.google.com/group/new-gem-generator":http://groups.google.com/group/new-gem-generator
 
+h2. How to submit patches
+
+Read the "8 steps for fixing other people's code":http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/ and for section "8b: Submit patch to Google Groups":http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/#8b-google-groups, use the Google Group above.
+
 h2. License
 
 This code is free to use under the terms of the MIT license. 
