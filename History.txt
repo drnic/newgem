@@ -1,3 +1,10 @@
+== 0.X.Y 2007-06-02
+
+* 1 minor enhancement
+  * Added 'email.txt' to the CLEAN list to be removed on 'rake clean'
+* 1 website enhancement
+  * Refreshed the example output as its a big old (CHANGELOG -> History.txt)
+  
 == 0.10.4 2007-06-02
 
 * 2 minor enhancement

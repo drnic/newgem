@@ -44,7 +44,7 @@ REV = nil
 # UNCOMMENT IF REQUIRED: 
 # REV = `svn info`.each {|line| if line =~ /^Revision:/ then k,v = line.split(': '); break v.chomp; else next; end} rescue nil
 VERS = #{module_name}::VERSION::STRING + (REV ? ".\#{REV}" : "")
-CLEAN.include ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']
+CLEAN.include ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store', 'email.txt']
 RDOC_OPTS = ['--quiet', '--title', '#{gem_name} documentation',
     "--opname", "index.html",
     "--line-numbers", 

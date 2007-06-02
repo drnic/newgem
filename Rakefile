@@ -24,7 +24,7 @@ DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 REV = nil #File.read(".svn/entries")[/committed-rev="(\d+)"/, 1] rescue nil
 # REV = `svn info`.each {|line| if line =~ /^Revision:/ then k,v = line.split(': '); break v.chomp; else next; end} rescue nil
 VERS = Newgem::VERSION::STRING + (REV ? ".#{REV}" : "")
-CLEAN.include ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']
+CLEAN.include ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store', 'email.txt']
 RDOC_OPTS = ['--quiet', '--title', "newgem documentation",
     "--opname", "index.html",
     "--line-numbers", 

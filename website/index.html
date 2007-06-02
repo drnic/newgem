@@ -31,11 +31,11 @@
 <div id="main">
 
     <h1>New Gem Generator</h1>
-    <div id="version" class="clickable" onclick='document.location = "http://rubyforge.org/projects/newgem"; return false'>
+    <div id="version" class="clickable" onclick='document.location = "http://rubyforge.org/projects/newgem"; return true'>
       <p>Get Version</p>
-      <a href="http://rubyforge.org/projects/newgem" class="numbers">0.10.3</a>
+      <a href="http://rubyforge.org/projects/newgem" class="numbers">0.10.4</a>
       <p>Featured in</p>
-      <a target="_blank" href="http://www.amazon.com/Beginning-Ruby-Novice-Professional-Experts/dp/1590597664/ref=pd_bbs_sr_1/002-1314108-4008061?ie=UTF8&s=books&qid=1180763252&sr=8-1" class="book"><img src="images/beginning-ruby.jpg" /></a>
+      <a  href="http://www.amazon.com/gp/redirect.html?ie=UTF8&location=http%3A%2F%2Fwww.amazon.com%2FBeginning-Ruby-Novice-Professional-Experts%2Fdp%2F1590597664%2F&tag=drnic-20&linkCode=ur2&camp=1789&creative=9325" class="book"><img src="images/beginning-ruby.jpg" /></a>
     </div>
     <h1>&#x2192; &#8216;newgem&#8217;</h1>
 
@@ -73,7 +73,6 @@
 <pre>$ cd ~/ruby_projects
 $ newgem wizzo
 creating: wizzo
-creating: wizzo/CHANGELOG.txt
 creating: wizzo/README.txt
 creating: wizzo/lib
 creating: wizzo/scripts
@@ -90,17 +89,19 @@ creating: wizzo/test/test_wizzo.rb
 creating: wizzo/examples
 creating: wizzo/setup.rb
 creating: wizzo/Rakefile
-creating: wizzo/Manifest.txt
 creating: wizzo/History.txt
+creating: wizzo/License.txt
+creating: wizzo/Manifest.txt
 creating: wizzo/scripts/txt2html
 creating: wizzo/website/index.txt
+creating: wizzo/website/index.html
 creating: wizzo/website/template.rhtml
 copying: wizzo/website/javascripts/rounded_corners_lite.inc.js
 copying: wizzo/website/stylesheets/screen.css
 NOW - update wizzo/Rakefile with gem description, etc
 </pre>
 
-	<p>As of 0.10.0 &#8211; you can generate test::unit or rspec test stubs via the -t,&#8212;test-with options</p>
+	<p>As of 0.10.0 &#8211; you can generate test::unit or rspec test stubs via the <code>-t</code> or <code>--test-with</code> options. For example, <code>-t rspec</code> generates a <code>spec</code> folder with some test stubs.</p>
 
 
 	<h3>Setup</h3>
@@ -309,7 +310,7 @@ other stories and things.</p>
 
 	<p>Comments are welcome. Send an email to <a href="mailto:drnicwilliams@gmail.com">Dr Nic Williams</a>.</p>
     <p class="coda">
-      <a href="mailto:drnicwilliams@gmail.com">Dr Nic</a>, 1st June 2007<br>
+      <a href="mailto:drnicwilliams@gmail.com">Dr Nic</a>, 2nd June 2007<br>
       Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
     </p>
 </div>
