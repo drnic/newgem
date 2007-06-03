@@ -114,6 +114,15 @@ pre, code {
   font-size: 4em;
   line-height: 0.8em;
   letter-spacing: -0.1ex;
+	margin-bottom: 15px;
+}
+
+#version p {
+  text-decoration: none;
+	color: #141331;
+	background-color: #B3ABFF;
+	margin: 0;
+	padding: 0;
 }
 
 #version a {

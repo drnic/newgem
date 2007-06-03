@@ -1,9 +1,13 @@
-== 0.X.Y 2007-06-02
+== TRUNK
 
-* 1 minor enhancement
+* 4 minor enhancement
   * Added 'email.txt' to the CLEAN list to be removed on 'rake clean'
+  * Added  --delete-excluded to the rsync command [thx Jeroen Janssen]
+  * On template: "Version" is in <p>'s
+  * Specified CLEAN is added/or'd with default Hoe clean_globs (via |=)
 * 1 website enhancement
   * Refreshed the example output as its a big old (CHANGELOG -> History.txt)
+  * Removed the "click anywhere" javascript in version box - it was playing up with the link to the book
   
 == 0.10.4 2007-06-02
 

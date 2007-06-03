@@ -24,7 +24,7 @@ DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 REV = nil #File.read(".svn/entries")[/committed-rev="(\d+)"/, 1] rescue nil
 # REV = `svn info`.each {|line| if line =~ /^Revision:/ then k,v = line.split(': '); break v.chomp; else next; end} rescue nil
 VERS = Newgem::VERSION::STRING + (REV ? ".#{REV}" : "")
-CLEAN.include ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store', 'email.txt']
+CLEAN.include ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']
 RDOC_OPTS = ['--quiet', '--title', "newgem documentation",
     "--opname", "index.html",
     "--line-numbers", 
@@ -41,7 +41,7 @@ hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.url = HOMEPATH
   p.rubyforge_name = RUBYFORGE_PROJECT if RUBYFORGE_PROJECT
   p.test_globs = ["test/**/test*.rb"]
-  p.clean_globs = CLEAN  #An array of file patterns to delete on clean.
+  p.clean_globs |= CLEAN  #An array of file patterns to delete on clean.
 
   # == Optional
   p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
@@ -76,7 +76,7 @@ task :website_upload do
 end
 
 desc 'Generate and upload website files'
-task :website => [:website_generate, :website_upload]
+task :website => [:website_generate, :website_upload, :publish_docs]
 
 task :load_consts do
   ENV['AUTHOR'] = AUTHOR
@@ -89,7 +89,7 @@ task :load_consts do
 end
 
 desc 'Release the website and new gem version'
-task :deploy => [:check_version, :website, :publish_docs, :release] do
+task :deploy => [:check_version, :website, :release] do
   puts "Remember to create SVN tag:"
   puts "svn copy svn+ssh://#{RUBYFORGE_USERNAME}@rubyforge.org/var/svn/#{PATH}/trunk " +
     "svn+ssh://#{RUBYFORGE_USERNAME}@rubyforge.org/var/svn/#{PATH}/tags/REL-#{VERS} "

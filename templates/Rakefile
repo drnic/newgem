@@ -44,7 +44,7 @@ REV = nil
 # UNCOMMENT IF REQUIRED: 
 # REV = `svn info`.each {|line| if line =~ /^Revision:/ then k,v = line.split(': '); break v.chomp; else next; end} rescue nil
 VERS = #{module_name}::VERSION::STRING + (REV ? ".\#{REV}" : "")
-CLEAN.include ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store', 'email.txt']
+CLEAN.include ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']
 RDOC_OPTS = ['--quiet', '--title', '#{gem_name} documentation',
     "--opname", "index.html",
     "--line-numbers", 
@@ -67,7 +67,7 @@ hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.url = HOMEPATH
   p.rubyforge_name = RUBYFORGE_PROJECT if RUBYFORGE_PROJECT
   p.test_globs = ["test/**/test_*.rb"]
-  p.clean_globs = CLEAN  #An array of file patterns to delete on clean.
+  p.clean_globs |= CLEAN  #An array of file patterns to delete on clean.
   
   # == Optional
   p.changes = p.paragraphs_of("History.txt", 0..1).join("\\n\\n")
@@ -95,7 +95,7 @@ task :website_upload do
 end
 
 desc 'Generate and upload website files'
-task :website => [:website_generate, :website_upload]
+task :website => [:website_generate, :website_upload, :publish_docs]
 
 desc 'Release the website and new gem version'
 task :deploy => [:check_version, :website, :release] do
