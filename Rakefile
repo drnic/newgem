@@ -48,7 +48,8 @@ hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.extra_deps = [
     ['hoe', '>=1.2.1'],
     ['RedCloth','>=3.0.4'],
-    ['syntax','>=1.0.0']
+    ['syntax','>=1.0.0'],
+    ['activesupport','>=1.4.2']
   ]
   #p.spec_extras    - A hash of extra values to set in the gemspec.
 end

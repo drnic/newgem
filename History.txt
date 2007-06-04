@@ -1,10 +1,11 @@
 == TRUNK
 
-* 4 minor enhancement
+* 5 minor enhancements
   * Added 'email.txt' to the CLEAN list to be removed on 'rake clean'
   * Added  --delete-excluded to the rsync command [thx Jeroen Janssen]
   * On template: "Version" is in <p>'s
   * Specified CLEAN is added/or'd with default Hoe clean_globs (via |=)
+  * Added dependency to activesupport gem
 * 1 website enhancement
   * Refreshed the example output as its a big old (CHANGELOG -> History.txt)
   * Removed the "click anywhere" javascript in version box - it was playing up with the link to the book
