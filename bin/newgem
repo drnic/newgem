@@ -20,6 +20,7 @@ OPTIONS = {
   :full_name   => nil,
   :email       => nil,
   :bin_name    => nil,
+  :svn_struct  => nil,
   :test_framework => 'test::unit'
 }
 parser = OptionParser.new do |opts|
@@ -27,7 +28,7 @@ parser = OptionParser.new do |opts|
 Take any library or Rails plugin or command line application,
 gemify it, and easily share it with the Ruby world.
 
-Usage: #{File.basename($0)} [options] <name of gem>
+Usage: #{File.basename($0)} [options] <gemname>
 
 Options are:
 BANNER
@@ -44,9 +45,12 @@ BANNER
   opts.on("-e", "--email=PATH", String,
           "Your email to be inserted into generated files.",
           "Default: ~/.rubyforge/user-config.yml[email]") { |OPTIONS[:email]| }
+  opts.on("-s", "--svn",
+          "Creates trunk/branches/tags folders beneath <gemname> folder.",
+          "Generated gem placed in trunk folder.") { |OPTIONS[:svn_struct]| }
   opts.on("-t", "--test-with=TEST_FRAMEWORK", String,
-          "Your preferred testing framework: Options: test::unit (default), rspec.",
-          "Default: test::unit") { |OPTIONS[:test_framework]| }           
+          "Select your preferred testing framework.",
+          "Options: test::unit (default), rspec.") { |OPTIONS[:test_framework]| }           
   opts.on("-v", "--version=YOUR_VERSION", String,
           "Version of the gem you are creating.",
           "Default: 0.0.1") { |OPTIONS[:version]| }
@@ -58,6 +62,7 @@ OPTIONS[:version] = OPTIONS[:version].to_s.split(/\./)
 version_str       = OPTIONS[:version].join('.')
 author            = OPTIONS[:full_name]
 email             = OPTIONS[:email]
+svn_struct        = OPTIONS[:svn_struct]
 unless author && email
   rubyforge_config = Newgem::Rubyforge.new
   author ||= rubyforge_config.full_name
@@ -69,24 +74,33 @@ gem_name = project_name = ARGV[0]
 parser.parse!(["-h"]) unless gem_name
 
 module_name  = project_name.classify
-lib = project_name + '/lib'
-lib_project_name = project_name + '/lib/' + project_name
-version = project_name + "/lib/" + project_name + "/version.rb"
+root = project_name + (svn_struct ? '/trunk' : '')
+lib = root + '/lib'
+lib_project_name = root + '/lib/' + project_name
+version = root + "/lib/" + project_name + "/version.rb"
 readme, setup = %w(README.txt setup.rb).
-	collect {|f| project_name + '/' + f}
+	collect {|f| root + '/' + f}
 template_files = %w(Rakefile History.txt License.txt Manifest.txt scripts/txt2html website/index.txt website/index.html website/template.rhtml)
 copy_files = %w(website/javascripts/rounded_corners_lite.inc.js website/stylesheets/screen.css)
 
-main = project_name + "/lib/" + project_name + ".rb"
+main = root + "/lib/" + project_name + ".rb"
 
-examples = project_name + '/examples'
-bin      = project_name + '/bin'
+examples = root + '/examples'
+bin      = root + '/bin'
 folders  = %w( scripts website website/javascripts website/stylesheets)
 
 FileUtils.rm_rf project_name
 
 puts "creating: " + project_name
 Dir.mkdir project_name
+
+if svn_struct
+  %w[trunk branches tags].each do |folder|
+    folder_path = File.join(project_name, folder)
+    puts "creating: " + folder_path
+    Dir.mkdir folder_path
+  end
+end
 
 puts "creating: " + readme
 File.open(readme, 'w') do |file|
@@ -102,7 +116,7 @@ puts "creating: " + lib
 FileUtils.mkdir_p lib
 
 folders.each do |folder|
-  new_folder = project_name + '/' + folder
+  new_folder = root + '/' + folder
   puts "creating: " + new_folder
   FileUtils.mkdir_p new_folder
 end
@@ -162,7 +176,7 @@ end
 # Setup spec/test::unit environments
 # Would like to refactor this...
 if test_framework == 'rspec'
-  test = project_name + "/spec"
+  test = root + "/spec"
   test_helper = test + "/spec_helper.rb"
   test_template = 'spec.rb'
   unit_test = test + "/" + project_name + "_spec.rb"
@@ -191,7 +205,7 @@ desc "Default task is to run specs"
 task :default => :spec
   eos
 else  
-  test = project_name + "/test"
+  test = root + "/test"
   test_helper = test + "/test_helper.rb"
   test_template = 'test.rb'
   unit_test = test + "/test_" + project_name + ".rb"
@@ -242,17 +256,17 @@ bin_names_list += "\n" if bin_names_list.size > 0
 test_names_list = ['helper.rb',"#{project_name}.rb"].sort.collect {|name| test_file_prefix.gsub('NAME', name) }.join("\n")
 
 template_files.each do |template_file|
-  puts "creating: " + project_name + '/' + template_file
+  puts "creating: " + root + '/' + template_file
   template = File.open(templates + template_file,'r') {|f| f.readlines.join}
-  File.open(project_name + '/' + template_file, 'w') do |file|
+  File.open(root + '/' + template_file, 'w') do |file|
     file << eval('"' + template.gsub(/"/, '\"') + '"')
   end  
 end
 
 copy_files.each do |file|
-  puts "copying: " + project_name + '/' + file
+  puts "copying: " + root + '/' + file
   template = File.open(templates + file,'r') {|f| f.readlines.join}
-  File.open(project_name + '/' + file, 'w') do |file|
+  File.open(root + '/' + file, 'w') do |file|
     file << template
   end  
 end

@@ -1,2 +1,4 @@
-+ can generate rspec default tests (or still test::unit tests) using --with-test=rspec [thx Robby Russell]
-+ website components are now optional (-w/--no-website)
+== Todo list
+* can generate rspec default tests (or still test::unit tests) using --with-test=rspec [thx Robby Russell]
+* website components are now optional (-w/--no-website)
+* provide option to generate <gemname>/trunk,branches,tags structure and insert files into trunk [-s/--svn] 

@@ -55,6 +55,8 @@ NOW - update wizzo/Rakefile with gem description, etc
 
 As of 0.10.0 - you can generate test::unit or rspec test stubs via the <code>-t</code> or <code>--test-with</code> options. For example, <code>-t rspec</code> generates a <code>spec</code> folder with some test stubs.
 
+As of 0.11.0 - you can generate <code>wizzo/trunk|branches|tags</code> subfolders using the <code>-s</code> or <code>--svn</code> options. If used, the generated files will be populated within <code><gemname>/trunk</code>
+
 h3. Setup
 
 Now modify the constants at the top of *Rakefile*, with your name, email and the location where you'll host your website for the gem. The defaults are tied to RubyForge for uploading the gems and the website (see below).
