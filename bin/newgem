@@ -54,6 +54,10 @@ BANNER
   opts.on("-v", "--version=YOUR_VERSION", String,
           "Version of the gem you are creating.",
           "Default: 0.0.1") { |OPTIONS[:version]| }
+  opts.on("-V", "Show the #{File.basename($0)} version number and quit.") do        
+          puts "newgem #{Newgem::VERSION::STRING}"
+          exit(0)
+  end
   opts.on("-h", "--help",
           "Show this help message.") { puts opts; exit }
   opts.parse!(ARGV)

@@ -1,3 +1,7 @@
+TRUNK
+
+* -V option shows current newgem version [thx Gert Goet]
+
 == 0.11.0
 
 * 1 major enhancement
