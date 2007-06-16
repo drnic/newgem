@@ -1,6 +1,8 @@
 TRUNK
 
 * -V option shows current newgem version [thx Gert Goet]
+* Minor website changes
+  * Added link to Topfunky's tutorial on Hoe
 
 == 0.11.0
 

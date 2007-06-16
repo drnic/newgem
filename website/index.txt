@@ -176,6 +176,7 @@ For more information about each task, see the "Hoe README":http://seattlerb.ruby
 h2. Related articles
 
 * "Original blog article and tutorial":http://drnicwilliams.com/2006/10/11/generating-new-gems/
+* "Tutorial: Publishing RubyGems with Hoe":http://nubyonrails.com/articles/2007/06/15/tutorial-publishing-rubygems-with-hoe
 
 h2. Dr Nic's Blog
 
