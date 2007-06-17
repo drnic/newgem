@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>== ${1:TRUNK} ${4:`date +%Y`}-${5:`date +%m`}-${6:`date +%d`}
+
+* $0</string>
+	<key>name</key>
+	<string>History header trunk</string>
+	<key>scope</key>
+	<string>text.rdoc</string>
+	<key>tabTrigger</key>
+	<string>==t</string>
+	<key>uuid</key>
+	<string>30A49315-D6C1-4F70-8323-5C3BC80F1DAB</string>
+</dict>
+</plist>

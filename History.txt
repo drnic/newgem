@@ -1,6 +1,9 @@
 TRUNK
 
-* -V option shows current newgem version [thx Gert Goet]
+* 1 major enhancement
+  * RubyGem.tmbundle for TextMate - to install go to gem folder and run "rake bundles:tm"
+* 1 minor enhancement
+  * -V option shows current newgem version [thx Gert Goet]
 * Minor website changes
   * Added link to Topfunky's tutorial on Hoe
 
