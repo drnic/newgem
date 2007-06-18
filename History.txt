@@ -4,6 +4,7 @@ TRUNK
   * RubyGem.tmbundle for TextMate - to install go to gem folder and run "rake bundles:tm"
 * 1 minor enhancement
   * -V option shows current newgem version [thx Gert Goet]
+  * Hoe#extra_deps permanently changes @extra_deps [thx MIYAMUKO Katsuyuki]
 * Minor website changes
   * Added link to Topfunky's tutorial on Hoe
 

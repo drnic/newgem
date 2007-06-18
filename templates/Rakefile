@@ -53,7 +53,8 @@ RDOC_OPTS = ['--quiet', '--title', '#{gem_name} documentation',
 
 class Hoe
   def extra_deps 
-    @extra_deps.reject { |x| Array(x).first == 'hoe' } 
+    @extra_deps.reject! { |x| Array(x).first == 'hoe' } 
+    @extra_deps
   end 
 end
 
