@@ -69,7 +69,6 @@ end
 
 desc 'Upload website files to rubyforge'
 task :website_upload do
-  config = YAML.load(File.read(File.expand_path("~/.rubyforge/user-config.yml")))
   host = "#{config["username"]}@rubyforge.org"
   remote_dir = "/var/www/gforge-projects/#{RUBYFORGE_PROJECT}/"
   local_dir = 'website'
