@@ -4,10 +4,10 @@ require 'rubygems'
 require 'redcloth'
 require 'syntax/convertors/html'
 require 'erb'
-require File.dirname(__FILE__) + '/../lib/#{gem_name}/version.rb'
+require File.dirname(__FILE__) + '/../lib/<%= gem_name %>/version.rb'
 
-version  = #{module_name}::VERSION::STRING
-download = 'http://rubyforge.org/projects/#{gem_name}'
+version  = <%= module_name %>::VERSION::STRING
+download = 'http://rubyforge.org/projects/<%= gem_name %>'
 
 class Fixnum
   def ordinal
@@ -25,7 +25,7 @@ end
 
 class Time
   def pretty
-    return "\#{mday}\#{mday.ordinal} \#{strftime('%B')} \#{year}"
+    return "#{mday}#{mday.ordinal} #{strftime('%B')} #{year}"
   end
 end
 
@@ -38,7 +38,7 @@ if ARGV.length >= 1
   template ||= File.dirname(__FILE__) + '/../website/template.rhtml'
   
 else
-  puts("Usage: \#{File.split($0).last} source.txt [template.rhtml] > output.html")
+  puts("Usage: #{File.split($0).last} source.txt [template.rhtml] > output.html")
   exit!
 end
 
@@ -53,8 +53,8 @@ File.open(src) do |fsrc|
   body_text.gsub!(%r!<(pre|code)[^>]*?syntax=['"]([^'"]+)[^>]*>(.*?)</\1>!m){
     ident = syntax_items.length
     element, syntax, source = $1, $2, $3
-    syntax_items << "<\#{element} class='syntax'>\#{convert_syntax(syntax, source)}</\#{element}>"
-    "syntax-temp-\#{ident}"
+    syntax_items << "<#{element} class='syntax'>#{convert_syntax(syntax, source)}</#{element}>"
+    "syntax-temp-#{ident}"
   }
   title = RedCloth.new(title_text).to_html.gsub(%r!<.*?>!,'').strip
   body = RedCloth.new(body_text).to_html

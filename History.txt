@@ -1,6 +1,7 @@
-TRUNK
+== 0.12.0 2007-06-24
 
-* 1 major enhancement
+* 2 major enhancement
+  * Using Erb for templates
   * RubyGem.tmbundle for TextMate - to install go to gem folder and run "rake bundles:tm"
 * 1 minor enhancement
   * -V option shows current newgem version [thx Gert Goet]

@@ -9,8 +9,11 @@ end
 require 'fileutils'
 require 'active_support'
 require 'optparse'
+require "erb"
 
 require 'newgem'
+require 'newgem/quick_template'
+include Newgem
 
 templates = File.dirname(__FILE__) + '/../templates/'
 
@@ -164,11 +167,13 @@ Dir.mkdir bin
 
 if OPTIONS[:bin_name]
   bin_names_list = OPTIONS[:bin_name].split(',')
-  template = File.open(templates + 'app.rb','r') {|f| f.readlines.join}
+  template = templates + 'app.rb'
+  # template = File.open(templates + 'app.rb','r') {|f| f.readlines.join}
   bin_names_list.each do |bin_name|
     puts "creating: " + bin + '/' + bin_name
     File.open(bin + '/' + bin_name, 'w') do |file|
-      file << eval('"' + template.gsub(/"/, '\"') + '"')
+      file << erb(template, binding)
+      # file << eval('"' + template.gsub(/"/, '\"') + '"')
     end
   end
   bin_names = bin_names_list.join(' ')
@@ -232,9 +237,10 @@ end
 
 puts "creating: " + unit_test
 
-template = File.open(templates + test_template,'r') {|f| f.readlines.join}
+template = templates + test_template
 File.open(unit_test, 'w') do |file|
-  file << eval('"' + template.gsub(/"/, '\"') + '"')
+  file << erb(template, binding)
+  # file << eval('"' + template.gsub(/"/, '\"') + '"')
 end
 
 if test_framework == 'rspec'
@@ -242,7 +248,8 @@ if test_framework == 'rspec'
   puts "creating: " + spec_opts_file
   template = File.open(templates + spec_opts, 'r') { |f| f.readlines.join }  
   File.open(spec_opts_file, 'w') do |file|
-    file << eval('"' + template.gsub(/"/, '\""') + '"')
+    file << erb(template, binding)
+    # file << eval('"' + template.gsub(/"/, '\""') + '"')
   end  
 end
 
@@ -250,7 +257,7 @@ puts "creating: " + examples
 Dir.mkdir examples
 
 puts "creating: " + setup
-template = File.open(templates + 'setup.rb','r') {|f| f.readlines.join}
+template = templates + 'setup.rb'
 File.open(setup, 'w') do |file|
   file << template
 end
@@ -261,15 +268,16 @@ test_names_list = ['helper.rb',"#{project_name}.rb"].sort.collect {|name| test_f
 
 template_files.each do |template_file|
   puts "creating: " + root + '/' + template_file
-  template = File.open(templates + template_file,'r') {|f| f.readlines.join}
+  template = templates + template_file
   File.open(root + '/' + template_file, 'w') do |file|
-    file << eval('"' + template.gsub(/"/, '\"') + '"')
+    file << erb(template, binding)
+    # file << eval('"' + template.gsub(/"/, '\"') + '"')
   end  
 end
 
 copy_files.each do |file|
   puts "copying: " + root + '/' + file
-  template = File.open(templates + file,'r') {|f| f.readlines.join}
+  template = templates + file
   File.open(root + '/' + file, 'w') do |file|
     file << template
   end  

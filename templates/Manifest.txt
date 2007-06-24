@@ -3,11 +3,11 @@ License.txt
 Manifest.txt
 README.txt
 Rakefile
-#{bin_names_list}lib/#{project_name}.rb
-lib/#{project_name}/version.rb
+<%= bin_names_list %>lib/<%= project_name %>.rb
+lib/<%= project_name %>/version.rb
 scripts/txt2html
 setup.rb
-#{test_names_list}
+<%= test_names_list %>
 website/index.html
 website/index.txt
 website/javascripts/rounded_corners_lite.inc.js

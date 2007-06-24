@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 #
-#  Created by MYNAME on #{(now = Time.now).year}-#{now.month}-#{now.day}.
-#  Copyright (c) #{now.year}. All rights reserved.
+#  Created by <%= author %> on <%= (now = Time.now).year %>-<%= now.month %>-<%= now.day %>.
+#  Copyright (c) <%= now.year %>. All rights reserved.
 
 begin
   require 'rubygems'
@@ -22,7 +22,7 @@ parser = OptionParser.new do |opts|
   opts.banner = <<BANNER
 This application is wonderful because...
 
-Usage: \#{File.basename($0)} [options]
+Usage: #{File.basename($0)} [options]
 
 Options are:
 BANNER

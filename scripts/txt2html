@@ -54,7 +54,7 @@ File.open(src) do |fsrc|
   body_text.gsub!(%r!<(pre|code)[^>]*?syntax=['"]([^'"]+)[^>]*>(.*?)</\1>!m){
     ident = syntax_items.length
     element, syntax, source = $1, $2, $3
-    syntax_items << "<#{element} class=\"syntax\">#{convert_syntax(syntax, source)}</#{element}>"
+    syntax_items << "<#{element} class='syntax'>#{convert_syntax(syntax, source)}</#{element}>"
     "syntax-temp-#{ident}"
   }
   title = RedCloth.new(title_text).to_html.gsub(%r!<.*?>!,'').strip

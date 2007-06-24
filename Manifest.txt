@@ -8,8 +8,10 @@ bin/newgem
 bundles/RubyGem.tmbundle/Snippets/History header trunk.tmSnippet
 bundles/RubyGem.tmbundle/Snippets/History header.tmSnippet
 bundles/RubyGem.tmbundle/Syntaxes/Rdoc.tmLanguage
-bundles/RubyGem.tmbundle/info.plistinstall.rb
+bundles/RubyGem.tmbundle/info.plist
+install.rb
 lib/newgem.rb
+lib/newgem/quick_template.rb
 lib/newgem/rubyforge.rb
 lib/newgem/version.rb
 scripts/txt2html
