@@ -5,6 +5,8 @@ TRUNK
 * 1 minor enhancement
   * -V option shows current newgem version [thx Gert Goet]
   * Hoe#extra_deps permanently changes @extra_deps [thx MIYAMUKO Katsuyuki]
+* Dev improvements
+  * Imports svn_branch for svn rake tasks
 * Minor website changes
   * Added link to Topfunky's tutorial on Hoe
 

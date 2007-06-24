@@ -122,3 +122,13 @@ namespace :bundles do
     `open "#{File.join(Dir.tmpdir, bundle)}"`
   end
 end
+
+# Use svn_branch gem for branch/merge support
+begin
+  Gem.manage_gems
+  gem = Gem.cache.search('svn_branch').sort_by { |g| g.version }.last
+  raise "Gem 'svn_branch' is not installed" if gem.nil?
+  path = gem.full_gem_path
+  Dir[File.join(path, "/**/tasks/**/*.rake")].sort.each { |ext| load ext }
+rescue LoadError
+end
