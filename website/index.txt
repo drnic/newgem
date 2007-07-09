@@ -176,7 +176,8 @@ For more information about each task, see the "Hoe README":http://seattlerb.ruby
 h2. Related articles
 
 * "Original blog article and tutorial":http://drnicwilliams.com/2006/10/11/generating-new-gems/
-* "Tutorial: Publishing RubyGems with Hoe":http://nubyonrails.com/articles/2007/06/15/tutorial-publishing-rubygems-with-hoe
+* "Tutorial: Publishing RubyGems with Hoe":http://nubyonrails.com/articles/2007/06/15/tutorial-publishing-rubygems-with-hoe by "Geoffrey Grosenbach":http://geoffreygrosenbach.com/ 
+* "Using New Gem Generator in Windows":http://codeconversations.blogspot.com/2007/07/using-new-gem-generator-in-windows_09.html by "Jorge Cangas":http://codeconversations.blogspot.com/
 
 h2. Dr Nic's Blog
 

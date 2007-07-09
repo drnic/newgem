@@ -240,7 +240,6 @@ puts "creating: " + unit_test
 template = templates + test_template
 File.open(unit_test, 'w') do |file|
   file << erb(template, binding)
-  # file << eval('"' + template.gsub(/"/, '\"') + '"')
 end
 
 if test_framework == 'rspec'
@@ -265,6 +264,7 @@ end
 bin_names_list = bin_names_list.collect {|name| 'bin/' + name }.join("\n")
 bin_names_list += "\n" if bin_names_list.size > 0
 test_names_list = ['helper.rb',"#{project_name}.rb"].sort.collect {|name| test_file_prefix.gsub('NAME', name) }.join("\n")
+test_names_list << 'spec/' + spec_opts if spec_opts
 
 template_files.each do |template_file|
   puts "creating: " + root + '/' + template_file
