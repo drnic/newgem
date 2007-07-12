@@ -1,5 +1,11 @@
 require 'rubygems'
-require 'rake'
+begin
+  require 'rake'
+rescue LoadError
+  puts 'This script should only be accessed via the "rake" command.'
+  puts 'Installation: gem install rake -y'
+  exit
+end
 require 'rake/clean'
 require 'rake/testtask'
 require 'rake/packagetask'
@@ -7,7 +13,14 @@ require 'rake/gempackagetask'
 require 'rake/rdoctask'
 require 'rake/contrib/rubyforgepublisher'
 require 'fileutils'
-require 'hoe'
+begin
+  require 'hoe'
+rescue LoadError
+  puts 'This Rakefile requires the "hoe" RubyGem.'
+  puts 'Installation: gem install hoe -y'
+  exit
+end
+
 <% if is_jruby %>
 # require 'java'
 <% end %>
@@ -54,16 +67,12 @@ RDOC_OPTS = ['--quiet', '--title', '<%= gem_name %> documentation',
     "--main", "README",
     "--inline-source"]
 
-# By default, Hoe makes itself a dependency of the created gem, in a addition to the other
-# gems that your user may require.
-# There is discussion about this requirement here: http://blog.evanweaver.com/articles/2007/01/10/if-you-dont-want-to-hoe-echoe
-# If you choose not to make Hoe a dependency for your users, uncomment the following:
-# class Hoe
-#   def extra_deps 
-#     @extra_deps.reject! { |x| Array(x).first == 'hoe' } 
-#     @extra_deps
-#   end 
-# end
+class Hoe
+  def extra_deps 
+    @extra_deps.reject! { |x| Array(x).first == 'hoe' } 
+    @extra_deps
+  end 
+end
 
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)

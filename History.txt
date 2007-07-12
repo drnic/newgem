@@ -2,7 +2,7 @@
 
 * Started to add jruby specific features (-j option)
 * Add link to website for Using New Gem on Windows (without cygwin) [thx Jorge Cangas]
-* By default, Hoe is now a dependency of generated gems (changeable via uncommenting some code) [zenspider]
+* An error message is shown if Hoe gem isn't available when running rake on the gem
 
 == 0.12.0 2007-06-24
 

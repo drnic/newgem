@@ -18,13 +18,14 @@ include Newgem
 templates = File.dirname(__FILE__) + '/../templates/'
 
 OPTIONS = {
-  :import_path => nil,
-  :version     => '0.0.1',
-  :full_name   => nil,
-  :email       => nil,
   :bin_name    => nil,
+  :email       => nil,
+  :full_name   => nil,
+  :import_path => nil,
+  :jruby       => nil,
   :svn_struct  => nil,
-  :test_framework => 'test::unit'
+  :test_framework => 'test::unit',
+  :version     => '0.0.1'
 }
 parser = OptionParser.new do |opts|
   opts.banner = <<BANNER
@@ -51,6 +52,8 @@ BANNER
   opts.on("-s", "--svn",
           "Creates trunk/branches/tags folders beneath <gemname> folder.",
           "Generated gem placed in trunk folder.") { |OPTIONS[:svn_struct]| }
+  opts.on("-j", "--jruby",
+          "Use if gem is for jruby.") { |OPTIONS[:jruby]| }
   opts.on("-t", "--test-with=TEST_FRAMEWORK", String,
           "Select your preferred testing framework.",
           "Options: test::unit (default), rspec.") { |OPTIONS[:test_framework]| }           
@@ -76,6 +79,8 @@ unless author && email
   email  ||= rubyforge_config.email
 end
 test_framework    = OPTIONS[:test_framework]
+
+is_jruby          = OPTIONS[:jruby]
 
 gem_name = project_name = ARGV[0]
 parser.parse!(["-h"]) unless gem_name
