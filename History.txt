@@ -1,8 +1,14 @@
 == TRUNK 2007-07-09
 
-* Started to add jruby specific features (-j option)
-* Add link to website for Using New Gem on Windows (without cygwin) [thx Jorge Cangas]
-* An error message is shown if Hoe gem isn't available when running rake on the gem
+* HIGHLIGHT - JRUBY support!
+* Generated gems:
+  * Started to add jruby specific features (-j option)
+    * Gems named xxx-1.2.3-jruby.gem
+    * Includes: require 'java'
+  * Add link to website for Using New Gem on Windows (without cygwin) [thx Jorge Cangas]
+  * require "#{gem}/version" => require File.join(File.dirname(__FILE__), "#{gem}/version")
+* NewGem
+  * An error message is shown if Hoe gem isn't available when running rake on the gem
 
 == 0.12.0 2007-06-24
 

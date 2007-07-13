@@ -148,8 +148,13 @@ File.open(main, 'w') do |file|
 module #{module_name}
 end
 
-require '#{project_name}/version'
+require File.join(File.dirname(__FILE__), '#{project_name}/version')
   EOS
+  if is_jruby
+    file << <<-EOS
+require 'java'
+    EOS
+  end
 end
 
 puts "creating: " + version
