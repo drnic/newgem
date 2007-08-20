@@ -8,9 +8,10 @@ GEM_NAME      = "newgem" # what ppl will type to install your gem
 RUBYFORGE_PROJECT = "newgem"
 HOMEPATH      = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
 DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
+RUBYFORGE_USERNAME = "unknown"
 if File.exists?("~/.rubyforge/user-config.yml")
   config = YAML.load(File.read(File.expand_path("~/.rubyforge/user-config.yml")))
-  RUBYFORGE_USERNAME = config["username"]
+  RUBYFORGE_USERNAME.replace @config["username"]
 end
 
 REV = nil #File.read(".svn/entries")[/committed-rev="(\d+)"/, 1] rescue nil

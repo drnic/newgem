@@ -10,6 +10,7 @@ DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 
 @config_file = "~/.rubyforge/user-config.yml"
 @config = nil
+RUBYFORGE_USERNAME = "unknown"
 def rubyforge_username
   unless @config
     begin
@@ -23,7 +24,7 @@ Run 'rubyforge setup' to prepare your env for access to Rubyforge
       exit
     end
   end
-  @rubyforge_username ||= @config["username"]
+  RUBYFORGE_USERNAME.replace @config["username"]
 end
 
 

@@ -21,6 +21,7 @@ app_generators/newgem/templates/spec.opts
 app_generators/newgem/templates/spec.rb
 app_generators/newgem/templates/tasks/deployment.rake
 app_generators/newgem/templates/tasks/environment.rake
+app_generators/newgem/templates/tasks/website.rake
 app_generators/newgem/templates/test.rb
 app_generators/newgem/templates/test_helper.rb
 app_generators/newgem/templates/version.rb
@@ -59,6 +60,7 @@ rubygems_generators/application_generator/templates/usage
 rubygems_generators/component_generator/USAGE
 rubygems_generators/component_generator/component_generator_generator.rb
 rubygems_generators/component_generator/templates/generator.rb
+rubygems_generators/component_generator/templates/readme
 rubygems_generators/component_generator/templates/test.rb
 rubygems_generators/component_generator/templates/test_generator_helper.rb
 rubygems_generators/component_generator/templates/usage

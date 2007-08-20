@@ -43,7 +43,7 @@ class TestNewgemGenerator < Test::Unit::TestCase
     
     assert_generated_module("lib/#{gem_name}")
     
-    %w[deployment environment].each do |file|
+    %w[deployment environment website].each do |file|
       assert_generated_file("tasks/#{file}.rake")
     end
     

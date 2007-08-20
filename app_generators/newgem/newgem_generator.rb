@@ -70,7 +70,7 @@ class NewgemGenerator < RubiGen::Base
       }
       
       # Tasks
-      m.file_copy_each %w( deployment.rake environment.rake ), "tasks"
+      m.file_copy_each %w( deployment.rake environment.rake website.rake ), "tasks"
       
       # Selecting a test framework
       case test_framework
