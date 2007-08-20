@@ -4,10 +4,6 @@ require 'rubygems'
 require 'redcloth'
 require 'syntax/convertors/html'
 require 'erb'
-require File.dirname(__FILE__) + '/../lib/<%= gem_name %>/version.rb'
-
-version  = <%= module_name %>::VERSION::STRING
-download = 'http://rubyforge.org/projects/<%= gem_name %>'
 
 class Fixnum
   def ordinal
@@ -33,9 +29,14 @@ def convert_syntax(syntax, source)
   return Syntax::Convertors::HTML.for_syntax(syntax).convert(source).gsub(%r!^<pre>|</pre>$!,'')
 end
 
+require File.join(File.dirname(__FILE__), '/../lib/newgem/version.rb')
+
+version  = Newgem::VERSION::STRING
+download = ENV['DOWNLOAD_PATH']
+
 if ARGV.length >= 1
   src, template = ARGV
-  template ||= File.dirname(__FILE__) + '/../website/template.rhtml'
+  template ||= File.join(File.dirname(__FILE__), '/../website/template.rhtml')
   
 else
   puts("Usage: #{File.split($0).last} source.txt [template.rhtml] > output.html")

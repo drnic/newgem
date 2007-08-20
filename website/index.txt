@@ -27,7 +27,7 @@ $ newgem wizzo
 creating: wizzo
 creating: wizzo/README.txt
 creating: wizzo/lib
-creating: wizzo/scripts
+creating: wizzo/script
 creating: wizzo/website
 creating: wizzo/website/javascripts
 creating: wizzo/website/stylesheets
@@ -44,7 +44,7 @@ creating: wizzo/Rakefile
 creating: wizzo/History.txt
 creating: wizzo/License.txt
 creating: wizzo/Manifest.txt
-creating: wizzo/scripts/txt2html
+creating: wizzo/script/txt2html
 creating: wizzo/website/index.txt
 creating: wizzo/website/index.html
 creating: wizzo/website/template.rhtml

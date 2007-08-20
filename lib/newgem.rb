@@ -1,7 +1,6 @@
+$:.unshift File.dirname(__FILE__)
+
 module Newgem #:nodoc:
 end
-
-require 'newgem/rubyforge'
-require 'newgem/version'
 
 

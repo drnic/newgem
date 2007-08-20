@@ -28,7 +28,7 @@ creating: wizzo
 creating: wizzo/CHANGELOG.txt
 creating: wizzo/README.txt
 creating: wizzo/lib
-creating: wizzo/scripts
+creating: wizzo/script
 creating: wizzo/website
 creating: wizzo/website/javascripts
 creating: wizzo/website/stylesheets
@@ -44,7 +44,8 @@ creating: wizzo/setup.rb
 creating: wizzo/Rakefile
 creating: wizzo/Manifest.txt
 creating: wizzo/History.txt
-creating: wizzo/scripts/txt2html
+creating: wizzo/script/generate
+creating: wizzo/script/txt2html
 creating: wizzo/website/index.txt
 creating: wizzo/website/template.rhtml
 copying: wizzo/website/javascripts/rounded_corners_lite.inc.js

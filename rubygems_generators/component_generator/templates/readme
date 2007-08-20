@@ -1,0 +1,28 @@
+How to create an Application Generator
+======================================
+
+1. DONE - Create a new RubyGem (using newgem or hoe) or you can use an existing one.
+2. DONE - Run the generator: script/generate application_generator foobar
+3. Using the generated test class, assert what directories, files, classes etc should
+   be generated.
+4. Add these files into the app_genearators/foobar/templates folder. Your files can use
+   ERb (that is, <%= ... %>).
+5. Specify who the files in /templates are copied/templated at generation time within app_generators/foobar/foobar_generators.rb 's #manifest method.
+   Use m.file for files to copy over.
+   Use m.template for files containing ERb. Create attr_reader accessors for any variables your
+   templates need access to.
+6. Run unit tests.
+7. If your application generator uses other generators (m.dependency "gen-name", [arg1, arg2], :option1 => 'value')
+   then you must add this into the generated bin/foobar file.
+   For example, if you wanted to use a rubygems and/or merb generator, then replace the use_application_sources! 
+   call in bin/foobar:
+
+      RubiGen::Base.use_application_sources! :rubygems, :merb
+
+   Without this, RubiGen will not be able to find your dependent generators.
+8. Update your Manifest.txt with the new files (if you are using Hoe; using newgem? it uses Hoe; so you need to do this)
+9. Build and install your RubyGem locally. Run: rake install_gem
+10. Test your foobar application to ensure that it connects to the generator correctly and generates files.
+11. Done.
+
+See this message again using the -h/--help option.
