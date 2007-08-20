@@ -9,9 +9,9 @@ RUBYFORGE_PROJECT = "newgem"
 HOMEPATH      = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
 DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 RUBYFORGE_USERNAME = "unknown"
-if File.exists?("~/.rubyforge/user-config.yml")
-  config = YAML.load(File.read(File.expand_path("~/.rubyforge/user-config.yml")))
-  RUBYFORGE_USERNAME.replace @config["username"]
+if File.exists?(rubyforge_config_file = File.expand_path("~/.rubyforge/user-config.yml"))
+  config = YAML.load(File.read(rubyforge_config_file))
+  RUBYFORGE_USERNAME.replace config["username"]
 end
 
 REV = nil #File.read(".svn/entries")[/committed-rev="(\d+)"/, 1] rescue nil
