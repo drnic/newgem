@@ -1,4 +1,4 @@
-class PlainGenerator < RubiGen::Base
+class PlainThemeGenerator < RubiGen::Base
   
   default_options :author  => "TODO",
                   :email   => "todo@todo.com"

@@ -14,6 +14,7 @@ app_generators/newgem/templates/config/hoe.rb
 app_generators/newgem/templates/config/requirements.rb
 app_generators/newgem/templates/empty.log
 app_generators/newgem/templates/module.rb
+app_generators/newgem/templates/readme
 app_generators/newgem/templates/script/destroy
 app_generators/newgem/templates/script/generate
 app_generators/newgem/templates/setup.rb
@@ -44,11 +45,11 @@ newgem_generators/install_website/templates/script/txt2html
 newgem_generators/install_website/templates/tasks/website.rake
 newgem_generators/install_website/templates/website/index.html
 newgem_generators/install_website/templates/website/index.txt
-newgem_theme_generators/plain/USAGE
-newgem_theme_generators/plain/plain_generator.rb
-newgem_theme_generators/plain/templates/website/javascripts/rounded_corners_lite.inc.js
-newgem_theme_generators/plain/templates/website/stylesheets/screen.css
-newgem_theme_generators/plain/templates/website/template.rhtml
+newgem_theme_generators/plain_theme/USAGE
+newgem_theme_generators/plain_theme/plain_theme_generator.rb
+newgem_theme_generators/plain_theme/templates/website/javascripts/rounded_corners_lite.inc.js
+newgem_theme_generators/plain_theme/templates/website/stylesheets/screen.css
+newgem_theme_generators/plain_theme/templates/website/template.rhtml
 rubygems_generators/application_generator/USAGE
 rubygems_generators/application_generator/application_generator_generator.rb
 rubygems_generators/application_generator/templates/bin
@@ -64,6 +65,7 @@ rubygems_generators/component_generator/templates/readme
 rubygems_generators/component_generator/templates/test.rb
 rubygems_generators/component_generator/templates/test_generator_helper.rb
 rubygems_generators/component_generator/templates/usage
+rubygems_generators/executable/USAGE
 rubygems_generators/executable/executable_generator.rb
 rubygems_generators/executable/templates/app.rb
 rubygems_generators/install_jruby/USAGE
@@ -92,9 +94,8 @@ test/test_helper.rb
 test/test_install_jruby_generator.rb
 test/test_install_rspec_generator.rb
 test/test_install_website_generator.rb
-test/test_newgem.rb
 test/test_newgem_generator.rb
-test/test_plain_generator.rb
+test/test_plain_theme_generator.rb
 website/images/beginning-ruby.jpg
 website/index.html
 website/index.txt

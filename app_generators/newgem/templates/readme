@@ -1,0 +1,5 @@
+Important
+=========
+
+* Open config/hoe.rb
+* Update missing details (gem description, dependent gems, etc.)

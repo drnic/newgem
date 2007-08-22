@@ -40,7 +40,7 @@ class InstallWebsiteGenerator < RubiGen::Base
       
       m.file_copy_each %w[ website.rake ], "tasks"
       
-      m.dependency "plain", [], :destination => destination_root
+      m.dependency "plain_theme", [], :destination => destination_root
     end
   end
 

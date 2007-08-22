@@ -26,7 +26,7 @@ class TestApplicationGeneratorGenerator < Test::Unit::TestCase
   #   bare_teardown - place this in teardown method to destroy the TMP_ROOT or APP_ROOT folder after each test
   
   def test_generator_without_options
-    name = "mygen"
+    name = "genname"
     run_generator('application_generator', [name], sources)
     
     assert_directory_exists "app_generators"

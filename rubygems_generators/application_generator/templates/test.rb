@@ -26,9 +26,9 @@ class Test<%= class_name %> < Test::Unit::TestCase
   #   bare_teardown - place this in teardown method to destroy the TMP_ROOT or APP_ROOT folder after each test
   
   def test_generator_without_options
-    name = "myapp"
-    run_generator('<%= name %>', [name], sources)
-    assert_generated_file("some_file")
+    run_generator('<%= name %>', [APP_ROOT], sources)
+    assert_directory_exists "path/to/included/folder"
+    assert_generated_file   "path/to/included/folder/some_file"
   end
   
   private

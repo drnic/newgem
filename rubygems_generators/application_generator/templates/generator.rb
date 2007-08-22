@@ -14,7 +14,8 @@ class <%= class_name %> < RubiGen::Base
   def manifest
     record do |m|
       # Ensure appropriate folder(s) exists
-      m.directory 'some_folder'
+      m.directory ''
+      BASEDIRS.each { |path| m.directory path }
 
       # Create stubs
       # m.template "template.rb",  "some_file_after_erb.rb"
@@ -48,4 +49,14 @@ EOS
       # raw instance variable value.
       # @author = options[:author]
     end
+
+    # Installation skeleton.  Intermediate directories are automatically
+    # created so don't sweat their absence here.
+    BASEDIRS = %w(
+      lib
+      log
+      script
+      test
+      tmp
+    )
 end

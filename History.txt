@@ -1,3 +1,17 @@
+== 0.13.2 2007-08-22
+
+* Upgrade rubigen dependency to 1.0.3 to pushout upgrade
+
+== 0.13.1 2007-08-22
+
+* Re-release as there seemed to be an incorrect Rakefile in 0.13.0
+* Added :newgem as a source for destroy script
+* application_generator
+  * test.rb passes APP_ROOT as parameter instead of a name, as APP_ROOT is already .../myproject
+  * add BASE_DIRs for a clean list of required folders
+* plain_theme_generator
+  * Renamed from plain_generator
+
 == 0.13.0 2007-08-20
 
 * HIGHLIGHT - RubiGen integration - using a Rails-like generator

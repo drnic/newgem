@@ -4,11 +4,11 @@ class TestInstallRspecGenerator < Test::Unit::TestCase
   include RubiGen::GeneratorTestHelper
 
   def setup
-    rubygems_setup
+    bare_setup
   end
   
   def teardown
-    rubygems_teardown
+    bare_teardown
   end
   
   def test_generator_without_options

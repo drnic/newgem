@@ -28,8 +28,8 @@ class NewgemGenerator < RubiGen::Base
   def initialize(runtime_args, runtime_options = {})
     super
     usage if args.empty?
-    @destination_root = args.shift
-    @gem_name     = File.basename(File.expand_path(@destination_root))
+    @destination_root = File.expand_path(args.shift)
+    @gem_name     = File.basename(destination_root)
     @module_name  = gem_name.camelize
     extract_options
   end
@@ -37,7 +37,6 @@ class NewgemGenerator < RubiGen::Base
   def manifest
     # Use /usr/bin/env if no special shebang was specified
     script_options     = { :chmod => 0755, :shebang => options[:shebang] == DEFAULT_SHEBANG ? nil : options[:shebang] }
-    dispatcher_options = { :chmod => 0755, :shebang => options[:shebang] }
     windows            = (RUBY_PLATFORM =~ /dos|win32|cygwin/i) || (RUBY_PLATFORM =~ /(:?mswin|mingw)/)
 
     record do |m|
@@ -58,13 +57,6 @@ class NewgemGenerator < RubiGen::Base
       # Config
       m.template_copy_each %w( hoe.rb requirements.rb ), "config"
 
-      # Scripts
-      %w( generate destroy ).each do |file|
-        m.template "script/#{file}",        "script/#{file}", script_options
-        m.template "script/win_script.cmd", "script/#{file}.cmd", 
-          :assigns => { :filename => file } if windows
-      end
-      
       %w(debug).each { |file|
         m.file "empty.log", "log/#{file}.log", :chmod => 0666
       }
@@ -93,7 +85,13 @@ class NewgemGenerator < RubiGen::Base
         m.dependency "executable", [bin_name], :destination => destination_root 
       end
       
+      require 'pp'
+      pp RubiGen::Base.sources
+      m.dependency "install_rubigen_scripts", [destination_root, "rubygems", "newgem", "newgem_theme"], :shebang => options[:shebang]
+      
       m.write_manifest "Manifest.txt"
+      
+      m.readme "readme"
     end
   end
 
@@ -127,7 +125,7 @@ EOS
               "Default: ~/.rubyforge/user-config.yml[user_name]") { |options[:author]| }
       opts.on("-r", "--ruby=path", String,
              "Path to the Ruby binary of your choice (otherwise scripts use env, dispatchers current path).",
-             "Default: #{DEFAULT_SHEBANG}") { |v| options[:shebang] = v }
+             "Default: #{DEFAULT_SHEBANG}") { |options[:shebang]| }
       opts.on("-T", "--test-with=TEST_FRAMEWORK", String,
               "Select your preferred testing framework.",
               "Options: test::unit (default), rspec.") { |options[:test_framework]| }           
