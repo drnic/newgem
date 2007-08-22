@@ -85,8 +85,6 @@ class NewgemGenerator < RubiGen::Base
         m.dependency "executable", [bin_name], :destination => destination_root 
       end
       
-      require 'pp'
-      pp RubiGen::Base.sources
       m.dependency "install_rubigen_scripts", [destination_root, "rubygems", "newgem", "newgem_theme"], :shebang => options[:shebang]
       
       m.write_manifest "Manifest.txt"
