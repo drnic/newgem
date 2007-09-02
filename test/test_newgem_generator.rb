@@ -65,7 +65,7 @@ class TestNewgemGenerator < Test::Unit::TestCase
   end
 
   def test_newgem_with_no_website
-    run_generator('newgem', [APP_ROOT], sources, {:no_website => true})
+    run_generator('newgem', [APP_ROOT], sources, {:disable_website => true})
     
     assert !File.exists?("#{APP_ROOT}/script/txt2html"), "No script/txt2html should be generated"
     assert !File.exists?("#{APP_ROOT}/website"), "No website folder should be generated"
