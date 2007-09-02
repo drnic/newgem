@@ -10,9 +10,9 @@ class NewgemGenerator < RubiGen::Base
                     :author      => nil,
                     :import_path => nil,
                     :jruby       => nil,
-                    :test_framework => 'test::unit',
-                    :version     => '0.0.1',
-                    :website  => false
+                    :disable_website => nil,
+                    :test_framework  => 'test::unit',
+                    :version     => '0.0.1'
   
   
   attr_reader :gem_name, :module_name
@@ -21,7 +21,7 @@ class NewgemGenerator < RubiGen::Base
   # extensions/option
   attr_reader :test_framework
   attr_reader :bin_names_list
-  attr_reader :website
+  attr_reader :disable_website
   attr_reader :manifest
   attr_reader :is_jruby
   
@@ -36,8 +36,8 @@ class NewgemGenerator < RubiGen::Base
 
   def manifest
     # Use /usr/bin/env if no special shebang was specified
-    script_options     = { :chmod => 0755, :shebang => options[:shebang] == DEFAULT_SHEBANG ? nil : options[:shebang] }
-    windows            = (RUBY_PLATFORM =~ /dos|win32|cygwin/i) || (RUBY_PLATFORM =~ /(:?mswin|mingw)/)
+    script_options = { :chmod => 0755, :shebang => options[:shebang] == DEFAULT_SHEBANG ? nil : options[:shebang] }
+    windows        = (RUBY_PLATFORM =~ /dos|win32|cygwin/i) || (RUBY_PLATFORM =~ /(:?mswin|mingw)/)
 
     record do |m|
       # Root directory and all subdirectories.
@@ -75,7 +75,7 @@ class NewgemGenerator < RubiGen::Base
         
       # Website
       m.dependency "install_website", [gem_name], 
-         :author => author, :email => email, :destination => destination_root if website
+         :author => author, :email => email, :destination => destination_root unless disable_website
         
      # JRuby
      m.dependency "install_jruby", [gem_name], :destination => destination_root if is_jruby
@@ -99,7 +99,7 @@ class NewgemGenerator < RubiGen::Base
 Take any library or Rails plugin or command line application,
 gemify it, and easily share it with the Ruby world.
 
-Usage: #{File.basename $0} /path/to/your/app [options]"
+Usage: #{File.basename $0} /path/to/your/app [options]
 EOS
     end
 
@@ -131,8 +131,8 @@ EOS
       opts.on("-V", "--set-version=YOUR_VERSION", String,
               "Version of the gem you are creating.",
               "Default: 0.0.1") { |options[:version]| }
-      opts.on("-w", "--website", 
-              "Includes a website for your RubyGem.") { |options[:website]| }
+      opts.on("-W", "--website-disable", 
+              "Disables the generation of the website for your RubyGem.") { |options[:disable_website]| }
     end
     
     def extract_options
@@ -147,10 +147,11 @@ EOS
         @email  ||= rubyforge_config.email
       end
       @bin_names_list    = (options[:bin_name] || "").split(',')
-      @website           = options[:website]
+      @disable_website   = options[:disable_website]
 
       @test_framework    = options[:test_framework] || "test::unit"
       @is_jruby          = options[:jruby]
+      p options
     end
 
   # Installation skeleton.  Intermediate directories are automatically
