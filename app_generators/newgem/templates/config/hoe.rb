@@ -17,7 +17,7 @@ def rubyforge_username
       @config = YAML.load(File.read(File.expand_path(@config_file)))
     rescue
       puts <<-EOS
-ERROR: No rubyforge config file found: #{@config_file}"
+ERROR: No rubyforge config file found: #{@config_file}
 Run 'rubyforge setup' to prepare your env for access to Rubyforge
  - See http://newgem.rubyforge.org/rubyforge.html for more details
       EOS

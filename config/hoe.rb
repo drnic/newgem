@@ -8,6 +8,9 @@ GEM_NAME      = "newgem" # what ppl will type to install your gem
 RUBYFORGE_PROJECT = "newgem"
 HOMEPATH      = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
 DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
+
+@config_file = "~/.rubyforge/user-config.yml"
+@config = nil
 RUBYFORGE_USERNAME = "unknown"
 def rubyforge_username
   unless @config
@@ -15,7 +18,7 @@ def rubyforge_username
       @config = YAML.load(File.read(File.expand_path(@config_file)))
     rescue
       puts <<-EOS
-ERROR: No rubyforge config file found: #{@config_file}"
+ERROR: No rubyforge config file found: #{@config_file}
 Run 'rubyforge setup' to prepare your env for access to Rubyforge
  - See http://newgem.rubyforge.org/rubyforge.html for more details
       EOS
