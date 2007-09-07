@@ -9,9 +9,20 @@ RUBYFORGE_PROJECT = "newgem"
 HOMEPATH      = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
 DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 RUBYFORGE_USERNAME = "unknown"
-if File.exists?(rubyforge_config_file = File.expand_path("~/.rubyforge/user-config.yml"))
-  config = YAML.load(File.read(rubyforge_config_file))
-  RUBYFORGE_USERNAME.replace config["username"]
+def rubyforge_username
+  unless @config
+    begin
+      @config = YAML.load(File.read(File.expand_path(@config_file)))
+    rescue
+      puts <<-EOS
+ERROR: No rubyforge config file found: #{@config_file}"
+Run 'rubyforge setup' to prepare your env for access to Rubyforge
+ - See http://newgem.rubyforge.org/rubyforge.html for more details
+      EOS
+      exit
+    end
+  end
+  RUBYFORGE_USERNAME.replace @config["username"]
 end
 
 REV = nil #File.read(".svn/entries")[/committed-rev="(\d+)"/, 1] rescue nil
