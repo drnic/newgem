@@ -7,7 +7,7 @@ end
 
 desc 'Upload website files to rubyforge'
 task :website_upload do
-  host = "#{RUBYFORGE_USERNAME}@rubyforge.org"
+  host = "#{rubyforge_username}@rubyforge.org"
   remote_dir = "/var/www/gforge-projects/#{RUBYFORGE_PROJECT}/"
   local_dir = 'website'
   sh %{rsync -aCv #{local_dir}/ #{host}:#{remote_dir}}

@@ -1,3 +1,7 @@
+== 0.13.5 2007-09-07
+
+* rake tasks use rubyforge_username instead of RUBYFORGE_USERNAME constant
+
 == 0.13.4 2007-09-07
 
 * Running "newgem ." in a trunk, branches, or tags folder will look in parent folder for gem_name
