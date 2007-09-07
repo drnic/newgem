@@ -1,6 +1,7 @@
 require 'rbconfig'
 
 class InstallWebsiteGenerator < RubiGen::Base
+
   DEFAULT_SHEBANG = File.join(Config::CONFIG['bindir'],
                               Config::CONFIG['ruby_install_name'])
   
@@ -13,7 +14,9 @@ class InstallWebsiteGenerator < RubiGen::Base
   
   def initialize(runtime_args, runtime_options = {})
     super
-    @gem_name     = File.basename(File.expand_path(destination_root))
+    @destination_root = File.expand_path(destination_root)
+    @gem_name = base_name
+    
     @module_name  = @gem_name.camelcase
     extract_options
   end

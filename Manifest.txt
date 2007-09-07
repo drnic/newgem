@@ -42,6 +42,7 @@ lib/newgem/version.rb
 newgem_generators/install_website/USAGE
 newgem_generators/install_website/install_website_generator.rb
 newgem_generators/install_website/templates/script/txt2html
+newgem_generators/install_website/templates/script/win_script.cmd
 newgem_generators/install_website/templates/tasks/website.rake
 newgem_generators/install_website/templates/website/index.html
 newgem_generators/install_website/templates/website/index.txt

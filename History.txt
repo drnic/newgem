@@ -1,3 +1,9 @@
+== 0.13.4 2007-09-07
+
+* Running "newgem ." in a trunk, branches, or tags folder will look in parent folder for gem_name
+* Added missing win_script.cmd for install_website generator [thx sutch]
+* Upgrade rubigen == 1.0.4
+
 == 0.13.3 2007-09-02
 
 * Clean up newgem_gen usage statement

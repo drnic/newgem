@@ -1,3 +1,4 @@
+
 class InstallRspecGenerator < RubiGen::Base
   
   default_options :author => nil
@@ -6,7 +7,8 @@ class InstallRspecGenerator < RubiGen::Base
   
   def initialize(runtime_args, runtime_options = {})
     super
-    @gem_name     = File.basename(File.expand_path(destination_root))
+    @destination_root = File.expand_path(destination_root)
+    @gem_name = base_name
     @module_name  = @gem_name.camelcase
     extract_options
   end

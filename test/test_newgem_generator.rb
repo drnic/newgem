@@ -105,6 +105,15 @@ class TestNewgemGenerator < Test::Unit::TestCase
     assert_manifest_complete
   end
   
+  def test_run_in_trunk_path_finds_parent_path_for_gem_name
+    expected_gem_name = File.basename(File.expand_path(APP_ROOT))
+    app_root = File.join(APP_ROOT, "trunk")
+    FileUtils.mkdir_p app_root
+
+    generator = run_generator('newgem', [app_root], sources)
+    assert_equal(expected_gem_name, generator.gem_name)
+  end
+  
   private
   def sources
     [ RubiGen::PathSource.new(:test, File.join(File.dirname(__FILE__),"..", generator_path)),

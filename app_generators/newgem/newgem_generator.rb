@@ -1,6 +1,7 @@
 require 'rbconfig'
 
 class NewgemGenerator < RubiGen::Base
+  
   DEFAULT_SHEBANG = File.join(Config::CONFIG['bindir'],
                               Config::CONFIG['ruby_install_name'])
 
@@ -29,7 +30,7 @@ class NewgemGenerator < RubiGen::Base
     super
     usage if args.empty?
     @destination_root = File.expand_path(args.shift)
-    @gem_name     = File.basename(destination_root)
+    @gem_name = base_name
     @module_name  = gem_name.camelize
     extract_options
   end
@@ -151,7 +152,6 @@ EOS
 
       @test_framework    = options[:test_framework] || "test::unit"
       @is_jruby          = options[:jruby]
-      p options
     end
 
   # Installation skeleton.  Intermediate directories are automatically
