@@ -63,7 +63,7 @@ Now modify the constants at the top of *Rakefile*, with your name, email and the
 
 h3. Create code and tests
 
-Then create your libraries (files in <code>lib</code>) and your tests (files in <code>test</code> that look like <code>test_TESTNAME.rb</code>). John Grey III did a nice video on test-driven design, that's worth watching if TDD is new to you.
+Then create your libraries (files in <code>lib</code>) and your tests (files in <code>test</code> that look like <code>test_TESTNAME.rb</code>). "James Edward Gray II":http://blog.grayproductions.net/ did a "nice video":http://macromates.com/screencasts on test-driven design, that's worth watching if TDD is new to you.
 
 If you create any new files, you need to manually add them to the Manifest.txt. Alphabetical order is optional, but it will make the results of <code>rake check_manifest</code> look clean if you keep them ordered. If a file is not in the Manifest.txt it will not be included in the gem when you package and release it.
 
