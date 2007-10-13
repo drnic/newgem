@@ -72,34 +72,62 @@
 
 <pre>$ cd ~/ruby_projects
 $ newgem wizzo
-creating: wizzo
-creating: wizzo/README.txt
-creating: wizzo/lib
-creating: wizzo/script
-creating: wizzo/website
-creating: wizzo/website/javascripts
-creating: wizzo/website/stylesheets
-creating: wizzo/lib/wizzo
-creating: wizzo/lib/wizzo.rb
-creating: wizzo/lib/wizzo/version.rb
-creating: wizzo/bin
-creating: wizzo/test
-creating: wizzo/test/test_helper.rb
-creating: wizzo/test/test_wizzo.rb
-creating: wizzo/examples
-creating: wizzo/setup.rb
-creating: wizzo/Rakefile
-creating: wizzo/History.txt
-creating: wizzo/License.txt
-creating: wizzo/Manifest.txt
-creating: wizzo/script/txt2html
-creating: wizzo/website/index.txt
-creating: wizzo/website/index.html
-creating: wizzo/website/template.rhtml
-copying: wizzo/website/javascripts/rounded_corners_lite.inc.js
-copying: wizzo/website/stylesheets/screen.css
-NOW - update wizzo/Rakefile with gem description, etc
+      create  
+      create  config
+      create  doc
+      create  lib
+      create  log
+      create  script
+      create  tasks
+      create  test
+      create  tmp
+      create  lib/wizzo
+      create  History.txt
+      create  License.txt
+      create  Rakefile
+      create  README.txt
+      create  setup.rb
+      create  lib/wizzo.rb
+      create  lib/wizzo/version.rb
+      create  config/hoe.rb
+      create  config/requirements.rb
+      create  log/debug.log
+      create  tasks/deployment.rake
+      create  tasks/environment.rake
+      create  tasks/website.rake
+      create  test/test_helper.rb
+      create  test/test_wizzo.rb
+  dependency  install_website
+      create    website/javascripts
+      create    website/stylesheets
+      exists    script
+      exists    tasks
+      create    website/index.txt
+      create    website/index.html
+      create    script/txt2html
+overwrite tasks/website.rake? [Ynaqd] 
+       force    tasks/website.rake
+  dependency    plain_theme
+      exists      website/javascripts
+      exists      website/stylesheets
+      create      website/template.rhtml
+      create      website/stylesheets/screen.css
+      create      website/javascripts/rounded_corners_lite.inc.js
+  dependency  install_rubigen_scripts
+      exists    script
+      create    script/generate
+      create    script/destroy
+      create  Manifest.txt
+      readme  readme
+Important
+=========
+
+* Open config/hoe.rb
+* Update missing details (gem description, dependent gems, etc.)
 </pre>
+
+	<p><strong>tasks/website.rake</strong> will be written twice in newgem version 0.13.5.  Simply hit enter to accept the default option (overwrite).</p>
+
 
 	<p>As of 0.10.0 &#8211; you can generate test::unit or rspec test stubs via the <code>-t</code> or <code>--test-with</code> options. For example, <code>-t rspec</code> generates a <code>spec</code> folder with some test stubs.</p>
 
@@ -110,7 +138,7 @@ NOW - update wizzo/Rakefile with gem description, etc
 	<h3>Setup</h3>
 
 
-	<p>Now modify the constants at the top of <strong>Rakefile</strong>, with your name, email and the location where you&#8217;ll host your website for the gem. The defaults are tied to RubyForge for uploading the gems and the website (see below).</p>
+	<p>Now modify the constants at the top of <strong>config/hoe.rb</strong>, with your name, email and the location where you&#8217;ll host your website for the gem. The defaults are tied to RubyForge for uploading the gems and the website (see below).</p>
 
 
 	<h3>Create code and tests</h3>
@@ -315,7 +343,7 @@ other stories and things.</p>
 
 	<p>Comments are welcome. Send an email to <a href="mailto:drnicwilliams@gmail.com">Dr Nic Williams</a>.</p>
     <p class="coda">
-      <a href="mailto:drnicwilliams@gmail.com">Dr Nic</a>, 22nd September 2007<br>
+      <a href="mailto:drnicwilliams@gmail.com">Dr Nic</a>, 14th October 2007<br>
       Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
     </p>
 </div>
