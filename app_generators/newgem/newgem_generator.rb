@@ -71,22 +71,22 @@ class NewgemGenerator < RubiGen::Base
         m.template "test_helper.rb",    "test/test_helper.rb"
         m.template "test.rb",           "test/test_#{gem_name}.rb"
       when "rspec"
-        m.dependency "install_rspec", [gem_name], :destination => destination_root
+        m.dependency "install_rspec", [gem_name], :destination => destination_root, :collision => :force
       end 
         
       # Website
       m.dependency "install_website", [gem_name], 
-         :author => author, :email => email, :destination => destination_root unless disable_website
+         :author => author, :email => email, :destination => destination_root, :collision => :force unless disable_website
         
      # JRuby
-     m.dependency "install_jruby", [gem_name], :destination => destination_root if is_jruby
+     m.dependency "install_jruby", [gem_name], :destination => destination_root, :collision => :force if is_jruby
 
       # Executables
       for bin_name in bin_names_list
-        m.dependency "executable", [bin_name], :destination => destination_root 
+        m.dependency "executable", [bin_name], :destination => destination_root, :collision => :force 
       end
       
-      m.dependency "install_rubigen_scripts", [destination_root, "rubygems", "newgem", "newgem_theme"], :shebang => options[:shebang]
+      m.dependency "install_rubigen_scripts", [destination_root, "rubygems", "newgem", "newgem_theme"], :shebang => options[:shebang], :collision => :force
       
       m.write_manifest "Manifest.txt"
       

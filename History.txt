@@ -1,5 +1,7 @@
-== TRUNK 2007-10-14
+== 0.14.0 2007-10-14
 
+* application_generator includes the install_rubigen_scripts generator
+* if website included, no "overwrite tasks/website.rake" questions
 * Update to docco for rubigen-based output [thx Noah Gibbs]
 * Fixed website dir location if gem name + project name differ [thx Noah Gibbs]
 

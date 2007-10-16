@@ -1,5 +1,8 @@
 class <%= class_name %> < RubiGen::Base
   
+  DEFAULT_SHEBANG = File.join(Config::CONFIG['bindir'],
+                              Config::CONFIG['ruby_install_name'])
+  
   default_options :author => nil
   
   attr_reader :name
@@ -7,7 +10,8 @@ class <%= class_name %> < RubiGen::Base
   def initialize(runtime_args, runtime_options = {})
     super
     usage if args.empty?
-    @name = args.shift
+    @destination_root = File.expand_path(args.shift)
+    @name = base_name
     extract_options
   end
 
@@ -20,6 +24,9 @@ class <%= class_name %> < RubiGen::Base
       # Create stubs
       # m.template "template.rb",  "some_file_after_erb.rb"
       # m.file     "file",         "some_file_copied"
+
+      m.dependency "install_rubigen_scripts", [destination_root, "<%= name %>"], 
+        :shebang => options[:shebang], :collision => :force
     end
   end
 

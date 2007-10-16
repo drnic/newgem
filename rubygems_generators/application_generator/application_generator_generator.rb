@@ -1,4 +1,5 @@
 class ApplicationGeneratorGenerator < RubiGen::Base
+
   default_options 
   
   attr_reader :name, :class_name, :generator_path
