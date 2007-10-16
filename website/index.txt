@@ -57,7 +57,6 @@ $ newgem wizzo
       create    website/index.txt
       create    website/index.html
       create    script/txt2html
-overwrite tasks/website.rake? [Ynaqd] 
        force    tasks/website.rake
   dependency    plain_theme
       exists      website/javascripts
@@ -78,11 +77,7 @@ Important
 * Update missing details (gem description, dependent gems, etc.)
 </pre>
 
-*tasks/website.rake* will be written twice in newgem version 0.13.5.  Simply hit enter to accept the default option (overwrite).
-
 As of 0.10.0 - you can generate test::unit or rspec test stubs via the <code>-t</code> or <code>--test-with</code> options. For example, <code>-t rspec</code> generates a <code>spec</code> folder with some test stubs.
-
-As of 0.11.0 - you can generate <code>wizzo/trunk|branches|tags</code> subfolders using the <code>-s</code> or <code>--svn</code> options. If used, the generated files will be populated within <code><gemname>/trunk</code>
 
 h3. Setup
 
