@@ -1,24 +1,19 @@
-How to create a Generator (aka Component Generator)
+How to create a Generator (aka Application Generator)
 ======================================
 
-1. DONE - Run the generator: script/generate component_generator foobar rubygems
+1. DONE - Run the generator: script/generate application_generator myapp
 2. Using the generated test class, assert what directories, files, classes etc should
    be generated.
-3. Add these files into the rubygems_genearators/foobar/templates folder. Your files can use
+3. Add these files into the app_genearators/myapp/templates folder. Your files can use
    ERb (that is, <%= ... %>).
-4. Specify who the files in /templates are copied/templated at generation time within rubygems_genearators/foobar/foobar_generators.rb's #manifest method.
+4. Specify who the files in /templates are copied/templated at generation time within app_genearators/myapp/myapp_generators.rb's #manifest method.
    Use m.file for files to copy over.
    Use m.template for files containing ERb. Create attr_reader accessors for any variables your
    templates need access to.
 5. Run unit tests.
-6. If your generator uses other generators (m.dependency "gen-name", [arg1, arg2], :option1 => 'value')
-   it should only use generates from the same scope ('rubygems' in this example),
-   otherwise RubiGen may not be able to find the dependent generators.
-7. Update your Manifest.txt with the new files (if you are using Hoe; using newgem? it uses Hoe; so you need to do this)
-8. Build and install your RubyGem locally. Run: rake install_gem
-9. Go to a work area whose script/generate is scoped to 'rubygems' (e.g. a RubyGem scaffold created by newgem has a script/generate that can use rubygems, newgem, and newgem_template scoped generators)
-10. Run "script/generate" and your generator should appear in the list of available generators.
-11. Run "script/generate foobar" to see the options and usage information for your generator.
-12. Run "script/generator foobar arguments" to execute the generator.
+6. Update your Manifest.txt with the new files (rake manifest:refresh)
+7. Build and install your RubyGem locally. Run: rake install_gem
+8. Go to a directory where you can create new test apps.
+9. Run 'myapp [path]' and your application skeleton will be created.
 
 See this message again using the -h/--help option.
