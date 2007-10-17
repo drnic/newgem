@@ -1,3 +1,8 @@
+== 0.14.1 2007-10-18
+
+* Added manifest:refresh rake task to recreate Manifest.txt with all files
+* Corrected the generated readme for application generators
+
 == 0.14.0 2007-10-14
 
 * application_generator includes the install_rubigen_scripts generator
