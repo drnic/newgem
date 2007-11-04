@@ -2,12 +2,15 @@ class ApplicationGeneratorGenerator < RubiGen::Base
 
   default_options 
   
-  attr_reader :name, :class_name, :generator_path
+  attr_reader :name, :class_name, :generator_path, :scopes, :scope_str
   
   def initialize(runtime_args, runtime_options = {})
     super
     usage if args.empty?
     @name           = args.shift
+    @scopes         = args
+    @scopes         = [name] if scopes.blank?
+    @scope_str      = scopes.map { |scope| "'#{scope}'" }.join ', '
     @class_name     = "#{name}_generator".camelize
     @generator_path = "app_generators"
     extract_options

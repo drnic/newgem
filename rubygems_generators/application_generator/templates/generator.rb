@@ -24,8 +24,8 @@ class <%= class_name %> < RubiGen::Base
       # Create stubs
       # m.template "template.rb",  "some_file_after_erb.rb"
       # m.file     "file",         "some_file_copied"
-
-      m.dependency "install_rubigen_scripts", [destination_root, "<%= name %>"], 
+      
+      m.dependency "install_rubigen_scripts", [destination_root, <%= scope_str %>], 
         :shebang => options[:shebang], :collision => :force
     end
   end

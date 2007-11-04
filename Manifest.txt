@@ -15,8 +15,6 @@ app_generators/newgem/templates/config/requirements.rb
 app_generators/newgem/templates/empty.log
 app_generators/newgem/templates/module.rb
 app_generators/newgem/templates/readme
-app_generators/newgem/templates/script/destroy
-app_generators/newgem/templates/script/generate
 app_generators/newgem/templates/setup.rb
 app_generators/newgem/templates/spec.opts
 app_generators/newgem/templates/spec.rb
