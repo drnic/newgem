@@ -52,7 +52,7 @@ hoe = Hoe.new(GEM_NAME, VERS) do |p|
     ['RedCloth','>=3.0.4'],
     ['syntax','>=1.0.0'],
     ['activesupport','>=1.4.2'],
-    ['rubigen','>=1.0.8']
+    ['rubigen','>=1.1.0']
   ]
   #p.spec_extras    - A hash of extra values to set in the gemspec.
 end
