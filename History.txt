@@ -1,3 +1,6 @@
+* Added '.git*' to default list of ignored files by hoe
+* Cleaned the history join string to make proper \n instead of \\n
+
 == 0.15.0 2007-11-05
 
 * Promoted 'application_generator' and 'component_generator' to Rubigen
