@@ -40,17 +40,6 @@ bundles/RubyGem.tmbundle/Syntaxes/Rdoc.tmLanguage
 bundles/RubyGem.tmbundle/info.plist
 config/hoe.rb
 config/svn_branch.rb
-foo/History.txt
-foo/LICENSE
-foo/License.txt
-foo/README
-foo/Rakefile
-foo/TODO
-foo/lib/foo.rb
-foo/script/destroy
-foo/script/generate
-foo/spec/foo_spec.rb
-foo/spec/spec_helper.rb
 install.rb
 lib/newgem.rb
 lib/newgem/quick_template.rb
