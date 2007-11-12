@@ -1,5 +1,6 @@
 * Added '.git*' to default list of ignored files by hoe
 * Cleaned the history join string to make proper \n instead of \\n
+* Checked in empty_log as empty.log was being ignored by svn
 
 == 0.15.0 2007-11-05
 
