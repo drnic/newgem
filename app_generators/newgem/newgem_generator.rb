@@ -134,6 +134,8 @@ EOS
               "Default: 0.0.1") { |options[:version]| }
       opts.on("-W", "--website-disable", 
               "Disables the generation of the website for your RubyGem.") { |options[:disable_website]| }
+      opts.on("--simple", 
+              "Creates a simple RubyGems scaffold.") { |x| }
     end
     
     def extract_options

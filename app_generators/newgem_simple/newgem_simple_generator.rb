@@ -36,9 +36,9 @@ class NewgemSimpleGenerator < RubiGen::Base
   protected
     def banner
       <<-EOS
-Creates a ...
+Creates a simple RubyGems scaffold.
 
-USAGE: #{spec.name} name"
+USAGE: #{spec.name} name --simple"
 EOS
     end
 
