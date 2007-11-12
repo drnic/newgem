@@ -1,3 +1,7 @@
+== 0.16 2006-11-11
+
+* Added a newgem_simple_generator to support the creation of a skinny gem
+  skeleton [thx wycats]
 * Added '.git*' to default list of ignored files by hoe
 * Cleaned the history join string to make proper \n instead of \\n
 * Checked in empty_log as empty.log was being ignored by svn

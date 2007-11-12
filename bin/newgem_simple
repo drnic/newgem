@@ -1,0 +1,12 @@
+require 'rubygems'
+require 'rubigen'
+
+if %w(-v --version).include? ARGV.first
+  require 'newgem_simple/version'
+  puts "#{File.basename($0)} #{NewgemSimple::VERSION::STRING}"
+  exit(0)
+end
+
+require 'rubigen/scripts/generate'
+RubiGen::Base.use_application_sources! :newgem_simple
+RubiGen::Scripts::Generate.new.run(ARGV, :generator => 'newgem_simple')
