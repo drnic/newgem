@@ -55,7 +55,7 @@ hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.url = HOMEPATH
   p.rubyforge_name = RUBYFORGE_PROJECT if RUBYFORGE_PROJECT
   p.test_globs = ["test/**/test_*.rb"]
-  p.clean_globs |= ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store', '.git*']  #An array of file patterns to delete on clean.
+  p.clean_globs |= ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']  #An array of file patterns to delete on clean.
   
   # == Optional
   p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
