@@ -1,3 +1,7 @@
+== TRUNK 2008-01-03
+
+* Fixed docco for -T option (was '-t' in docco) [uploaded on 2008-1-3]
+
 == 0.16.1 2007-11-13
 
 * Oops, removed .git* from the hoe clean list as that blows away the .git folder...

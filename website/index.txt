@@ -77,7 +77,7 @@ Important
 * Update missing details (gem description, dependent gems, etc.)
 </pre>
 
-As of 0.10.0 - you can generate test::unit or rspec test stubs via the <code>-t</code> or <code>--test-with</code> options. For example, <code>-t rspec</code> generates a <code>spec</code> folder with some test stubs.
+As of 0.10.0 - you can generate test::unit or rspec test stubs via the <code>-T</code> or <code>--test-with</code> options. For example, <code>-T rspec</code> generates a <code>spec</code> folder with some test stubs.
 
 h3. Setup
 
@@ -199,7 +199,7 @@ h2. Related articles
 
 * "Original blog article and tutorial":http://drnicwilliams.com/2006/10/11/generating-new-gems/
 * "Tutorial: Publishing RubyGems with Hoe":http://nubyonrails.com/articles/2007/06/15/tutorial-publishing-rubygems-with-hoe by "Geoffrey Grosenbach":http://geoffreygrosenbach.com/ 
-* "Using New Gem Generator in Windows":http://codeconversations.blogspot.com/2007/07/using-new-gem-generator-in-windows_09.html by "Jorge Cangas":http://codeconversations.blogspot.com/
+* "Using New Gem Generator in Windows":http://codeconversations.blogspot.com/2007/07/using-new-gem-generator-in-windows_8009.html by "Jorge Cangas":http://codeconversations.blogspot.com/
 
 h2. Dr Nic's Blog
 
