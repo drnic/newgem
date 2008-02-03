@@ -36,9 +36,8 @@ CLEAN.include ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
 hoe = Hoe.new(GEM_NAME, VERS) do |p|
-  p.author = AUTHOR 
+  p.developer(AUTHOR, EMAIL)
   p.description = DESCRIPTION
-  p.email = EMAIL
   p.summary = DESCRIPTION
   p.url = HOMEPATH
   p.rubyforge_name = RUBYFORGE_PROJECT if RUBYFORGE_PROJECT
@@ -48,11 +47,11 @@ hoe = Hoe.new(GEM_NAME, VERS) do |p|
   # == Optional
   p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
   p.extra_deps = [
-    ['hoe', '>=1.3.0'],
+    ['hoe', '>=1.5.0'],
     ['RedCloth','>=3.0.4'],
     ['syntax','>=1.0.0'],
-    ['activesupport','>=1.4.2'],
-    ['rubigen','>=1.1.0']
+    ['activesupport','>=2.0.2'],
+    ['rubigen','>=1.1.1']
   ]
   #p.spec_extras    - A hash of extra values to set in the gemspec.
 end

@@ -48,9 +48,8 @@ end
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
 hoe = Hoe.new(GEM_NAME, VERS) do |p|
-  p.author = AUTHOR 
+  p.developer(AUTHOR, EMAIL)
   p.description = DESCRIPTION
-  p.email = EMAIL
   p.summary = DESCRIPTION
   p.url = HOMEPATH
   p.rubyforge_name = RUBYFORGE_PROJECT if RUBYFORGE_PROJECT
