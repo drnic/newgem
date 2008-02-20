@@ -1,3 +1,7 @@
+== 0.17.1 2008-02-20
+
+* remove options from 'env ruby' in newgem bin
+
 == 0.17.0 2008-02-03
 
 * Updated generated config/hoe.rb for latest hoe 1.5 requirements
