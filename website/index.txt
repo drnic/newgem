@@ -214,7 +214,11 @@ h2. How to submit patches
 
 Read the "8 steps for fixing other people's code":http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/ and for section "8b: Submit patch to Google Groups":http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/#8b-google-groups, use the Google Group above.
 
-The trunk repository is <code>svn://rubyforge.org/var/svn/newgem/trunk</code> for anonymous access.
+The source for this project is available via git. You can "browse and/or fork the source":http://github.com/drnic/newgem/tree/master, or to clone the project locally:
+  
+<pre>git clone git@github.com:drnic/newgem.git</pre>
+
+The original Subversion repository is <code>svn://rubyforge.org/var/svn/newgem/trunk</code> for anonymous access.
 
 h2. License
 
