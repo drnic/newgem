@@ -1,3 +1,7 @@
+== 0.18.0 2008-03-14
+
+* Upgraded generated/local README.txt for latest hoe
+
 == 0.17.1 2008-02-20
 
 * remove options from 'env ruby' in newgem bin

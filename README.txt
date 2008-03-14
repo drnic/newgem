@@ -1,24 +1,16 @@
-h1. New Gem Generator
+= New Gem Generator
 
-h1. &#x2192; 'newgem'
+* http://newgem.rubyforge.org
 
-h2. What
+== DESCRIPTION:
 
 Quickly bundle any Ruby libraries into a RubyGem and share it with the world, your colleagues, or perhaps just with yourself amongst your projects.
 
 RubyGems are centrally stored, versioned, and support dependencies between other gems, so they are the ultimate way to bundle libraries, executables, associated tests, examples, and more.
 
 Within this gem, you get one thing - <code>newgem</code> - an executable to create your own gems. Your new gems will include designated folders for Ruby code, test files, executables, and even a default website page for you to explain your project, and which instantly uploads to RubyForge website (which looks just like this one by default)
-
-h2. Installing
-
-The <code>newgem</code> application is distributed itself as a RubyGem and is available immediately after installation.
-
-<pre syntax="ruby">sudo gem install newgem</pre>
-
-Alternately, download the gem and install manually.
-
-h2. The basics
+  
+== BASIC USAGE:
 
 Go to the folder where you want to create your new gem folder structure, and run the <code>newgem</code> command to generate your gem scaffolding.
 
@@ -55,140 +47,44 @@ NOW - update wizzo/Rakefile with gem description, etc
 
 As of 0.10.0 - you can generate test::unit or rspec test stubs via the -t, --test-with options
 
-h3. Setup
+== SYNOPSIS:
 
-Now modify the constants at the top of *Rakefile*, with your name, email and the location where you'll host your website for the gem. The defaults are tied to RubyForge for uploading the gems and the website (see below).
+Now modify the constants at the top of *config/hoe.rb*, with your name, email and the location where you'll host your website for the gem. The defaults are tied to RubyForge for uploading the gems and the website.
 
-h3. Create code and tests
+== REQUIREMENTS:
 
-Then create your libraries (files in <code>lib</code>) and your tests (files in <code>test</code> that look like <code>test_TESTNAME.rb</code>). John Grey III did a nice video on test-driven design, that's worth watching if TDD is new to you.
+* hoe
+* rubyforge
 
-If you create any new files, you need to manually add them to the Manifest.txt. Alphabetical order is optional, but it will make the results of <code>rake check_manifest</code> look clean if you keep them ordered. If a file is not in the Manifest.txt it will not be included in the gem when you package and release it.
+== INSTALL:
 
-h3. Executables
+The <code>newgem</code> application is distributed itself as a RubyGem and is available immediately after installation.
 
-You can include executable Ruby applications in your gem, which will be accessible on Windows and Unix/Linux/MacOS, by creating scripts in the <code>bin</code> folder. When the gem is deployed by users, these executables will be automatically placed within their path.
+<pre syntax="ruby">sudo gem install newgem</pre>
 
-h3. Website
+Alternately, download the gem and install manually.
 
-The final step before releasing your gem to the world is the all-important website. Edit the file <code>website/index.txt</code> using Textile/Redcloth syntax. Syntax highlighting is also supported (see below). If you need more website pages, create more *txt* files in the website folder. 
+== LICENSE:
 
-Run the rake task <code>rake website_generate</code> to convert all your website txt files into html files.
+(The MIT License)
 
-NOTE: Currently, the initial <code>index.txt</code> file includes my details not yours. Currently you need to change this manually.
+Copyright (c) 2008 FIX
 
-If you don't want a website, remove the <code>website</code> related files from the Manifest.txt. 
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
 
-h3. Change the gems version number
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
 
-The version number is set in the file <code>lib/#gem name#/version.rb</code>. Update it as appropriate with major, minor and bug fix numbers. This value will be used when generating your website, for example.
-
-h3. Check the manifest
-
-<blockquote>Manifest: a customs document listing the contents put on a ship or plane.</blockquote>
-<cite>"Google - define:manifest":http://www.google.com/search?q=define%3Amanifest</cite>
-
-Similarly here, a manifest is the log of the files to be packaged into a gem. If its not in the <code>Manifest.txt</code> file, the users won't get it.
-
-Before you package your gem, you can compared the list of files in your gem folder, with the Manifest.txt:
-
-<pre>rake check_manifest</pre>
-
-The results show a _diff_ of the two.
-
-h2. Package and test locally
-
-Before releasing a new version of a gem, it is a great idea to install the gem locally and do some sanity checks. You know, to limit the chance of you looking like a noob.
-
-<pre>rake local_deploy</pre>
-
-This generates the website html files into your website folder, and locally installs the gem, ready for testing and local use.
-
-Now pretend to be a user, and do some tests - especially of new functionality - so you are comfortable all the files have been packaged up, and you haven't missed anything in the <code>Manifest.txt</code>.
-
-One set of tests you should do is to repeat any tutorials you include in your website. If your gem is dependent on other gems that are rapidly changing, its possible your tutorial might be invalid even if your unit tests are successful. Best you find any errors before the users start emailing you!
-
-h2. Releasing your gem to the world
-
-Once you're ready for release there are some final steps. 
-
-<a name="setup_rubyforge"></a>
-	
-
-h3. Setup your environment to upload to RubyForge.
-
-There are several steps you need to perform initially to "setup your environment for uploading gems to RubyForge":rubyforge.html.
-
-
-h3. Document changes in History.txt
-
-Between each version of your gem, you probably changed something. You should document this in the <code>History.txt</code> file. For each new release, you need to add two paragraphs that look like this:
-
-<pre>== 0.5.4 14/4/2007
-	
-* 1 major improvement
-  * 150% more Wizzos
-* 2 bug fixes
-  * Wizzos are the proper colour
-  * You only get Wizzos when you ask for them
-</pre>
-
-The two paragraphs will be automatically picked up by the following release process and documented against the release on RubyForge site. To see an example of the end result, look at the "*Changes* section for hoe 1.2":http://rubyforge.org/frs/shownotes.php?release_id=9695.
-
-The History.txt notes for your first release have already been started for you.
-
-
-h3. Release the gem and upload the website and rdocs
-
-Run <code>rake deploy VERSION=X.Y.Z</code> after you've done all these steps. It does the following:
-
-# Uploads your website to rubyforge
-# Uploads your rdocs to rubyforge
-# Packages and uploads your gem to RubyForge
-
-It can take an hour or two before new gem releases are available via the gem installer. But when they are ready, everyone will be able to download and install your gem using:
-
-<pre>sudo gem install #gem_name#</pre>
-
-If your GEM_NAME and RUBYFORGE_PROJECT name are the same, then:
-
-* http://RUBYFORGE_PROJECT.rubyforge.org is your website, and
-* http://RUBYFORGE_PROJECT.rubyforge.org/rdoc is your rdocs
-
-If they are different, then:
-
-* http://RUBYFORGE_PROJECT.rubyforge.org/GEM_NAME is your website, and
-* http://RUBYFORGE_PROJECT.rubyforge.org/GEM_NAME/rdoc is your rdocs
-
-h2. Bonus tasks thanks to Hoe
-
-Your gem uses the Hoe gem to provide a dozen or so useful rake tasks for managing your gem, such as <code>release</code>, <code>check_manifest</code> and <code>publish_docs</code>.
-
-See them all with:
-
-<pre>rake -T</pre>
-
-Remember, the Rakefile is yours to extend as you please with more rake tasks, such as the <code>website</code> tasks which are already added.
-
-For more information about each task, see the "Hoe README":http://seattlerb.rubyforge.org/hoe/
-
-h2. Related articles
-
-* "Original blog article and tutorial":http://drnicwilliams.com/2006/10/11/generating-new-gems/
-
-h2. Dr Nic's Blog
-
-"http://www.drnicwilliams.com":http://www.drnicwilliams.com - for future announcements and
-other stories and things.
-
-h2. Forum
-
-"http://groups.google.com/group/new-gem-generator":http://groups.google.com/group/new-gem-generator
-
-h2. License
-
-This code is free to use under the terms of the MIT license. 
-
-h2. Contact
-
-Comments are welcome. Send an email to "Dr Nic Williams":mailto:drnicwilliams@gmail.com.
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
