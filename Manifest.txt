@@ -53,6 +53,12 @@ newgem_generators/install_website/templates/script/win_script.cmd
 newgem_generators/install_website/templates/tasks/website.rake
 newgem_generators/install_website/templates/website/index.html
 newgem_generators/install_website/templates/website/index.txt
+newgem_theme_generators/long_box_theme/USAGE
+newgem_theme_generators/long_box_theme/long_box_theme_generator.rb
+newgem_theme_generators/long_box_theme/templates/website/index.txt
+newgem_theme_generators/long_box_theme/templates/website/javascripts/rounded_corners_lite.inc.js
+newgem_theme_generators/long_box_theme/templates/website/stylesheets/screen.css
+newgem_theme_generators/long_box_theme/templates/website/template.rhtml
 newgem_theme_generators/plain_theme/USAGE
 newgem_theme_generators/plain_theme/plain_theme_generator.rb
 newgem_theme_generators/plain_theme/templates/website/javascripts/rounded_corners_lite.inc.js

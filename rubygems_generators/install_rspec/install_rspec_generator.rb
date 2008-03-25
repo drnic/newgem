@@ -34,7 +34,7 @@ Install rspec BDD testing support.
 Includes a rake task (tasks/rspec.rake) to be loaded by the root Rakefile,
 which provides a "spec" task.
 
-USAGE: #{$0} [options]"
+USAGE: #{$0} [options]
 EOS
     end
 
@@ -45,7 +45,7 @@ EOS
       # at the top of the file next to "default_options"
       # opts.on("-a", "--author=\"Your Name\"", String,
       #         "Some comment about this option",
-      #         "Default: none") { |options[:author]| }
+      #         "Default: none") { |x| options[:author] = x }
     end
     
     def extract_options

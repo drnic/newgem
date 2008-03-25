@@ -49,7 +49,7 @@ EOS
       # at the top of the file next to "default_options"
       # opts.on("-a", "--author=\"Your Name\"", String,
       #         "Some comment about this option",
-      #         "Default: none") { |options[:author]| }
+      #         "Default: none") { |x| options[:author] = x }
       opts.on("-v", "--version", "Show the #{File.basename($0)} version number and quit.")
     end
     

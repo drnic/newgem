@@ -109,31 +109,31 @@ EOS
       opts.separator 'Options:'
       opts.on("-b", "--bin-name=BIN_NAME[,BIN_NAME2]", String,
               "Sets up executable scripts in the bin folder.",
-              "Default: none") { |options[:bin_name]| }
+              "Default: none") { |x| options[:bin_name] = x }
       opts.on("-e", "--email=PATH", String,
               "Your email to be inserted into generated files.",
-              "Default: ~/.rubyforge/user-config.yml[email]") { |options[:email]| }
+              "Default: ~/.rubyforge/user-config.yml[email]") { |x| options[:email] = x }
       # TODO --import_path
       # opts.on("-i", "--import_path=PATH", String,
       #         "Path where your files could be copied from.",
-      #         "Default: none") { |options[:import_path]| }
+      #         "Default: none") { |x| options[:import_path] = x }
       opts.on("-j", "--jruby",
-              "Use if gem is for jruby.") { |options[:jruby]| }
+              "Use if gem is for jruby.") { |x| options[:jruby] = x }
       opts.on("-a", "--author=PATH", String,
               "Your name to be inserted into generated files.",
-              "Default: ~/.rubyforge/user-config.yml[user_name]") { |options[:author]| }
+              "Default: ~/.rubyforge/user-config.yml[user_name]") { |x| options[:author] = x }
       opts.on("-r", "--ruby=path", String,
              "Path to the Ruby binary of your choice (otherwise scripts use env, dispatchers current path).",
-             "Default: #{DEFAULT_SHEBANG}") { |options[:shebang]| }
+             "Default: #{DEFAULT_SHEBANG}") { |x| options[:shebang] = x }
       opts.on("-T", "--test-with=TEST_FRAMEWORK", String,
               "Select your preferred testing framework.",
-              "Options: test::unit (default), rspec.") { |options[:test_framework]| }           
+              "Options: test::unit (default), rspec.") { |x| options[:test_framework] = x }           
       opts.on("-v", "--version", "Show the #{File.basename($0)} version number and quit.")
       opts.on("-V", "--set-version=YOUR_VERSION", String,
               "Version of the gem you are creating.",
-              "Default: 0.0.1") { |options[:version]| }
+              "Default: 0.0.1") { |x| options[:version] = x }
       opts.on("-W", "--website-disable", 
-              "Disables the generation of the website for your RubyGem.") { |options[:disable_website]| }
+              "Disables the generation of the website for your RubyGem.") { |x| options[:disable_website] = x }
       opts.on("--simple", 
               "Creates a simple RubyGems scaffold.") { |x| }
     end

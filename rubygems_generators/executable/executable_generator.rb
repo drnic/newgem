@@ -44,7 +44,7 @@ EOS
       opts.separator 'Options:'
       opts.on("-a", "--author=\"Your Name\"", String,
               "Generated app file will include your name.",
-              "Default: none") { |options[:author]| }
+              "Default: none") { |x| options[:author] = x }
     end
     
     def extract_options

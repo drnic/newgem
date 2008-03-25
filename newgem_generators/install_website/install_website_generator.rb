@@ -7,10 +7,11 @@ class InstallWebsiteGenerator < RubiGen::Base
   
   default_options :shebang => DEFAULT_SHEBANG,
                   :author  => "TODO",
-                  :email   => nil
+                  :email   => "TODO",
+                  :theme   => 'plain_theme'
   
   attr_reader :gem_name, :module_name
-  attr_reader :author, :email
+  attr_reader :author, :email, :theme
   
   def initialize(runtime_args, runtime_options = {})
     super
@@ -43,7 +44,7 @@ class InstallWebsiteGenerator < RubiGen::Base
       
       m.file_copy_each %w[ website.rake ], "tasks"
       
-      m.dependency "plain_theme", [], :destination => destination_root
+      m.dependency theme, [], :destination => destination_root
     end
   end
 
@@ -52,7 +53,7 @@ class InstallWebsiteGenerator < RubiGen::Base
       <<-EOS
 Adds a website to a RubyGem (or any other project I guess.)
 
-USAGE: #{$0} [options]"
+USAGE: #{$0} [options]
 EOS
     end
 
@@ -63,10 +64,13 @@ EOS
       # at the top of the file next to "default_options"
       opts.on("-a", "--author=\"Your Name\"", String,
               "You. The author of this RubyGem. You name goes in in the website.",
-              "Default: 'TODO'") { |options[:author]| }
+              "Default: 'TODO'") { |x| options[:author] = x }
       opts.on("-e", "--email=your@email.com", String,
               "Your email for people to contact you.",
-              "Default: nil") { |options[:author]| }
+              "Default: nil") { |x| options[:author] = x }
+      opts.on("-T", "--theme=theme_name", String,
+              "Theme generator to use",
+              "Default: plain_theme") { |x| options[:theme] = x }
     end
     
     def extract_options
@@ -75,5 +79,6 @@ EOS
       # raw instance variable value.
       @author = options[:author]
       @email  = options[:email]
+      @theme  = options[:theme]
     end
 end

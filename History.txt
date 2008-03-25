@@ -1,3 +1,7 @@
+== 0.19.0 2008-03-25
+
+* Added newgem_theme long_box_theme [Daniel Cadenas]
+
 == 0.18.0 2008-03-14
 
 * Upgraded generated/local README.txt for latest hoe
