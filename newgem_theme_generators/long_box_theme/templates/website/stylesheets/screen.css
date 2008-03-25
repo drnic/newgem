@@ -1,0 +1,173 @@
+body {
+  background-color: #FBFBFB;
+  font-family: "Georgia", sans-serif;
+  font-size: 16px;
+  line-height: 1.6em;
+  padding: 1.6em 0 0 0;
+  color: #515151;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: #414141;
+}
+
+h2, h3 {
+   padding-top: 10px;
+}
+
+h2 {
+   border-bottom: #d5d5d5 solid 2px;
+   padding-left: 5px;
+   margin-right: 300px;
+}
+
+h1 { 
+  background-color: #60a5ce;
+  vertical_align: middle;
+  float: left;
+  font-family: sans-serif;
+  font-weight: normal;
+  font-size: 4em;
+  line-height: 1.3em;
+  letter-spacing: -0.1ex;
+  margin: 5px;
+}
+li {
+  padding: 0;
+  margin: 0;
+  list-style-type: square;
+}
+a {
+  color: #1d4b67;
+  font-weight: normal;
+  text-decoration: underline;
+}
+blockquote {
+  font-size: 90%;
+  font-style: italic;
+  border-left: 1px solid #111;
+  padding-left: 1em;
+}
+.caps {
+  font-size: 80%;
+}
+
+#main {
+  width: 45em;
+  padding: 0;
+  margin: 0 auto;
+}
+
+#content {
+  width: 44em;
+  padding: 0;
+  margin: 0 auto;
+padding-top: 45px;
+}
+
+.coda {
+padding-top: 10px;
+  text-align: right;
+  color: #77f;
+  font-size: smaller;
+}
+
+table {
+  font-size: 90%;
+  line-height: 1.4em;
+  color: #ff8;
+  background-color: #111;
+  padding: 2px 10px 2px 10px;
+	border-style: dashed;
+}
+
+th {
+	color: #fff;
+}
+
+td {
+  padding: 2px 10px 2px 10px;
+}
+
+.success {
+	color: #0CC52B;
+}
+
+.failed {
+	color: #E90A1B;
+}
+
+.unknown {
+	color: #995000;
+}
+
+img {
+  width: 600px;
+  border: 3px solid #515151;
+  margin: 50px 0 50px 42px;
+}
+
+pre, code {
+  font-family: monospace;
+  font-size: 90%;
+  line-height: 1.4em;
+  color: #ff8;
+  background-color: #414141;
+  padding: 2px 10px 2px 10px;
+}
+
+pre {
+  margin-right: 40px;
+  margin-left: 30px;
+}
+
+.comment { color: #aaa; font-style: italic; }
+.keyword { color: #eff; font-weight: bold; }
+.punct { color: #eee; font-weight: bold; }
+.symbol { color: #0bb; }
+.string { color: #6b4; }
+.ident { color: #ff8; }
+.constant { color: #66f; }
+.regex { color: #ec6; }
+.number { color: #F99; }
+.expr { color: #227; }
+
+#version {
+  font-weight: normal;
+  float: auto;
+  text-align: right;
+  font-family: sans-serif;
+  background-color: #60a5ce;
+  color: #515151;
+  padding: 15px 20px 10px 20px;
+  margin: 0 auto;
+  margin-top: 15px;
+  border: 3px solid #515151;
+}
+
+#version .numbers {
+  display: block;
+  font-size: 4em;
+  line-height: 0.8em;
+  letter-spacing: -0.1ex;
+	margin-bottom: 15px;
+}
+
+#version p {
+  text-decoration: none;
+	color: #515151;
+	background-color: #60a5ce;
+	margin: 0;
+	padding: 0;
+}
+
+#version a {
+  text-decoration: none;
+  background-color: #60a5ce;
+	color: #515151;
+}
+
+.clickable {
+	cursor:	pointer; 
+	cursor:	hand;
+}
+
