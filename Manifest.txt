@@ -67,6 +67,12 @@ newgem_theme_generators/plain_theme/templates/website/template.rhtml
 rubygems_generators/executable/USAGE
 rubygems_generators/executable/executable_generator.rb
 rubygems_generators/executable/templates/app.rb
+rubygems_generators/extconf/USAGE
+rubygems_generators/extconf/extconf_generator.rb
+rubygems_generators/extconf/templates/ext/c_file.c
+rubygems_generators/extconf/templates/ext/extconf.rb
+rubygems_generators/extconf/templates/tasks/extconf.rake
+rubygems_generators/extconf/templates/tasks/extconf_name.rake
 rubygems_generators/install_jruby/USAGE
 rubygems_generators/install_jruby/install_jruby_generator.rb
 rubygems_generators/install_jruby/templates/tasks/jruby.rake
@@ -88,6 +94,7 @@ tasks/environment.rake
 tasks/generator_report.rake
 tasks/website.rake
 test/test_executable_generator.rb
+test/test_extconf_generator.rb
 test/test_generator_helper.rb
 test/test_helper.rb
 test/test_install_jruby_generator.rb

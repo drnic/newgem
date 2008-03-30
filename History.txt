@@ -1,3 +1,8 @@
+== 0.20.0 2008-03-30
+
+* extconf generator - for C-extensions
+* Hoe instance stored in $hoe so can be accessed from tasks/*.rake
+
 == 0.19.1 2008-03-27
 
 * rspec "rake spec" supports spec/**/*_spec.rb search now [Steven Parkes]

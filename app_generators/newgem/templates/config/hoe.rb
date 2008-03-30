@@ -47,7 +47,7 @@ end
 
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
-hoe = Hoe.new(GEM_NAME, VERS) do |p|
+$hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.developer(AUTHOR, EMAIL)
   p.description = DESCRIPTION
   p.summary = DESCRIPTION
@@ -67,7 +67,7 @@ hoe = Hoe.new(GEM_NAME, VERS) do |p|
   <% end %>
 end
 
-CHANGES = hoe.paragraphs_of('History.txt', 0..1).join("\\n\\n")
+CHANGES = $hoe.paragraphs_of('History.txt', 0..1).join("\\n\\n")
 PATH    = (RUBYFORGE_PROJECT == GEM_NAME) ? RUBYFORGE_PROJECT : "#{RUBYFORGE_PROJECT}/#{GEM_NAME}"
-hoe.remote_rdoc_dir = File.join(PATH.gsub(/^#{RUBYFORGE_PROJECT}\/?/,''), 'rdoc')
-hoe.rsync_args = '-av --delete --ignore-errors'
+$hoe.remote_rdoc_dir = File.join(PATH.gsub(/^#{RUBYFORGE_PROJECT}\/?/,''), 'rdoc')
+$hoe.rsync_args = '-av --delete --ignore-errors'
