@@ -26,6 +26,8 @@ class ExtconfGenerator < RubiGen::Base
       m.template "test/test.rb.erb",    "test/test_#{name}_extn.rb"
       m.file     "tasks/extconf.rake",  "tasks/extconf.rake"
       m.file     "tasks/extconf_name.rake",  "tasks/extconf/#{name}.rake"
+      
+      m.file     "autotest.rb",         ".autotest"
     end
   end
 

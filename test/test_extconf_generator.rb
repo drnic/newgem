@@ -35,6 +35,7 @@ class TestExtconfGenerator < Test::Unit::TestCase
     assert_generated_file("tasks/extconf.rake")
     assert_generated_file("tasks/extconf/my_ext.rake")
     assert_generated_file("test/test_my_ext_extn.rb")
+    assert_generated_file(".autotest")
   end
 
   private
