@@ -1,7 +1,10 @@
 == 0.20.1 2008-03-30
 
-* extconf generator creates test/test_#{name}_extn.rb test file
-* extconf generator creates .autotest file for *.c -> test/test_*_extn.rb
+* extconf generator
+  * creates test/test_#{name}_extn.rb test file
+  * creates .autotest file for *.c -> test/test_*_extn.rb
+  * failed compilation destroyes *.o/so/bundle/dll files so tests fail too
+  * USAGE has docco on files to ignore in SCM + hoe
 * requirements.rb no longer loads main lib file; no idea why it did it before
 
 == 0.20.0 2008-03-30

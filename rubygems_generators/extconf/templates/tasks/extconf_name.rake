@@ -32,7 +32,12 @@ namespace :extconf do
 
   file ext_so => ext_files do
     Dir.chdir(ext) do
-      sh(PLATFORM =~ /win32/ ? 'nmake' : 'make')
+      sh(PLATFORM =~ /win32/ ? 'nmake' : 'make') do |ok, res|
+        if !ok
+          require "fileutils"
+          FileUtils.rm Dir.glob('*.{so,o,dll,bundle}')
+        end
+      end
     end
   end
 end

@@ -69,6 +69,7 @@ rubygems_generators/executable/executable_generator.rb
 rubygems_generators/executable/templates/app.rb
 rubygems_generators/extconf/USAGE
 rubygems_generators/extconf/extconf_generator.rb
+rubygems_generators/extconf/templates/README.txt
 rubygems_generators/extconf/templates/autotest.rb
 rubygems_generators/extconf/templates/ext/c_file.c.erb
 rubygems_generators/extconf/templates/ext/extconf.rb.erb

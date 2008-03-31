@@ -26,15 +26,16 @@ class ExtconfGenerator < RubiGen::Base
       m.template "test/test.rb.erb",    "test/test_#{name}_extn.rb"
       m.file     "tasks/extconf.rake",  "tasks/extconf.rake"
       m.file     "tasks/extconf_name.rake",  "tasks/extconf/#{name}.rake"
-      
+
       m.file     "autotest.rb",         ".autotest"
+      m.readme   "README.txt"
     end
   end
 
   protected
     def banner
       <<-EOS
-Creates a C-extension via extconf. 
+Creates a C-extension via extconf.
 
 The extension be automatically built before running tests,
 and will be built when the RubyGem is installed by users.
