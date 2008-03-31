@@ -1,3 +1,7 @@
+== 0.20.1 2008-03-30
+
+* extconf generator creates test/test_#{name}_extn.rb test file
+
 == 0.20.0 2008-03-30
 
 * extconf generator - for C-extensions

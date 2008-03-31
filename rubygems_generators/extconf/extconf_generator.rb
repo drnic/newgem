@@ -2,12 +2,13 @@ class ExtconfGenerator < RubiGen::Base
 
   default_options :author => nil
 
-  attr_reader :name
+  attr_reader :name, :module_name
 
   def initialize(runtime_args, runtime_options = {})
     super
     usage if args.empty?
     @name = args.shift
+    @module_name = name.capitalize
     extract_options
   end
 
@@ -16,11 +17,13 @@ class ExtconfGenerator < RubiGen::Base
       # Ensure appropriate folder(s) exists
       m.directory "ext/#{name}"
       m.directory "tasks/extconf"
+      m.directory "test"
 
       # Create stubs
-      m.template "ext/c_file.c",  "ext/#{name}/#{name}.c"
-      m.template "ext/extconf.rb",  "ext/#{name}/extconf.rb"
-      m.file     "tasks/extconf.rake", "tasks/extconf.rake"
+      m.template "ext/c_file.c.erb",    "ext/#{name}/#{name}.c"
+      m.template "ext/extconf.rb.erb",  "ext/#{name}/extconf.rb"
+      m.template "test/test.rb.erb",    "test/test_#{name}_extn.rb"
+      m.file     "tasks/extconf.rake",  "tasks/extconf.rake"
       m.file     "tasks/extconf_name.rake",  "tasks/extconf/#{name}.rake"
     end
   end
