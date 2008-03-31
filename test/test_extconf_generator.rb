@@ -26,15 +26,15 @@ class TestExtconfGenerator < Test::Unit::TestCase
   #   bare_teardown - place this in teardown method to destroy the TMP_ROOT or APP_ROOT folder after each test
 
   def test_generator_without_options
-    name = "myext"
+    name = "my_ext"
     run_generator('extconf', [name], sources)
-    assert_directory_exists("ext/myext")
+    assert_directory_exists("ext/my_ext")
     assert_directory_exists("tasks/extconf")
-    assert_generated_file("ext/myext/extconf.rb")
-    assert_generated_file("ext/myext/myext.c")
+    assert_generated_file("ext/my_ext/extconf.rb")
+    assert_generated_file("ext/my_ext/my_ext.c")
     assert_generated_file("tasks/extconf.rake")
-    assert_generated_file("tasks/extconf/myext.rake")
-    assert_generated_file("test/test_myext_extn.rb")
+    assert_generated_file("tasks/extconf/my_ext.rake")
+    assert_generated_file("test/test_my_ext_extn.rb")
   end
 
   private

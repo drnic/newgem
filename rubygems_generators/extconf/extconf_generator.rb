@@ -2,13 +2,14 @@ class ExtconfGenerator < RubiGen::Base
 
   default_options :author => nil
 
-  attr_reader :name, :module_name
+  attr_reader :name, :module_name, :test_module_name
 
   def initialize(runtime_args, runtime_options = {})
     super
     usage if args.empty?
     @name = args.shift
-    @module_name = name.capitalize
+    @module_name = name.camelcase
+    @test_module_name = @module_name + "Extn"
     extract_options
   end
 
