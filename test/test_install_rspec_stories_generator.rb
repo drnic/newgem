@@ -31,6 +31,7 @@ class TestInstallRspecStoriesGenerator < Test::Unit::TestCase
     assert_directory_exists("stories/steps")
     assert_generated_file("stories/steps/myapp_steps.rb")
     assert_generated_file("stories/sell_myapp.story")
+    assert_generated_file("stories/all.rb")
   end
   
   private

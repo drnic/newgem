@@ -7,8 +7,6 @@ class InstallRspecStoriesGenerator < RubiGen::Base
   def initialize(runtime_args, runtime_options = {})
     super
     @gem_name = base_name
-    usage if args.empty?
-    @name = args.shift
     extract_options
   end
 
@@ -18,7 +16,8 @@ class InstallRspecStoriesGenerator < RubiGen::Base
       m.directory 'stories/steps'
 
       m.template           'steps.rb', "stories/steps/#{gem_name}_steps.rb"
-      m.template           'story.story', "stories/sell_#{gem_name}.rb"
+      m.template           'story.story', "stories/sell_#{gem_name}.story"
+      m.template           'all.rb', "all.rb"
       # Create stubs
       # m.template "template.rb",  "some_file_after_erb.rb"
       # m.file     "file",         "some_file_copied"
