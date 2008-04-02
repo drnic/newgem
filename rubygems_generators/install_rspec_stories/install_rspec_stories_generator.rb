@@ -17,7 +17,7 @@ class InstallRspecStoriesGenerator < RubiGen::Base
 
       m.template           'steps.rb', "stories/steps/#{gem_name}_steps.rb"
       m.template           'story.story', "stories/sell_#{gem_name}.story"
-      m.template           'all.rb', "all.rb"
+      m.template           'all.rb', "stories/all.rb"
       # Create stubs
       # m.template "template.rb",  "some_file_after_erb.rb"
       # m.file     "file",         "some_file_copied"
