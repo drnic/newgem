@@ -28,8 +28,9 @@ class TestInstallRspecStoriesGenerator < Test::Unit::TestCase
   def test_generator_without_options
     name = "myapp"
     run_generator('install_rspec_stories', [name], sources)
-    assert_directory_exists("spec")
-    assert_generated_file("spec/some_story.story")
+    assert_directory_exists("stories/steps")
+    assert_generated_file("stories/steps/myapp_steps.rb")
+    assert_generated_file("stories/sell_myapp.story")
   end
   
   private

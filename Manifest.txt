@@ -85,6 +85,10 @@ rubygems_generators/install_rspec/templates/spec.rb
 rubygems_generators/install_rspec/templates/spec/spec.opts
 rubygems_generators/install_rspec/templates/spec/spec_helper.rb
 rubygems_generators/install_rspec/templates/tasks/rspec.rake
+rubygems_generators/install_rspec_stories/USAGE
+rubygems_generators/install_rspec_stories/install_rspec_stories_generator.rb
+rubygems_generators/install_rspec_stories/templates/steps.rb
+rubygems_generators/install_rspec_stories/templates/story.story
 script/destroy
 script/generate
 script/txt2html
@@ -102,6 +106,7 @@ test/test_generator_helper.rb
 test/test_helper.rb
 test/test_install_jruby_generator.rb
 test/test_install_rspec_generator.rb
+test/test_install_rspec_stories_generator.rb
 test/test_install_website_generator.rb
 test/test_newgem_generator.rb
 test/test_newgem_simple_generator.rb

@@ -2,10 +2,11 @@ class InstallRspecStoriesGenerator < RubiGen::Base
   
   default_options :author => nil
   
-  attr_reader :name
+  attr_reader :gem_name, :name
   
   def initialize(runtime_args, runtime_options = {})
     super
+    @gem_name = base_name
     usage if args.empty?
     @name = args.shift
     extract_options
@@ -14,8 +15,10 @@ class InstallRspecStoriesGenerator < RubiGen::Base
   def manifest
     record do |m|
       # Ensure appropriate folder(s) exists
-      m.directory 'some_folder'
+      m.directory 'stories/steps'
 
+      m.template           'steps.rb', "stories/steps/#{gem_name}_steps.rb"
+      m.template           'story.story', "stories/sell_#{gem_name}.rb"
       # Create stubs
       # m.template "template.rb",  "some_file_after_erb.rb"
       # m.file     "file",         "some_file_copied"
