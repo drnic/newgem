@@ -27,9 +27,9 @@ class InstallRspecStoriesGenerator < RubiGen::Base
   protected
     def banner
       <<-EOS
-Creates a ...
+Creates an RSpec story scaffold for this RubyGem.
 
-USAGE: #{$0} #{spec.name} name
+USAGE: #{$0} #{spec.name}
 EOS
     end
 

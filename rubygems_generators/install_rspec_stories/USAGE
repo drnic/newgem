@@ -1,5 +1,5 @@
 Description:
-  
+  Creates an RSpec story scaffold for this RubyGem.
   
 Usage:
-  
+  script/generate install_rspec_stories
