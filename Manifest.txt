@@ -87,6 +87,7 @@ rubygems_generators/install_rspec/templates/spec/spec_helper.rb
 rubygems_generators/install_rspec/templates/tasks/rspec.rake
 rubygems_generators/install_rspec_stories/USAGE
 rubygems_generators/install_rspec_stories/install_rspec_stories_generator.rb
+rubygems_generators/install_rspec_stories/templates/all.rb
 rubygems_generators/install_rspec_stories/templates/steps.rb
 rubygems_generators/install_rspec_stories/templates/story.story
 script/destroy
