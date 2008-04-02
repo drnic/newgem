@@ -1,3 +1,7 @@
+== 0.20.2 2008-04-02
+
+* module.rb - more advanced $:.unshift sequence/cmd
+
 == 0.20.1 2008-03-30
 
 * extconf generator
