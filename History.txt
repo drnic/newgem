@@ -1,5 +1,6 @@
-== 0.20.2 2008-04-02
+== 0.21.0 2008-04-03
 
+* New Generator: install_rspec_stories for rubygems
 * module.rb - more advanced $:.unshift sequence/cmd
 
 == 0.20.1 2008-03-30
