@@ -4,20 +4,20 @@ class InstallWebsiteGenerator < RubiGen::Base
 
   DEFAULT_SHEBANG = File.join(Config::CONFIG['bindir'],
                               Config::CONFIG['ruby_install_name'])
-  
+
   default_options :shebang => DEFAULT_SHEBANG,
                   :author  => "TODO",
                   :email   => "TODO",
                   :theme   => 'plain_theme'
-  
+
   attr_reader :gem_name, :module_name
   attr_reader :author, :email, :theme
-  
+
   def initialize(runtime_args, runtime_options = {})
     super
     @destination_root = File.expand_path(destination_root)
     @gem_name = base_name
-    
+
     @module_name  = @gem_name.camelcase
     extract_options
   end
@@ -35,15 +35,15 @@ class InstallWebsiteGenerator < RubiGen::Base
 
       # Website
       m.template_copy_each %w( index.txt index.html ), "website"
-      
+
       %w( txt2html ).each do |file|
         m.template "script/#{file}",        "script/#{file}", script_options
-        m.template "script/win_script.cmd", "script/#{file}.cmd", 
+        m.template "script/win_script.cmd", "script/#{file}.cmd",
           :assigns => { :filename => file } if windows
       end
-      
+
       m.file_copy_each %w[ website.rake ], "tasks"
-      
+
       m.dependency theme, [], :destination => destination_root
     end
   end
@@ -72,7 +72,7 @@ EOS
               "Theme generator to use",
               "Default: plain_theme") { |x| options[:theme] = x }
     end
-    
+
     def extract_options
       # for each option, extract it into a local variable (and create an "attr_reader :author" at the top)
       # Templates can access these value via the attr_reader-generated methods, but not the

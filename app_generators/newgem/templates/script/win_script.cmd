@@ -1,0 +1,1 @@
+@ruby <%= File.join("script", filename) %> %*

@@ -1,7 +1,7 @@
 require 'rbconfig'
 
 class NewgemGenerator < RubiGen::Base
-  
+
   DEFAULT_SHEBANG = File.join(Config::CONFIG['bindir'],
                               Config::CONFIG['ruby_install_name'])
 
@@ -14,18 +14,18 @@ class NewgemGenerator < RubiGen::Base
                     :disable_website => nil,
                     :test_framework  => 'test::unit',
                     :version     => '0.0.1'
-  
-  
+
+
   attr_reader :gem_name, :module_name
   attr_reader :version, :version_str, :author, :email
-  
+
   # extensions/option
   attr_reader :test_framework
   attr_reader :bin_names_list
   attr_reader :disable_website
   attr_reader :manifest
   attr_reader :is_jruby
-  
+
   def initialize(runtime_args, runtime_options = {})
     super
     usage if args.empty?
@@ -44,27 +44,27 @@ class NewgemGenerator < RubiGen::Base
       # Root directory and all subdirectories.
       m.directory ''
       BASEDIRS.each { |path| m.directory path }
-      
+
       m.directory "lib/#{gem_name}"
 
       # Root
       m.template_copy_each %w( History.txt License.txt Rakefile README.txt )
-      m.file_copy_each     %w( setup.rb ) 
+      m.file_copy_each     %w( setup.rb )
 
       # Default module for app
       m.template "module.rb",         "lib/#{gem_name}.rb"
       m.template "version.rb",        "lib/#{gem_name}/version.rb"
-      
+
       # Config
       m.template_copy_each %w( hoe.rb requirements.rb ), "config"
 
       %w(debug).each { |file|
         m.file "empty_log", "log/#{file}.log", :chmod => 0666
       }
-      
+
       # Tasks
       m.file_copy_each %w( deployment.rake environment.rake website.rake ), "tasks"
-      
+
       # Selecting a test framework
       case test_framework
       when "test::unit"
@@ -72,24 +72,30 @@ class NewgemGenerator < RubiGen::Base
         m.template "test.rb",           "test/test_#{gem_name}.rb"
       when "rspec"
         m.dependency "install_rspec", [gem_name], :destination => destination_root, :collision => :force
-      end 
-        
+      end
+
       # Website
-      m.dependency "install_website", [gem_name], 
+      m.dependency "install_website", [gem_name],
          :author => author, :email => email, :destination => destination_root, :collision => :force unless disable_website
-        
+
      # JRuby
      m.dependency "install_jruby", [gem_name], :destination => destination_root, :collision => :force if is_jruby
 
       # Executables
       for bin_name in bin_names_list
-        m.dependency "executable", [bin_name], :destination => destination_root, :collision => :force 
+        m.dependency "executable", [bin_name], :destination => destination_root, :collision => :force
       end
-      
+
       m.dependency "install_rubigen_scripts", [destination_root, "rubygems", "newgem", "newgem_theme"], :shebang => options[:shebang], :collision => :force
-      
+
+      %w( console ).each do |file|
+        m.template "script/#{file}.erb",        "script/#{file}", script_options
+        m.template "script/win_script.cmd", "script/#{file}.cmd",
+          :assigns => { :filename => file } if windows
+      end
+
       m.write_manifest "Manifest.txt"
-      
+
       m.readme "readme"
     end
   end
@@ -127,17 +133,17 @@ EOS
              "Default: #{DEFAULT_SHEBANG}") { |x| options[:shebang] = x }
       opts.on("-T", "--test-with=TEST_FRAMEWORK", String,
               "Select your preferred testing framework.",
-              "Options: test::unit (default), rspec.") { |x| options[:test_framework] = x }           
+              "Options: test::unit (default), rspec.") { |x| options[:test_framework] = x }
       opts.on("-v", "--version", "Show the #{File.basename($0)} version number and quit.")
       opts.on("-V", "--set-version=YOUR_VERSION", String,
               "Version of the gem you are creating.",
               "Default: 0.0.1") { |x| options[:version] = x }
-      opts.on("-W", "--website-disable", 
+      opts.on("-W", "--website-disable",
               "Disables the generation of the website for your RubyGem.") { |x| options[:disable_website] = x }
-      opts.on("--simple", 
+      opts.on("--simple",
               "Creates a simple RubyGems scaffold.") { |x| }
     end
-    
+
     def extract_options
       @version           = options[:version].to_s.split(/\./)
       @version_str       = @version.join('.')

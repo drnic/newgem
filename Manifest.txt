@@ -15,6 +15,8 @@ app_generators/newgem/templates/config/requirements.rb
 app_generators/newgem/templates/empty_log
 app_generators/newgem/templates/module.rb
 app_generators/newgem/templates/readme
+app_generators/newgem/templates/script/console.erb
+app_generators/newgem/templates/script/win_script.cmd
 app_generators/newgem/templates/setup.rb
 app_generators/newgem/templates/spec.opts
 app_generators/newgem/templates/spec.rb

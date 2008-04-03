@@ -37,7 +37,7 @@ class TestNewgemGenerator < Test::Unit::TestCase
       assert_generated_file("test/#{file}")
     end
     
-    %w[generate destroy].each do |file|
+    %w[generate destroy console].each do |file|
       assert_generated_file("script/#{file}")
     end
     
