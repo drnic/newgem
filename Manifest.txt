@@ -60,12 +60,12 @@ newgem_theme_generators/long_box_theme/long_box_theme_generator.rb
 newgem_theme_generators/long_box_theme/templates/website/index.txt
 newgem_theme_generators/long_box_theme/templates/website/javascripts/rounded_corners_lite.inc.js
 newgem_theme_generators/long_box_theme/templates/website/stylesheets/screen.css
-newgem_theme_generators/long_box_theme/templates/website/template.rhtml
+newgem_theme_generators/long_box_theme/templates/website/template.html.erb
 newgem_theme_generators/plain_theme/USAGE
 newgem_theme_generators/plain_theme/plain_theme_generator.rb
 newgem_theme_generators/plain_theme/templates/website/javascripts/rounded_corners_lite.inc.js
 newgem_theme_generators/plain_theme/templates/website/stylesheets/screen.css
-newgem_theme_generators/plain_theme/templates/website/template.rhtml
+newgem_theme_generators/plain_theme/templates/website/template.html.erb
 rubygems_generators/executable/USAGE
 rubygems_generators/executable/executable_generator.rb
 rubygems_generators/executable/templates/app.rb
@@ -121,8 +121,8 @@ website/javascripts/rounded_corners_lite.inc.js
 website/rubyforge.html
 website/rubyforge.txt
 website/stylesheets/screen.css
+website/template.html.erb
 website/template.js
-website/template.rhtml
 website/version-raw.js
 website/version-raw.txt
 website/version.js
