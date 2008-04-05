@@ -1,4 +1,4 @@
-== 0.22.1 2008-04-05 [NOT RELEASED]
+== 0.22.1 2008-04-05
 
 * moved the 'by Daniel Cadenas' reference to the correct template.rhtml
 * renamed template.rhtml -> template.html.erb in gem + generators
