@@ -23,7 +23,8 @@ class LongBoxThemeGenerator < RubiGen::Base
       m.directory 'website/stylesheets'
 
       # Website
-      m.template_copy_each %w( template.rhtml index.txt ), "website"
+      m.template  'website/template.html.erb', 'website/template.html.erb'
+      m.template_copy_each %w( index.txt ), "website"
       m.file_copy_each     %w( stylesheets/screen.css javascripts/rounded_corners_lite.inc.js ), "website"
     end
   end

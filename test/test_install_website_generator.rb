@@ -15,7 +15,7 @@ class TestInstallWebsiteGenerator < Test::Unit::TestCase
     name = "myapp"
     run_generator(generator_name, [name], sources)
     
-    %w[index.txt index.html template.rhtml stylesheets/screen.css javascripts/rounded_corners_lite.inc.js].each do |file|
+    %w[index.txt index.html template.html.erb stylesheets/screen.css javascripts/rounded_corners_lite.inc.js].each do |file|
       assert_generated_file("website/#{file}")
     end
     assert_generated_file("script/txt2html")

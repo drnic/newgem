@@ -1,3 +1,7 @@
+== 0.22.1 2008-04-05
+
+* moved the 'by Daniel Cadenas' reference to the correct template.rhtml
+
 == 0.22.0 2008-04-03
 
 * script/console - irb/console for your gem under development [Orion]

@@ -39,7 +39,7 @@ creating: wizzo/History.txt
 creating: wizzo/script/generate
 creating: wizzo/script/txt2html
 creating: wizzo/website/index.txt
-creating: wizzo/website/template.rhtml
+creating: wizzo/website/template.html.erb
 copying: wizzo/website/javascripts/rounded_corners_lite.inc.js
 copying: wizzo/website/stylesheets/screen.css
 NOW - update wizzo/Rakefile with gem description, etc

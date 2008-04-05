@@ -61,7 +61,7 @@ $ newgem wizzo
   dependency    plain_theme
       exists      website/javascripts
       exists      website/stylesheets
-      create      website/template.rhtml
+      create      website/template.html.erb
       create      website/stylesheets/screen.css
       create      website/javascripts/rounded_corners_lite.inc.js
   dependency  install_rubigen_scripts

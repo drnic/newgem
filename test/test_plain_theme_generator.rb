@@ -13,14 +13,14 @@ class TestPlainThemeGenerator < Test::Unit::TestCase
   
   def test_generator_without_options
     run_generator('plain_theme', [], sources)
-    %w[template.rhtml stylesheets/screen.css javascripts/rounded_corners_lite.inc.js].each do |file|
+    %w[template.html.erb stylesheets/screen.css javascripts/rounded_corners_lite.inc.js].each do |file|
       assert_generated_file("website/#{file}")
     end
   end
   
   def test_generator_with_author_and_email
     run_generator('plain_theme', [], sources, {:author => "AUTHOR", :email => "EMAIL"})
-    %w[template.rhtml stylesheets/screen.css javascripts/rounded_corners_lite.inc.js].each do |file|
+    %w[template.html.erb stylesheets/screen.css javascripts/rounded_corners_lite.inc.js].each do |file|
       assert_generated_file("website/#{file}")
     end
   end

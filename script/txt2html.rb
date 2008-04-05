@@ -37,10 +37,10 @@ module Txt2Html
 
   if ARGV.length >= 1
     src, template = ARGV
-    template ||= File.dirname(__FILE__) + '/../website/template.rhtml'
+    template ||= File.dirname(__FILE__) + '/../website/template.html.erb'
 
   else
-    puts("Usage: #{File.split($0).last} source.txt [template.rhtml] > output.html")
+    puts("Usage: #{File.split($0).last} source.txt [template.html.erb] > output.html")
     exit!
   end
 

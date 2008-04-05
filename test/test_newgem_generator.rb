@@ -57,7 +57,7 @@ class TestNewgemGenerator < Test::Unit::TestCase
       assert_generated_file("script/#{file}")
     end
     
-    %w[index.txt index.html template.rhtml stylesheets/screen.css javascripts/rounded_corners_lite.inc.js].each do |file|
+    %w[index.txt index.html template.html.erb stylesheets/screen.css javascripts/rounded_corners_lite.inc.js].each do |file|
       assert_generated_file("website/#{file}")
     end
     
