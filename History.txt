@@ -1,7 +1,8 @@
-== 0.22.1 2008-04-05
+== 0.22.1 2008-04-05 [NOT RELEASED]
 
 * moved the 'by Daniel Cadenas' reference to the correct template.rhtml
 * renamed template.rhtml -> template.html.erb in gem + generators
+* fixed broken install_rspec_stories test
 
 == 0.22.0 2008-04-03
 

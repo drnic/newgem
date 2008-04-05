@@ -26,11 +26,10 @@ class TestInstallRspecStoriesGenerator < Test::Unit::TestCase
   #   bare_teardown - place this in teardown method to destroy the TMP_ROOT or APP_ROOT folder after each test
   
   def test_generator_without_options
-    name = "myapp"
-    run_generator('install_rspec_stories', [name], sources)
+    run_generator('install_rspec_stories', [], sources)
     assert_directory_exists("stories/steps")
-    assert_generated_file("stories/steps/myapp_steps.rb")
-    assert_generated_file("stories/sell_myapp.story")
+    assert_generated_file("stories/steps/myproject_steps.rb")
+    assert_generated_file("stories/sell_myproject.story")
     assert_generated_file("stories/all.rb")
   end
   
