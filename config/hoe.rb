@@ -29,7 +29,7 @@ Run 'rubyforge setup' to prepare your env for access to Rubyforge
 end
 
 REV = nil #File.read(".svn/entries")[/committed-rev="(\d+)"/, 1] rescue nil
-# REV = `svn info`.each {|line| if line =~ /^Revision:/ then k,v = line.split(': '); break v.chomp; else next; end} rescue nil
+# REV = YAML.load(`svn info`)['Revision']
 VERS = Newgem::VERSION::STRING + (REV ? ".#{REV}" : "")
 CLEAN.include ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']
 

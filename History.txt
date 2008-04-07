@@ -1,3 +1,7 @@
+== 0.22.2 2008-04-07 [NOT RELEASED]
+
+* Cleaned up the REV cmd [Sascha Teske]
+
 == 0.22.1 2008-04-05
 
 * moved the 'by Daniel Cadenas' reference to the correct template.rhtml
