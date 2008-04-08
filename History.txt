@@ -1,6 +1,7 @@
 == 0.22.2 2008-04-07 [NOT RELEASED]
 
 * Cleaned up the REV cmd [Sascha Teske]
+* Replaced hardcoded rspec values done in a hurry at RubyFools with parameterised values [Alsak Hellesoy]
 
 == 0.22.1 2008-04-05
 
