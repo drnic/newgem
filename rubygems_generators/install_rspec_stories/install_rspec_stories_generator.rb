@@ -2,11 +2,12 @@ class InstallRspecStoriesGenerator < RubiGen::Base
   
   default_options :author => nil
   
-  attr_reader :gem_name, :name
+  attr_reader :gem_name, :module_name, :name
   
   def initialize(runtime_args, runtime_options = {})
     super
     @gem_name = base_name
+    @module_name  = gem_name.camelize
     extract_options
   end
 
