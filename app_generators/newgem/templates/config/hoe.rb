@@ -7,6 +7,9 @@ GEM_NAME = '<%= gem_name %>' # what ppl will type to install your gem
 RUBYFORGE_PROJECT = '<%= gem_name %>' # The unix name for your project
 HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
 DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
+EXTRA_DEPENDENCIES = [
+#  ['activesupport', '>= 1.3.1']
+]    # An array of rubygem dependencies [name, version]
 
 @config_file = "~/.rubyforge/user-config.yml"
 @config = nil
@@ -58,13 +61,14 @@ $hoe = Hoe.new(GEM_NAME, VERS) do |p|
   
   # == Optional
   p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
-  #p.extra_deps = []     # An array of rubygem dependencies [name, version], e.g. [ ['active_support', '>= 1.3.1'] ]
-  <% if is_jruby %>
+  #p.extra_deps = EXTRA_DEPENDENCIES
+  
+  <% if is_jruby -%>
   # JRuby gem created, e.g. <%= gem_name %>-X.Y.Z-jruby.gem
   p.spec_extras = { :platform => 'jruby' }    # A hash of extra values to set in the gemspec.
-  <% else %>
+  <% else -%>
   #p.spec_extras = {}    # A hash of extra values to set in the gemspec.
-  <% end %>
+  <% end -%>
 end
 
 CHANGES = $hoe.paragraphs_of('History.txt', 0..1).join("\\n\\n")

@@ -1,4 +1,6 @@
-== 0.22.2 2008-04-07 [NOT RELEASED]
+* moved EXTRA_DEPENDENCIES to top of config/hoe.rb
+
+== 0.22.2 2008-04-07
 
 * Cleaned up the REV cmd [Sascha Teske]
 * Replaced hardcoded rspec values done in a hurry at RubyFools with parameterised values [Alsak Hellesoy]
