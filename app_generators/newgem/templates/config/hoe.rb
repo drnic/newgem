@@ -31,21 +31,21 @@ Run 'rubyforge setup' to prepare your env for access to Rubyforge
 end
 
 
-REV = nil 
-# UNCOMMENT IF REQUIRED: 
+REV = nil
+# UNCOMMENT IF REQUIRED:
 # REV = YAML.load(`svn info`)['Revision']
 VERS = <%= module_name %>::VERSION::STRING + (REV ? ".#{REV}" : "")
 RDOC_OPTS = ['--quiet', '--title', '<%= gem_name %> documentation',
     "--opname", "index.html",
-    "--line-numbers", 
+    "--line-numbers",
     "--main", "README",
     "--inline-source"]
 
 class Hoe
-  def extra_deps 
-    @extra_deps.reject! { |x| Array(x).first == 'hoe' } 
+  def extra_deps
+    @extra_deps.reject! { |x| Array(x).first == 'hoe' }
     @extra_deps
-  end 
+  end
 end
 
 # Generate all the Rake tasks
@@ -58,11 +58,11 @@ $hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.rubyforge_name = RUBYFORGE_PROJECT if RUBYFORGE_PROJECT
   p.test_globs = ["test/**/test_*.rb"]
   p.clean_globs |= ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']  #An array of file patterns to delete on clean.
-  
+
   # == Optional
   p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
   #p.extra_deps = EXTRA_DEPENDENCIES
-  
+
   <% if is_jruby -%>
   # JRuby gem created, e.g. <%= gem_name %>-X.Y.Z-jruby.gem
   p.spec_extras = { :platform => 'jruby' }    # A hash of extra values to set in the gemspec.
