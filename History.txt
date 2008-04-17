@@ -1,3 +1,7 @@
+== 0.23.1 2008-04-17
+
+* Added explicit instruction to edit ~/.rubyforge/user-config.yml in PostInstall.txt
+
 == 0.23.0 2008-04-17
 
 * generated website/index.txt has customised rubyforge/github/gitorious information for git

@@ -10,7 +10,8 @@ You can add the following key/values to this file:
   github_username: drnic
 
 To create the ~/.rubyforge/user-config.yml file run:
-  rubyforge setup
+  rubyforge setup (deletes your username and password, so run sparingly!)
+  edit ~/.rubyforge/user-config.yml
   rubyforge config
 
 Whenever you create a new RubyForge.org project, re-run:
