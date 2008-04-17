@@ -35,27 +35,11 @@ OOOORRRR
 
 You can fetch the source from either:
 
-* github: "http://github.com/<%= github_username %>/<%= gem_name %>/tree/master":http://github.com/<%= github_username %>/<%= gem_name %>/tree/master
-
-<pre>git clone git://github.com/<%= github_username %>/<%= gem_name %>.git
-cd <%= gem_name %>
-rake test
-rake install_gem
-</pre>
-
-<% if github_username == 'GITHUB_USERNAME' %>
-TODO - add "github_username: username" to ~/.rubyforge/user-config.yml and newgem will reuse it for future projects.
-<% end %>
-
 <%% if rubyforge_project_id %>
 
 * rubyforge: "http://rubyforge.org/scm/?group_id=<%%= rubyforge_project_id %>":http://rubyforge.org/scm/?group_id=<%%= rubyforge_project_id %>
 
-<pre>git clone git://rubyforge.org/<%= gem_name %>.git
-cd <%= gem_name %>
-rake test
-rake install_gem
-</pre>
+<pre>git clone git://rubyforge.org/<%= gem_name %>.git</pre>
 
 <%% else %>
 
@@ -69,6 +53,24 @@ When you do this, this message will magically disappear!
 Or you can hack website/index.txt and make it all go away!!
 
 <%% end %>
+
+* github: "http://github.com/<%= github_username %>/<%= gem_name %>/tree/master":http://github.com/<%= github_username %>/<%= gem_name %>/tree/master
+
+<pre>git clone git://github.com/<%= github_username %>/<%= gem_name %>.git</pre>
+
+<% if github_username == 'GITHUB_USERNAME' %>
+TODO - add "github_username: username" to ~/.rubyforge/user-config.yml and newgem will reuse it for future projects.
+<% end %>
+
+* gitorious: "git://gitorious.org/<%= gem_name %>/mainline.git":git://gitorious.org/<%= gem_name %>/mainline.git
+
+<pre>git clone git://gitorious.org/<%= gem_name %>/mainline.git</pre>
+
+h3. Build and test instructions
+
+<pre>cd <%= gem_name %>
+rake test
+rake install_gem</pre>
 
 
 h2. License

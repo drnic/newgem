@@ -164,7 +164,6 @@ EOS
     config
     doc
     lib
-    log
     script
     tasks
     test
