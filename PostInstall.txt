@@ -1,5 +1,7 @@
+
 USAGE: newgem project_name
 HELP/OPTIONS: newgem -h
+
 
 newgem uses config from your ~/.rubyforge/user-config.yml file
 You can add the following key/values to this file:
@@ -13,5 +15,11 @@ To create the ~/.rubyforge/user-config.yml file run:
 
 Whenever you create a new RubyForge.org project, re-run:
   rubyforge config
+
+
+Did you know you have script/generate generators?
+  application_generator, component_generator, executable,
+  extconf, install_jruby, install_rspec, install_rspec_stories,
+  install_website, test_unit
 
 Have fun making RubyGems!
