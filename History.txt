@@ -1,4 +1,9 @@
+== 0.23.0 2008-04-17
+
+* installing newgem now displays a post-install message (from PostInstall.txt)
+* uses github_username value from .rubyforge/user-config.yml
 * moved EXTRA_DEPENDENCIES to top of config/hoe.rb
+* websites/*.txt are processed as ERB templates
 
 == 0.22.2 2008-04-07
 
