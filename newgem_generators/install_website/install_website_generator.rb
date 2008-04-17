@@ -81,4 +81,13 @@ EOS
       @email  = options[:email]
       @theme  = options[:theme]
     end
+
+    def github_username
+      @github_username ||= begin
+        require 'newgem/rubyforge'
+        rubyforge_config = Newgem::Rubyforge.new
+        rubyforge_config.github_username
+      end
+    end
+
 end

@@ -1,8 +1,12 @@
 #!/usr/bin/env ruby
 
+GEM_NAME = '<%= gem_name %>' # what ppl will type to install your gem
+RUBYFORGE_PROJECT = '<%= gem_name %>'
+
 require 'rubygems'
 begin
   require 'newgem'
+  require 'rubyforge'
 rescue LoadError
   puts "\n\nGenerating the website requires the newgem RubyGem"
   puts "Install: gem install newgem\n\n"
@@ -11,10 +15,22 @@ end
 require 'redcloth'
 require 'syntax/convertors/html'
 require 'erb'
-require File.dirname(__FILE__) + '/../lib/<%= gem_name %>/version.rb'
+require File.dirname(__FILE__) + "/../lib/#{GEM_NAME}/version.rb"
 
 version  = <%= module_name %>::VERSION::STRING
-download = 'http://rubyforge.org/projects/<%= gem_name %>'
+download = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
+
+def rubyforge_project_id
+  RubyForge.new.autoconfig["group_ids"][RUBYFORGE_PROJECT]
+end
+
+def github_username
+  @github_username ||= begin
+    require 'newgem/rubyforge'
+    rubyforge_config = Newgem::Rubyforge.new
+    rubyforge_config.github_username
+  end
+end
 
 class Fixnum
   def ordinal
@@ -43,7 +59,6 @@ end
 if ARGV.length >= 1
   src, template = ARGV
   template ||= File.join(File.dirname(__FILE__), '/../website/template.html.erb')
-  
 else
   puts("Usage: #{File.split($0).last} source.txt [template.html.erb] > output.html")
   exit!
@@ -55,7 +70,8 @@ title = nil
 body = nil
 File.open(src) do |fsrc|
   title_text = fsrc.readline
-  body_text = fsrc.read
+  body_text_template = fsrc.read
+  body_text = ERB.new(body_text_template).result(binding)
   syntax_items = []
   body_text.gsub!(%r!<(pre|code)[^>]*?syntax=['"]([^'"]+)[^>]*>(.*?)</\1>!m){
     ident = syntax_items.length
