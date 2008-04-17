@@ -1,6 +1,6 @@
 == 0.23.0 2008-04-17
 
-* generated website/index.txt has customised rubyforge/github information for git
+* generated website/index.txt has customised rubyforge/github/gitorious information for git
 * installing newgem now displays a post-install message (from PostInstall.txt)
 * uses github_username value from .rubyforge/user-config.yml
 * moved EXTRA_DEPENDENCIES to top of config/hoe.rb
