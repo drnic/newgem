@@ -58,10 +58,6 @@ class NewgemGenerator < RubiGen::Base
       # Config
       m.template_copy_each %w( hoe.rb requirements.rb ), "config"
 
-      %w(debug).each { |file|
-        m.file "empty_log", "log/#{file}.log", :chmod => 0666
-      }
-
       # Tasks
       m.file_copy_each %w( deployment.rake environment.rake website.rake ), "tasks"
 
