@@ -1,0 +1,17 @@
+USAGE: newgem project_name
+HELP/OPTIONS: newgem -h
+
+newgem uses config from your ~/.rubyforge/user-config.yml file
+You can add the following key/values to this file:
+  full_name  : Dr Nic Williams
+  email      : drnicwilliams@gmail.com
+  github_username: drnic
+
+To create the ~/.rubyforge/user-config.yml file run:
+  rubyforge setup
+  rubyforge config
+
+Whenever you create a new RubyForge.org project, re-run:
+  rubyforge config
+
+Have fun making RubyGems!
