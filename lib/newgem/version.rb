@@ -1,4 +1,4 @@
-module Newgem #:nodoc:
+module Newgem2
   module VERSION #:nodoc:
     MAJOR = 0
     MINOR = 23

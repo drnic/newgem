@@ -1,4 +1,4 @@
-module <%= module_name %> #:nodoc:
+module <%= module_name %>
   module VERSION #:nodoc:
     MAJOR = <%= version[0] || '0' %>
     MINOR = <%= version[1] || '0' %>

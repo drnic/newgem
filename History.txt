@@ -1,3 +1,5 @@
+* removed :nodoc: from version.rb's module [Steven Parkes]
+
 == 0.23.1 2008-04-17
 
 * Added explicit instruction to edit ~/.rubyforge/user-config.yml in PostInstall.txt
