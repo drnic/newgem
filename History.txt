@@ -1,4 +1,5 @@
 * removed :nodoc: from version.rb's module [Steven Parkes]
+* upgraded rubigen dependency to 1.3.0
 
 == 0.23.1 2008-04-17
 
