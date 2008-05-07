@@ -1,4 +1,4 @@
-templates
-=================
+<%= name %>
+<%= "=" * name.size %>
 
-A plugin for the Merb framework that provides ....
+A gem that provides...

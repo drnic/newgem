@@ -25,8 +25,9 @@ class NewgemSimpleGenerator < RubiGen::Base
       # m.template "template.rb",  "some_file_after_erb.rb"
       m.file "lib/templates.rb", "lib/#{name}.rb"
       m.template "spec/templates_spec.rb.erb", "spec/#{name}_spec.rb"
-            
-      %w[ LICENSE Rakefile README TODO spec/spec_helper.rb ].each {|file| m.file file, file }      
+      
+      %w[ LICENSE Rakefile README ].each {|file| m.template file, file}
+      %w[ TODO spec/spec_helper.rb ].each {|file| m.file file, file }      
       
       m.dependency "install_rubigen_scripts", [destination_root, 'newgem_simple'], 
         :shebang => options[:shebang], :collision => :force
