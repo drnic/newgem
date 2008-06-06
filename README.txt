@@ -64,6 +64,13 @@ The <code>newgem</code> application is distributed itself as a RubyGem and is av
 
 Alternately, download the gem and install manually.
 
+== TUTORIALS:
+
+* Original blog article and tutorial - http://drnicwilliams.com/2006/10/11/generating-new-gems/
+* Tutorial: Publishing RubyGems with Hoe - http://nubyonrails.com/articles/2007/06/15/tutorial-publishing-rubygems-with-hoe by Geoffrey Grosenbach
+* Using New Gem Generator in Windows - http://codeconversations.blogspot.com/2007/07/using-new-gem-generator-in-windows_8009.html by Jorge Cangas
+* Building a Ruby Gem - http://bogojoker.com/blog/2008/05/building-a-ruby-gem/ by Joseph Pecoraro (includes a Problems/Troubleshooting section!!)
+
 == LICENSE:
 
 (The MIT License)
