@@ -1,12 +1,12 @@
 class ExecutableGenerator < RubiGen::Base
   DEFAULT_SHEBANG = File.join(Config::CONFIG['bindir'],
                               Config::CONFIG['ruby_install_name'])
-  
+
   default_options :shebang => DEFAULT_SHEBANG,
                   :author => nil
-  
+
   attr_reader :bin_name, :author
-  
+
   def initialize(runtime_args, runtime_options = {})
     super
     usage if args.empty?
@@ -46,7 +46,7 @@ EOS
               "Generated app file will include your name.",
               "Default: none") { |x| options[:author] = x }
     end
-    
+
     def extract_options
       @author = options[:author]
     end
