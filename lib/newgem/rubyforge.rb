@@ -13,7 +13,7 @@ module Newgem
     end
 
     def rubyforge
-      @rubyforge ||= RubyForge.new(::RubyForge::CONFIG_F)
+      @rubyforge ||= RubyForge.new(::RubyForge::CONFIG_F).configure
     end
 
   end

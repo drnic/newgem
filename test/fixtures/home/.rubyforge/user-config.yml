@@ -1,0 +1,23 @@
+
+#
+# base rubyforge uri - store in /Users/username/.rubyforge/user-config.yml
+#
+  uri        : http://rubyforge.org
+#
+# this must be your username
+#
+  username   : user_name
+#
+# this must be your password
+#
+  password   : pass_word
+#
+# defaults for some values
+#
+  cookie_jar : /Users/username/.rubyforge/cookie.dat
+  is_private : false
+
+  full_name  : Fullname McDeveloper
+  email      : firstlast@newgem.tld
+  github_username: githubbahubba
+

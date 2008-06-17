@@ -1,0 +1,54 @@
+--- 
+processor_ids: 
+  IA64: 6000
+  AMD-64: 1500
+  Any: 8000
+  Sparc: 4000
+  PPC: 2000
+  Other: 9999
+  Alpha: 7000
+  i386: 1000
+  UltraSparc: 5000
+  MIPS: 3000
+release_ids: 
+  some_package: 
+    0.2.0: 12345
+    0.2.1: 23456
+    0.2.2: 34567
+  some_other_package: 
+    0.0.2: 123
+    0.0.1: 456
+group_ids: 
+  some_group: 1234
+type_ids: 
+  .deb: 1000
+  .zip: 3000
+  .gz: 3110
+  .src.rpm: 5100
+  .jpg: 8000
+  .htm: 8200
+  .src.bz2: 5010
+  .html: 8200
+  .oth: 9999
+  .pem: 1500
+  .src.gz: 5020
+  .src: 5900
+  .pgp: 8150
+  .rpm: 2000
+  .bz2: 3100
+  .text: 8100
+  .ebuild: 1300
+  .gem: 1400
+  .txt: 8100
+  .src.tar.bz2: 5010
+  .tgz: 5000
+  .sig: 8150
+  .pdf: 8300
+  .exe: 1100
+  .src.zip: 5000
+  .src.tar.gz: 5020
+  .dmg: 1200
+  .tar.gz: 5000
+package_ids: 
+  some_package: 4321
+  some_other_package: 5432
