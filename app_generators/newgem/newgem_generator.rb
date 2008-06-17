@@ -52,8 +52,8 @@ class NewgemGenerator < RubiGen::Base
       m.file_copy_each     %w( setup.rb )
 
       # Default module for app
-      m.template "module.rb",         "lib/#{gem_name}.rb"
-      m.template "version.rb",        "lib/#{gem_name}/version.rb"
+      m.template "lib/module.rb",         "lib/#{gem_name}.rb"
+      m.template "lib/version.rb",        "lib/#{gem_name}/version.rb"
 
       # Config
       m.template_copy_each %w( hoe.rb requirements.rb ), "config"
@@ -64,8 +64,8 @@ class NewgemGenerator < RubiGen::Base
       # Selecting a test framework
       case test_framework
       when "test::unit"
-        m.template "test_helper.rb",    "test/test_helper.rb"
-        m.template "test.rb",           "test/test_#{gem_name}.rb"
+        m.template "test/test_helper.rb",    "test/test_helper.rb"
+        m.template "test/test.rb",           "test/test_#{gem_name}.rb"
       when "rspec"
         m.dependency "install_rspec", [gem_name], :destination => destination_root, :collision => :force
       end

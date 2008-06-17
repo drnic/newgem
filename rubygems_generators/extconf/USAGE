@@ -24,4 +24,4 @@ Important:
     .DS_Store
   
   Also, in your ~/.hoerc file ADD the following exclusions:
-    exclude: !ruby/regexp /tmp$|CVS|\.svn|_darcs|\.git|local/.*\.rb$|Makefile|.*\.o$|.*\.bundle$|.*\.so$|.*\.dll$/
+		exclude: !ruby/regexp /tmp$|CVS|\.svn|_darcs|\.git|log$|local/.*\.rb$|Makefile|.*\.o$|.*\.bundle$|.*\.so$|.*\.dll$/

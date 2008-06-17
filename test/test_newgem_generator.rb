@@ -18,7 +18,6 @@ class TestNewgemGenerator < Test::Unit::TestCase
 
     assert_directory_exists "config"
     assert_directory_exists "lib"
-    assert_directory_exists "log"
     assert_directory_exists "tasks"
     assert_directory_exists "test"
 
