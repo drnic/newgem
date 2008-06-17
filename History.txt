@@ -1,3 +1,6 @@
+== 0.24.0 2008-06-17
+
+* Refactored generated tests into install_test_unit, so rspec users don't get test folder
 * Cleaned up --simple and added task for generating gemspec file (for github) [Yehuda Katz]
 
 == 0.23.2 2008-05-06
