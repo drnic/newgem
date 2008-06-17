@@ -64,8 +64,7 @@ class NewgemGenerator < RubiGen::Base
       # Selecting a test framework
       case test_framework
       when "test::unit"
-        m.template "test/test_helper.rb",    "test/test_helper.rb"
-        m.template "test/test.rb",           "test/test_#{gem_name}.rb"
+        m.dependency "install_test_unit", [gem_name], :destination => destination_root, :collision => :force
       when "rspec"
         m.dependency "install_rspec", [gem_name], :destination => destination_root, :collision => :force
       end
@@ -166,7 +165,5 @@ EOS
     lib
     script
     tasks
-    test
-    tmp
   )
 end

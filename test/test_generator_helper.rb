@@ -1,4 +1,8 @@
-require File.dirname(__FILE__) + '/test_helper'
+begin
+  require File.dirname(__FILE__) + '/test_helper'
+rescue LoadError
+  require 'test/unit'
+end
 require 'fileutils'
 
 # Must set before requiring generator libs.
@@ -9,6 +13,11 @@ if defined?(APP_ROOT)
   APP_ROOT.replace(app_root)
 else
   APP_ROOT = app_root
+end
+if defined?(RAILS_ROOT)
+  RAILS_ROOT.replace(app_root)
+else
+  RAILS_ROOT = app_root
 end
 
 begin
