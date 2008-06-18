@@ -1,3 +1,9 @@
+== 0.25.0 2008-06-19
+
+* newgem: added --project option to allow a different Rubyforge [Yossef Mendelssohn]
+* newgem: README contains generated year + name for license section [Yossef Mendelssohn]
+* updated copyright in license
+
 == 0.24.0 2008-06-17
 
 * Refactored generated tests into install_test_unit, so rspec users don't get test folder

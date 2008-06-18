@@ -75,7 +75,7 @@ Alternately, download the gem and install manually.
 
 (The MIT License)
 
-Copyright (c) 2008 Dr Nic Williams
+Copyright (c) 2006-2008 Dr Nic Williams
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
