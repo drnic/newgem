@@ -112,6 +112,36 @@ class TestNewgemGenerator < Test::Unit::TestCase
     generator = run_generator('newgem', [app_root], sources)
     assert_equal(expected_gem_name, generator.gem_name)
   end
+  
+  def test_gem_name_should_come_from_project
+    gen = build_generator('newgem', [APP_ROOT], sources, {})
+    assert_equal 'myproject', gen.gem_name
+  end
+  
+  def test_module_name_should_come_from_gem_name
+    gen = build_generator('newgem', [APP_ROOT], sources, {})
+    assert_equal 'Myproject', gen.module_name
+  end
+  
+  def test_project_name_should_default_to_gem_name
+    gen = build_generator('newgem', [APP_ROOT], sources, {})
+    assert_equal 'myproject', gen.project_name
+  end
+  
+  def test_project_name_can_be_overriden
+    gen = build_generator('newgem', [APP_ROOT], sources, { :project => 'my_other_project' })
+    assert_equal 'my_other_project', gen.project_name
+  end
+  
+  def test_gem_name_does_not_change_if_project_name_is_overriden
+    gen = build_generator('newgem', [APP_ROOT], sources, { :project => 'my_other_project' })
+    assert_equal 'myproject', gen.gem_name
+  end
+  
+  def test_module_name_does_not_change_if_project_name_is_overriden
+    gen = build_generator('newgem', [APP_ROOT], sources, { :project => 'my_other_project' })
+    assert_equal 'Myproject', gen.module_name
+  end
 
   private
   def sources

@@ -4,7 +4,7 @@ AUTHOR = '<%= author %>'  # can also be an array of Authors
 EMAIL = "<%= email %>"
 DESCRIPTION = "description of gem"
 GEM_NAME = '<%= gem_name %>' # what ppl will type to install your gem
-RUBYFORGE_PROJECT = '<%= gem_name %>' # The unix name for your project
+RUBYFORGE_PROJECT = '<%= project_name %>' # The unix name for your project
 HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
 DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 EXTRA_DEPENDENCIES = [
