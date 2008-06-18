@@ -16,7 +16,7 @@ class NewgemGenerator < RubiGen::Base
                     :version     => '0.0.1'
 
 
-  attr_reader :gem_name, :module_name
+  attr_reader :gem_name, :module_name, :project_name
   attr_reader :version, :version_str, :author, :email
 
   # extensions/option
@@ -32,6 +32,7 @@ class NewgemGenerator < RubiGen::Base
     @destination_root = File.expand_path(args.shift)
     @gem_name = base_name
     @module_name  = gem_name.camelize
+    @project_name = @gem_name
     extract_options
   end
 
@@ -123,6 +124,9 @@ EOS
       opts.on("-a", "--author=PATH", String,
               "Your name to be inserted into generated files.",
               "Default: ~/.rubyforge/user-config.yml[user_name]") { |x| options[:author] = x }
+      opts.on("-p", "--project=PROJECT", String,
+              "Rubyforge project name for the gem you are creating.",
+              "Default: same as gem name") { |x| options[:project] = x }
       opts.on("-r", "--ruby=path", String,
              "Path to the Ruby binary of your choice (otherwise scripts use env, dispatchers current path).",
              "Default: #{DEFAULT_SHEBANG}") { |x| options[:shebang] = x }
@@ -155,6 +159,7 @@ EOS
 
       @test_framework    = options[:test_framework] || "test::unit"
       @is_jruby          = options[:jruby]
+      @project_name      = options[:project] if options.include?(:project)
     end
 
   # Installation skeleton.  Intermediate directories are automatically
