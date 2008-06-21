@@ -2,14 +2,14 @@ History.txt
 License.txt
 Manifest.txt
 PostInstall.txt
-README.txt
+README.rdoc
 Rakefile
 Todo.txt
 app_generators/newgem/newgem_generator.rb
 app_generators/newgem/templates/History.txt
 app_generators/newgem/templates/License.txt
 app_generators/newgem/templates/PostInstall.txt
-app_generators/newgem/templates/README.txt
+app_generators/newgem/templates/README.rdoc
 app_generators/newgem/templates/Rakefile
 app_generators/newgem/templates/config/hoe.rb
 app_generators/newgem/templates/config/requirements.rb
@@ -25,7 +25,7 @@ app_generators/newgem/templates/tasks/website.rake
 app_generators/newgem_simple/USAGE
 app_generators/newgem_simple/newgem_simple_generator.rb
 app_generators/newgem_simple/templates/LICENSE
-app_generators/newgem_simple/templates/README
+app_generators/newgem_simple/templates/README.rdoc
 app_generators/newgem_simple/templates/Rakefile
 app_generators/newgem_simple/templates/TODO
 app_generators/newgem_simple/templates/lib/templates.rb
@@ -101,6 +101,8 @@ tasks/deployment.rake
 tasks/environment.rake
 tasks/generator_report.rake
 tasks/website.rake
+test/fixtures/home/.rubyforge/auto-config.yml
+test/fixtures/home/.rubyforge/user-config.yml
 test/test_executable_generator.rb
 test/test_extconf_generator.rb
 test/test_generator_helper.rb
@@ -113,6 +115,7 @@ test/test_install_website_generator.rb
 test/test_newgem_generator.rb
 test/test_newgem_simple_generator.rb
 test/test_plain_theme_generator.rb
+test/test_rubyforge.rb
 website/images/beginning-ruby.jpg
 website/index.html
 website/index.txt
