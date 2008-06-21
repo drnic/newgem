@@ -1,3 +1,9 @@
+== 0.26.0 2008-06-21 NOT RELEASED
+
+* README.rdoc is the name of generated and internal README root files, since github makes them look pretty
+
+DO NOT RELEASE UNTIL HOE IS PATCHED
+
 == 0.25.0 2008-06-19
 
 * newgem: added --project option to allow a different Rubyforge [Yossef Mendelssohn]
