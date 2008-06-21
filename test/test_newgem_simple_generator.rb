@@ -36,7 +36,7 @@ class TestNewgemSimpleGenerator < Test::Unit::TestCase
     end
     assert_generated_file "LICENSE"
     assert_generated_file "Rakefile"
-    assert_generated_file "README"
+    assert_generated_file "README.rdoc"
     assert_generated_file "TODO"         
   end
   
