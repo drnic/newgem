@@ -1,6 +1,7 @@
 == 0.26.0 2008-06-21 NOT RELEASED
 
 * README.rdoc is the name of generated and internal README root files, since github makes them look pretty
+* RedCloth dependency - changed to =3.0.3 as 3.0.4 is dodgy apparently [Roger Pack]
 
 DO NOT RELEASE UNTIL HOE IS PATCHED
 
