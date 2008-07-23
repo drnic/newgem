@@ -5,5 +5,6 @@ module <%= module_name %>
     TINY  = <%= version[2] || '0' %>
 
     STRING = [MAJOR, MINOR, TINY].join('.')
+    self
   end
 end
