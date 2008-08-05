@@ -14,36 +14,36 @@ Within this gem, you get one thing - <code>newgem</code> - an executable to crea
 
 Go to the folder where you want to create your new gem folder structure, and run the <code>newgem</code> command to generate your gem scaffolding.
 
-<pre>$ cd ~/ruby_projects
-$ newgem wizzo
-creating: wizzo
-creating: wizzo/CHANGELOG.txt
-creating: wizzo/README.txt
-creating: wizzo/lib
-creating: wizzo/script
-creating: wizzo/website
-creating: wizzo/website/javascripts
-creating: wizzo/website/stylesheets
-creating: wizzo/lib/wizzo
-creating: wizzo/lib/wizzo.rb
-creating: wizzo/lib/wizzo/version.rb
-creating: wizzo/bin
-creating: wizzo/test
-creating: wizzo/test/test_helper.rb
-creating: wizzo/test/test_wizzo.rb
-creating: wizzo/examples
-creating: wizzo/setup.rb
-creating: wizzo/Rakefile
-creating: wizzo/Manifest.txt
-creating: wizzo/History.txt
-creating: wizzo/script/generate
-creating: wizzo/script/txt2html
-creating: wizzo/website/index.txt
-creating: wizzo/website/template.html.erb
-copying: wizzo/website/javascripts/rounded_corners_lite.inc.js
-copying: wizzo/website/stylesheets/screen.css
-NOW - update wizzo/Rakefile with gem description, etc
-</pre>
+	cd ~/ruby_projects
+	$ newgem wizzo
+	creating: wizzo
+	creating: wizzo/CHANGELOG.txt
+	creating: wizzo/README.txt
+	creating: wizzo/lib
+	creating: wizzo/script
+	creating: wizzo/website
+	creating: wizzo/website/javascripts
+	creating: wizzo/website/stylesheets
+	creating: wizzo/lib/wizzo
+	creating: wizzo/lib/wizzo.rb
+	creating: wizzo/lib/wizzo/version.rb
+	creating: wizzo/bin
+	creating: wizzo/test
+	creating: wizzo/test/test_helper.rb
+	creating: wizzo/test/test_wizzo.rb
+	creating: wizzo/examples
+	creating: wizzo/setup.rb
+	creating: wizzo/Rakefile
+	creating: wizzo/Manifest.txt
+	creating: wizzo/History.txt
+	creating: wizzo/script/generate
+	creating: wizzo/script/txt2html
+	creating: wizzo/website/index.txt
+	creating: wizzo/website/template.html.erb
+	copying: wizzo/website/javascripts/rounded_corners_lite.inc.js
+	copying: wizzo/website/stylesheets/screen.css
+	NOW - update wizzo/Rakefile with gem description, etc
+
 
 As of 0.10.0 - you can generate test::unit or rspec test stubs via the -t, --test-with options
 
