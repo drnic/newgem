@@ -12,7 +12,7 @@ class NewgemGenerator < RubiGen::Base
                     :import_path => nil,
                     :jruby       => nil,
                     :disable_website => nil,
-                    :test_framework  => 'test::unit',
+                    :test_framework  => 'test_unit',
                     :version     => '0.0.1'
 
 
@@ -64,7 +64,7 @@ class NewgemGenerator < RubiGen::Base
 
       # Selecting a test framework
       case test_framework
-      when "test::unit"
+      when "test_unit"
         m.dependency "install_test_unit", [gem_name], :destination => destination_root, :collision => :force
       when "rspec"
         m.dependency "install_rspec", [gem_name], :destination => destination_root, :collision => :force
@@ -132,7 +132,7 @@ EOS
              "Default: #{DEFAULT_SHEBANG}") { |x| options[:shebang] = x }
       opts.on("-T", "--test-with=TEST_FRAMEWORK", String,
               "Select your preferred testing framework.",
-              "Options: test::unit (default), rspec.") { |x| options[:test_framework] = x }
+              "Options: test_unit (default), rspec.") { |x| options[:test_framework] = x }
       opts.on("-v", "--version", "Show the #{File.basename($0)} version number and quit.")
       opts.on("-V", "--set-version=YOUR_VERSION", String,
               "Version of the gem you are creating.",
@@ -157,7 +157,7 @@ EOS
       @bin_names_list    = (options[:bin_name] || "").split(',')
       @disable_website   = options[:disable_website]
 
-      @test_framework    = options[:test_framework] || "test::unit"
+      @test_framework    = options[:test_framework] || "test_unit"
       @is_jruby          = options[:jruby]
       @project_name      = options[:project] if options.include?(:project)
     end
