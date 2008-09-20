@@ -1,13 +1,13 @@
 require 'hoe'
 require 'newgem/version'
 
-AUTHOR        = "Dr Nic Williams"
-EMAIL         = "drnicwilliams@gmail.com"
-DESCRIPTION   = "Make your own gems at home"
-GEM_NAME      = "newgem" # what ppl will type to install your gem
+AUTHOR            = "Dr Nic Williams"
+EMAIL             = "drnicwilliams@gmail.com"
+DESCRIPTION       = "Make your own gems at home"
+GEM_NAME          = "newgem" # what ppl will type to install your gem
 RUBYFORGE_PROJECT = "newgem"
-HOMEPATH      = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
-DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
+HOMEPATH          = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
+DOWNLOAD_PATH     = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 
 @config_file = "~/.rubyforge/user-config.yml"
 @config = nil
@@ -47,7 +47,7 @@ hoe = Hoe.new(GEM_NAME, VERS) do |p|
   # == Optional
   p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
   p.extra_deps = [
-    ['RedCloth','=3.0.3'],
+    ['RedCloth','>=4.0.0'],
     ['syntax','>=1.0.0'],
     ['activesupport','>=2.0.2'],
     ['rubigen','>=1.3.0']

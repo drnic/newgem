@@ -49,7 +49,7 @@ class NewgemGenerator < RubiGen::Base
       m.directory "lib/#{gem_name}"
 
       # Root
-      m.template_copy_each %w( History.txt License.txt Rakefile README.rdoc PostInstall.txt )
+      m.template_copy_each %w( History.txt Rakefile README.rdoc PostInstall.txt )
       m.file_copy_each     %w( setup.rb )
 
       # Default module for app

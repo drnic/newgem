@@ -1,9 +1,12 @@
-== 0.26.0 2008-06-21 NOT RELEASED
+== 0.27.0 2008-09-20  NOT RELEASED YET
+
+* Remove License.txt as its contents are in README (newgem + generator)
+* RedCloth dependency - changed to new 4.0.0 version which is apparently new a shiny + fast
+
+== 0.26.0 2008-06-21 NEVER RELEASED
 
 * README.rdoc is the name of generated and internal README root files, since github makes them look pretty
 * RedCloth dependency - changed to =3.0.3 as 3.0.4 is dodgy apparently [Roger Pack]
-
-DO NOT RELEASE UNTIL HOE IS PATCHED
 
 == 0.25.0 2008-06-19
 

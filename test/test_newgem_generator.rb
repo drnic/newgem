@@ -21,7 +21,7 @@ class TestNewgemGenerator < Test::Unit::TestCase
     assert_directory_exists "tasks"
     assert_directory_exists "test"
 
-    %w[Rakefile README.rdoc History.txt License.txt Manifest.txt PostInstall.txt].each do |file|
+    %w[Rakefile README.rdoc History.txt Manifest.txt PostInstall.txt].each do |file|
       assert_generated_file(file)
     end
 
