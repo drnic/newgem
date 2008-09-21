@@ -1,5 +1,4 @@
 History.txt
-License.txt
 Manifest.txt
 PostInstall.txt
 README.rdoc
@@ -7,7 +6,6 @@ Rakefile
 Todo.txt
 app_generators/newgem/newgem_generator.rb
 app_generators/newgem/templates/History.txt
-app_generators/newgem/templates/License.txt
 app_generators/newgem/templates/PostInstall.txt
 app_generators/newgem/templates/README.rdoc
 app_generators/newgem/templates/Rakefile
