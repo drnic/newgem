@@ -2,6 +2,7 @@
 
 * Remove License.txt as its contents are in README (newgem + generator)
 * RedCloth dependency - changed to new 4.0.0 version which is apparently new a shiny + fast
+* Load RubyForge autoconfig correctly
 
 == 0.26.0 2008-06-21 NEVER RELEASED
 

@@ -21,7 +21,7 @@ version  = Newgem::VERSION::STRING
 download = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 
 def rubyforge_project_id
-  RubyForge.new.autoconfig["group_ids"][RUBYFORGE_PROJECT]
+  RubyForge.new.configure.autoconfig["group_ids"][RUBYFORGE_PROJECT]
 end
 
 class Fixnum
