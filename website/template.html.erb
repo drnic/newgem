@@ -24,6 +24,10 @@
       }
       var versionBox = new curvyCorners(settings, document.getElementById("version"));
       versionBox.applyCornersToAll();
+      
+      var twitterBox = new curvyCorners(settings, document.getElementById("twitter_search"));
+      twitterBox.applyCornersToAll();
+      
     }
   </script>
 </head>
@@ -31,11 +35,28 @@
 <div id="main">
 
     <h1><%= title %></h1>
-    <div id="version"> <!--  class="clickable" onclick='document.location = "<%= download %>"; return true' -->
-      <p>Get Version</p>
-      <a href="<%= download %>" class="numbers"><%= version %></a>
-      <p>Featured in</p>
-      <a  href="http://www.amazon.com/gp/redirect.html?ie=UTF8&location=http%3A%2F%2Fwww.amazon.com%2FBeginning-Ruby-Novice-Professional-Experts%2Fdp%2F1590597664%2F&tag=drnic-20&linkCode=ur2&camp=1789&creative=9325" class="book"><img src="images/beginning-ruby.jpg" /></a>
+    <div class="sidebar">
+    
+      <div id="version"> <!--  class="clickable" onclick='document.location = "<%= download %>"; return true' -->
+        <p>Get Version</p>
+        <a href="<%= download %>" class="numbers"><%= version %></a>
+        <p>Featured in</p>
+        <a  href="http://www.amazon.com/gp/redirect.html?ie=UTF8&location=http%3A%2F%2Fwww.amazon.com%2FBeginning-Ruby-Novice-Professional-Experts%2Fdp%2F1590597664%2F&tag=drnic-20&linkCode=ur2&camp=1789&creative=9325" class="book"><img src="images/beginning-ruby.jpg" /></a>
+      </div>
+      
+      <div id="twitter_search">
+        <h3>Heard on twitter ('newgem')...</h3>
+        <!-- HELP FILE -  http://twitterwidget.jazzychad.com/tw/ -->
+        <script language           = "javascript">
+        	var jtw_search            = 'newgem';
+        	var jtw_widget_background = 'B3ABFF';
+        	var jtw_widget_border     = '0';
+        	var jtw_tweet_textcolor   = 'fff';
+          var jtw_tweet_background  = '000';
+          var jtw_tweet_border      = '0px';
+        </script>
+        <script src="http://twitterwidget.jazzychad.com/tw/searchwidget.js" type="text/javascript"></script>
+      </div>
     </div>
     <%= body %>
     <p class="coda">

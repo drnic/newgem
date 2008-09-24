@@ -24,6 +24,10 @@
       }
       var versionBox = new curvyCorners(settings, document.getElementById("version"));
       versionBox.applyCornersToAll();
+      
+      var twitterBox = new curvyCorners(settings, document.getElementById("twitter_search"));
+      twitterBox.applyCornersToAll();
+      
     }
   </script>
 </head>
@@ -31,115 +35,75 @@
 <div id="main">
 
     <h1>New Gem Generator</h1>
-    <div id="version"> <!--  class="clickable" onclick='document.location = "http://rubyforge.org/projects/newgem"; return true' -->
-      <p>Get Version</p>
-      <a href="http://rubyforge.org/projects/newgem" class="numbers">0.26.0</a>
-      <p>Featured in</p>
-      <a  href="http://www.amazon.com/gp/redirect.html?ie=UTF8&location=http%3A%2F%2Fwww.amazon.com%2FBeginning-Ruby-Novice-Professional-Experts%2Fdp%2F1590597664%2F&tag=drnic-20&linkCode=ur2&camp=1789&creative=9325" class="book"><img src="images/beginning-ruby.jpg" /></a>
+    <div class="sidebar">
+    
+      <div id="version"> <!--  class="clickable" onclick='document.location = "http://rubyforge.org/projects/newgem"; return true' -->
+        <p>Get Version</p>
+        <a href="http://rubyforge.org/projects/newgem" class="numbers">0.27.0</a>
+        <p>Featured in</p>
+        <a  href="http://www.amazon.com/gp/redirect.html?ie=UTF8&location=http%3A%2F%2Fwww.amazon.com%2FBeginning-Ruby-Novice-Professional-Experts%2Fdp%2F1590597664%2F&tag=drnic-20&linkCode=ur2&camp=1789&creative=9325" class="book"><img src="images/beginning-ruby.jpg" /></a>
+      </div>
+      
+      <div id="twitter_search">
+        <h3>Heard on twitter ('newgem')...</h3>
+        <!-- HELP FILE -  http://twitterwidget.jazzychad.com/tw/ -->
+        <script language           = "javascript">
+        	var jtw_search            = 'newgem';
+        	var jtw_widget_background = 'B3ABFF';
+        	var jtw_widget_border     = '0';
+        	var jtw_tweet_textcolor   = 'fff';
+          var jtw_tweet_background  = '000';
+          var jtw_tweet_border      = '0px';
+        </script>
+        <script src="http://twitterwidget.jazzychad.com/tw/searchwidget.js" type="text/javascript"></script>
+      </div>
     </div>
-    <h1>&#x2192; using &#8216;rubyforge&#8217;</h1>
-
-
-	<p>The New Gem Generator makes it very easy for you to upload your gems to RubyForge, thanks to the integration of the <code>hoe</code> and <code>rubyforge</code> gems, by <a href="http://blog.zenspider.com/">Ryan Davis</a>.</p>
-
-
-	<p>This page describes how to setup the <em>rubyforge</em> application (lowercase rubyforge = the application), create new RubyForge projects (uppercase RubyForge = the website for hosting gems and homepages), and releasing your gems and their future versions to RubyForge using <em>rubyforge</em>.</p>
-
-
-	<h2>Get a RubyForge project.</h2>
-
-
-	<p>RubyForge is a great site for uploading gems, as the default settings of all RubyGems users is to look for new gems there. You can run your own gem server, but here we&#8217;ll assume you&#8217;re uploading to RubyForge.</p>
-
-
-	<p>Additionally, you can host more than one gem on each project. The Magic Models project hosts several gems, each with different versions.</p>
-
-
-	<p>To host your gems you&#8217;ll need a Project. Apply for it asap as it takes a day or so for the RubyForge admins to accept and generate your project.</p>
-
-
-	<p><strong>Note:</strong> the name of your project does not have to match the name of any of your gems.</p>
-
-
-	<h3>Setup access to RubyForge</h3>
-
-
-	<p>Your new gem will use the rubyforge app to upload your gem. So first we need to set it up.</p>
-
-
+    <h1>&amp;#x2192; using &#8216;rubyforge&#8217;</h1>
+<p>The New Gem Generator makes it very easy for you to upload your gems to RubyForge, thanks to the integration of the <code>hoe</code> and <code>rubyforge</code> gems, by <a href="http://blog.zenspider.com/">Ryan Davis</a>.</p>
+<p>This page describes how to setup the <em>rubyforge</em> application (lowercase rubyforge = the application), create new RubyForge projects (uppercase RubyForge = the website for hosting gems and homepages), and releasing your gems and their future versions to RubyForge using <em>rubyforge</em>.</p>
+<h2>Get a RubyForge project.</h2>
+<p>RubyForge is a great site for uploading gems, as the default settings of all RubyGems users is to look for new gems there. You can run your own gem server, but here we&#8217;ll assume you&#8217;re uploading to RubyForge.</p>
+<p>Additionally, you can host more than one gem on each project. The Magic Models project hosts several gems, each with different versions.</p>
+<p>To host your gems you&#8217;ll need a Project. Apply for it asap as it takes a day or so for the RubyForge admins to accept and generate your project.</p>
+<p><strong>Note:</strong> the name of your project does not have to match the name of any of your gems.</p>
+<h3>Setup access to RubyForge</h3>
+<p>Your new gem will use the rubyforge app to upload your gem. So first we need to set it up.</p>
 <pre>$ sudo gem install rubyforge
 $ rubyforge setup
 $ mate ~/.rubyforge/user-config.yml
 </pre>
-
-	<p>This creates a configuration folder <code>.rubyforge</code> in your home folder (on Windows it is <span class="caps">XXXXXX</span>). The last line is to edit the config file.</p>
-
-
-	<p>The only two lines to set are your RubyForge <strong>username</strong> and <strong>password</strong>. Ignore the rest.</p>
-
-
+<p>This creates a configuration folder <code>.rubyforge</code> in your home folder (on Windows it is XXXXXX). The last line is to edit the config file.</p>
+<p>The only two lines to set are your RubyForge <strong>username</strong> and <strong>password</strong>. Ignore the rest.</p>
 <pre>$ rubyforge config</pre>
-
-	<p>This generates a file <code>~/.rubyforge/auto-config.yml</code> which will be mostly empty now, but one day will be full of projects and all the releases of different versions of gems. One day soon I hope.</p>
-
-
-	<p>Just like the website, all other operations require you to login first.</p>
-
-
+<p>This generates a file <code>~/.rubyforge/auto-config.yml</code> which will be mostly empty now, but one day will be full of projects and all the releases of different versions of gems. One day soon I hope.</p>
+<p>Just like the website, all other operations require you to login first.</p>
 <pre>$ rubyforge login</pre>
-
-	<p>If this fails, check your user-config.yml files for problems with your username/password.</p>
-
-
-	<h3>Preparing for a new gem</h3>
-
-
-	<p>When you first release a new gem, you need to perform one more step.</p>
-
-
+<p>If this fails, check your user-config.yml files for problems with your username/password.</p>
+<h3>Preparing for a new gem</h3>
+<p>When you first release a new gem, you need to perform one more step.</p>
 <pre>$ rubyforge login
 $ rubyforge names
 </pre>
-
-	<p>This will return the name of your new Project, if you forgot it.</p>
-
-
+<p>This will return the name of your new Project, if you forgot it.</p>
 <pre>$ rubyforge create_package #project_name# #gem_name#
 </pre>
-
-	<p>Alternately, if you can&#8217;t get this to work, you can create the new package via the website.</p>
-
-
-	<ol>
+<p>Alternately, if you can&#8217;t get this to work, you can create the new package via the website.</p>
+<ol>
 	<li><a href="https://rubyforge.org/account/login.php">Login to RubyForge</a></li>
-		<li>Go to your project&#8217;s page</li>
-		<li>Click on <strong>Files</strong>.</li>
-		<li>Click on <strong>To create new release click here</strong>.</li>
-		<li>Click on <strong>Create a new package</strong>.</li>
-		<li>Go to the bottom of the page, to the form <strong>New Package Name</strong>.</li>
-		<li>Enter a package name, without spaces, and generally in all lowercase letters.</li>
-		<li>Click <strong>Create This Package</strong></li>
-	</ol>
-
-
-	<p>Now return to the console/terminal, and refresh your rubyforge config files using <code>rubyforge config</code>.</p>
-
-
-	<p>Check that the new package has been successfully added to your local config files using <code>rubyforge name</code>. The new package should appear in the list of package names.</p>
-
-
-	<h2>You are now ready to release gems!</h2>
-
-
-	<p><a href="index.html#setup_rubyforge">Return to releasing your gem</a></p>
-
-
-	<h2>rubyforge docco</h2>
-
-
-	<p>The best rubyforge command documentation is available via the application itself (see below) and the <a href="http://codeforpeople.rubyforge.org/rubyforge/">RDocs</a></p>
-
-
+	<li>Go to your project&#8217;s page</li>
+	<li>Click on <strong>Files</strong>.</li>
+	<li>Click on <strong>To create new release click here</strong>.</li>
+	<li>Click on <strong>Create a new package</strong>.</li>
+	<li>Go to the bottom of the page, to the form <strong>New Package Name</strong>.</li>
+	<li>Enter a package name, without spaces, and generally in all lowercase letters.</li>
+	<li>Click <strong>Create This Package</strong></li>
+</ol>
+<p>Now return to the console/terminal, and refresh your rubyforge config files using <code>rubyforge config</code>.</p>
+<p>Check that the new package has been successfully added to your local config files using <code>rubyforge name</code>. The new package should appear in the list of package names.</p>
+<h2>You are now ready to release gems!</h2>
+<p><a href="index.html#setup_rubyforge">Return to releasing your gem</a></p>
+<h2>rubyforge docco</h2>
+<p>The best rubyforge command documentation is available via the application itself (see below) and the <a href="http://codeforpeople.rubyforge.org/rubyforge/">RDocs</a></p>
 <pre>$ rubyforge help
 SYNOPSIS
 
@@ -186,7 +150,7 @@ MODES
 
     example :
       rubyforge create_package 1024 traits
-      rubyforge login &#38;&#38; rubyforge create_package codeforpeople.com traits
+      rubyforge login &amp;&amp; rubyforge create_package codeforpeople.com traits
 
   add_release(group_id, package_id, release_name, userfile)
     release a file as release_name under the specified group_id and
@@ -196,7 +160,7 @@ MODES
       rubyforge add_release codeforpeople.com traits 0.8.0 traits-0.8.0.gem
       rubyforge add_release codeforpeople.com traits 0.8.0 traits-0.8.0.tgz
       rubyforge add_release 1024 1242 0.8.0 traits-0.8.0.gem
-      rubyforge login &#38;&#38; rubyforge add_release 1024 1242 0.8.0 traits-0.8.0.gem
+      rubyforge login &amp;&amp; rubyforge add_release 1024 1242 0.8.0 traits-0.8.0.gem
 
   add_file(group_id, package_id, release_id, userfile)
     add a file to an existing release under the specified group_id,
