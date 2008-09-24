@@ -1,8 +1,9 @@
-== 0.27.0 2008-09-20  NOT RELEASED YET
+== 0.27.0 2008-09-20
 
 * Remove License.txt as its contents are in README (newgem + generator)
 * RedCloth dependency - changed to new 4.0.0 version which is apparently new a shiny + fast
 * Load RubyForge autoconfig correctly
+* Integrate twitter search for 'newgem' on website
 
 == 0.26.0 2008-06-21 NEVER RELEASED
 
