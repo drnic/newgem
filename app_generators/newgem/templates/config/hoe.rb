@@ -55,23 +55,23 @@ end
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
 $hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.developer(AUTHOR, EMAIL)
-  p.description = DESCRIPTION
-  p.summary = DESCRIPTION
-  p.url = HOMEPATH
+  p.description    = DESCRIPTION
+  p.summary        = DESCRIPTION
+  p.url            = HOMEPATH
   p.rubyforge_name = RUBYFORGE_PROJECT if RUBYFORGE_PROJECT
-  p.test_globs = ["test/**/test_*.rb"]
+  p.test_globs     = ["test/**/test_*.rb"]
   p.clean_globs |= ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']  #An array of file patterns to delete on clean.
 
   # == Optional
-  p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
-  #p.extra_deps = EXTRA_DEPENDENCIES
-  #p.extra_dev_deps = EXTRA_DEV_DEPENDENCIES
+  p.changes        = p.paragraphs_of("History.txt", 0..1).join("\n\n")
+  p.extra_deps     = EXTRA_DEPENDENCIES
+  p.extra_dev_deps = EXTRA_DEV_DEPENDENCIES
 
   <% if is_jruby -%>
   # JRuby gem created, e.g. <%= gem_name %>-X.Y.Z-jruby.gem
   p.spec_extras = { :platform => 'jruby' }    # A hash of extra values to set in the gemspec.
   <% else -%>
-  #p.spec_extras = {}    # A hash of extra values to set in the gemspec.
+  p.spec_extras = {}    # A hash of extra values to set in the gemspec.
   <% end -%>
 end
 
