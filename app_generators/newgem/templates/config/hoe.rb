@@ -10,6 +10,9 @@ DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 EXTRA_DEPENDENCIES = [
 #  ['activesupport', '>= 1.3.1']
 ]    # An array of rubygem dependencies [name, version]
+EXTRA_DEV_DEPENDENCIES = [
+#  ['rspec', '>= 1.1.5']
+]    # An array of rubygem dependencies [name, version]
 
 @config_file = "~/.rubyforge/user-config.yml"
 @config = nil
@@ -62,6 +65,7 @@ $hoe = Hoe.new(GEM_NAME, VERS) do |p|
   # == Optional
   p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
   #p.extra_deps = EXTRA_DEPENDENCIES
+  #p.extra_dev_deps = EXTRA_DEV_DEPENDENCIES
 
   <% if is_jruby -%>
   # JRuby gem created, e.g. <%= gem_name %>-X.Y.Z-jruby.gem
