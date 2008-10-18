@@ -1,7 +1,9 @@
 require File.dirname(__FILE__) + "/../../lib/newgem"
 
-gem 'cucumber'
+require 'cucumber'
 
+require "fileutils"
+require "spec"
 
 # Following lines from original Rails cucumber generator. 
 # Not sure how to translate/reuse etc yet.
