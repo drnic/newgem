@@ -70,6 +70,10 @@ rubygems_generators/extconf/templates/ext/extconf.rb.erb
 rubygems_generators/extconf/templates/tasks/extconf.rake
 rubygems_generators/extconf/templates/tasks/extconf_name.rake
 rubygems_generators/extconf/templates/test/test.rb.erb
+rubygems_generators/install_cucumber/install_cucumber_generator.rb
+rubygems_generators/install_cucumber/templates/cucumber
+rubygems_generators/install_cucumber/templates/cucumber.rake
+rubygems_generators/install_cucumber/templates/env.rb
 rubygems_generators/install_jruby/USAGE
 rubygems_generators/install_jruby/install_jruby_generator.rb
 rubygems_generators/install_jruby/templates/tasks/jruby.rake
@@ -105,6 +109,7 @@ test/test_executable_generator.rb
 test/test_extconf_generator.rb
 test/test_generator_helper.rb
 test/test_helper.rb
+test/test_install_cucumber_generator.rb
 test/test_install_jruby_generator.rb
 test/test_install_rspec_generator.rb
 test/test_install_rspec_stories_generator.rb

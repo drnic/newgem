@@ -4,12 +4,20 @@ require 'rbconfig'
 class InstallCucumberGenerator < RubiGen::Base
   DEFAULT_SHEBANG = File.join(Config::CONFIG['bindir'],
                               Config::CONFIG['ruby_install_name'])
+
+  attr_reader :project_name
+  
+  def initialize(runtime_args, runtime_options = {})
+    super
+    @project_name = File.basename(destination_root)
+  end
+
   def manifest
     record do |m|
       script_options     = { :chmod => 0755, :shebang => options[:shebang] == DEFAULT_SHEBANG ? nil : options[:shebang] }
 
       m.directory 'features/steps'
-      m.file      'env.rb', 'features/steps/env.rb'
+      m.template  'env.rb', 'features/steps/env.rb'
 
       m.directory 'tasks'
       m.file      'cucumber.rake', 'tasks/cucumber.rake'

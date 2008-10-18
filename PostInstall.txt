@@ -20,7 +20,7 @@ Whenever you create a new RubyForge.org project, re-run:
 
 Did you know you have script/generate generators?
   application_generator, component_generator, executable,
-  extconf, install_jruby, install_rspec, install_rspec_stories,
+  extconf, install_cucumber, install_jruby, install_rspec,
   install_website, test_unit
 
 Have fun making RubyGems!
