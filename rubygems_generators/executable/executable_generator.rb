@@ -25,7 +25,7 @@ class ExecutableGenerator < RubiGen::Base
       m.directory "bin"
 
       # App stub
-      m.template "app.rb",         "bin/#{bin_name}"
+      m.template "bin/app.rb.erb", "bin/#{bin_name}"
     end
   end
 

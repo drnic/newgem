@@ -16,3 +16,19 @@ require "spec"
 # 
 # # Comment out the next line if you're not using RSpec's matchers (should / should_not) in your steps.
 # require 'cucumber/rails/rspec'
+
+# code from test/test_generator_helper.rb
+TMP_ROOT = File.dirname(__FILE__) + "/tmp" unless defined?(TMP_ROOT)
+
+begin
+  require 'rubigen'
+rescue LoadError
+  require 'rubygems'
+  require 'rubigen'
+end
+require 'rubigen/helpers/generator_test_helper'
+include RubiGen::GeneratorTestHelper
+
+SOURCES = Dir[File.dirname(__FILE__) + "/../../*_generators"].map do |f|
+  RubiGen::PathSource.new(:test, File.expand_path(f))
+end
