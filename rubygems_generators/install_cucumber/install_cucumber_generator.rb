@@ -9,7 +9,7 @@ class InstallCucumberGenerator < RubiGen::Base
   
   def initialize(runtime_args, runtime_options = {})
     super
-    @project_name = File.basename(destination_root)
+    @project_name = File.basename(File.expand_path(destination_root))
   end
 
   def manifest

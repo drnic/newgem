@@ -39,6 +39,7 @@ cucumber_generators/feature/USAGE
 cucumber_generators/feature/feature_generator.rb
 cucumber_generators/feature/templates/feature.erb
 cucumber_generators/feature/templates/steps.erb
+features/steps/env.rb
 lib/newgem.rb
 lib/newgem/quick_template.rb
 lib/newgem/rubyforge.rb
@@ -75,7 +76,6 @@ rubygems_generators/extconf/templates/tasks/extconf.rake
 rubygems_generators/extconf/templates/tasks/extconf_name.rake
 rubygems_generators/extconf/templates/test/test.rb.erb
 rubygems_generators/install_cucumber/install_cucumber_generator.rb
-rubygems_generators/install_cucumber/templates/cucumber
 rubygems_generators/install_cucumber/templates/cucumber.rake
 rubygems_generators/install_cucumber/templates/env.rb
 rubygems_generators/install_jruby/USAGE
@@ -103,6 +103,7 @@ script/txt2html.rb
 script/txt2js
 setup.rb
 tasks/bundles.rake
+tasks/cucumber.rake
 tasks/deployment.rake
 tasks/environment.rake
 tasks/generator_report.rake
