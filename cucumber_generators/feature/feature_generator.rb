@@ -3,6 +3,7 @@ class FeatureGenerator < RubiGen::Base
   
   def initialize(runtime_args, runtime_options = {})
     super
+    usage if args.empty?
     @name          = args.shift
     @plural_name   = @name.pluralize
     @singular_name = @name.singularize
@@ -20,7 +21,7 @@ class FeatureGenerator < RubiGen::Base
 protected
 
   def banner
-    "Usage: #{$0} cucumber"
+    "Usage: #{$0} feature ModelName [feature1] [feature2]"
   end
 
 end
