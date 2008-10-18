@@ -8,5 +8,6 @@ Feature: Can run create RubyGem scaffolds
     Given a safe folder
     When newgem is executed for project 'my_project'
     Then folder 'my_project' is created
-    Then file 'my_project/Rakefile' is created
+    And file 'my_project/Rakefile' is created
+    And output matches 'newgem.out'
   

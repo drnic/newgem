@@ -23,3 +23,9 @@ Then /^file '(.*)' is created$/ do |file|
     File.exists?(file).should be_true
   end
 end
+
+Then /^output matches '(.*)'$/ do |file|
+  expected_output = File.read(File.join(File.dirname(__FILE__) + "/../expected_outputs", file))
+  actual_output = File.read(File.dirname(__FILE__) + "/../../tmp/newgem.out")
+  actual_output.should == expected_output
+end
