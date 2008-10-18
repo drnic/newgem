@@ -5,9 +5,9 @@ class FeatureGenerator < RubiGen::Base
     super
     usage if args.empty?
     @name          = args.shift
-    @plural_name   = @name.pluralize
-    @singular_name = @name.singularize
-    @class_name    = @name.classify
+    @plural_name   = @name.pluralize.underscore
+    @singular_name = @name.singularize.underscore
+    @class_name    = @name.singularize.classify
   end
 
   def manifest
