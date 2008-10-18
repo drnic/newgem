@@ -40,6 +40,13 @@ When %r{^'(.*)' generator is invoked with arguments '(.*)'$} do |generator, argu
   end
 end
 
+When /^run executable '(.*)' with arguments '(.*)'$/ do |executable, arguments|
+  FileUtils.chdir(@safe_folder) do
+    @executable_stdout = "#{File.basename(executable)}.out"
+    system "ruby #{executable} #{arguments} > #{@executable_stdout}"
+  end
+end
+
 Then %r{^folder '(.*)' is created$} do |folder|
   FileUtils.chdir @safe_folder do
     File.exists?(folder).should be_true
@@ -67,4 +74,11 @@ Then %r{^does not invoke generator '(.*)'$} do |generator|
   actual_output = File.read(File.dirname(__FILE__) + "/../../tmp/#{@newgem_stdout}")
   actual_output.should_not match(/dependency\s+#{generator}/)
 end
+
+Then /^help options '(.*)' and '(.*)' are displayed$/ do |opt1, opt2|
+  actual_output = File.read(File.dirname(__FILE__) + "/../../tmp/#{@executable_stdout}")
+  actual_output.should match(/#{opt1}/)
+  actual_output.should match(/#{opt2}/)
+end
+
 
