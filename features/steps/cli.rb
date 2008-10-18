@@ -29,3 +29,8 @@ Then /^output matches '(.*)'$/ do |file|
   actual_output = File.read(File.dirname(__FILE__) + "/../../tmp/newgem.out")
   actual_output.should == expected_output
 end
+
+Then /^invokes generator '(.*)'$/ do |generator|
+  actual_output = File.read(File.dirname(__FILE__) + "/../../tmp/newgem.out")
+  actual_output.should match(/dependency\s+#{generator}/)
+end
