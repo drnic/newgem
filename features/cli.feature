@@ -20,3 +20,9 @@ Feature: Can run create RubyGem scaffolds
     Then folder 'my_rspec_project' is created
     And invokes generator 'install_rspec'
 
+  Scenario: Run newgem to disable website
+    Given a safe folder
+    When newgem is executed for project 'my_project' with options '-W'
+    Then folder 'my_project' is created
+    And does not invoke generator 'install_website'
+

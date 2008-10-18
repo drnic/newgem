@@ -42,3 +42,8 @@ Then /^invokes generator '(.*)'$/ do |generator|
   actual_output = File.read(File.dirname(__FILE__) + "/../../tmp/newgem.out")
   actual_output.should match(/dependency\s+#{generator}/)
 end
+
+Then /^does not invoke generator '(.*)'$/ do |generator|
+  actual_output = File.read(File.dirname(__FILE__) + "/../../tmp/newgem.out")
+  actual_output.should_not match(/dependency\s+#{generator}/)
+end
