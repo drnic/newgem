@@ -4,11 +4,19 @@ Given /^a safe folder$/ do
   FileUtils.mkdir_p @safe_folder
 end
 
-When /^newgem is executed for project '(.*)'$/ do |project_name|
+When /^newgem is executed for project '(.*)' with no options$/ do |project_name|
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
   FileUtils.chdir @safe_folder do
     newgem_stdout = "newgem.out"
     system "ruby #{newgem} #{project_name} > #{newgem_stdout}"
+  end
+end
+
+When /^newgem is executed for project '(.*)' with options '(.*)'$/ do |project_name, arguments|
+  newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
+  FileUtils.chdir @safe_folder do
+    newgem_stdout = "newgem.out"
+    system "ruby #{newgem} #{arguments} #{project_name} > #{newgem_stdout}"
   end
 end
 
