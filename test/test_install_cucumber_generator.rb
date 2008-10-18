@@ -33,8 +33,6 @@ class TestInstallCucumberGenerator < Test::Unit::TestCase
     end
     assert_directory_exists("tasks")
     assert_generated_file("tasks/cucumber.rake")
-    assert_directory_exists("script")
-    assert_generated_file("script/cucumber")
   end
   
   private

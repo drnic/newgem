@@ -21,9 +21,6 @@ class InstallCucumberGenerator < RubiGen::Base
 
       m.directory 'tasks'
       m.file      'cucumber.rake', 'tasks/cucumber.rake'
-      
-      m.directory 'script'
-      m.file      'cucumber',      'script/cucumber',        script_options
     end
   end
 
