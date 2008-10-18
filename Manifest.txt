@@ -35,6 +35,10 @@ bundles/RubyGem.tmbundle/Snippets/History header.tmSnippet
 bundles/RubyGem.tmbundle/Syntaxes/Rdoc.tmLanguage
 bundles/RubyGem.tmbundle/info.plist
 config/hoe.rb
+cucumber_generators/feature/USAGE
+cucumber_generators/feature/feature_generator.rb
+cucumber_generators/feature/templates/feature.erb
+cucumber_generators/feature/templates/steps.erb
 lib/newgem.rb
 lib/newgem/quick_template.rb
 lib/newgem/rubyforge.rb
@@ -107,6 +111,7 @@ test/fixtures/home/.rubyforge/auto-config.yml
 test/fixtures/home/.rubyforge/user-config.yml
 test/test_executable_generator.rb
 test/test_extconf_generator.rb
+test/test_feature_generator.rb
 test/test_generator_helper.rb
 test/test_helper.rb
 test/test_install_cucumber_generator.rb
