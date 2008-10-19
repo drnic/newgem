@@ -39,7 +39,12 @@ cucumber_generators/feature/USAGE
 cucumber_generators/feature/feature_generator.rb
 cucumber_generators/feature/templates/feature.erb
 cucumber_generators/feature/templates/steps.erb
+features/cli.feature
+features/executable_generator.feature
+features/expected_outputs/newgem.out
+features/steps/cli.rb
 features/steps/env.rb
+features/steps/executable_generator.rb
 lib/newgem.rb
 lib/newgem/quick_template.rb
 lib/newgem/rubyforge.rb
@@ -65,7 +70,9 @@ newgem_theme_generators/plain_theme/templates/website/stylesheets/screen.css
 newgem_theme_generators/plain_theme/templates/website/template.html.erb
 rubygems_generators/executable/USAGE
 rubygems_generators/executable/executable_generator.rb
-rubygems_generators/executable/templates/app.rb
+rubygems_generators/executable/templates/bin/app.rb.erb
+rubygems_generators/executable/templates/lib/app/cli.rb.erb
+rubygems_generators/executable/templates/test/test_cli.rb.erb
 rubygems_generators/extconf/USAGE
 rubygems_generators/extconf/extconf_generator.rb
 rubygems_generators/extconf/templates/README.txt
