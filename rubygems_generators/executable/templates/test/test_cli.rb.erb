@@ -1,0 +1,8 @@
+require File.join(File.dirname(__FILE__), "test_helper.rb")
+require '<%= bin_name %>/cli'
+
+class Test<%= module_name %>Cli < Test::Unit::TestCase
+  def test_execute
+    # <%= module_name %>::CLI.execute
+  end
+end
