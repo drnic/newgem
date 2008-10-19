@@ -1,4 +1,7 @@
-== 0.29.0 2008-10-18 NOT RELEASED
+
+* Removed install_rspec_stories which was superceded by install_cucumber
+
+== 0.29.0 2008-10-18
 
 * execute generator uses a lib/appname/cli.rb file
 * basic feature descriptions for newgem and executable generators
