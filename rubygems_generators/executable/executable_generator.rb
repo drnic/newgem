@@ -5,12 +5,14 @@ class ExecutableGenerator < RubiGen::Base
   default_options :shebang => DEFAULT_SHEBANG,
                   :author => nil
 
-  attr_reader :bin_name, :author
+  attr_reader :bin_name, :module_name, :project_name, :author
 
   def initialize(runtime_args, runtime_options = {})
     super
     usage if args.empty?
     @bin_name     = args.shift
+    @module_name  = @bin_name.classify
+    @project_name = File.basename(File.expand_path(destination_root))
     extract_options
   end
 
@@ -23,9 +25,13 @@ class ExecutableGenerator < RubiGen::Base
     record do |m|
       # Ensure bin folder exists
       m.directory "bin"
+      m.directory "lib/#{bin_name}"
+      m.directory "test"
 
       # App stub
       m.template "bin/app.rb.erb", "bin/#{bin_name}"
+      m.template "lib/app/cli.rb.erb", "lib/#{bin_name}/cli.rb"
+      m.template "test/test_cli.rb.erb", "test/test_#{bin_name}_cli.rb"
     end
   end
 

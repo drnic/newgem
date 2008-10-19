@@ -34,13 +34,12 @@ end
 
 When %r{^'(.*)' generator is invoked with arguments '(.*)'$} do |generator, arguments|
   FileUtils.chdir(File.join($tmp_root, @project_name)) do
-    @stdout = "#{generator}.out"
     if Object.const_defined?("APP_ROOT")
       APP_ROOT.replace(FileUtils.pwd)
     else 
       APP_ROOT = FileUtils.pwd
     end
-    run_generator(generator, arguments.split(' '), SOURCES) # TODO pipe to @stdout
+    run_generator(generator, arguments.split(' '), SOURCES)
   end
 end
 
@@ -48,6 +47,13 @@ When /^run executable '(.*)' with arguments '(.*)'$/ do |executable, arguments|
   FileUtils.chdir($tmp_root) do
     @stdout = "#{File.basename(executable)}.out"
     system "ruby #{executable} #{arguments} > #{@stdout}"
+  end
+end
+
+When /^run unit tests for test file '(.*)'$/ do |test_file|
+  @test_stdout = File.expand_path(File.join($tmp_root, "tests.out"))
+  FileUtils.chdir(File.join($tmp_root, @project_name)) do
+    system "ruby #{test_file} > #{@test_stdout}"
   end
 end
 
@@ -88,4 +94,10 @@ end
 Then /^output matches \/(.*)\/$/ do |regex|
   actual_output = File.read(File.dirname(__FILE__) + "/../../tmp/#{@stdout}")
   actual_output.should match(/#{regex}/)
+end
+
+Then /^all (\d+) tests pass$/ do |expected_test_count|
+  expected = %r{^#{expected_test_count} tests, \d+ assertions, 0 failures, 0 errors}
+  actual_output = File.read(@test_stdout)
+  actual_output.should match(expected)
 end
