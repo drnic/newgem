@@ -1,4 +1,4 @@
-Given %r{^a safe folder$} do
+Given %r{^a safe folder} do
   $tmp_root = File.dirname(__FILE__) + "/../../tmp"
   FileUtils.rm_rf   $tmp_root
   FileUtils.mkdir_p $tmp_root
@@ -58,13 +58,13 @@ When /^run unit tests for test file '(.*)'$/ do |test_file|
   end
 end
 
-Then %r{^folder '(.*)' is created$} do |folder|
+Then %r{^folder '(.*)' is created} do |folder|
   FileUtils.chdir $tmp_root do
     File.exists?(folder).should be_true
   end
 end
 
-Then %r{^file '(.*)' is created$} do |file|
+Then %r{^file '(.*)' is created} do |file|
   FileUtils.chdir $tmp_root do
     File.exists?(file).should be_true
   end
