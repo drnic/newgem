@@ -75,27 +75,25 @@ $ newgem wizzo
       create  config
       create  doc
       create  lib
-      create  log
       create  script
       create  tasks
-      create  test
-      create  tmp
       create  lib/wizzo
       create  History.txt
-      create  License.txt
       create  Rakefile
-      create  README.txt
+      create  README.rdoc
+      create  PostInstall.txt
       create  setup.rb
       create  lib/wizzo.rb
       create  lib/wizzo/version.rb
       create  config/hoe.rb
       create  config/requirements.rb
-      create  log/debug.log
       create  tasks/deployment.rake
       create  tasks/environment.rake
       create  tasks/website.rake
-      create  test/test_helper.rb
-      create  test/test_wizzo.rb
+  dependency  install_test_unit
+      create    test
+      create    test/test_helper.rb
+      create    test/test_wizzo.rb
   dependency  install_website
       create    website/javascripts
       create    website/stylesheets
@@ -115,14 +113,14 @@ $ newgem wizzo
       exists    script
       create    script/generate
       create    script/destroy
+      create  script/console
       create  Manifest.txt
       readme  readme
 Important
 =========
 
 * Open config/hoe.rb
-* Update missing details (gem description, dependent gems, etc.)
-</pre>
+* Update missing details (gem description, dependent gems, etc.)</pre>
 <p>As of 0.10.0 &#8211; you can generate test::unit or rspec test stubs via the <code>-T</code> or <code>--test-with</code> options. For example, <code>-T rspec</code> generates a <code>spec</code> folder with some test stubs.</p>
 <h3>Setup</h3>
 <p>Now modify the constants at the top of <strong>config/hoe.rb</strong>, with your name, email and the location where you&#8217;ll host your website for the gem. The defaults are tied to RubyForge for uploading the gems and the website (see below).</p>
@@ -225,7 +223,7 @@ rake install_gem</pre>
 <h2>Contact</h2>
 <p>Comments are welcome. Send an email to <a href="mailto:drnicwilliams@gmail.com">Dr Nic Williams</a>.</p>
     <p class="coda">
-      <a href="mailto:drnicwilliams@gmail.com">Dr Nic</a>, 23rd September 2008<br>
+      <a href="mailto:drnicwilliams@gmail.com">Dr Nic</a>, 19th October 2008<br>
       Theme extended from <a href="http://rb2js.rubyforge.org/">Paul Battley</a>
     </p>
 </div>

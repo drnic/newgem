@@ -15,37 +15,59 @@ Within this gem, you get one thing - <code>newgem</code> - an executable to crea
 Go to the folder where you want to create your new gem folder structure, and run the <code>newgem</code> command to generate your gem scaffolding.
 
 	cd ~/ruby_projects
-	$ newgem wizzo
-	creating: wizzo
-	creating: wizzo/CHANGELOG.txt
-	creating: wizzo/README.txt
-	creating: wizzo/lib
-	creating: wizzo/script
-	creating: wizzo/website
-	creating: wizzo/website/javascripts
-	creating: wizzo/website/stylesheets
-	creating: wizzo/lib/wizzo
-	creating: wizzo/lib/wizzo.rb
-	creating: wizzo/lib/wizzo/version.rb
-	creating: wizzo/bin
-	creating: wizzo/test
-	creating: wizzo/test/test_helper.rb
-	creating: wizzo/test/test_wizzo.rb
-	creating: wizzo/examples
-	creating: wizzo/setup.rb
-	creating: wizzo/Rakefile
-	creating: wizzo/Manifest.txt
-	creating: wizzo/History.txt
-	creating: wizzo/script/generate
-	creating: wizzo/script/txt2html
-	creating: wizzo/website/index.txt
-	creating: wizzo/website/template.html.erb
-	copying: wizzo/website/javascripts/rounded_corners_lite.inc.js
-	copying: wizzo/website/stylesheets/screen.css
-	NOW - update wizzo/Rakefile with gem description, etc
+  ~/gems/newgem(master) $ newgem wizzo
+        create  
+        create  config
+        create  doc
+        create  lib
+        create  script
+        create  tasks
+        create  lib/wizzo
+        create  History.txt
+        create  Rakefile
+        create  README.rdoc
+        create  PostInstall.txt
+        create  setup.rb
+        create  lib/wizzo.rb
+        create  lib/wizzo/version.rb
+        create  config/hoe.rb
+        create  config/requirements.rb
+        create  tasks/deployment.rake
+        create  tasks/environment.rake
+        create  tasks/website.rake
+    dependency  install_test_unit
+        create    test
+        create    test/test_helper.rb
+        create    test/test_wizzo.rb
+    dependency  install_website
+        create    website/javascripts
+        create    website/stylesheets
+        exists    script
+        exists    tasks
+        create    website/index.txt
+        create    website/index.html
+        create    script/txt2html
+         force    tasks/website.rake
+    dependency    plain_theme
+        exists      website/javascripts
+        exists      website/stylesheets
+        create      website/template.html.erb
+        create      website/stylesheets/screen.css
+        create      website/javascripts/rounded_corners_lite.inc.js
+    dependency  install_rubigen_scripts
+        exists    script
+        create    script/generate
+        create    script/destroy
+        create  script/console
+        create  Manifest.txt
+        readme  readme
+  Important
+  =========
 
+  * Open config/hoe.rb
+  * Update missing details (gem description, dependent gems, etc.)
 
-As of 0.10.0 - you can generate test::unit or rspec test stubs via the -t, --test-with options
+You can generate test::unit or rspec test stubs via the -T, --test-with options (shoulda coming soon)
 
 == SYNOPSIS:
 
@@ -60,7 +82,7 @@ Now modify the constants at the top of *config/hoe.rb*, with your name, email an
 
 The <code>newgem</code> application is distributed itself as a RubyGem and is available immediately after installation.
 
-<pre syntax="ruby">sudo gem install newgem</pre>
+  sudo gem install newgem
 
 Alternately, download the gem and install manually.
 

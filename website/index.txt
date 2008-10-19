@@ -28,27 +28,25 @@ $ newgem wizzo
       create  config
       create  doc
       create  lib
-      create  log
       create  script
       create  tasks
-      create  test
-      create  tmp
       create  lib/wizzo
       create  History.txt
-      create  License.txt
       create  Rakefile
-      create  README.txt
+      create  README.rdoc
+      create  PostInstall.txt
       create  setup.rb
       create  lib/wizzo.rb
       create  lib/wizzo/version.rb
       create  config/hoe.rb
       create  config/requirements.rb
-      create  log/debug.log
       create  tasks/deployment.rake
       create  tasks/environment.rake
       create  tasks/website.rake
-      create  test/test_helper.rb
-      create  test/test_wizzo.rb
+  dependency  install_test_unit
+      create    test
+      create    test/test_helper.rb
+      create    test/test_wizzo.rb
   dependency  install_website
       create    website/javascripts
       create    website/stylesheets
@@ -68,16 +66,16 @@ $ newgem wizzo
       exists    script
       create    script/generate
       create    script/destroy
+      create  script/console
       create  Manifest.txt
       readme  readme
 Important
 =========
 
 * Open config/hoe.rb
-* Update missing details (gem description, dependent gems, etc.)
-</pre>
+* Update missing details (gem description, dependent gems, etc.)</pre>
 
-As of 0.10.0 - you can generate test::unit or rspec test stubs via the <code>-T</code> or <code>--test-with</code> options. For example, <code>-T rspec</code> generates a <code>spec</code> folder with some test stubs.
+You can generate test::unit or rspec test stubs via the <code>-T</code> or <code>--test-with</code> options. For example, <code>-T rspec</code> generates a <code>spec</code> folder with some test stubs.
 
 h3. Setup
 
