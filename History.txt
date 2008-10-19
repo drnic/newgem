@@ -1,4 +1,5 @@
 
+* install_website: uses a config/website.yml for username/host/remote_dir (defaults to rubyforge)
 * Removed install_rspec_stories which was superceded by install_cucumber
 
 == 0.29.0 2008-10-18
