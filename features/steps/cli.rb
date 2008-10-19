@@ -121,3 +121,10 @@ Then /^all (\d+) tests pass$/ do |expected_test_count|
   actual_output = File.read(@test_stdout)
   actual_output.should match(expected)
 end
+
+Then /^yaml file '(.*)' contains (\{.*\})/ do |file, yaml|
+  FileUtils.chdir $tmp_root do
+    yaml = eval yaml
+    yaml.should == YAML.load(File.read(file))
+  end
+end

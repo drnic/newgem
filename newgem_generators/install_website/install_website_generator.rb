@@ -30,19 +30,22 @@ class InstallWebsiteGenerator < RubiGen::Base
       # Ensure appropriate folder(s) exists
       m.directory 'website/javascripts'
       m.directory 'website/stylesheets'
+      m.directory 'config'
       m.directory 'script'
       m.directory 'tasks'
 
       # Website
       m.template_copy_each %w( index.txt index.html ), "website"
 
+      m.template_copy_each %w[ website.yml ], "config"
+
+      m.file_copy_each %w[ website.rake ], "tasks"
+
       %w( txt2html ).each do |file|
         m.template "script/#{file}",        "script/#{file}", script_options
         m.template "script/win_script.cmd", "script/#{file}.cmd",
           :assigns => { :filename => file } if windows
       end
-
-      m.file_copy_each %w[ website.rake ], "tasks"
 
       m.dependency theme, [], :destination => destination_root
     end

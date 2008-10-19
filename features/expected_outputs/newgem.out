@@ -24,12 +24,14 @@
   dependency  install_website
       create    website/javascripts
       create    website/stylesheets
+      exists    config
       exists    script
       exists    tasks
       create    website/index.txt
       create    website/index.html
-      create    script/txt2html
+      create    config/website.yml
        force    tasks/website.rake
+      create    script/txt2html
   dependency    plain_theme
       exists      website/javascripts
       exists      website/stylesheets
