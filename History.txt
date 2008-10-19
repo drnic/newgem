@@ -1,3 +1,8 @@
+== 0.29.0 2008-10-18 NOT RELEASED
+
+* execute generator uses a lib/appname/cli.rb file
+* basic feature descriptions for newgem and executable generators
+
 == 0.28.0 2008-10-17
 
 * Cucumber support: install_cucumber generator, and features generator for cucumber scope
