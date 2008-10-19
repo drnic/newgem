@@ -141,7 +141,6 @@ h3. Setup your environment to upload to RubyForge.
 
 There are several steps you need to perform initially to "setup your environment for uploading gems to RubyForge":rubyforge.html.
 
-
 h3. Document changes in History.txt
 
 Between each version of your gem, you probably changed something. You should document this in the <code>History.txt</code> file. For each new release, you need to add two paragraphs that look like this:
@@ -159,15 +158,30 @@ The two paragraphs will be automatically picked up by the following release proc
 
 The History.txt notes for your first release have already been started for you.
 
-h3. Release the gem and upload the website and rdocs
+h3. Release the website (optional)
 
-Run <code>rake deploy VERSION=X.Y.Z</code> after you've done all these steps. It does the following:
+By default, <code>newgem</code> installs a one-page website to promote your RubyGem. (You can disable this 
+with the -W option). Once you have changed the gem version number, you can push the latest
+website to rubyforge (or any target host) with a rake task.
 
-# Uploads your website to rubyforge
-# Uploads your rdocs to rubyforge
-# Packages and uploads your gem to RubyForge
+Check the file <code>config/website.yml</code> and give it your rubyforge username if necessary. Also, 
+if you want to put your website on a different host than rubyforge.org you can change the 
+<code>username@host</code> and <code>/path/to/www</code> in this file.
 
-It can take an hour or two before new gem releases are available via the gem installer. But when they are ready, everyone will be able to download and install your gem using:
+Then rsync the website files with:
+
+<pre>rake website</pre>
+
+This will also generate RDocs and put them in the <code>doc</code> subfolder. Perhaps link to it in your
+website.
+
+h3. Release the gem
+
+Run <code>rake release VERSION=X.Y.Z</code> after you've done all these steps. It packages 
+and uploads your gem to RubyForge.
+
+It can take 20 minutes to an hour before new gem releases are available via the gem installer. 
+But when they are ready, everyone will be able to download and install your gem using:
 
 <pre>sudo gem install #gem_name#</pre>
 
