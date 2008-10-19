@@ -39,7 +39,7 @@ task :publish_docs => [:clean, :docs] do
   local_dir  = 'doc'
   host       = website_config["host"]
   host       = host ? "#{host}:" : ""
-  remote_dir = website_config["remote_dir"]
+  remote_dir = File.join(website_config["remote_dir"], "doc")
   sh %{rsync -aCv #{local_dir}/ #{host}#{remote_dir}}
 end
 
