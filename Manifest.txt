@@ -44,7 +44,6 @@ features/executable_generator.feature
 features/expected_outputs/newgem.out
 features/steps/cli.rb
 features/steps/env.rb
-features/steps/executable_generator.rb
 lib/newgem.rb
 lib/newgem/quick_template.rb
 lib/newgem/rubyforge.rb
@@ -94,11 +93,6 @@ rubygems_generators/install_rspec/templates/spec.rb
 rubygems_generators/install_rspec/templates/spec/spec.opts
 rubygems_generators/install_rspec/templates/spec/spec_helper.rb
 rubygems_generators/install_rspec/templates/tasks/rspec.rake
-rubygems_generators/install_rspec_stories/USAGE
-rubygems_generators/install_rspec_stories/install_rspec_stories_generator.rb
-rubygems_generators/install_rspec_stories/templates/all.rb
-rubygems_generators/install_rspec_stories/templates/steps.rb
-rubygems_generators/install_rspec_stories/templates/story.story
 rubygems_generators/install_test_unit/USAGE
 rubygems_generators/install_test_unit/install_test_unit_generator.rb
 rubygems_generators/install_test_unit/templates/test/test.rb
@@ -125,7 +119,6 @@ test/test_helper.rb
 test/test_install_cucumber_generator.rb
 test/test_install_jruby_generator.rb
 test/test_install_rspec_generator.rb
-test/test_install_rspec_stories_generator.rb
 test/test_install_test_unit_generator.rb
 test/test_install_website_generator.rb
 test/test_newgem_generator.rb
