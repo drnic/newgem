@@ -14,7 +14,7 @@ Within this gem, you get one thing - <code>newgem</code> - an executable to crea
 
 Go to the folder where you want to create your new gem folder structure, and run the <code>newgem</code> command to generate your gem scaffolding.
 
-	cd ~/ruby_projects
+  cd ~/ruby_projects
   $ newgem wizzo
         create  
         create  config
