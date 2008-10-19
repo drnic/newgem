@@ -32,16 +32,6 @@ task :website_upload do
   sh %{rsync -aCv #{local_dir}/ #{host}#{remote_dir}}
 end
 
-Rake::TaskManager.class_eval do
-  def remove_task(task_name)
-    @tasks.delete(task_name.to_s)
-  end
-end
-
-def remove_task(task_name)
-  Rake.application.remove_task(task_name)
-end
-
 remove_task :publish_docs # recreate hoe's rubyforge specific version
 
 desc 'Publish RDoc to RubyForge.'
