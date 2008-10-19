@@ -11,4 +11,3 @@ Feature: RubyGems have support rake tasks
     Then file 'my_project/website/index.html' is created
     Then file 'website/index.html' is created after local rsync
     Then folder 'website/doc' is created after local rsync
-
