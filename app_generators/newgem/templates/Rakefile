@@ -1,4 +1,5 @@
 require 'config/requirements'
 require 'config/hoe' # setup Hoe + all gem configuration
 
+require "newgem/support/tasks"
 Dir['tasks/**/*.rake'].each { |rake| load rake }

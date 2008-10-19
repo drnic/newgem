@@ -17,6 +17,18 @@ Given %r{^an existing newgem scaffold \[called '(.*)'\]$} do |project_name|
   @project_name = project_name
 end
 
+Given /^project website configuration for safe folder on local machine$/ do
+  FileUtils.chdir $tmp_root do
+    $website_root = File.expand_path('website')
+    FileUtils.rm_rf   $website_root
+    FileUtils.mkdir_p $website_root
+    # config_yml = { "host" => "localhost", "remote_dir" => $website_root }.to_yaml
+    config_yml = { "remote_dir" => $website_root }.to_yaml
+    config_path = File.join(@project_name, 'config', 'website.yml')
+    File.open(config_path, "w") { |io| io << config_yml }
+  end  
+end
+
 When %r{^newgem is executed for project '(.*)' with no options$} do |project_name|
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
   FileUtils.chdir $tmp_root do
@@ -58,15 +70,22 @@ When /^run unit tests for test file '(.*)'$/ do |test_file|
   end
 end
 
+When /^rake task '(.*)' is invoked$/ do |task|
+  @rake_stdout = File.expand_path(File.join($tmp_root, "tests.out"))
+  FileUtils.chdir(File.join($tmp_root, @project_name)) do
+    system "rake #{task} > #{@rake_stdout}"
+  end
+end
+
 Then %r{^folder '(.*)' is created} do |folder|
   FileUtils.chdir $tmp_root do
     File.exists?(folder).should be_true
   end
 end
 
-Then %r{^file '(.*)' is created} do |file|
+Then %r{^file '(.*)' (is|is not) created} do |file, is|
   FileUtils.chdir $tmp_root do
-    File.exists?(file).should be_true
+    File.exists?(file).should(is == 'is' ? be_true : be_false)
   end
 end
 
