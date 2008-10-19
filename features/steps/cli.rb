@@ -1,4 +1,5 @@
 Given %r{^a safe folder$} do
+  $tmp_root = File.dirname(__FILE__) + "/../../tmp"
   FileUtils.rm_rf   $tmp_root
   FileUtils.mkdir_p $tmp_root
 end
