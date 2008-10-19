@@ -73,7 +73,7 @@ end
 When /^rake task '(.*)' is invoked$/ do |task|
   @rake_stdout = File.expand_path(File.join($tmp_root, "tests.out"))
   FileUtils.chdir(File.join($tmp_root, @project_name)) do
-    system "rake #{task} > #{@rake_stdout}"
+    system "rake #{task} > #{@rake_stdout} 2> #{@rake_stdout}"
   end
 end
 
