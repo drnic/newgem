@@ -31,7 +31,7 @@ end
 REV = nil #File.read(".svn/entries")[/committed-rev="(\d+)"/, 1] rescue nil
 # REV = YAML.load(`svn info`)['Revision']
 VERS = Newgem::VERSION::STRING + (REV ? ".#{REV}" : "")
-CLEAN.include ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']
+CLEAN.include ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store', 'tmp']
 
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
