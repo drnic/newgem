@@ -1,6 +1,16 @@
+== 1.0.0 2008-10-21
 
+* Yay for 1.0.0 of New Gem Generator!
+* massive overhaul of Hoe definition and rake tasks
+  * config/hoe.rb is gone, a more condensed version is back in Rakefile
+  * config/dependencies.rb is gone, this functionality is now supported by RubyGems 1.2's dev dependency mechanism
+  * generated gems no longer have generated tasks; rather they reuse those in newgem itself
+  * to override a task, use the help method +remove_task+
+  * Hoe declaration is more concise and reuses the available defaults by Hoe
+  * No more wacky CONSTANTS in hoe declaration; reusing $hoe to access these values
+  * no more version.rb; the VERSION constant is in lib/+gemname+.rb
 * install_website: uses a config/website.yml for username/host/remote_dir (defaults to rubyforge)
-* Removed install_rspec_stories which was superceded by install_cucumber
+* Removed install_rspec_stories which was superseded by install_cucumber
 
 == 0.29.0 2008-10-18
 
