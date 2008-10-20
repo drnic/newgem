@@ -9,10 +9,11 @@ end
 
 desc 'Upload website files to rubyforge'
 task :website_upload do
-  host = "#{rubyforge_username}@rubyforge.org"
-  remote_dir = "/var/www/gforge-projects/#{RUBYFORGE_PROJECT}/"
-  local_dir = 'website'
-  sh %{rsync -aCv #{local_dir}/ #{host}:#{remote_dir}}
+  local_dir  = 'website'
+  host       = website_config["host"]
+  host       = host ? "#{host}:" : ""
+  remote_dir = website_config["remote_dir"]
+  sh %{rsync -aCv #{local_dir}/ #{host}#{remote_dir}}
 end
 
 desc 'Generate and upload website files'
