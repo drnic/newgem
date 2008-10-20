@@ -1,4 +1,0 @@
-== Todo list
-* can generate rspec default tests (or still test::unit tests) using --with-test=rspec [thx Robby Russell]
-* website components are now optional (-w/--no-website)
-* release name generator ("red moom", "flying leopard")
