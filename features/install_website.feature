@@ -1,7 +1,7 @@
-Feature: RubyGems have support rake tasks
+Feature: RubyGems can have a website to promote and teach
 
   As a RubyGem developer
-  I want rake tasks to help development and deployment
+  I want rake tasks to help development and deployment of a website for the project
   So that I can spend time on the tests and code, and not excessive time on maintenance processes
 
   Scenario: Deploy project website via local rsync
