@@ -7,7 +7,7 @@ require 'rubygems'
     require req_gem
   rescue LoadError
     puts "This Rakefile requires the '#{req_gem}' RubyGem."
-    puts "Installation: gem install #{req_gem} -y"
+    puts "Installation: gem install #{req_gem}"
     exit
   end
 end
