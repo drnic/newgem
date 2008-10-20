@@ -1,5 +1,4 @@
       create  
-      create  config
       create  doc
       create  lib
       create  script
@@ -10,9 +9,6 @@
       create  README.rdoc
       create  PostInstall.txt
       create  lib/my_project.rb
-      create  lib/my_project/version.rb
-      create  config/hoe.rb
-      create  config/requirements.rb
       create  tasks/deployment.rake
       create  tasks/environment.rake
       create  tasks/website.rake
@@ -23,7 +19,7 @@
   dependency  install_website
       create    website/javascripts
       create    website/stylesheets
-      exists    config
+      create    config
       exists    script
       exists    tasks
       create    website/index.txt

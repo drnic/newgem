@@ -11,7 +11,6 @@ app_generators/newgem/templates/Rakefile
 app_generators/newgem/templates/config/hoe.rb
 app_generators/newgem/templates/config/requirements.rb
 app_generators/newgem/templates/lib/module.rb
-app_generators/newgem/templates/lib/version.rb
 app_generators/newgem/templates/readme
 app_generators/newgem/templates/script/console.erb
 app_generators/newgem/templates/script/win_script.cmd
@@ -32,7 +31,6 @@ bundles/RubyGem.tmbundle/Snippets/History header trunk.tmSnippet
 bundles/RubyGem.tmbundle/Snippets/History header.tmSnippet
 bundles/RubyGem.tmbundle/Syntaxes/Rdoc.tmLanguage
 bundles/RubyGem.tmbundle/info.plist
-config/hoe.rb
 config/website.yml
 cucumber_generators/feature/USAGE
 cucumber_generators/feature/feature_generator.rb
@@ -51,7 +49,6 @@ lib/newgem/quick_template.rb
 lib/newgem/rubyforge.rb
 lib/newgem/support/tasks.rb
 lib/newgem/tasks.rb
-lib/newgem/version.rb
 newgem_generators/install_website/USAGE
 newgem_generators/install_website/install_website_generator.rb
 newgem_generators/install_website/templates/config/website.yml.sample
@@ -104,7 +101,6 @@ rubygems_generators/install_test_unit/templates/test/test_helper.rb
 script/destroy
 script/generate
 script/txt2html
-script/txt2js
 tasks/bundles.rake
 tasks/cucumber.rake
 tasks/deployment.rake

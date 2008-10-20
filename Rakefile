@@ -1,16 +1,11 @@
-require 'rubygems'
-require 'rake'
-require 'rake/clean'
-require 'fileutils'
-
-require 'hoe'
+%w[rubygems rake rake/clean fileutils hoe].each { |f| require f }
 require File.dirname(__FILE__) + '/lib/newgem'
 
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
-$hoe = Hoe.new("newgem", Newgem::VERSION) do |p|
-  p.developer("Dr Nic Williams", "drnicwilliams@gmail.com")
-  p.changes              = p.paragraphs_of("History.txt", 0..1).join("\n\n")
+$hoe = Hoe.new('newgem', Newgem::VERSION) do |p|
+  p.developer('Dr Nic Williams', 'drnicwilliams@gmail.com')
+  p.changes              = p.paragraphs_of('History.txt', 0..1).join("\n\n")
   p.post_install_message = 'PostInstall.txt'
   p.extra_deps           = [
     ['RedCloth','>=4.0.0'],

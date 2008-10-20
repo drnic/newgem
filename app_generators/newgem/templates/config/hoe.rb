@@ -19,7 +19,7 @@ EXTRA_DEV_DEPENDENCIES = [
 
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
-$hoe = Hoe.new(GEM_NAME, VERS = <%= module_name %>::VERSION::STRING) do |p|
+$hoe = Hoe.new(GEM_NAME, VERS = <%= module_name %>::VERSION) do |p|
   p.developer(AUTHOR, EMAIL)
   p.description          = DESCRIPTION
   p.summary              = DESCRIPTION

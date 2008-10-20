@@ -16,7 +16,6 @@ class TestNewgemGenerator < Test::Unit::TestCase
   def test_newgem
     run_generator('newgem', [APP_ROOT], sources)
 
-    assert_directory_exists "config"
     assert_directory_exists "lib"
     assert_directory_exists "tasks"
     assert_directory_exists "test"
@@ -25,12 +24,7 @@ class TestNewgemGenerator < Test::Unit::TestCase
       assert_generated_file(file)
     end
 
-    %w[hoe.rb requirements.rb].each do |file|
-      assert_generated_file("config/#{file}")
-    end
-
     assert_generated_file("lib/#{gem_name}.rb")
-    assert_generated_file("lib/#{gem_name}/version.rb")
 
     ["test_helper.rb", "test_#{gem_name}.rb"].each do |file|
       assert_generated_file("test/#{file}")

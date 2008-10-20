@@ -53,10 +53,6 @@ class NewgemGenerator < RubiGen::Base
 
       # Default module for app
       m.template "lib/module.rb",         "lib/#{gem_name}.rb"
-      m.template "lib/version.rb",        "lib/#{gem_name}/version.rb"
-
-      # Config
-      m.template_copy_each %w( hoe.rb requirements.rb ), "config"
 
       # Tasks
       m.file_copy_each %w( deployment.rake environment.rake website.rake ), "tasks"
@@ -173,7 +169,6 @@ EOS
   # Installation skeleton.  Intermediate directories are automatically
   # created so don't sweat their absence here.
   BASEDIRS = %w(
-    config
     doc
     lib
     script
