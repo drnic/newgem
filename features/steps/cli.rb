@@ -13,6 +13,14 @@ Given /^env variable \$([\w_]+) set to '(.*)'/ do |env_var, value|
   ENV[env_var] = value
 end
 
+def force_local_newgem_priority(project_name)
+  rakefile = File.read(File.join(project_name, 'Rakefile'))
+  File.open(File.join(project_name, 'Rakefile'), "w+") do |f|
+    f << "$:.unshift('#{File.expand_path(File.dirname(__FILE__) + '/../../lib')}')\n"
+    f << rakefile
+  end
+end
+
 Given %r{^an existing newgem scaffold \[called '(.*)'\]$} do |project_name|
   # TODO this is a combo of "a safe folder" and "newgem is executed ..." steps; refactor
   FileUtils.rm_rf   $tmp_root = File.dirname(__FILE__) + "/../../tmp"
@@ -21,6 +29,7 @@ Given %r{^an existing newgem scaffold \[called '(.*)'\]$} do |project_name|
   FileUtils.chdir $tmp_root do
     @stdout = "newgem.out"
     system "ruby #{newgem} #{project_name} > #{@stdout}"
+    force_local_newgem_priority project_name
   end
   $active_project_folder = File.join($tmp_root, project_name)
 end
@@ -46,10 +55,11 @@ end
 
 When %r{^newgem is executed for project '(.*)' with no options$} do |project_name|
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
+  $active_project_folder = File.expand_path(File.join($tmp_root, project_name))
   FileUtils.chdir $tmp_root do
     @stdout = "newgem.out"
     system "ruby #{newgem} #{project_name} > #{@stdout}"
-    $active_project_folder = File.join($tmp_root, project_name)
+    force_local_newgem_priority project_name
   end
 end
 

@@ -4,4 +4,3 @@ $:.unshift(File.dirname(__FILE__)) unless
 module Newgem
   VERSION = '0.30.0'
 end
-
