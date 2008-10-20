@@ -8,7 +8,7 @@ Feature: Development processes of newgem itself (rake tasks)
   #   Given copy this project for test
   #   Given a safe folder for dummy deployment
   #   Given project website configuration for safe folder on local machine
-  #   When rake task 'website' is invoked
+  #   When task 'rake website' is invoked
   #   Then file 'website/index.html' is created
   #   Then remote file 'index.html' is created after local rsync
   #   Then remote folder 'doc' is created after local rsync
@@ -16,5 +16,7 @@ Feature: Development processes of newgem itself (rake tasks)
   Scenario: Generate RubyGem
     Given this project is active project folder
     Given 'package' folder is deleted
-    When rake task 'gem' is invoked
+    When task 'rake gem' is invoked
     Then folder 'pkg' is created
+    And file matching 'pkg/newgem-*.gem' is created
+    And gem spec key 'rdoc_options' contains 'README.rdoc'

@@ -7,7 +7,7 @@ Feature: RubyGems can have a website to promote and teach
   Scenario: Deploy project website via local rsync
     Given an existing newgem scaffold [called 'my_project']
     Given project website configuration for safe folder on local machine
-    When rake task 'website' is invoked
+    When task 'rake website' is invoked
     Then file 'website/index.html' is created
     Then remote file 'index.html' is created after local rsync
     Then remote folder 'doc' is created after local rsync

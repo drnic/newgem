@@ -4,6 +4,8 @@ Given %r{^a safe folder} do
 end
 
 Given /^this project is active project folder/ do
+  FileUtils.rm_rf   $tmp_root = File.dirname(__FILE__) + "/../../tmp"
+  FileUtils.mkdir_p $tmp_root
   $active_project_folder = File.expand_path(File.dirname(__FILE__) + "/../..")
 end
 
@@ -78,7 +80,7 @@ When /^run unit tests for test file '(.*)'$/ do |test_file|
   end
 end
 
-When /^rake task '(.*)' is invoked$/ do |task|
+When /^task 'rake (.*)' is invoked$/ do |task|
   @rake_stdout = File.expand_path(File.join($tmp_root, "tests.out"))
   FileUtils.chdir($active_project_folder) do
     system "rake #{task} > #{@rake_stdout} 2> #{@rake_stdout}"
@@ -107,6 +109,12 @@ Then %r{^remote file '(.*)' (is|is not) created} do |file, is|
   FileUtils.chdir $remote_folder do
     pp Dir['**/*']
     File.exists?(file).should(is == 'is' ? be_true : be_false)
+  end
+end
+
+Then /^file matching '(.*)' is created$/ do |pattern|
+  FileUtils.chdir $active_project_folder do
+    Dir[pattern].should_not be_empty
   end
 end
 
@@ -147,5 +155,14 @@ Then /^yaml file '(.*)' contains (\{.*\})/ do |file, yaml|
   FileUtils.chdir $active_project_folder do
     yaml = eval yaml
     yaml.should == YAML.load(File.read(file))
+  end
+end
+
+Then /^gem spec key '(.*)' contains '(.*)'$/ do |key, value|
+  FileUtils.chdir $active_project_folder do
+    gem_file = Dir['pkg/newgem-*.gem'].first
+    gem_spec = Gem::Specification.from_yaml(`gem spec #{gem_file}`)
+    spec_value = gem_spec.send(key.to_sym)
+    spec_value.to_s.should match(/#{value}/)
   end
 end

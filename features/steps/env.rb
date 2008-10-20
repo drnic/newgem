@@ -5,6 +5,7 @@ require 'spec'
 
 require 'pp'
 require 'fileutils'
+require 'rubygems'
 
 # Following lines from original Rails cucumber generator. 
 # Not sure how to translate/reuse etc yet.
