@@ -27,7 +27,6 @@ Go to the folder where you want to create your new gem folder structure, and run
         create  Rakefile
         create  README.rdoc
         create  PostInstall.txt
-        create  setup.rb
         create  lib/wizzo.rb
         create  lib/wizzo/version.rb
         create  config/hoe.rb
@@ -88,6 +87,7 @@ Alternately, download the gem and install manually.
 
 == TUTORIALS:
 
+* Home page is a full tutorial - http://newgem.rubyforge.org
 * Original blog article and tutorial - http://drnicwilliams.com/2006/10/11/generating-new-gems/
 * Tutorial: Publishing RubyGems with Hoe - http://nubyonrails.com/articles/2007/06/15/tutorial-publishing-rubygems-with-hoe by Geoffrey Grosenbach
 * Using New Gem Generator in Windows - http://codeconversations.blogspot.com/2007/07/using-new-gem-generator-in-windows_8009.html by Jorge Cangas

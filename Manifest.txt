@@ -15,7 +15,6 @@ app_generators/newgem/templates/lib/version.rb
 app_generators/newgem/templates/readme
 app_generators/newgem/templates/script/console.erb
 app_generators/newgem/templates/script/win_script.cmd
-app_generators/newgem/templates/setup.rb
 app_generators/newgem/templates/tasks/deployment.rake
 app_generators/newgem/templates/tasks/environment.rake
 app_generators/newgem/templates/tasks/website.rake
@@ -107,7 +106,6 @@ script/generate
 script/txt2html
 script/txt2html.rb
 script/txt2js
-setup.rb
 tasks/bundles.rake
 tasks/cucumber.rake
 tasks/deployment.rake

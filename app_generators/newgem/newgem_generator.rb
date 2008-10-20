@@ -50,7 +50,6 @@ class NewgemGenerator < RubiGen::Base
 
       # Root
       m.template_copy_each %w( History.txt Rakefile README.rdoc PostInstall.txt )
-      m.file_copy_each     %w( setup.rb )
 
       # Default module for app
       m.template "lib/module.rb",         "lib/#{gem_name}.rb"

@@ -35,7 +35,6 @@ $ newgem wizzo
       create  Rakefile
       create  README.rdoc
       create  PostInstall.txt
-      create  setup.rb
       create  lib/wizzo.rb
       create  lib/wizzo/version.rb
       create  config/hoe.rb

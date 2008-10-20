@@ -9,7 +9,6 @@
       create  Rakefile
       create  README.rdoc
       create  PostInstall.txt
-      create  setup.rb
       create  lib/my_project.rb
       create  lib/my_project/version.rb
       create  config/hoe.rb
