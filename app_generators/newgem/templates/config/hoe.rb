@@ -1,4 +1,5 @@
 require '<%= gem_name %>/version'
+require 'newgem/support/tasks'
 
 AUTHOR = '<%= author %>'  # can also be an array of Authors
 EMAIL = "<%= email %>"
@@ -33,27 +34,9 @@ Run 'rubyforge setup' to prepare your env for access to Rubyforge
   RUBYFORGE_USERNAME.replace @config["username"]
 end
 
-
-REV = nil
-# UNCOMMENT IF REQUIRED:
-# REV = YAML.load(`svn info`)['Revision']
-VERS = <%= module_name %>::VERSION::STRING + (REV ? ".#{REV}" : "")
-RDOC_OPTS = ['--quiet', '--title', '<%= gem_name %> documentation',
-    "--opname", "index.html",
-    "--line-numbers",
-    "--main", "README",
-    "--inline-source"]
-
-class Hoe
-  def extra_deps
-    @extra_deps.reject! { |x| Array(x).first == 'hoe' }
-    @extra_deps
-  end
-end
-
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
-$hoe = Hoe.new(GEM_NAME, VERS) do |p|
+$hoe = Hoe.new(GEM_NAME, VERS = <%= module_name %>::VERSION::STRING) do |p|
   p.developer(AUTHOR, EMAIL)
   p.description    = DESCRIPTION
   p.summary        = DESCRIPTION
@@ -61,6 +44,7 @@ $hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.rubyforge_name = RUBYFORGE_PROJECT if RUBYFORGE_PROJECT
   p.test_globs     = ["test/**/test_*.rb"]
   p.clean_globs |= ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']  #An array of file patterns to delete on clean.
+  p.post_install_message = 'PostInstall.txt'
 
   # == Optional
   p.changes        = p.paragraphs_of("History.txt", 0..1).join("\n\n")
@@ -79,4 +63,3 @@ CHANGES = $hoe.paragraphs_of('History.txt', 0..1).join("\\n\\n")
 PATH    = (RUBYFORGE_PROJECT == GEM_NAME) ? RUBYFORGE_PROJECT : "#{RUBYFORGE_PROJECT}/#{GEM_NAME}"
 $hoe.remote_rdoc_dir = File.join(PATH.gsub(/^#{RUBYFORGE_PROJECT}\/?/,''), 'rdoc')
 $hoe.rsync_args = '-av --delete --ignore-errors'
-$hoe.spec.post_install_message = File.open(File.dirname(__FILE__) + "/../PostInstall.txt").read rescue ""

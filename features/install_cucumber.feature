@@ -8,4 +8,4 @@ Feature: RubyGems have features to be described and tested
     Given an existing newgem scaffold [called 'my_project']
     When 'install_cucumber' generator is invoked with arguments ''
     Then folder 'my_project/features/steps' is created
-  
+    And file 'my_project/tasks/cucumber.rake' is created

@@ -3,7 +3,6 @@ Manifest.txt
 PostInstall.txt
 README.rdoc
 Rakefile
-Todo.txt
 app_generators/newgem/newgem_generator.rb
 app_generators/newgem/templates/History.txt
 app_generators/newgem/templates/PostInstall.txt
@@ -41,8 +40,9 @@ cucumber_generators/feature/templates/feature.erb
 cucumber_generators/feature/templates/steps.erb
 features/executable_generator.feature
 features/expected_outputs/newgem.out
+features/install_cucumber.feature
+features/install_website.feature
 features/newgem-cli.feature
-features/newgem-rake-tasks.feature
 features/steps/cli.rb
 features/steps/env.rb
 lib/newgem.rb
@@ -110,7 +110,6 @@ tasks/bundles.rake
 tasks/cucumber.rake
 tasks/deployment.rake
 tasks/environment.rake
-tasks/generator_report.rake
 tasks/website.rake
 test/fixtures/home/.rubyforge/auto-config.yml
 test/fixtures/home/.rubyforge/user-config.yml
