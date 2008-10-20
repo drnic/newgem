@@ -54,9 +54,6 @@ class NewgemGenerator < RubiGen::Base
       # Default module for app
       m.template "lib/module.rb",         "lib/#{gem_name}.rb"
 
-      # Tasks
-      m.file_copy_each %w( deployment.rake environment.rake website.rake ), "tasks"
-
       # Selecting a test framework
       case test_framework
       when "test_unit"

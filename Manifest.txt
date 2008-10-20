@@ -12,9 +12,6 @@ app_generators/newgem/templates/lib/module.rb
 app_generators/newgem/templates/readme
 app_generators/newgem/templates/script/console.erb
 app_generators/newgem/templates/script/win_script.cmd
-app_generators/newgem/templates/tasks/deployment.rake
-app_generators/newgem/templates/tasks/environment.rake
-app_generators/newgem/templates/tasks/website.rake
 app_generators/newgem_simple/USAGE
 app_generators/newgem_simple/newgem_simple_generator.rb
 app_generators/newgem_simple/templates/LICENSE
@@ -49,7 +46,7 @@ lib/newgem/support/tasks.rb
 lib/newgem/tasks.rb
 newgem_generators/install_website/USAGE
 newgem_generators/install_website/install_website_generator.rb
-newgem_generators/install_website/templates/config/website.yml.sample
+newgem_generators/install_website/templates/config/website.yml.sample.erb
 newgem_generators/install_website/templates/script/txt2html
 newgem_generators/install_website/templates/script/win_script.cmd
 newgem_generators/install_website/templates/tasks/website.rake

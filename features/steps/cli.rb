@@ -30,6 +30,7 @@ Given /^project website configuration for safe folder on local machine$/ do
   FileUtils.rm_rf   $remote_folder
   FileUtils.mkdir_p $remote_folder
   FileUtils.chdir $active_project_folder do
+    FileUtils.mkdir_p 'config'
     # config_yml = { "host" => "localhost", "remote_dir" => $remote_folder }.to_yaml
     config_yml = { "remote_dir" => $remote_folder }.to_yaml
     config_path = File.join('config', 'website.yml')
@@ -156,7 +157,7 @@ end
 Then /^yaml file '(.*)' contains (\{.*\})/ do |file, yaml|
   FileUtils.chdir $active_project_folder do
     yaml = eval yaml
-    yaml.should == YAML.load(File.read(file))
+    YAML.load(File.read(file)).should == yaml
   end
 end
 

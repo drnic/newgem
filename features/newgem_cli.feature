@@ -6,6 +6,7 @@ Feature: Can run create RubyGem scaffolds
 
   Scenario: Run newgem without any arguments
     Given a safe folder
+    Given env variable $RUBYFORGE_USERNAME set to ''
     When newgem is executed for project 'my_project' with no options
     Then file 'Rakefile' is created
     And does invoke generator 'install_test_unit'

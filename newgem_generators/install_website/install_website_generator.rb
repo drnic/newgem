@@ -18,7 +18,7 @@ class InstallWebsiteGenerator < RubiGen::Base
     @destination_root   = File.expand_path(destination_root)
     @gem_name           = base_name
     @module_name        = @gem_name.camelcase
-    @rubyforge_username = ENV['RUBYFORGE_USERNAME'] || 'unknown'
+    @rubyforge_username = ENV['RUBYFORGE_USERNAME'].nil? || ENV['RUBYFORGE_USERNAME'].empty? ? 'unknown' : ENV['RUBYFORGE_USERNAME']
     extract_options
   end
 
@@ -37,7 +37,7 @@ class InstallWebsiteGenerator < RubiGen::Base
       # Website
       m.template_copy_each %w( index.txt index.html ), "website"
 
-      m.template_copy_each %w[ website.yml.sample ], "config"
+      m.template "config/website.yml.sample.erb", "config/website.yml.sample"
 
       # m.file_copy_each %w[ website.rake ], "tasks"
 

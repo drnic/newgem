@@ -9,9 +9,6 @@
       create  README.rdoc
       create  PostInstall.txt
       create  lib/my_project.rb
-      create  tasks/deployment.rake
-      create  tasks/environment.rake
-      create  tasks/website.rake
   dependency  install_test_unit
       create    test
       create    test/test_helper.rb
