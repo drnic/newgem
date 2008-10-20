@@ -125,14 +125,13 @@ Then %r{^output same as contents of '(.*)'$} do |file|
   actual_output.should == expected_output
 end
 
-Then %r{^invokes generator '(.*)'$} do |generator|
+Then %r{^(does|does not) invoke generator '(.*)'$} do |does_invoke, generator|
   actual_output = File.read(File.dirname(__FILE__) + "/../../tmp/#{@stdout}")
-  actual_output.should match(/dependency\s+#{generator}/)
-end
-
-Then %r{^does not invoke generator '(.*)'$} do |generator|
-  actual_output = File.read(File.dirname(__FILE__) + "/../../tmp/#{@stdout}")
-  actual_output.should_not match(/dependency\s+#{generator}/)
+  if does_invoke == "does"
+    actual_output.should match(/dependency\s+#{generator}/)
+  else
+    actual_output.should_not match(/dependency\s+#{generator}/)
+  end
 end
 
 Then /^help options '(.*)' and '(.*)' are displayed$/ do |opt1, opt2|
