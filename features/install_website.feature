@@ -10,4 +10,4 @@ Feature: RubyGems can have a website to promote and teach
     When task 'rake website' is invoked
     Then file 'website/index.html' is created
     Then remote file 'index.html' is created after local rsync
-    Then remote folder 'doc' is created after local rsync
+    Then remote folder 'rdoc' is created after local rsync

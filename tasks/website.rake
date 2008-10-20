@@ -3,7 +3,7 @@ require 'yaml'
 def website_config
   unless @website_config
     begin
-      @website_config = YAML.load(File.read(File.expand_path(File.dirname(__FILE__) + "/../config/website.yml")))
+      @website_config = YAML.load(File.read("config/website.yml"))
     rescue
       puts <<-EOS
 To upload your website to a host, you need to configure
@@ -29,6 +29,17 @@ task :website_upload do
   host       = website_config["host"]
   host       = host ? "#{host}:" : ""
   remote_dir = website_config["remote_dir"]
+  sh %{rsync -aCv #{local_dir}/ #{host}#{remote_dir}}
+end
+
+remove_task :publish_docs # recreate hoe's rubyforge specific version
+
+desc 'Publish RDoc to RubyForge.'
+task :publish_docs => [:clean, :docs] do
+  local_dir  = 'doc'
+  host       = website_config["host"]
+  host       = host ? "#{host}:" : ""
+  remote_dir = File.join(website_config["remote_dir"], "rdoc")
   sh %{rsync -aCv #{local_dir}/ #{host}#{remote_dir}}
 end
 

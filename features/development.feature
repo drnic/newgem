@@ -11,7 +11,7 @@ Feature: Development processes of newgem itself (rake tasks)
   #   When task 'rake website' is invoked
   #   Then file 'website/index.html' is created
   #   Then remote file 'index.html' is created after local rsync
-  #   Then remote folder 'doc' is created after local rsync
+  #   Then remote folder 'rdoc' is created after local rsync
   # 
   Scenario: Generate RubyGem
     Given this project is active project folder

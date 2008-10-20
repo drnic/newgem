@@ -3,7 +3,7 @@ require 'yaml'
 def website_config
   unless @website_config
     begin
-      @website_config = YAML.load(File.read(File.expand_path(File.dirname(__FILE__) + "/../config/website.yml")))
+      @website_config = YAML.load(File.read("config/website.yml"))
     rescue
       puts <<-EOS
 To upload your website to a host, you need to configure

@@ -39,7 +39,7 @@ class InstallWebsiteGenerator < RubiGen::Base
 
       m.template_copy_each %w[ website.yml.sample ], "config"
 
-      m.file_copy_each %w[ website.rake ], "tasks"
+      # m.file_copy_each %w[ website.rake ], "tasks"
 
       %w( txt2html ).each do |file|
         m.template "script/#{file}",        "script/#{file}", script_options
