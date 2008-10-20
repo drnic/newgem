@@ -18,7 +18,7 @@ class TestInstallWebsiteGenerator < Test::Unit::TestCase
     %w[index.txt index.html template.html.erb stylesheets/screen.css javascripts/rounded_corners_lite.inc.js].each do |file|
       assert_generated_file("website/#{file}")
     end
-    assert_generated_file("config/website.yml")
+    assert_generated_file("config/website.yml.sample")
     assert_generated_file("script/txt2html")
     assert_generated_file("tasks/website.rake")
   end

@@ -28,7 +28,7 @@
       exists    tasks
       create    website/index.txt
       create    website/index.html
-      create    config/website.yml
+      create    config/website.yml.sample
        force    tasks/website.rake
       create    script/txt2html
   dependency    plain_theme

@@ -13,8 +13,8 @@ Feature: Can run create RubyGem scaffolds
     And does not invoke generator 'install_shoulda'
     And invokes generator 'install_website'
     And invokes generator 'install_rubigen_scripts'
-    And file 'config/website.yml' is created
-    And yaml file 'config/website.yml' contains {"host" => "unknown@rubyforge.org", "remote_dir" => "/var/www/gforge-projects/my_project"}
+    And file 'config/website.yml.sample' is created
+    And yaml file 'config/website.yml.sample' contains {"host" => "unknown@rubyforge.org", "remote_dir" => "/var/www/gforge-projects/my_project"}
     And output same as contents of 'newgem.out'
 
   Scenario: Run newgem to include rspec

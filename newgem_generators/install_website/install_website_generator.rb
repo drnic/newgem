@@ -37,7 +37,7 @@ class InstallWebsiteGenerator < RubiGen::Base
       # Website
       m.template_copy_each %w( index.txt index.html ), "website"
 
-      m.template_copy_each %w[ website.yml ], "config"
+      m.template_copy_each %w[ website.yml.sample ], "config"
 
       m.file_copy_each %w[ website.rake ], "tasks"
 
