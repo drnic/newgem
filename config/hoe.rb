@@ -2,8 +2,6 @@ require 'hoe'
 require 'newgem/version'
 require 'newgem/support/tasks'
 
-AUTHOR             = "Dr Nic Williams"
-EMAIL              = "drnicwilliams@gmail.com"
 DESCRIPTION        = "Make your own gems at home"
 GEM_NAME           = "newgem" # what ppl will type to install your gem
 RUBYFORGE_PROJECT  = "newgem"
@@ -11,12 +9,10 @@ HOMEPATH           = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
 DOWNLOAD_PATH      = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 RUBYFORGE_USERNAME = ENV['RUBYFORGE_USERNAME'] || 'unknown'
 
-CLEAN.include ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store', 'tmp', '*.log']
-
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
 $hoe = Hoe.new(GEM_NAME, VERS = Newgem::VERSION::STRING) do |p|
-  p.developer(AUTHOR, EMAIL)
+  p.developer("Dr Nic Williams", "drnicwilliams@gmail.com")
   p.description          = DESCRIPTION
   p.summary              = DESCRIPTION
   p.url                  = HOMEPATH
@@ -32,6 +28,7 @@ $hoe = Hoe.new(GEM_NAME, VERS = Newgem::VERSION::STRING) do |p|
     ['hoe', '>=1.8.0']
   ]
   p.spec_extras['rdoc_options'] = ['--main', Dir['README*'].first]
+  p.clean_globs |= ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store', 'tmp', '*.log']
 end
 
 PATH    = (RUBYFORGE_PROJECT == GEM_NAME) ? RUBYFORGE_PROJECT : "\#{RUBYFORGE_PROJECT}/\#{GEM_NAME}"
