@@ -9,6 +9,8 @@ Feature: Can run create RubyGem scaffolds
     When newgem is executed for project 'my_project' with no options
     Then file 'Rakefile' is created
     And invokes generator 'install_test_unit'
+    And does not invoke generator 'install_rspec'
+    And does not invoke generator 'install_shoulda'
     And invokes generator 'install_website'
     And invokes generator 'install_rubigen_scripts'
     And file 'config/website.yml' is created
@@ -20,6 +22,7 @@ Feature: Can run create RubyGem scaffolds
     When newgem is executed for project 'my_rspec_project' with options '-T rspec'
     Then invokes generator 'install_rspec'
     And does not invoke generator 'install_test_unit'
+    And does not invoke generator 'install_shoulda'
 
   Scenario: Run newgem to disable website
     Given a safe folder
