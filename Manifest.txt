@@ -54,7 +54,7 @@ lib/newgem/tasks.rb
 lib/newgem/version.rb
 newgem_generators/install_website/USAGE
 newgem_generators/install_website/install_website_generator.rb
-newgem_generators/install_website/templates/config/website.yml
+newgem_generators/install_website/templates/config/website.yml.sample
 newgem_generators/install_website/templates/script/txt2html
 newgem_generators/install_website/templates/script/win_script.cmd
 newgem_generators/install_website/templates/tasks/website.rake
@@ -104,7 +104,6 @@ rubygems_generators/install_test_unit/templates/test/test_helper.rb
 script/destroy
 script/generate
 script/txt2html
-script/txt2html.rb
 script/txt2js
 tasks/bundles.rake
 tasks/cucumber.rake
