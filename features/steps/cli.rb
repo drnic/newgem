@@ -44,6 +44,7 @@ When %r{^newgem is executed for project '(.*)' with no options$} do |project_nam
   FileUtils.chdir $tmp_root do
     @stdout = "newgem.out"
     system "ruby #{newgem} #{project_name} > #{@stdout}"
+    $active_project_folder = File.join($tmp_root, project_name)
   end
 end
 
@@ -52,6 +53,7 @@ When %r{^newgem is executed for project '(.*)' with options '(.*)'$} do |project
   FileUtils.chdir $tmp_root do
     @stdout = "newgem.out"
     system "ruby #{newgem} #{arguments} #{project_name} > #{@stdout}"
+    $active_project_folder = File.join($tmp_root, project_name)
   end
 end
 
