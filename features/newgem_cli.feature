@@ -19,6 +19,7 @@ Feature: Can run create RubyGem scaffolds
     Given a safe folder
     When newgem is executed for project 'my_rspec_project' with options '-T rspec'
     Then invokes generator 'install_rspec'
+    And does not invoke generator 'install_test_unit'
 
   Scenario: Run newgem to disable website
     Given a safe folder
