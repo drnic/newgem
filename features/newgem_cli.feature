@@ -11,6 +11,7 @@ Feature: Can run create RubyGem scaffolds
     And invokes generator 'install_test_unit'
     And does not invoke generator 'install_rspec'
     And does not invoke generator 'install_shoulda'
+    And does not invoke generator 'install_cucumber'
     And invokes generator 'install_website'
     And invokes generator 'install_rubigen_scripts'
     And file 'config/website.yml.sample' is created
@@ -23,6 +24,7 @@ Feature: Can run create RubyGem scaffolds
     Then invokes generator 'install_rspec'
     And does not invoke generator 'install_test_unit'
     And does not invoke generator 'install_shoulda'
+    And does not invoke generator 'install_cucumber'
 
   Scenario: Run newgem to disable website
     Given a safe folder
@@ -30,3 +32,9 @@ Feature: Can run create RubyGem scaffolds
     Then does not invoke generator 'install_website'
     And file 'config/website.yml' is not created
 
+  Scenario: Run newgem to install misc generators on top of unit test framework
+    Given a safe folder
+    When newgem is executed for project 'my_project' with options '-i cucumber'
+    Then invokes generator 'install_test_unit'
+    And invokes generator 'install_cucumber'
+    And does not invoke generator 'install_rspec'

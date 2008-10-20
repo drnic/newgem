@@ -10,6 +10,8 @@ if %w(-v --version).include? ARGV.first
 end
 
 require 'rubigen/scripts/generate'
+
+require "pp"
 RubiGen::Base.use_application_sources! :rubygems
 RubiGen::Base.prepend_sources(*[ 
   RubiGen::PathSource.new(:app, File.join(File.dirname(__FILE__), "..", "app_generators")),
@@ -17,10 +19,9 @@ RubiGen::Base.prepend_sources(*[
   RubiGen::PathSource.new(:app, File.join(File.dirname(__FILE__), "..", "newgem_theme_generators")),
   RubiGen::PathSource.new(:app, File.join(File.dirname(__FILE__), "..", "rubygems_generators"))
 ])
-
-# require "pp"
-# pp RubiGen::Base.sources
 # 
+# pp RubiGen::Base.sources
+
 if ARGV.delete "--simple"
   RubiGen::Scripts::Generate.new.run(ARGV, :generator => 'newgem_simple')
 else

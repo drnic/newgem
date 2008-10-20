@@ -13,7 +13,8 @@ class NewgemGenerator < RubiGen::Base
                     :jruby       => nil,
                     :disable_website => nil,
                     :test_framework  => 'test_unit',
-                    :version     => '0.0.1'
+                    :version     => '0.0.1',
+                    :install_generators => []
 
 
   attr_reader :gem_name, :module_name, :project_name
@@ -73,14 +74,18 @@ class NewgemGenerator < RubiGen::Base
       m.dependency "install_website", [gem_name],
          :author => author, :email => email, :destination => destination_root, :collision => :force unless disable_website
 
-     # JRuby
-     m.dependency "install_jruby", [gem_name], :destination => destination_root, :collision => :force if is_jruby
+      # JRuby
+      m.dependency "install_jruby", [gem_name], :destination => destination_root, :collision => :force if is_jruby
 
       # Executables
       for bin_name in bin_names_list
         m.dependency "executable", [bin_name], :destination => destination_root, :collision => :force
       end
-
+      
+      for generator in @install_generators
+        m.dependency "install_#{generator}", [], :destination => destination_root, :collision => :force
+      end
+      
       m.dependency "install_rubigen_scripts", [destination_root, "rubygems", "newgem", "newgem_theme"], :shebang => options[:shebang], :collision => :force
 
       %w( console ).each do |file|
@@ -114,10 +119,15 @@ EOS
       opts.on("-e", "--email=PATH", String,
               "Your email to be inserted into generated files.",
               "Default: ~/.rubyforge/user-config.yml[email]") { |x| options[:email] = x }
-      # TODO --import_path
-      # opts.on("-i", "--import_path=PATH", String,
-      #         "Path where your files could be copied from.",
-      #         "Default: none") { |x| options[:import_path] = x }
+      opts.on("-i", "--install=generator", String,
+              "Installs a generator called install_<generator>.",
+              "For example, '-i cucumber' runs the install_cucumber generator.",
+              "Can be used multiple times for different generators.",
+              "Cannot be used for generators that require argumnts.",
+              "Default: none") do |generator|
+                options[:install] ||= []
+                options[:install] << generator
+              end
       opts.on("-j", "--jruby",
               "Use if gem is for jruby.") { |x| options[:jruby] = x }
       opts.on("-a", "--author=PATH", String,
@@ -153,12 +163,12 @@ EOS
         @author ||= rubyforge_config.full_name
         @email  ||= rubyforge_config.email
       end
-      @bin_names_list    = (options[:bin_name] || "").split(',')
-      @disable_website   = options[:disable_website]
-
-      @test_framework    = options[:test_framework] || "test_unit"
-      @is_jruby          = options[:jruby]
-      @project_name      = options[:project] if options.include?(:project)
+      @bin_names_list     = (options[:bin_name] || "").split(',')
+      @disable_website    = options[:disable_website]
+      @test_framework     = options[:test_framework] || "test_unit"
+      @is_jruby           = options[:jruby]
+      @project_name       = options[:project] if options.include?(:project)
+      @install_generators = options[:install]
     end
 
   # Installation skeleton.  Intermediate directories are automatically

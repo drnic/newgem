@@ -46,7 +46,7 @@ hoe = Hoe.new(GEM_NAME, VERS = Newgem::VERSION::STRING) do |p|
     ['RedCloth','>=4.0.0'],
     ['syntax','>=1.0.0'],
     ['activesupport','>=2.0.2'],
-    ['rubigen','>=1.3.0'],
+    ['rubigen','>=1.3.3'],
     ['hoe', '>=1.8.0']
   ]
 end
