@@ -8,8 +8,6 @@ app_generators/newgem/templates/History.txt
 app_generators/newgem/templates/PostInstall.txt
 app_generators/newgem/templates/README.rdoc
 app_generators/newgem/templates/Rakefile
-app_generators/newgem/templates/config/hoe.rb
-app_generators/newgem/templates/config/requirements.rb
 app_generators/newgem/templates/lib/module.rb
 app_generators/newgem/templates/readme
 app_generators/newgem/templates/script/console.erb
