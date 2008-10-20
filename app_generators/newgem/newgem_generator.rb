@@ -13,8 +13,7 @@ class NewgemGenerator < RubiGen::Base
                     :jruby       => nil,
                     :disable_website => nil,
                     :test_framework  => 'test_unit',
-                    :version     => '0.0.1',
-                    :install_generators => []
+                    :version     => '0.0.1'
 
 
   attr_reader :gem_name, :module_name, :project_name
@@ -168,7 +167,7 @@ EOS
       @test_framework     = options[:test_framework] || "test_unit"
       @is_jruby           = options[:jruby]
       @project_name       = options[:project] if options.include?(:project)
-      @install_generators = options[:install]
+      @install_generators = options[:install] || []
     end
 
   # Installation skeleton.  Intermediate directories are automatically

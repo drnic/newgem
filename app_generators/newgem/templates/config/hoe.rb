@@ -58,7 +58,7 @@ $hoe = Hoe.new(GEM_NAME, VERS = <%= module_name %>::VERSION::STRING) do |p|
   p.spec_extras = {}    # A hash of extra values to set in the gemspec.
   <% end -%>
 end
-hoe.spec.rdoc_options = ['--main', Dir['README*'].first]
+$hoe.spec.rdoc_options = ['--main', Dir['README*'].first]
 
 CHANGES = $hoe.paragraphs_of('History.txt', 0..1).join("\\n\\n")
 PATH    = (RUBYFORGE_PROJECT == GEM_NAME) ? RUBYFORGE_PROJECT : "#{RUBYFORGE_PROJECT}/#{GEM_NAME}"
