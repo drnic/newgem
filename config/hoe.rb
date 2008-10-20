@@ -50,6 +50,7 @@ hoe = Hoe.new(GEM_NAME, VERS = Newgem::VERSION::STRING) do |p|
     ['hoe', '>=1.8.0']
   ]
 end
+hoe.spec.rdoc_options = ['--main', Dir['README*'].first]
 
 CHANGES = hoe.paragraphs_of('History.txt', 0..1).join("\n\n")
 PATH    = (RUBYFORGE_PROJECT == GEM_NAME) ? RUBYFORGE_PROJECT : "\#{RUBYFORGE_PROJECT}/\#{GEM_NAME}"
