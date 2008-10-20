@@ -7,22 +7,22 @@ Feature: Generate an executable/CLI scaffold
   Scenario: Run executable generator with name of executable
     Given an existing newgem scaffold [called 'my_project']
     When 'executable' generator is invoked with arguments 'my_app'
-    Then folder 'my_project/bin/my_app' is created
-    And file 'my_project/bin/my_app' is created
-    And file 'my_project/lib/my_app/cli.rb' is created
-    And file 'my_project/test/test_my_app_cli.rb' is created
+    Then folder 'bin/my_app' is created
+    And file 'bin/my_app' is created
+    And file 'lib/my_app/cli.rb' is created
+    And file 'test/test_my_app_cli.rb' is created
   
   Scenario: Run CLI app from executable generator to show help
     Given an existing newgem scaffold [called 'my_project']
     Given 'executable' generator is invoked with arguments 'my_app'
-    When run executable 'my_project/bin/my_app' with arguments '-h'
+    When run executable 'bin/my_app' with arguments '-h'
     Then help options '-h' and '--help' are displayed
     Then help options '-p' and '--path' are displayed
 
   Scenario: Run CLI app from executable generator should not fail
     Given an existing newgem scaffold [called 'my_project']
     Given 'executable' generator is invoked with arguments 'my_app'
-    When run executable 'my_project/bin/my_app' with arguments ''
+    When run executable 'bin/my_app' with arguments ''
     Then output matches /lib\/my_app\/cli.rb/
   
   Scenario: Run unit tests after executable generator should all pass

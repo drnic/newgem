@@ -58,7 +58,7 @@ When %r{^newgem is executed for project '(.*)' with options '(.*)'$} do |project
 end
 
 When %r{^'(.*)' generator is invoked with arguments '(.*)'$} do |generator, arguments|
-  FileUtils.chdir(File.join($tmp_root, $project_name)) do
+  FileUtils.chdir($active_project_folder) do
     if Object.const_defined?("APP_ROOT")
       APP_ROOT.replace(FileUtils.pwd)
     else 
@@ -69,23 +69,23 @@ When %r{^'(.*)' generator is invoked with arguments '(.*)'$} do |generator, argu
 end
 
 When /^run executable '(.*)' with arguments '(.*)'$/ do |executable, arguments|
-  FileUtils.chdir($tmp_root) do
-    @stdout = "#{File.basename(executable)}.out"
+  @stdout = File.expand_path(File.join($tmp_root, "executable.out"))
+  FileUtils.chdir($active_project_folder) do
     system "ruby #{executable} #{arguments} > #{@stdout}"
   end
 end
 
 When /^run unit tests for test file '(.*)'$/ do |test_file|
-  @test_stdout = File.expand_path(File.join($tmp_root, "tests.out"))
+  @stdout = File.expand_path(File.join($tmp_root, "tests.out"))
   FileUtils.chdir($active_project_folder) do
-    system "ruby #{test_file} > #{@test_stdout}"
+    system "ruby #{test_file} > #{@stdout}"
   end
 end
 
 When /^task 'rake (.*)' is invoked$/ do |task|
-  @rake_stdout = File.expand_path(File.join($tmp_root, "tests.out"))
+  @stdout = File.expand_path(File.join($tmp_root, "tests.out"))
   FileUtils.chdir($active_project_folder) do
-    system "rake #{task} > #{@rake_stdout} 2> #{@rake_stdout}"
+    system "rake #{task} > #{@stdout} 2> #{@stdout}"
   end
 end
 
@@ -109,7 +109,6 @@ end
 
 Then %r{^remote file '(.*)' (is|is not) created} do |file, is|
   FileUtils.chdir $remote_folder do
-    pp Dir['**/*']
     File.exists?(file).should(is == 'is' ? be_true : be_false)
   end
 end
@@ -120,7 +119,7 @@ Then /^file matching '(.*)' is created$/ do |pattern|
   end
 end
 
-Then %r{^output matches '(.*)'$} do |file|
+Then %r{^output same as contents of '(.*)'$} do |file|
   expected_output = File.read(File.join(File.dirname(__FILE__) + "/../expected_outputs", file))
   actual_output = File.read(File.dirname(__FILE__) + "/../../tmp/#{@stdout}")
   actual_output.should == expected_output
@@ -137,19 +136,19 @@ Then %r{^does not invoke generator '(.*)'$} do |generator|
 end
 
 Then /^help options '(.*)' and '(.*)' are displayed$/ do |opt1, opt2|
-  actual_output = File.read(File.dirname(__FILE__) + "/../../tmp/#{@stdout}")
+  actual_output = File.read(@stdout)
   actual_output.should match(/#{opt1}/)
   actual_output.should match(/#{opt2}/)
 end
 
 Then /^output matches \/(.*)\/$/ do |regex|
-  actual_output = File.read(File.dirname(__FILE__) + "/../../tmp/#{@stdout}")
+  actual_output = File.read(@stdout)
   actual_output.should match(/#{regex}/)
 end
 
 Then /^all (\d+) tests pass$/ do |expected_test_count|
   expected = %r{^#{expected_test_count} tests, \d+ assertions, 0 failures, 0 errors}
-  actual_output = File.read(@test_stdout)
+  actual_output = File.read(@stdout)
   actual_output.should match(expected)
 end
 
