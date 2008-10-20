@@ -1,2 +1,2 @@
-host: unknown@rubyforge.org
+host: <%= rubyforge_username %>@rubyforge.org
 remote_dir: /var/www/gforge-projects/<%= gem_name %>

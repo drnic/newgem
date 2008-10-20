@@ -11,14 +11,14 @@ class InstallWebsiteGenerator < RubiGen::Base
                   :theme   => 'plain_theme'
 
   attr_reader :gem_name, :module_name
-  attr_reader :author, :email, :theme
+  attr_reader :author, :email, :theme, :rubyforge_username
 
   def initialize(runtime_args, runtime_options = {})
     super
     @destination_root = File.expand_path(destination_root)
     @gem_name = base_name
-
     @module_name  = @gem_name.camelcase
+    @rubyforge_username = ENV['RUBYFORGE_USERNAME'] || 'unknown'
     extract_options
   end
 

@@ -9,10 +9,8 @@ Given /^this project is active project folder/ do
   $active_project_folder = File.expand_path(File.dirname(__FILE__) + "/../..")
 end
 
-Given /^'(.*)' folder is deleted/ do |folder|
-  FileUtils.chdir $active_project_folder do
-    FileUtils.rm_rf folder
-  end
+Given /^env variable \$([\w_]+) set to '(.*)'/ do |env_var, value|
+  ENV[env_var] = value
 end
 
 Given %r{^an existing newgem scaffold \[called '(.*)'\]$} do |project_name|
@@ -37,6 +35,12 @@ Given /^project website configuration for safe folder on local machine$/ do
     config_path = File.join('config', 'website.yml')
     File.open(config_path, "w") { |io| io << config_yml }
   end  
+end
+
+Given /^'(.*)' folder is deleted/ do |folder|
+  FileUtils.chdir $active_project_folder do
+    FileUtils.rm_rf folder
+  end
 end
 
 When %r{^newgem is executed for project '(.*)' with no options$} do |project_name|

@@ -17,6 +17,13 @@ Feature: Can run create RubyGem scaffolds
     And file 'config/website.yml.sample' is created
     And yaml file 'config/website.yml.sample' contains {"host" => "unknown@rubyforge.org", "remote_dir" => "/var/www/gforge-projects/my_project"}
     And output same as contents of 'newgem.out'
+  
+  Scenario: Run newgem without any arguments, with env $RUBYFORGE_USERNAME set
+    Given a safe folder
+    Given env variable $RUBYFORGE_USERNAME set to 'nicwilliams'
+    When newgem is executed for project 'my_project' with no options
+    Then file 'config/website.yml.sample' is created
+    And yaml file 'config/website.yml.sample' contains {"host" => "nicwilliams@rubyforge.org", "remote_dir" => "/var/www/gforge-projects/my_project"}
 
   Scenario: Run newgem to include rspec
     Given a safe folder
