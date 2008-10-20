@@ -1,10 +1,18 @@
 desc 'Release the website and new gem version'
 task :deploy => [:check_version, :website, :release] do
-  puts "Remember to create SVN tag:"
-  puts "svn copy svn+ssh://#{rubyforge_username}@rubyforge.org/var/svn/#{PATH}/trunk " +
-    "svn+ssh://#{rubyforge_username}@rubyforge.org/var/svn/#{PATH}/tags/REL-#{VERS} "
-  puts "Suggested comment:"
-  puts "Tagging release #{CHANGES}"
+  puts <<-EOS.gsub(/^    /,'')
+    ** Newgem deprecation warning: deploy task will be removed
+       Instead:
+        1. update version.rb with new version number
+        2. run 'rake website' to push new version docco
+        3. commit updated website files (containing new version number)
+        4. run 'rake release VERSION=X.Y.Z' to push to rubyforge
+  EOS
+end
+
+task :release do
+  puts "Remember to tag your SCM. E.g."
+  puts "  git tag REL-#{VERS}"
 end
 
 desc 'Runs tasks website_generate and install_gem as a local deployment of the gem'

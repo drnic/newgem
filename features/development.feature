@@ -19,4 +19,4 @@ Feature: Development processes of newgem itself (rake tasks)
     When task 'rake gem' is invoked
     Then folder 'pkg' is created
     And file matching 'pkg/newgem-*.gem' is created
-    And gem spec key 'rdoc_options' contains 'README.rdoc'
+    And gem spec key 'rdoc_options' contains '--mainREADME.rdoc'

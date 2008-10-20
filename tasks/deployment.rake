@@ -1,15 +1,3 @@
-desc 'Release the website and new gem version'
-task :deploy => [:check_version, :website, :release] do
-  puts <<-EOS.gsub(/^    /,'')
-    ** Newgem deprecation warning: deploy task will be removed
-       Instead:
-        1. update version.rb with new version number
-        2. run 'rake website' to push new version docco
-        3. commit updated website files (containing new version number)
-        4. run 'rake release VERSION=X.Y.Z' to push to rubyforge
-  EOS
-end
-
 task :release do
   puts "Remember to create Git tag:"
   puts "  git tag REL-#{VERS}"
