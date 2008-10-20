@@ -15,16 +15,16 @@ class InstallWebsiteGenerator < RubiGen::Base
 
   def initialize(runtime_args, runtime_options = {})
     super
-    @destination_root = File.expand_path(destination_root)
-    @gem_name = base_name
-    @module_name  = @gem_name.camelcase
+    @destination_root   = File.expand_path(destination_root)
+    @gem_name           = base_name
+    @module_name        = @gem_name.camelcase
     @rubyforge_username = ENV['RUBYFORGE_USERNAME'] || 'unknown'
     extract_options
   end
 
   def manifest
-    script_options     = { :chmod => 0755, :shebang => options[:shebang] == DEFAULT_SHEBANG ? nil : options[:shebang] }
     windows            = (RUBY_PLATFORM =~ /dos|win32|cygwin/i) || (RUBY_PLATFORM =~ /(:?mswin|mingw)/)
+    script_options     = { :chmod => 0755, :shebang => options[:shebang] == DEFAULT_SHEBANG ? nil : options[:shebang] }
 
     record do |m|
       # Ensure appropriate folder(s) exists
