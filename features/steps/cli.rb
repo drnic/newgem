@@ -179,3 +179,12 @@ Then /^gem spec key '(.*)' contains '(.*)'$/ do |key, value|
     spec_value.to_s.should match(/#{value}/)
   end
 end
+
+Then /^Rakefile can display tasks successfully$/ do
+  @stdout = File.expand_path(File.join($tmp_root, "rakefile.out"))
+  FileUtils.chdir($active_project_folder) do
+    system "rake -T > #{@stdout} 2> #{@stdout}"
+  end
+  actual_output = File.read(@stdout)
+  actual_output.should match(/^rake\s+\w+\s+#\s.*/)
+end
