@@ -19,6 +19,12 @@ Feature: Can run create RubyGem scaffolds
     And yaml file 'config/website.yml.sample' contains {"host" => "unknown@rubyforge.org", "remote_dir" => "/var/www/gforge-projects/my_project"}
     And output same as contents of 'newgem.out'
     And Rakefile can display tasks successfully
+
+  Scenario: Run newgem with project name containing hypens
+    Given a safe folder
+    Given env variable $RUBYFORGE_USERNAME set to ''
+    When newgem is executed for project 'my-project' with no options
+    Then Rakefile can display tasks successfully
   
   Scenario: Run newgem without any arguments, with env $RUBYFORGE_USERNAME set
     Given a safe folder

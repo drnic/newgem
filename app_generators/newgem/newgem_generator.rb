@@ -31,7 +31,7 @@ class NewgemGenerator < RubiGen::Base
     usage if args.empty?
     @destination_root = File.expand_path(args.shift)
     @gem_name = base_name
-    @module_name  = gem_name.camelize
+    @module_name  = gem_name.gsub('-','_').camelize
     @project_name = @gem_name
     extract_options
   end
