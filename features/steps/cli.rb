@@ -195,4 +195,5 @@ Then /^task 'rake (.*)' is executed successfully$/ do |task|
   @raketask_stdout.should_not be_nil
   actual_output = File.read(@raketask_stdout)
   actual_output.should_not match(/^Don't know how to build task '#{task}'/)
+  actual_output.should_not match(/Error/i)
 end
