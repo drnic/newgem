@@ -185,7 +185,7 @@ end
 Then /^Rakefile can display tasks successfully$/ do
   @rake_stdout = File.expand_path(File.join(@tmp_root, "rakefile.out"))
   FileUtils.chdir(@active_project_folder) do
-    system "rake -T > #{@stdout} 2> #{@rake_stdout}"
+    system "rake -T > #{@rake_stdout} 2> #{@rake_stdout}"
   end
   actual_output = File.read(@rake_stdout)
   actual_output.should match(/^rake\s+\w+\s+#\s.*/)
