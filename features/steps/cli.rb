@@ -1,12 +1,12 @@
 Given %r{^a safe folder} do
-  FileUtils.rm_rf   $tmp_root = File.dirname(__FILE__) + "/../../tmp"
-  FileUtils.mkdir_p $tmp_root
+  FileUtils.rm_rf   @tmp_root = File.dirname(__FILE__) + "/../../tmp"
+  FileUtils.mkdir_p @tmp_root
 end
 
 Given /^this project is active project folder/ do
-  FileUtils.rm_rf   $tmp_root = File.dirname(__FILE__) + "/../../tmp"
-  FileUtils.mkdir_p $tmp_root
-  $active_project_folder = File.expand_path(File.dirname(__FILE__) + "/../..")
+  FileUtils.rm_rf   @tmp_root = File.dirname(__FILE__) + "/../../tmp"
+  FileUtils.mkdir_p @tmp_root
+  @active_project_folder = File.expand_path(File.dirname(__FILE__) + "/../..")
 end
 
 Given /^env variable \$([\w_]+) set to '(.*)'/ do |env_var, value|
@@ -23,60 +23,59 @@ end
 
 Given %r{^an existing newgem scaffold \[called '(.*)'\]$} do |project_name|
   # TODO this is a combo of "a safe folder" and "newgem is executed ..." steps; refactor
-  FileUtils.rm_rf   $tmp_root = File.dirname(__FILE__) + "/../../tmp"
-  FileUtils.mkdir_p $tmp_root
+  FileUtils.rm_rf   @tmp_root = File.dirname(__FILE__) + "/../../tmp"
+  FileUtils.mkdir_p @tmp_root
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
-  FileUtils.chdir $tmp_root do
+  FileUtils.chdir @tmp_root do
     @stdout = "newgem.out"
     system "ruby #{newgem} #{project_name} > #{@stdout}"
     force_local_newgem_priority project_name
   end
-  $active_project_folder = File.join($tmp_root, project_name)
-  $project_name = project_name
+  @active_project_folder = File.join(@tmp_root, project_name)
+  @project_name = project_name
 end
 
 Given /^project website configuration for safe folder on local machine$/ do
-  $remote_folder = File.expand_path(File.join($tmp_root, 'website'))
-  FileUtils.rm_rf   $remote_folder
-  FileUtils.mkdir_p $remote_folder
-  FileUtils.chdir $active_project_folder do
+  @remote_folder = File.expand_path(File.join(@tmp_root, 'website'))
+  FileUtils.rm_rf   @remote_folder
+  FileUtils.mkdir_p @remote_folder
+  FileUtils.chdir @active_project_folder do
     FileUtils.mkdir_p 'config'
-    # config_yml = { "host" => "localhost", "remote_dir" => $remote_folder }.to_yaml
-    config_yml = { "remote_dir" => $remote_folder }.to_yaml
+    config_yml = { "remote_dir" => @remote_folder }.to_yaml
     config_path = File.join('config', 'website.yml')
     File.open(config_path, "w") { |io| io << config_yml }
   end  
 end
 
 Given /^'(.*)' folder is deleted/ do |folder|
-  FileUtils.chdir $active_project_folder do
+  FileUtils.chdir @active_project_folder do
     FileUtils.rm_rf folder
   end
 end
 
 When %r{^newgem is executed for project '(.*)' with no options$} do |project_name|
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
-  $active_project_folder = File.expand_path(File.join($tmp_root, project_name))
-  $project_name = project_name
-  FileUtils.chdir $tmp_root do
+  FileUtils.chdir @tmp_root do
     @stdout = "newgem.out"
     system "ruby #{newgem} #{project_name} > #{@stdout}"
     force_local_newgem_priority project_name
   end
+  @active_project_folder = File.expand_path(File.join(@tmp_root, project_name))
+  @project_name = project_name
 end
 
 When %r{^newgem is executed for project '(.*)' with options '(.*)'$} do |project_name, arguments|
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
-  $project_name = project_name
-  FileUtils.chdir $tmp_root do
+  @project_name = project_name
+  FileUtils.chdir @tmp_root do
     @stdout = "newgem.out"
     system "ruby #{newgem} #{arguments} #{project_name} > #{@stdout}"
-    $active_project_folder = File.join($tmp_root, project_name)
+    @active_project_folder = File.join(@tmp_root, project_name)
   end
 end
 
 When %r{^'(.*)' generator is invoked with arguments '(.*)'$} do |generator, arguments|
-  FileUtils.chdir($active_project_folder) do
+  FileUtils.chdir(@active_project_folder) do
     if Object.const_defined?("APP_ROOT")
       APP_ROOT.replace(FileUtils.pwd)
     else 
@@ -87,52 +86,52 @@ When %r{^'(.*)' generator is invoked with arguments '(.*)'$} do |generator, argu
 end
 
 When /^run executable '(.*)' with arguments '(.*)'$/ do |executable, arguments|
-  @stdout = File.expand_path(File.join($tmp_root, "executable.out"))
-  FileUtils.chdir($active_project_folder) do
+  @stdout = File.expand_path(File.join(@tmp_root, "executable.out"))
+  FileUtils.chdir(@active_project_folder) do
     system "ruby #{executable} #{arguments} > #{@stdout}"
   end
 end
 
 When /^run unit tests for test file '(.*)'$/ do |test_file|
-  @stdout = File.expand_path(File.join($tmp_root, "tests.out"))
-  FileUtils.chdir($active_project_folder) do
+  @stdout = File.expand_path(File.join(@tmp_root, "tests.out"))
+  FileUtils.chdir(@active_project_folder) do
     system "ruby #{test_file} > #{@stdout}"
   end
 end
 
 When /^task 'rake (.*)' is invoked$/ do |task|
-  @stdout = File.expand_path(File.join($tmp_root, "tests.out"))
-  FileUtils.chdir($active_project_folder) do
+  @stdout = File.expand_path(File.join(@tmp_root, "tests.out"))
+  FileUtils.chdir(@active_project_folder) do
     system "rake #{task} > #{@stdout} 2> #{@stdout}"
   end
 end
 
 Then %r{^folder '(.*)' is created} do |folder|
-  FileUtils.chdir $active_project_folder do
+  FileUtils.chdir @active_project_folder do
     File.exists?(folder).should be_true
   end
 end
 
 Then %r{^remote folder '(.*)' is created} do |folder|
-  FileUtils.chdir $remote_folder do
+  FileUtils.chdir @remote_folder do
     File.exists?(folder).should be_true
   end
 end
 
 Then %r{^file '(.*)' (is|is not) created} do |file, is|
-  FileUtils.chdir $active_project_folder do
+  FileUtils.chdir @active_project_folder do
     File.exists?(file).should(is == 'is' ? be_true : be_false)
   end
 end
 
 Then %r{^remote file '(.*)' (is|is not) created} do |file, is|
-  FileUtils.chdir $remote_folder do
+  FileUtils.chdir @remote_folder do
     File.exists?(file).should(is == 'is' ? be_true : be_false)
   end
 end
 
 Then /^file matching '(.*)' is created$/ do |pattern|
-  FileUtils.chdir $active_project_folder do
+  FileUtils.chdir @active_project_folder do
     Dir[pattern].should_not be_empty
   end
 end
@@ -168,14 +167,14 @@ Then /^all (\d+) tests pass$/ do |expected_test_count|
 end
 
 Then /^yaml file '(.*)' contains (\{.*\})/ do |file, yaml|
-  FileUtils.chdir $active_project_folder do
+  FileUtils.chdir @active_project_folder do
     yaml = eval yaml
     YAML.load(File.read(file)).should == yaml
   end
 end
 
 Then /^gem spec key '(.*)' contains \/(.*)\/$/ do |key, regex|
-  FileUtils.chdir $active_project_folder do
+  FileUtils.chdir @active_project_folder do
     gem_file = Dir["pkg/*.gem"].first
     gem_spec = Gem::Specification.from_yaml(`gem spec #{gem_file}`)
     spec_value = gem_spec.send(key.to_sym)
@@ -184,10 +183,10 @@ Then /^gem spec key '(.*)' contains \/(.*)\/$/ do |key, regex|
 end
 
 Then /^Rakefile can display tasks successfully$/ do
-  @stdout = File.expand_path(File.join($tmp_root, "rakefile.out"))
-  FileUtils.chdir($active_project_folder) do
-    system "rake -T > #{@stdout} 2> #{@stdout}"
+  @rake_stdout = File.expand_path(File.join(@tmp_root, "rakefile.out"))
+  FileUtils.chdir(@active_project_folder) do
+    system "rake -T > #{@stdout} 2> #{@rake_stdout}"
   end
-  actual_output = File.read(@stdout)
+  actual_output = File.read(@rake_stdout)
   actual_output.should match(/^rake\s+\w+\s+#\s.*/)
 end

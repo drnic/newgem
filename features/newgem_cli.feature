@@ -1,4 +1,4 @@
-Feature: Can run create RubyGem scaffolds
+Feature: Can run 'newgem' to create RubyGem scaffolds
 
   As a developer of RubyGems
   I want to create RubyGem scaffolds
@@ -10,11 +10,11 @@ Feature: Can run create RubyGem scaffolds
     When newgem is executed for project 'my_project' with no options
     Then file 'Rakefile' is created
     And does invoke generator 'install_test_unit'
+    And does invoke generator 'install_website'
+    And does invoke generator 'install_rubigen_scripts'
     And does not invoke generator 'install_rspec'
     And does not invoke generator 'install_shoulda'
     And does not invoke generator 'install_cucumber'
-    And does invoke generator 'install_website'
-    And does invoke generator 'install_rubigen_scripts'
     And file 'config/website.yml.sample' is created
     And yaml file 'config/website.yml.sample' contains {"host" => "unknown@rubyforge.org", "remote_dir" => "/var/www/gforge-projects/my_project"}
     And output same as contents of 'newgem.out'

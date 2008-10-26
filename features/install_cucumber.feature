@@ -9,3 +9,5 @@ Feature: RubyGems have features to be described and tested
     When 'install_cucumber' generator is invoked with arguments ''
     Then folder 'features/steps' is created
     And file 'tasks/cucumber.rake' is created
+
+  
