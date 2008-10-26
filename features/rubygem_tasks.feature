@@ -9,5 +9,5 @@ Feature: Generated RubyGems have various rake tasks to aide their development
     When task 'rake gem' is invoked
     Then folder 'pkg' is created
     And file matching 'pkg/my_project-0.0.1.gem' is created
-    And gem spec key 'rdoc_options' contains '--mainREADME.rdoc'
+    And gem spec key 'rdoc_options' contains /--mainREADME.rdoc/
     And gem spec key 'dependencies' contains /newgem \(>= [\d.]+, development\)/

@@ -174,18 +174,9 @@ Then /^yaml file '(.*)' contains (\{.*\})/ do |file, yaml|
   end
 end
 
-Then /^gem spec key '(.*)' contains '(.*)'$/ do |key, value|
-  FileUtils.chdir $active_project_folder do
-    gem_file = Dir["pkg/#{$project_name}-*.gem"].first
-    gem_spec = Gem::Specification.from_yaml(`gem spec #{gem_file}`)
-    spec_value = gem_spec.send(key.to_sym)
-    spec_value.to_s.should match(/#{value}/)
-  end
-end
-
 Then /^gem spec key '(.*)' contains \/(.*)\/$/ do |key, regex|
   FileUtils.chdir $active_project_folder do
-    gem_file = Dir["pkg/#{$project_name}-*.gem"].first
+    gem_file = Dir["pkg/*.gem"].first
     gem_spec = Gem::Specification.from_yaml(`gem spec #{gem_file}`)
     spec_value = gem_spec.send(key.to_sym)
     spec_value.to_s.should match(/#{regex}/)
