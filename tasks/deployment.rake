@@ -1,6 +1,6 @@
 task :release do
-  puts "Remember to create Git tag:"
-  puts "  git tag REL-#{VERS}"
+  puts "Remember to create tag your release; eg for Git:"
+  puts "  git tag REL-#{$hoe.version}"
 end
 
 desc 'Runs tasks website_generate and install_gem as a local deployment of the gem'
@@ -11,8 +11,8 @@ task :check_version do
     puts 'Must pass a VERSION=x.y.z release version'
     exit
   end
-  unless ENV['VERSION'] == VERS
-    puts "Please update your version.rb to match the release version, currently #{VERS}"
+  unless ENV['VERSION'] == $hoe.version
+    puts "Please update your version.rb to match the release version, currently #{$hoe.version}"
     exit
   end
 end
