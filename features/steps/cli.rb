@@ -100,9 +100,9 @@ When /^run unit tests for test file '(.*)'$/ do |test_file|
 end
 
 When /^task 'rake (.*)' is invoked$/ do |task|
-  @stdout = File.expand_path(File.join(@tmp_root, "tests.out"))
+  @raketask_stdout = File.expand_path(File.join(@tmp_root, "tests.out"))
   FileUtils.chdir(@active_project_folder) do
-    system "rake #{task} > #{@stdout} 2> #{@stdout}"
+    system "rake #{task} > #{@raketask_stdout} 2> #{@raketask_stdout}"
   end
 end
 
@@ -189,4 +189,10 @@ Then /^Rakefile can display tasks successfully$/ do
   end
   actual_output = File.read(@rake_stdout)
   actual_output.should match(/^rake\s+\w+\s+#\s.*/)
+end
+
+Then /^task 'rake (.*)' is executed successfully$/ do |task|
+  @raketask_stdout.should_not be_nil
+  actual_output = File.read(@raketask_stdout)
+  actual_output.should_not match(/^Don't know how to build task '#{task}'/)
 end
