@@ -57,3 +57,4 @@ Feature: Can run create RubyGem scaffolds
     And does invoke generator 'install_cucumber'
     And does not invoke generator 'install_rspec'
     And Rakefile can display tasks successfully
+

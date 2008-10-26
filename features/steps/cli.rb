@@ -32,6 +32,7 @@ Given %r{^an existing newgem scaffold \[called '(.*)'\]$} do |project_name|
     force_local_newgem_priority project_name
   end
   $active_project_folder = File.join($tmp_root, project_name)
+  $project_name = project_name
 end
 
 Given /^project website configuration for safe folder on local machine$/ do
@@ -56,6 +57,7 @@ end
 When %r{^newgem is executed for project '(.*)' with no options$} do |project_name|
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
   $active_project_folder = File.expand_path(File.join($tmp_root, project_name))
+  $project_name = project_name
   FileUtils.chdir $tmp_root do
     @stdout = "newgem.out"
     system "ruby #{newgem} #{project_name} > #{@stdout}"
@@ -65,6 +67,7 @@ end
 
 When %r{^newgem is executed for project '(.*)' with options '(.*)'$} do |project_name, arguments|
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
+  $project_name = project_name
   FileUtils.chdir $tmp_root do
     @stdout = "newgem.out"
     system "ruby #{newgem} #{arguments} #{project_name} > #{@stdout}"
@@ -173,10 +176,19 @@ end
 
 Then /^gem spec key '(.*)' contains '(.*)'$/ do |key, value|
   FileUtils.chdir $active_project_folder do
-    gem_file = Dir['pkg/newgem-*.gem'].first
+    gem_file = Dir["pkg/#{$project_name}-*.gem"].first
     gem_spec = Gem::Specification.from_yaml(`gem spec #{gem_file}`)
     spec_value = gem_spec.send(key.to_sym)
     spec_value.to_s.should match(/#{value}/)
+  end
+end
+
+Then /^gem spec key '(.*)' contains \/(.*)\/$/ do |key, regex|
+  FileUtils.chdir $active_project_folder do
+    gem_file = Dir["pkg/#{$project_name}-*.gem"].first
+    gem_spec = Gem::Specification.from_yaml(`gem spec #{gem_file}`)
+    spec_value = gem_spec.send(key.to_sym)
+    spec_value.to_s.should match(/#{regex}/)
   end
 end
 

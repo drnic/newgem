@@ -15,7 +15,7 @@ Feature: Development processes of newgem itself (rake tasks)
   # 
   Scenario: Generate RubyGem
     Given this project is active project folder
-    Given 'package' folder is deleted
+    And 'pkg' folder is deleted
     When task 'rake gem' is invoked
     Then folder 'pkg' is created
     And file matching 'pkg/newgem-*.gem' is created
