@@ -1,3 +1,9 @@
+== 1.0.1 2008-10-28
+
+* Fix up readme + post-install notices based on 1.0.0 changes [thx Tomasz Muras]
+* Remove old rails cucumber generator cruft from env.rb
+* Clean up some feature/steps
+
 == 1.0.0 2008-10-21
 
 * Yay for 1.0.0 of New Gem Generator!
