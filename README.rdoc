@@ -29,8 +29,6 @@ Go to the folder where you want to create your new gem folder structure, and run
         create  PostInstall.txt
         create  lib/wizzo.rb
         create  lib/wizzo/version.rb
-        create  config/hoe.rb
-        create  config/requirements.rb
         create  tasks/deployment.rake
         create  tasks/environment.rake
         create  tasks/website.rake

@@ -1,5 +1,5 @@
 Important
 =========
 
-* Open config/hoe.rb
+* Open Rakefile
 * Update missing details (gem description, dependent gems, etc.)

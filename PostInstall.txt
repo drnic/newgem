@@ -3,20 +3,10 @@ USAGE: newgem project_name
 HELP/OPTIONS: newgem -h
 
 
-newgem uses config from your ~/.rubyforge/user-config.yml file
-You can add the following key/values to this file:
-  full_name  : Dr Nic Williams
-  email      : drnicwilliams@gmail.com
-  github_username: drnic
+newgem can use an environment variable $RUBYFORGE_USERNAME
+for its default. So you can add the following to your .bash_profile:
 
-To create the ~/.rubyforge/user-config.yml file run:
-  rubyforge setup (deletes your username and password, so run sparingly!)
-  edit ~/.rubyforge/user-config.yml
-  rubyforge config
-
-Whenever you create a new RubyForge.org project, re-run:
-  rubyforge config
-
+  export RUBYFORGE_USERNAME="nicwilliams"
 
 Did you know you have script/generate generators?
   application_generator, component_generator, executable,

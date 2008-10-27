@@ -37,6 +37,7 @@ features/expected_outputs/newgem.out
 features/install_cucumber.feature
 features/install_website.feature
 features/newgem_cli.feature
+features/rubygem_tasks.feature
 features/steps/cli.rb
 features/steps/env.rb
 lib/newgem.rb
