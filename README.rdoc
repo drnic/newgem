@@ -16,53 +16,49 @@ Go to the folder where you want to create your new gem folder structure, and run
 
   cd ~/ruby_projects
   $ newgem wizzo
-        create  
-        create  config
-        create  doc
-        create  lib
-        create  script
-        create  tasks
-        create  lib/wizzo
-        create  History.txt
-        create  Rakefile
-        create  README.rdoc
-        create  PostInstall.txt
-        create  lib/wizzo.rb
-        create  lib/wizzo/version.rb
-        create  tasks/deployment.rake
-        create  tasks/environment.rake
-        create  tasks/website.rake
-    dependency  install_test_unit
-        create    test
-        create    test/test_helper.rb
-        create    test/test_wizzo.rb
-    dependency  install_website
-        create    website/javascripts
-        create    website/stylesheets
-        exists    script
-        exists    tasks
-        create    website/index.txt
-        create    website/index.html
-        create    script/txt2html
-         force    tasks/website.rake
-    dependency    plain_theme
-        exists      website/javascripts
-        exists      website/stylesheets
-        create      website/template.html.erb
-        create      website/stylesheets/screen.css
-        create      website/javascripts/rounded_corners_lite.inc.js
-    dependency  install_rubigen_scripts
-        exists    script
-        create    script/generate
-        create    script/destroy
-        create  script/console
-        create  Manifest.txt
-        readme  readme
-  Important
-  =========
+          create  
+          create  doc
+          create  lib
+          create  script
+          create  tasks
+          create  lib/wizzo
+          create  History.txt
+          create  Rakefile
+          create  README.rdoc
+          create  PostInstall.txt
+          create  lib/wizzo.rb
+      dependency  install_test_unit
+          create    test
+          create    test/test_helper.rb
+          create    test/test_wizzo.rb
+      dependency  install_website
+          create    website/javascripts
+          create    website/stylesheets
+          create    config
+          exists    script
+          exists    tasks
+          create    website/index.txt
+          create    website/index.html
+          create    config/website.yml.sample
+          create    script/txt2html
+      dependency    plain_theme
+          exists      website/javascripts
+          exists      website/stylesheets
+          create      website/template.html.erb
+          create      website/stylesheets/screen.css
+          create      website/javascripts/rounded_corners_lite.inc.js
+      dependency  install_rubigen_scripts
+          exists    script
+          create    script/generate
+          create    script/destroy
+          create  script/console
+          create  Manifest.txt
+          readme  readme
+    Important
+    =========
 
-  * Open config/hoe.rb
-  * Update missing details (gem description, dependent gems, etc.)
+    * Open Rakefile
+    * Update missing details (gem description, dependent gems, etc.)
 
 You can generate test::unit or rspec test stubs via the -T, --test-with options (shoulda coming soon)
 

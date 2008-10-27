@@ -25,7 +25,6 @@ Go to the folder where you want to create your new gem folder structure, and run
 <pre>$ cd ~/ruby_projects
 $ newgem wizzo
       create  
-      create  config
       create  doc
       create  lib
       create  script
@@ -36,12 +35,6 @@ $ newgem wizzo
       create  README.rdoc
       create  PostInstall.txt
       create  lib/wizzo.rb
-      create  lib/wizzo/version.rb
-      create  config/hoe.rb
-      create  config/requirements.rb
-      create  tasks/deployment.rake
-      create  tasks/environment.rake
-      create  tasks/website.rake
   dependency  install_test_unit
       create    test
       create    test/test_helper.rb
@@ -49,12 +42,13 @@ $ newgem wizzo
   dependency  install_website
       create    website/javascripts
       create    website/stylesheets
+      create    config
       exists    script
       exists    tasks
       create    website/index.txt
       create    website/index.html
+      create    config/website.yml.sample
       create    script/txt2html
-       force    tasks/website.rake
   dependency    plain_theme
       exists      website/javascripts
       exists      website/stylesheets
@@ -71,7 +65,7 @@ $ newgem wizzo
 Important
 =========
 
-* Open config/hoe.rb
+* Open Rakefile
 * Update missing details (gem description, dependent gems, etc.)</pre>
 
 You can generate test::unit or rspec test stubs via the <code>-T</code> or <code>--test-with</code> options. For example, <code>-T rspec</code> generates a <code>spec</code> folder with some test stubs.
