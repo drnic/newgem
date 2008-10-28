@@ -1,6 +1,11 @@
 task :release do
-  puts "Remember to create tag your release; eg for Git:"
-  puts "  git tag REL-#{$hoe.version}"
+  puts <<-EOS.gsub(/^  /,'')
+  Remember to create tag your release; eg for Git:
+    git tag REL-#{$hoe.version}
+  
+  Announce your release on RubyForge News:
+    rake post_news
+  EOS
 end
 
 desc 'Runs tasks website_generate and install_gem as a local deployment of the gem'
