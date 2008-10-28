@@ -1,4 +1,4 @@
-%w[rubygems rake rake/clean fileutils hoe rubigen].each { |f| require f }
+%w[rubygems rake rake/clean fileutils hoe rubigen cucumber].each { |f| require f }
 require File.dirname(__FILE__) + '/lib/newgem'
 
 # Generate all the Rake tasks
@@ -13,6 +13,9 @@ $hoe = Hoe.new('newgem', Newgem::VERSION) do |p|
     ['hoe', ">= #{Hoe::VERSION}"],
     ['RedCloth','>= 4.0.0'], # for website generation
     ['syntax','>= 1.0.0']
+  ]
+  p.extra_dev_deps = [
+    ['cucumber', ">= #{::Cucumber::VERSION::STRING}"]
   ]
   p.spec_extras['rdoc_options'] = ['--main', Dir['README*'].first] # hopefully fixed in future hoe > 1.8
   p.clean_globs |= %w[**/.DS_Store tmp *.log]

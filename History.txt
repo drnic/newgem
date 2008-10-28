@@ -1,3 +1,8 @@
+
+* Lighthouse Project created for tickets/suggestions: http://drnic.lighthouseapp.com/projects/18881-newgem
+* dev dependency on latest cucumber gem
+* no requirement for cucumber gem to be installed [fixes #1]
+
 == 1.0.1 2008-10-28
 
 * Fix up readme + post-install notices based on 1.0.0 changes [thx Tomasz Muras]
