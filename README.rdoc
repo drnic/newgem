@@ -79,6 +79,10 @@ The <code>newgem</code> application is distributed itself as a RubyGem and is av
 
 Alternately, download the gem and install manually.
 
+== TICKETS:
+
+Tickets or suggestions can be raised at http://drnic.lighthouseapp.com/projects/18881-newgem/overview
+
 == TUTORIALS:
 
 * Home page is a full tutorial - http://newgem.rubyforge.org
