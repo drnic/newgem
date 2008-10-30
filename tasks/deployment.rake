@@ -1,3 +1,10 @@
+desc "Generate a #{$hoe.name}.gemspec file"
+task :gemspec do
+  File.open("#{$hoe.name}.gemspec", "w") do |file|
+    file.puts $hoe.spec.to_ruby
+  end
+end
+
 task :release do
   puts <<-EOS.gsub(/^  /,'')
   Remember to create tag your release; eg for Git:

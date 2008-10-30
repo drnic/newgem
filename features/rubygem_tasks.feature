@@ -23,4 +23,5 @@ Feature: Generated RubyGems have various rake tasks to aide their development
     When task 'rake gemspec' is invoked
     Then file 'my_project.gemspec' is created
     And gemspec builds the RubyGem successfully
+    And output does match /Successfully built RubyGem/
   

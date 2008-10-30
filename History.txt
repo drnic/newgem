@@ -1,3 +1,6 @@
+== 1.0.3 2008-10-31
+
+* GitHub RubyGem support. `rake gemspec` generates a clean `my_project.gemspec` file that will work with GitHub
 * update plain theme to a peppermint green colour; updated newgem's own website to same theme
 
 == 1.0.2 2008-10-30
