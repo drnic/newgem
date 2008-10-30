@@ -23,7 +23,7 @@ Feature: Generate an executable/CLI scaffold
     Given an existing newgem scaffold [called 'my_project']
     Given 'executable' generator is invoked with arguments 'my_app'
     When run executable 'bin/my_app' with arguments ''
-    Then output matches /lib\/my_app\/cli.rb/
+    Then output does match /lib\/my_app\/cli.rb/
   
   Scenario: Run unit tests after executable generator should all pass
     Given an existing newgem scaffold [called 'my_project']

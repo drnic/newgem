@@ -1,11 +1,11 @@
 Given %r{^a safe folder} do
   FileUtils.rm_rf   @tmp_root = File.dirname(__FILE__) + "/../../tmp"
   FileUtils.mkdir_p @tmp_root
+  @newgem_lib_path = File.expand_path(File.dirname(__FILE__) + '/../../lib')
 end
 
 Given /^this project is active project folder/ do
-  FileUtils.rm_rf   @tmp_root = File.dirname(__FILE__) + "/../../tmp"
-  FileUtils.mkdir_p @tmp_root
+  Given "a safe folder"
   @active_project_folder = File.expand_path(File.dirname(__FILE__) + "/../..")
 end
 
@@ -13,26 +13,28 @@ Given /^env variable \$([\w_]+) set to '(.*)'/ do |env_var, value|
   ENV[env_var] = value
 end
 
-def force_local_newgem_priority(project_name)
+def force_local_newgem_priority(project_name = @project_name)
   rakefile = File.read(File.join(project_name, 'Rakefile'))
   File.open(File.join(project_name, 'Rakefile'), "w+") do |f|
-    f << "$:.unshift('#{File.expand_path(File.dirname(__FILE__) + '/../../lib')}')\n"
+    f << "$:.unshift('#{@newgem_lib_path}')\n"
     f << rakefile
   end
 end
 
+def setup_active_project_folder project_name
+  @active_project_folder = File.join(@tmp_root, project_name)
+  @project_name = project_name
+end
+
 Given %r{^an existing newgem scaffold \[called '(.*)'\]} do |project_name|
-  # TODO this is a combo of "a safe folder" and "newgem is executed ..." steps; refactor
-  FileUtils.rm_rf   @tmp_root = File.dirname(__FILE__) + "/../../tmp"
-  FileUtils.mkdir_p @tmp_root
+  Given "a safe folder"
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
+  setup_active_project_folder project_name
   FileUtils.chdir @tmp_root do
     @stdout = "newgem.out"
     system "ruby #{newgem} #{project_name} > #{@stdout}"
-    force_local_newgem_priority project_name
+    force_local_newgem_priority
   end
-  @active_project_folder = File.join(@tmp_root, project_name)
-  @project_name = project_name
 end
 
 Given /^project website configuration for safe folder on local machine$/ do
@@ -55,22 +57,21 @@ end
 
 When %r{^newgem is executed for project '(.*)' with no options$} do |project_name|
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
+  setup_active_project_folder project_name
   FileUtils.chdir @tmp_root do
     @stdout = "newgem.out"
     system "ruby #{newgem} #{project_name} > #{@stdout}"
-    force_local_newgem_priority project_name
+    force_local_newgem_priority
   end
-  @active_project_folder = File.expand_path(File.join(@tmp_root, project_name))
-  @project_name = project_name
 end
 
 When %r{^newgem is executed for project '(.*)' with options '(.*)'$} do |project_name, arguments|
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
-  @project_name = project_name
+  setup_active_project_folder project_name
   FileUtils.chdir @tmp_root do
     @stdout = "newgem.out"
     system "ruby #{newgem} #{arguments} #{project_name} > #{@stdout}"
-    @active_project_folder = File.join(@tmp_root, project_name)
+    force_local_newgem_priority
   end
 end
 
