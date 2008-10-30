@@ -17,3 +17,10 @@ Feature: Generated RubyGems have various rake tasks to aide their development
     When task 'rake -T' is invoked
     Then output does not match /README.txt is missing/
   
+  Scenario: Generate a gemspec that can build the RubyGem
+    Given an existing newgem scaffold [called 'my_project']
+    And 'pkg' folder is deleted
+    When task 'rake gemspec' is invoked
+    Then file 'my_project.gemspec' is created
+    And gemspec builds the RubyGem successfully
+  
