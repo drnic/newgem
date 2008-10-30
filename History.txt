@@ -1,6 +1,7 @@
 == 1.0.2 2008-10-30
 
 * Lighthouse Project created for tickets/suggestions: http://drnic.lighthouseapp.com/projects/18881-newgem
+* newgem no longer generates a website by default; use -w to create one; or -i website; or script/generate install_website
 * dev dependency on latest cucumber gem
 * no requirement for cucumber gem to be installed [fixes #1]
 * hoe is patched and cached within newgem so that README.* is supported [fixes #5]
