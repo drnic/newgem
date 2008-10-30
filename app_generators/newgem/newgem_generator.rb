@@ -11,7 +11,7 @@ class NewgemGenerator < RubiGen::Base
                     :author      => nil,
                     :import_path => nil,
                     :jruby       => nil,
-                    :disable_website => nil,
+                    :enable_website => nil,
                     :test_framework  => 'test_unit',
                     :version     => '0.0.1'
 
@@ -22,7 +22,7 @@ class NewgemGenerator < RubiGen::Base
   # extensions/option
   attr_reader :test_framework
   attr_reader :bin_names_list
-  attr_reader :disable_website
+  attr_reader :enable_website
   attr_reader :manifest
   attr_reader :is_jruby
 
@@ -64,7 +64,7 @@ class NewgemGenerator < RubiGen::Base
 
       # Website
       m.dependency "install_website", [gem_name],
-         :author => author, :email => email, :destination => destination_root, :collision => :force unless disable_website
+         :author => author, :email => email, :destination => destination_root, :collision => :force if enable_website
 
       # JRuby
       m.dependency "install_jruby", [gem_name], :destination => destination_root, :collision => :force if is_jruby
@@ -138,8 +138,9 @@ EOS
       opts.on("-V", "--set-version=YOUR_VERSION", String,
               "Version of the gem you are creating.",
               "Default: 0.0.1") { |x| options[:version] = x }
-      opts.on("-W", "--website-disable",
-              "Disables the generation of the website for your RubyGem.") { |x| options[:disable_website] = x }
+      opts.on("-w", "--enable-website",
+              "Enable the generation of the website for your RubyGem.",
+              "Same as '-i website'") { |x| options[:enable_website] = x }
       opts.on("--simple",
               "Creates a simple RubyGems scaffold.") { |x| }
     end
@@ -156,7 +157,7 @@ EOS
         @email  ||= rubyforge_config.email
       end
       @bin_names_list     = (options[:bin_name] || "").split(',')
-      @disable_website    = options[:disable_website]
+      @enable_website     = options[:enable_website]
       @test_framework     = options[:test_framework] || "test_unit"
       @is_jruby           = options[:jruby]
       @project_name       = options[:project] if options.include?(:project)

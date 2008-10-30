@@ -13,22 +13,6 @@
       create    test
       create    test/test_helper.rb
       create    test/test_my_project.rb
-  dependency  install_website
-      create    website/javascripts
-      create    website/stylesheets
-      create    config
-      exists    script
-      exists    tasks
-      create    website/index.txt
-      create    website/index.html
-      create    config/website.yml.sample
-      create    script/txt2html
-  dependency    plain_theme
-      exists      website/javascripts
-      exists      website/stylesheets
-      create      website/template.html.erb
-      create      website/stylesheets/screen.css
-      create      website/javascripts/rounded_corners_lite.inc.js
   dependency  install_rubigen_scripts
       exists    script
       create    script/generate

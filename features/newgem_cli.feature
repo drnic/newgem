@@ -10,13 +10,12 @@ Feature: Can run 'newgem' to create RubyGem scaffolds
     When newgem is executed for project 'my_project' with no options
     Then file 'Rakefile' is created
     And does invoke generator 'install_test_unit'
-    And does invoke generator 'install_website'
     And does invoke generator 'install_rubigen_scripts'
+    And does not invoke generator 'install_website'
     And does not invoke generator 'install_rspec'
     And does not invoke generator 'install_shoulda'
     And does not invoke generator 'install_cucumber'
-    And file 'config/website.yml.sample' is created
-    And yaml file 'config/website.yml.sample' contains {"host" => "unknown@rubyforge.org", "remote_dir" => "/var/www/gforge-projects/my_project"}
+    And file 'config/website.yml' is not created
     And output same as contents of 'newgem.out'
     And Rakefile can display tasks successfully
 
@@ -26,14 +25,6 @@ Feature: Can run 'newgem' to create RubyGem scaffolds
     When newgem is executed for project 'my-project' with no options
     Then Rakefile can display tasks successfully
   
-  Scenario: Run newgem without any arguments, with env $RUBYFORGE_USERNAME set
-    Given a safe folder
-    Given env variable $RUBYFORGE_USERNAME set to 'nicwilliams'
-    When newgem is executed for project 'my_project' with no options
-    Then file 'config/website.yml.sample' is created
-    And yaml file 'config/website.yml.sample' contains {"host" => "nicwilliams@rubyforge.org", "remote_dir" => "/var/www/gforge-projects/my_project"}
-    And Rakefile can display tasks successfully
-
   Scenario: Run newgem to include rspec
     Given a safe folder
     When newgem is executed for project 'my_rspec_project' with options '-T rspec'
@@ -43,11 +34,20 @@ Feature: Can run 'newgem' to create RubyGem scaffolds
     And does not invoke generator 'install_cucumber'
     And Rakefile can display tasks successfully
 
-  Scenario: Run newgem to disable website
+  Scenario: Run newgem to enable website
     Given a safe folder
-    When newgem is executed for project 'my_project' with options '-W'
-    Then does not invoke generator 'install_website'
-    And file 'config/website.yml' is not created
+    When newgem is executed for project 'my_project' with options '-w'
+    Then does invoke generator 'install_website'
+    And file 'config/website.yml.sample' is created
+    And yaml file 'config/website.yml.sample' contains {"host" => "unknown@rubyforge.org", "remote_dir" => "/var/www/gforge-projects/my_project"}
+    And Rakefile can display tasks successfully
+
+  Scenario: Run newgem to enable website, with env $RUBYFORGE_USERNAME set
+    Given a safe folder
+    Given env variable $RUBYFORGE_USERNAME set to 'nicwilliams'
+    When newgem is executed for project 'my_project' with options '-w'
+    Then file 'config/website.yml.sample' is created
+    And yaml file 'config/website.yml.sample' contains {"host" => "nicwilliams@rubyforge.org", "remote_dir" => "/var/www/gforge-projects/my_project"}
     And Rakefile can display tasks successfully
 
   Scenario: Run newgem to install misc generators on top of unit test framework
