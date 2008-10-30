@@ -25,3 +25,32 @@ end
 
 require 'newgem/tasks' # load /tasks/*.rake
 
+namespace :hoe do
+  desc "Applies patch files to the hoe.rb in latest hoe rubygem and stores in lib/hoe-patched.rb"
+  task :patch do
+    gem 'hoe'
+    hoe_lib = $LOAD_PATH.grep(/hoe.*\/lib/)
+    hoe_rb  = File.join(hoe_lib, 'hoe.rb')
+    FileUtils.cp hoe_rb, File.dirname(__FILE__) + "/lib/hoe.rb"
+    patches = Dir[File.dirname(__FILE__) + "/patches/hoe/*.patch"].sort
+    patches.each do |patch|
+      puts "Applying patch #{File.basename patch}"
+      sh %{ cat #{patch} | patch -p1 }
+    end
+    patched_hoe = File.dirname(__FILE__) + "/lib/hoe-patched.rb"
+    FileUtils.mv File.dirname(__FILE__) + "/lib/hoe.rb", patched_hoe
+
+    help_msg = <<-EOS.gsub(/^\s+/,'')
+    # Patched version of Hoe to allow any README.* file
+    # Pending acceptance of ticket with this feature
+    # File created by 'rake hoe:patch' in newgem
+    # from patch files in patches/hoe/*.patch
+    EOS
+
+    contents = File.read(patched_hoe)
+    File.open(patched_hoe, "w") do |f|
+      f << help_msg + "\n"
+      f << contents
+    end
+  end
+end

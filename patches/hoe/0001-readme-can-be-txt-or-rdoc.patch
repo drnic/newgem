@@ -1,0 +1,62 @@
+diff --git a/lib/hoe.rb b/lib/hoe.rb
+index 0e44dfa..1d39815 100644
+--- a/lib/hoe.rb
++++ b/lib/hoe.rb
+@@ -340,6 +340,10 @@ class Hoe
+     warn "** #{name} is missing or in the wrong format for auto-intuiting."
+     warn "   run `sow blah` and look at its text files"
+   end
++  
++  def readme_name
++    Dir['README*'].first || 'README.txt'
++  end
+ 
+   def initialize(name, version) # :nodoc:
+     self.name = name
+@@ -357,7 +361,7 @@ class Hoe
+     self.multiruby_skip = []
+     self.need_tar = true
+     self.need_zip = false
+-    self.rdoc_pattern = /^(lib|bin|ext)|txt$/
++    self.rdoc_pattern = /^(lib|bin|ext)|txt|rdoc$/
+     self.remote_rdoc_dir = name
+     self.rsync_args = '-av --delete'
+     self.rubyforge_name = name.downcase
+@@ -371,7 +375,7 @@ class Hoe
+ 
+     # Intuit values:
+ 
+-    readme   = File.read("README.txt").split(/^(=+ .*)$/)[1..-1] rescue ''
++    readme = File.read(readme_name).split(/^(=+ .*)$/)[1..-1] rescue ''
+     unless readme.empty? then
+       sections = readme.map { |s|
+         s =~ /^=/ ? s.strip.downcase.chomp(':').split.last : s.strip
+@@ -384,7 +388,7 @@ class Hoe
+       self.summary ||= summ
+       self.url ||= readme[1].gsub(/^\* /, '').split(/\n/).grep(/\S+/)
+     else
+-      missing 'README.txt'
++      missing readme_name
+     end
+ 
+     self.changes ||= begin
+@@ -509,8 +513,8 @@ class Hoe
+       dirs = Dir['{lib,ext}']
+       s.require_paths = dirs unless dirs.empty?
+ 
+-      s.rdoc_options = ['--main', 'README.txt']
+-      s.extra_rdoc_files = s.files.grep(/txt$/)
++      s.rdoc_options = ['--main', readme_name]
++      s.extra_rdoc_files = s.files.grep(/(txt|rdoc)$/)
+       s.has_rdoc = true
+ 
+       s.post_install_message = post_install_message
+@@ -619,7 +623,7 @@ class Hoe
+     # Doco
+ 
+     Rake::RDocTask.new(:docs) do |rd|
+-      rd.main = "README.txt"
++      rd.main = readme_name
+       rd.options << '-d' if RUBY_PLATFORM !~ /win32/ and `which dot` =~ /\/dot/ and not ENV['NODOT']
+       rd.rdoc_dir = 'doc'
+       files = spec.files.grep(rdoc_pattern)

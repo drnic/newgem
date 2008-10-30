@@ -1,5 +1,9 @@
 # Patched version of Hoe to allow any README.* file
 # Pending acceptance of ticket with this feature
+# File created by 'rake hoe:patch' in newgem
+# from patch files in patches/hoe/*.patch
+
+# -*- ruby -*-
 
 require 'rubygems'
 require 'rake'
