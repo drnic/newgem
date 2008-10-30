@@ -17,7 +17,6 @@ $hoe = Hoe.new('newgem', Newgem::VERSION) do |p|
   p.extra_dev_deps = [
     ['cucumber', ">= #{::Cucumber::VERSION::STRING}"]
   ]
-  # p.spec_extras['rdoc_options'] = ['--main', Dir['README*'].first] # hopefully fixed in future hoe > 1.8
   p.clean_globs |= %w[**/.DS_Store tmp *.log]
   path = (p.rubyforge_name == p.name) ? p.rubyforge_name : "\#{p.rubyforge_name}/\#{p.name}"
   p.remote_rdoc_dir = File.join(path.gsub(/^#{p.rubyforge_name}\/?/,''), 'rdoc')
