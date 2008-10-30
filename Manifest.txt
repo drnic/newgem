@@ -40,6 +40,7 @@ features/newgem_cli.feature
 features/rubygem_tasks.feature
 features/steps/cli.rb
 features/steps/env.rb
+features/steps/rubygems.rb
 lib/hoe-patched.rb
 lib/newgem.rb
 lib/newgem/quick_template.rb
