@@ -40,6 +40,7 @@ features/newgem_cli.feature
 features/rubygem_tasks.feature
 features/steps/cli.rb
 features/steps/env.rb
+lib/hoe-patched.rb
 lib/newgem.rb
 lib/newgem/quick_template.rb
 lib/newgem/rubyforge.rb
@@ -64,6 +65,7 @@ newgem_theme_generators/plain_theme/plain_theme_generator.rb
 newgem_theme_generators/plain_theme/templates/website/javascripts/rounded_corners_lite.inc.js
 newgem_theme_generators/plain_theme/templates/website/stylesheets/screen.css
 newgem_theme_generators/plain_theme/templates/website/template.html.erb
+patches/hoe/0001-readme-can-be-txt-or-rdoc.patch
 rubygems_generators/executable/USAGE
 rubygems_generators/executable/executable_generator.rb
 rubygems_generators/executable/templates/bin/app.rb.erb

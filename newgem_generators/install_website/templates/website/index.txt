@@ -1,7 +1,5 @@
 h1. <%= gem_name.gsub(/\W+/,' ') %>
 
-h1. &#x2192; '<%= gem_name %>'
-
 
 h2. What
 
