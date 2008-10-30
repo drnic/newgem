@@ -1,3 +1,5 @@
+* update plain theme to a peppermint green colour; updated newgem's own website to same theme
+
 == 1.0.2 2008-10-30
 
 * Lighthouse Project created for tickets/suggestions: http://drnic.lighthouseapp.com/projects/18881-newgem
