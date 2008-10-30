@@ -21,7 +21,7 @@ def force_local_newgem_priority(project_name)
   end
 end
 
-Given %r{^an existing newgem scaffold \[called '(.*)'\]$} do |project_name|
+Given %r{^an existing newgem scaffold \[called '(.*)'\]} do |project_name|
   # TODO this is a combo of "a safe folder" and "newgem is executed ..." steps; refactor
   FileUtils.rm_rf   @tmp_root = File.dirname(__FILE__) + "/../../tmp"
   FileUtils.mkdir_p @tmp_root
@@ -100,9 +100,9 @@ When /^run unit tests for test file '(.*)'$/ do |test_file|
 end
 
 When /^task 'rake (.*)' is invoked$/ do |task|
-  @raketask_stdout = File.expand_path(File.join(@tmp_root, "tests.out"))
+  @stdout = File.expand_path(File.join(@tmp_root, "tests.out"))
   FileUtils.chdir(@active_project_folder) do
-    system "rake #{task} > #{@raketask_stdout} 2> #{@raketask_stdout}"
+    system "rake #{task} --trace > #{@stdout} 2> #{@stdout}"
   end
 end
 
@@ -155,9 +155,11 @@ Then /^help options '(.*)' and '(.*)' are displayed$/ do |opt1, opt2|
   actual_output.should match(/#{opt2}/)
 end
 
-Then /^output matches \/(.*)\/$/ do |regex|
+Then /^output (does|does not) match \/(.*)\/$/ do |does, regex|
   actual_output = File.read(@stdout)
-  actual_output.should match(/#{regex}/)
+  (does == 'does') ?
+    actual_output.should(match(/#{regex}/)) :
+    actual_output.should_not(match(/#{regex}/)) 
 end
 
 Then /^all (\d+) tests pass$/ do |expected_test_count|
@@ -192,8 +194,8 @@ Then /^Rakefile can display tasks successfully$/ do
 end
 
 Then /^task 'rake (.*)' is executed successfully$/ do |task|
-  @raketask_stdout.should_not be_nil
-  actual_output = File.read(@raketask_stdout)
+  @stdout.should_not be_nil
+  actual_output = File.read(@stdout)
   actual_output.should_not match(/^Don't know how to build task '#{task}'/)
   actual_output.should_not match(/Error/i)
 end

@@ -11,3 +11,9 @@ Feature: Generated RubyGems have various rake tasks to aide their development
     And file matching 'pkg/my_project-0.0.1.gem' is created
     And gem spec key 'rdoc_options' contains /--mainREADME.rdoc/
     And gem spec key 'dependencies' contains /newgem \(>= [\d.]+, development\)/
+
+  Scenario: Hoe does not bitch about README.txt being missing
+    Given an existing newgem scaffold [called 'my_project'] that has 'README.rdoc' not 'README.txt'
+    When task 'rake -T' is invoked
+    Then output does not match /README.txt is missing/
+  
