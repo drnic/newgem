@@ -24,7 +24,7 @@ task :check_version do
     exit
   end
   unless ENV['VERSION'] == $hoe.version
-    puts "Please update your version.rb to match the release version, currently #{$hoe.version}"
+    puts "Please update your lib/#{$hoe.name}.rb to match the release version, currently #{$hoe.version}"
     exit
   end
 end

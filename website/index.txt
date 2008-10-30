@@ -96,7 +96,7 @@ If you don't want a website, remove the <code>website</code> related files from 
 
 h3. Change the gems version number
 
-The version number is set in the file <code>lib/#gem name#/version.rb</code>. Update it as appropriate with major, minor and bug fix numbers. This value will be used when generating your website, for example.
+The version number is set in the file <code>lib/#gem name#.rb</code>. Update it as appropriate with major, minor and bug fix numbers. This value will be used when generating your website, for example.
 
 h3. Check the manifest
 
