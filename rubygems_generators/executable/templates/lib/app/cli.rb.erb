@@ -2,7 +2,7 @@ require 'optparse'
 
 module <%= module_name %>
   class CLI
-    def self.execute
+    def self.execute(arguments=[])
 
       # NOTE: the option -p/--path= is given as an example, and should be replaced in your application.
 
@@ -26,7 +26,7 @@ module <%= module_name %>
                 "Default: ~") { |arg| OPTIONS[:path] = arg }
         opts.on("-h", "--help",
                 "Show this help message.") { puts opts; exit }
-        opts.parse!(ARGV)
+        opts.parse!(arguments)
 
         if mandatory_options && mandatory_options.find { |option| options[option.to_sym].nil? }
           puts opts; exit
