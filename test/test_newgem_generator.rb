@@ -39,8 +39,8 @@ class TestNewgemGenerator < Test::Unit::TestCase
     assert_manifest_complete
   end
 
-  def test_newgem_with_website_by_default
-    run_generator('newgem', [APP_ROOT], sources)
+  def test_newgem_with_website
+    run_generator('newgem', [APP_ROOT], sources, {:enable_website => true})
 
     %w[txt2html].each do |file|
       assert_generated_file("script/#{file}")
@@ -54,7 +54,7 @@ class TestNewgemGenerator < Test::Unit::TestCase
   end
 
   def test_newgem_with_no_website
-    run_generator('newgem', [APP_ROOT], sources, {:disable_website => true})
+    run_generator('newgem', [APP_ROOT], sources)
 
     assert !File.exists?("#{APP_ROOT}/script/txt2html"), "No script/txt2html should be generated"
     assert !File.exists?("#{APP_ROOT}/website"), "No website folder should be generated"
