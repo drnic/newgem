@@ -3,6 +3,7 @@ Manifest.txt
 PostInstall.txt
 README.rdoc
 Rakefile
+TODO.markdown
 app_generators/newgem/newgem_generator.rb
 app_generators/newgem/templates/History.txt
 app_generators/newgem/templates/PostInstall.txt
@@ -83,7 +84,6 @@ rubygems_generators/extconf/templates/tasks/extconf.rake
 rubygems_generators/extconf/templates/tasks/extconf_name.rake
 rubygems_generators/extconf/templates/test/test.rb.erb
 rubygems_generators/install_cucumber/install_cucumber_generator.rb
-rubygems_generators/install_cucumber/templates/cucumber.rake
 rubygems_generators/install_cucumber/templates/env.rb
 rubygems_generators/install_jruby/USAGE
 rubygems_generators/install_jruby/install_jruby_generator.rb
