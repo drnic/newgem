@@ -37,6 +37,17 @@ Given %r{^an existing newgem scaffold \[called '(.*)'\]} do |project_name|
   end
 end
 
+Given %r{^an existing newgem scaffold using options '(.*)' \[called '(.*)'\]} do |arguments, project_name|
+  Given "a safe folder"
+  newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
+  setup_active_project_folder project_name
+  FileUtils.chdir @tmp_root do
+    @stdout = "newgem.out"
+    system "ruby #{newgem} #{arguments} #{project_name} > #{@stdout}"
+    force_local_newgem_priority
+  end
+end
+
 Given /^project website configuration for safe folder on local machine$/ do
   @remote_folder = File.expand_path(File.join(@tmp_root, 'website'))
   FileUtils.rm_rf   @remote_folder

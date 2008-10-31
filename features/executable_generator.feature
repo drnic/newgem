@@ -11,6 +11,14 @@ Feature: Generate an executable/CLI scaffold
     And file 'bin/my_app' is created
     And file 'lib/my_app/cli.rb' is created
     And file 'test/test_my_app_cli.rb' is created
+
+  Scenario: Run executable generator with name of executable on rspec project
+    Given an existing newgem scaffold using options '-T rspec' [called 'my_project']
+    When 'executable' generator is invoked with arguments 'my_app'
+    Then folder 'bin/my_app' is created
+    And file 'bin/my_app' is created
+    And file 'lib/my_app/cli.rb' is created
+    And file 'spec/my_app_cli_spec.rb' is created
   
   Scenario: Run CLI app from executable generator to show help
     Given an existing newgem scaffold [called 'my_project']
