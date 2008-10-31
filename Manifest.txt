@@ -71,6 +71,7 @@ rubygems_generators/executable/USAGE
 rubygems_generators/executable/executable_generator.rb
 rubygems_generators/executable/templates/bin/app.rb.erb
 rubygems_generators/executable/templates/lib/app/cli.rb.erb
+rubygems_generators/executable/templates/spec/cli_spec.rb.erb
 rubygems_generators/executable/templates/test/test_cli.rb.erb
 rubygems_generators/extconf/USAGE
 rubygems_generators/extconf/extconf_generator.rb
