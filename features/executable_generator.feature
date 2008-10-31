@@ -33,9 +33,14 @@ Feature: Generate an executable/CLI scaffold
     When run executable 'bin/my_app' with arguments ''
     Then output does match /lib\/my_app\/cli.rb/
   
-  Scenario: Run unit tests after executable generator should all pass
+  Scenario: Run unit tests after executable generator should all pass for test/unit
     Given an existing newgem scaffold [called 'my_project']
-    Given 'executable' generator is invoked with arguments 'my_app'
+    And 'executable' generator is invoked with arguments 'my_app'
     When run unit tests for test file 'test/test_my_app_cli.rb'
     Then all 1 tests pass
-  
+
+  Scenario: Run unit tests after executable generator should all pass for rspec
+    Given an existing newgem scaffold using options '-T rspec' [called 'my_project']
+    And 'executable' generator is invoked with arguments 'my_app'
+    When run unit tests for test file 'spec/my_app_cli_spec.rb'
+    Then all 1 examples pass

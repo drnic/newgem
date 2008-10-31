@@ -180,6 +180,12 @@ Then /^all (\d+) tests pass$/ do |expected_test_count|
   actual_output.should match(expected)
 end
 
+Then /^all (\d+) examples pass$/ do |expected_test_count|
+  expected = %r{^#{expected_test_count} examples?, 0 failures}
+  actual_output = File.read(@stdout)
+  actual_output.should match(expected)
+end
+
 Then /^yaml file '(.*)' contains (\{.*\})/ do |file, yaml|
   FileUtils.chdir @active_project_folder do
     yaml = eval yaml
