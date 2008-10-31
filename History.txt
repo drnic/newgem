@@ -1,3 +1,6 @@
+* cleaned up some require statements to explicitly load code from local src not an installed gem
+* rake default => [:test, :features] - for continuous integration via runcoderun.com
+
 == 1.0.3 2008-10-31
 
 * GitHub RubyGem support. `rake gemspec` generates a clean `my_project.gemspec` file that will work with GitHub
