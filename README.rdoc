@@ -83,6 +83,14 @@ Alternately, download the gem and install manually.
 
 Tickets or suggestions can be raised at http://drnic.lighthouseapp.com/projects/18881-newgem/overview
 
+== DOES IT WORK?
+
+Much of newgem's behaviour is covered by functional tests (see features at http://github.com/drnic/newgem/tree/master/features).
+
+With each commit to the master branch of the git repository, these functional tests and the unit tests are run via a continuous integration server. 
+
+Current build status: http://runcoderun.com/drnic/newgem
+
 == TUTORIALS:
 
 * Home page is a full tutorial - http://newgem.rubyforge.org
