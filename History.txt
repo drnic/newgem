@@ -1,3 +1,4 @@
+* local tasks/*.rake are loaded in generated gems
 * cleaned up some require statements to explicitly load code from local src not an installed gem
 * rake default => [:test, :features] - for continuous integration via runcoderun.com
 

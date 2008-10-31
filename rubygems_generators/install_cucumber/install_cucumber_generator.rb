@@ -18,9 +18,6 @@ class InstallCucumberGenerator < RubiGen::Base
 
       m.directory 'features/steps'
       m.template  'env.rb', 'features/steps/env.rb'
-
-      m.directory 'tasks'
-      m.file      'cucumber.rake', 'tasks/cucumber.rake'
     end
   end
 

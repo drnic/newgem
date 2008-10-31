@@ -31,8 +31,6 @@ class TestInstallCucumberGenerator < Test::Unit::TestCase
     assert_generated_file("features/steps/env.rb") do |body|
       assert_match(/#{PROJECT_NAME}/, body)
     end
-    assert_directory_exists("tasks")
-    assert_generated_file("tasks/cucumber.rake")
   end
   
   private

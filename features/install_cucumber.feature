@@ -8,7 +8,7 @@ Feature: RubyGems have features to be described and tested
     Given an existing newgem scaffold [called 'my_project']
     When 'install_cucumber' generator is invoked with arguments ''
     Then folder 'features/steps' is created
-    And file 'tasks/cucumber.rake' is created
+    And file 'tasks/cucumber.rake' is not created as it is loaded via newgem itself
 
   Scenario: Installed Cucumber includes a 'rake features' task
     Given an existing newgem scaffold [called 'my_project']
