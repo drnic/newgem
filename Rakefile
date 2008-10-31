@@ -54,3 +54,5 @@ namespace :hoe do
     end
   end
 end
+
+task :default => :features
