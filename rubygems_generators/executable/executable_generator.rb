@@ -31,7 +31,11 @@ class ExecutableGenerator < RubiGen::Base
       # App stub
       m.template "bin/app.rb.erb", "bin/#{bin_name}"
       m.template "lib/app/cli.rb.erb", "lib/#{bin_name}/cli.rb"
-      m.template "test/test_cli.rb.erb", "test/test_#{bin_name}_cli.rb"
+      if using_rspec?
+        m.template "spec/cli_spec.rb.erb", "spec/#{bin_name}_cli_spec.rb"
+      else
+        m.template "test/test_cli.rb.erb", "test/test_#{bin_name}_cli.rb"
+      end
     end
   end
 
@@ -55,5 +59,9 @@ EOS
 
     def extract_options
       @author = options[:author]
+    end
+    
+    def using_rspec?
+      !Dir[File.join(destination_root, 'spec')].empty?
     end
 end
