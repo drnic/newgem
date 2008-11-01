@@ -1,3 +1,6 @@
+== 1.0.4 2008-11-01
+
+* Hard-coded cucumber >= 0.1.8 dependency to avoid accidently requiring unreleased versions that are only in development
 * local tasks/*.rake are loaded in generated gems
 * install_cucumber: adds a development.feature to check that gem building can succeed
 * cleaned up some require statements to explicitly load code from local src not an installed gem
