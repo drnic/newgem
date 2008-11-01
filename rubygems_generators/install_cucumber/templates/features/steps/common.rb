@@ -129,11 +129,11 @@ Then /^yaml file '(.*)' contains (\{.*\})/ do |file, yaml|
 end
 
 Then /^Rakefile can display tasks successfully$/ do
-  @rake_stdout = File.expand_path(File.join(@tmp_root, "rakefile.out"))
+  @stdout = File.expand_path(File.join(@tmp_root, "rakefile.out"))
   FileUtils.chdir(@active_project_folder) do
-    system "rake -T > #{@rake_stdout} 2> #{@rake_stdout}"
+    system "rake -T > #{@stdout} 2> #{@stdout}"
   end
-  actual_output = File.read(@rake_stdout)
+  actual_output = File.read(@stdout)
   actual_output.should match(/^rake\s+\w+\s+#\s.*/)
 end
 

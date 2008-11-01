@@ -16,6 +16,7 @@ Feature: RubyGems have features to be described and tested
     Given an existing newgem scaffold [called 'my_project']
     When 'install_cucumber' generator is invoked with arguments ''
     Then gem file 'features/steps/common.rb' and generated file 'features/steps/common.rb' should be the same
+    Then gem file 'features/development.feature' and generated file 'features/development.feature' should be the same
 
   Scenario: Installed Cucumber includes a 'rake features' task
     Given an existing newgem scaffold [called 'my_project']
