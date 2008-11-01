@@ -17,7 +17,9 @@ class InstallCucumberGenerator < RubiGen::Base
       script_options     = { :chmod => 0755, :shebang => options[:shebang] == DEFAULT_SHEBANG ? nil : options[:shebang] }
 
       m.directory 'features/steps'
-      m.template  'env.rb', 'features/steps/env.rb'
+      m.file      'features/development.feature', 'features/development.feature'
+      m.file      'features/steps/common.rb', 'features/steps/common.rb'
+      m.template  'features/steps/env.rb.erb', 'features/steps/env.rb'
     end
   end
 

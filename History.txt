@@ -1,4 +1,5 @@
 * local tasks/*.rake are loaded in generated gems
+* install_cucumber: adds a development.feature to check that gem building can succeed
 * cleaned up some require statements to explicitly load code from local src not an installed gem
 * rake default => [:test, :features] - for continuous integration via runcoderun.com
 

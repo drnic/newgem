@@ -13,7 +13,7 @@ Given /^env variable \$([\w_]+) set to '(.*)'/ do |env_var, value|
   ENV[env_var] = value
 end
 
-def force_local_newgem_priority(project_name = @project_name)
+def force_local_lib_override(project_name = @project_name)
   rakefile = File.read(File.join(project_name, 'Rakefile'))
   File.open(File.join(project_name, 'Rakefile'), "w+") do |f|
     f << "$:.unshift('#{@newgem_lib_path}')\n"
@@ -33,7 +33,7 @@ Given %r{^an existing newgem scaffold \[called '(.*)'\]} do |project_name|
   FileUtils.chdir @tmp_root do
     @stdout = "newgem.out"
     system "ruby #{newgem} #{project_name} > #{@stdout}"
-    force_local_newgem_priority
+    force_local_lib_override
   end
 end
 
@@ -44,7 +44,7 @@ Given %r{^an existing newgem scaffold using options '(.*)' \[called '(.*)'\]} do
   FileUtils.chdir @tmp_root do
     @stdout = "newgem.out"
     system "ruby #{newgem} #{arguments} #{project_name} > #{@stdout}"
-    force_local_newgem_priority
+    force_local_lib_override
   end
 end
 
@@ -72,7 +72,7 @@ When %r{^newgem is executed for project '(.*)' with no options$} do |project_nam
   FileUtils.chdir @tmp_root do
     @stdout = "newgem.out"
     system "ruby #{newgem} #{project_name} > #{@stdout}"
-    force_local_newgem_priority
+    force_local_lib_override
   end
 end
 
@@ -82,7 +82,7 @@ When %r{^newgem is executed for project '(.*)' with options '(.*)'$} do |project
   FileUtils.chdir @tmp_root do
     @stdout = "newgem.out"
     system "ruby #{newgem} #{arguments} #{project_name} > #{@stdout}"
-    force_local_newgem_priority
+    force_local_lib_override
   end
 end
 
@@ -124,15 +124,15 @@ Then %r{^folder '(.*)' is created} do |folder|
   end
 end
 
-Then %r{^remote folder '(.*)' is created} do |folder|
-  FileUtils.chdir @remote_folder do
-    File.exists?(folder).should be_true
-  end
-end
-
 Then %r{^file '(.*)' (is|is not) created} do |file, is|
   FileUtils.chdir @active_project_folder do
     File.exists?(file).should(is == 'is' ? be_true : be_false)
+  end
+end
+
+Then %r{^remote folder '(.*)' is created} do |folder|
+  FileUtils.chdir @remote_folder do
+    File.exists?(folder).should be_true
   end
 end
 
