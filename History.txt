@@ -1,3 +1,7 @@
+== 1.0.5 2008-11-01
+
+* Oops, fixed cucumber dependency from 1.1.8 to 0.1.8
+
 == 1.0.4 2008-11-01
 
 * Hard-coded cucumber >= 0.1.8 dependency to avoid accidently requiring unreleased versions that are only in development

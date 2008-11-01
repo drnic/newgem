@@ -15,7 +15,7 @@ $hoe = Hoe.new('newgem', Newgem::VERSION) do |p|
     ['syntax','>= 1.0.0']
   ]
   p.extra_dev_deps = [
-    ['cucumber', ">= 1.1.8"]
+    ['cucumber', ">= 0.1.8"]
   ]
   p.clean_globs |= %w[**/.DS_Store tmp *.log]
   path = (p.rubyforge_name == p.name) ? p.rubyforge_name : "\#{p.rubyforge_name}/\#{p.name}"
