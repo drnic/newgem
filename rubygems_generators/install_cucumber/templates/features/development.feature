@@ -9,5 +9,5 @@ Feature: Development processes of newgem itself (rake tasks)
     And 'pkg' folder is deleted
     When task 'rake gem' is invoked
     Then folder 'pkg' is created
-    And file matching 'pkg/*.gem' is created
+    And file matching 'pkg/*.gem' is created else you should run "rake manifest:refresh" to fix this
     And gem spec key 'rdoc_options' contains /--mainREADME.rdoc/

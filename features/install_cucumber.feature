@@ -12,6 +12,11 @@ Feature: RubyGems have features to be described and tested
     And file 'features/steps/common.rb' is created
     And file 'tasks/cucumber.rake' is not created as it is loaded via newgem itself
 
+  Scenario: NewGem and generated gems should share some common files
+    Given an existing newgem scaffold [called 'my_project']
+    When 'install_cucumber' generator is invoked with arguments ''
+    Then gem file 'features/steps/common.rb' and generated file 'features/steps/common.rb' should be the same
+
   Scenario: Installed Cucumber includes a 'rake features' task
     Given an existing newgem scaffold [called 'my_project']
     And 'install_cucumber' generator is invoked with arguments ''
@@ -20,3 +25,4 @@ Feature: RubyGems have features to be described and tested
     And output does match /Feature: Development processes of newgem itself \(rake tasks\)/
     And output does match /And file matching 'pkg/\*\.gem' is created/
     And output does not match /You can use these snippets to implement pending steps/
+
