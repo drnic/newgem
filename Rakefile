@@ -55,4 +55,5 @@ namespace :hoe do
   end
 end
 
+remove_task :default
 task :default => :features
