@@ -40,6 +40,7 @@ features/install_website.feature
 features/newgem_cli.feature
 features/rubygem_tasks.feature
 features/steps/cli.rb
+features/steps/common.rb
 features/steps/env.rb
 features/steps/rubygems.rb
 lib/hoe-patched.rb
@@ -51,6 +52,7 @@ lib/newgem/tasks.rb
 newgem_generators/install_website/USAGE
 newgem_generators/install_website/install_website_generator.rb
 newgem_generators/install_website/templates/config/website.yml.sample.erb
+newgem_generators/install_website/templates/features/website.feature
 newgem_generators/install_website/templates/script/txt2html
 newgem_generators/install_website/templates/script/win_script.cmd
 newgem_generators/install_website/templates/tasks/website.rake
