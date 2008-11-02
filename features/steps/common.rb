@@ -1,3 +1,8 @@
+def in_project_folder(&block)
+  project_folder = @active_project_folder
+  FileUtils.chdir(project_folder, &block)
+end
+
 Given %r{^a safe folder} do
   FileUtils.rm_rf   @tmp_root = File.dirname(__FILE__) + "/../../tmp"
   FileUtils.mkdir_p @tmp_root
@@ -27,7 +32,7 @@ def setup_active_project_folder project_name
 end
 
 Given /^'(.*)' folder is deleted/ do |folder|
-  FileUtils.chdir @active_project_folder do
+  in_project_folder do
     FileUtils.rm_rf folder
   end
 end
@@ -58,19 +63,19 @@ When /^task 'rake (.*)' is invoked$/ do |task|
 end
 
 Then %r{^folder '(.*)' is created} do |folder|
-  FileUtils.chdir @active_project_folder do
+  in_project_folder do
     File.exists?(folder).should be_true
   end
 end
 
 Then %r{^file '(.*)' (is|is not) created} do |file, is|
-  FileUtils.chdir @active_project_folder do
+  in_project_folder do
     File.exists?(file).should(is == 'is' ? be_true : be_false)
   end
 end
 
 Then /^file matching '(.*)' is created/ do |pattern|
-  FileUtils.chdir @active_project_folder do
+  in_project_folder do
     Dir[pattern].should_not be_empty
   end
 end
@@ -122,7 +127,7 @@ Then /^all (\d+) examples pass$/ do |expected_test_count|
 end
 
 Then /^yaml file '(.*)' contains (\{.*\})/ do |file, yaml|
-  FileUtils.chdir @active_project_folder do
+  in_project_folder do
     yaml = eval yaml
     YAML.load(File.read(file)).should == yaml
   end
@@ -145,7 +150,7 @@ Then /^task 'rake (.*)' is executed successfully$/ do |task|
 end
 
 Then /^gem spec key '(.*)' contains \/(.*)\/$/ do |key, regex|
-  FileUtils.chdir @active_project_folder do
+  in_project_folder do
     gem_file = Dir["pkg/*.gem"].first
     gem_spec = Gem::Specification.from_yaml(`gem spec #{gem_file}`)
     spec_value = gem_spec.send(key.to_sym)
