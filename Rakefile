@@ -1,4 +1,4 @@
-%w[rubygems rake rake/clean fileutils rubigen cucumber].each { |f| require f }
+%w[rubygems rake rake/clean fileutils rubigen].each { |f| require f }
 require File.dirname(__FILE__) + '/lib/newgem'
 
 # Generate all the Rake tasks
