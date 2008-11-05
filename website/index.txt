@@ -206,6 +206,7 @@ h2. Related articles
 * "Tutorial: Publishing RubyGems with Hoe":http://nubyonrails.com/articles/2007/06/15/tutorial-publishing-rubygems-with-hoe by "Geoffrey Grosenbach":http://geoffreygrosenbach.com/ 
 * "Using New Gem Generator in Windows":http://codeconversations.blogspot.com/2007/07/using-new-gem-generator-in-windows_8009.html by "Jorge Cangas":http://codeconversations.blogspot.com/
 * "Building a Ruby Gem":http://bogojoker.com/blog/2008/05/building-a-ruby-gem/ by "Joseph Pecoraro":http://bogojoker.com/ (includes a Problems/Troubleshooting section!!)
+* "An Almost Fix for Creating RubyGems on Windows":http://blog.emson.co.uk/2008/06/an-almost-fix-for-creating-rubygems-on-windows/ by "Ben Emson":http://blog.emson.co.uk/
 
 h2. Dr Nic's Blog
 
