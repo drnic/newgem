@@ -1,3 +1,7 @@
+== 1.0.6 2008-11-05
+
+* Removed cucumber references in newgem's Rakefile, hopefully fixing #7
+
 == 1.0.5 2008-11-01
 
 * Oops, fixed cucumber dependency from 1.1.8 to 0.1.8
