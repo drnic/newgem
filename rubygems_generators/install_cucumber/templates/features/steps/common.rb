@@ -1,5 +1,5 @@
 def in_project_folder(&block)
-  project_folder = @active_project_folder
+  project_folder = @active_project_folder || @tmp_root
   FileUtils.chdir(project_folder, &block)
 end
 
