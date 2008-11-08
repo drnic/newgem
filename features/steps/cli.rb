@@ -32,25 +32,38 @@ Given /^project website configuration for safe folder on local machine$/ do
   end  
 end
 
+def newgem_cmd
+  File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
+end
+
 When %r{^newgem is executed for project '(.*)' with no options$} do |project_name|
-  newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
+  @newgem_cmd = newgem_cmd
   setup_active_project_folder project_name
   FileUtils.chdir @tmp_root do
     @stdout = "newgem.out"
-    system "ruby #{newgem} #{project_name} > #{@stdout}"
+    system "ruby #{@newgem_cmd} #{project_name} > #{@stdout}"
     force_local_lib_override
   end
 end
 
 When %r{^newgem is executed for project '(.*)' with options '(.*)'$} do |project_name, arguments|
-  newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
+  @newgem_cmd = newgem_cmd
   setup_active_project_folder project_name
   FileUtils.chdir @tmp_root do
     @stdout = "newgem.out"
-    system "ruby #{newgem} #{arguments} #{project_name} > #{@stdout}"
+    system "ruby #{@newgem_cmd} #{arguments} #{project_name} > #{@stdout}"
     force_local_lib_override
   end
 end
+
+When /^newgem is executed only with options '(.*)'$/ do |arguments|
+  @newgem_cmd = newgem_cmd
+  FileUtils.chdir @tmp_root do
+    @stdout = "newgem.out"
+    system "ruby #{@newgem_cmd} #{arguments} > #{@stdout}"
+  end
+end
+
 
 When /^run unit tests for test file '(.*)'$/ do |test_file|
   @stdout = File.expand_path(File.join(@tmp_root, "tests.out"))
@@ -69,4 +82,9 @@ Then %r{^remote file '(.*)' (is|is not) created} do |file, is|
   FileUtils.chdir @remote_folder do
     File.exists?(file).should(is == 'is' ? be_true : be_false)
   end
+end
+
+Then /^shows version number$/ do
+  stdout = File.read(File.join(@tmp_root, @stdout))
+  stdout.should =~ /#{Newgem::VERSION}/
 end
