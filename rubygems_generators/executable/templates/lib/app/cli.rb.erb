@@ -23,7 +23,7 @@ module <%= module_name %>
         opts.on("-p", "--path=PATH", String,
                 "This is a sample message.",
                 "For multiple lines, add more strings.",
-                "Default: ~") { |arg| OPTIONS[:path] = arg }
+                "Default: ~") { |arg| options[:path] = arg }
         opts.on("-h", "--help",
                 "Show this help message.") { puts opts; exit }
         opts.parse!(arguments)
