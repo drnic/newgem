@@ -80,7 +80,7 @@ rubygems_generators/executable/templates/test/test_cli.rb.erb
 rubygems_generators/extconf/USAGE
 rubygems_generators/extconf/extconf_generator.rb
 rubygems_generators/extconf/templates/README.txt
-rubygems_generators/extconf/templates/autotest.rb
+rubygems_generators/extconf/templates/autotest.rb.erb
 rubygems_generators/extconf/templates/ext/c_file.c.erb
 rubygems_generators/extconf/templates/ext/extconf.rb.erb
 rubygems_generators/extconf/templates/spec/spec.rb.erb
