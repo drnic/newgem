@@ -7,4 +7,4 @@ require File.expand_path(File.dirname(__FILE__) + "/../lib/<%= project_name %>")
 
 require "<%= bin_name %>/cli"
 
-<%= module_name %>::CLI.execute(ARGV)
+<%= module_name %>::CLI.execute(STDOUT, ARGV)
