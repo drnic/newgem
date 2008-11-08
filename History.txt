@@ -1,3 +1,4 @@
+* executable and extconf generators will create specs or tests depending on what you are using in your RubyGems
 * 'rake manifest' instead of 'rake manifest:refresh' [was actually released in 1.0.7]
 
 == 1.0.7 2008-11-08
