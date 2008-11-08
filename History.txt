@@ -1,3 +1,5 @@
+* 'rake manifest' instead of 'rake manifest:refresh' [was actually released in 1.0.7]
+
 == 1.0.7 2008-11-08
 
 * Removed 'rake local_deploy' and changed website to reference 'rake install_gem' for same purpose [fixed #9]
