@@ -35,6 +35,7 @@ cucumber_generators/feature/templates/steps.erb
 features/development.feature
 features/executable_generator.feature
 features/expected_outputs/newgem.out
+features/extconf.feature
 features/install_cucumber.feature
 features/install_website.feature
 features/newgem_cli.feature
@@ -82,6 +83,7 @@ rubygems_generators/extconf/templates/README.txt
 rubygems_generators/extconf/templates/autotest.rb
 rubygems_generators/extconf/templates/ext/c_file.c.erb
 rubygems_generators/extconf/templates/ext/extconf.rb.erb
+rubygems_generators/extconf/templates/spec/spec.rb.erb
 rubygems_generators/extconf/templates/tasks/extconf.rake
 rubygems_generators/extconf/templates/tasks/extconf_name.rake
 rubygems_generators/extconf/templates/test/test.rb.erb
