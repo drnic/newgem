@@ -58,7 +58,6 @@ Feature: Can run 'newgem' to create RubyGem scaffolds
     And does not invoke generator 'install_rspec'
     And Rakefile can display tasks successfully
 
-
   Scenario: Run newgem and show current version number
     Given a safe folder
     When newgem is executed only with options '--version'
