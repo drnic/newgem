@@ -1,3 +1,9 @@
+== 1.0.7 2008-11-08
+
+* Removed 'rake local_deploy' and changed website to reference 'rake install_gem' for same purpose [fixed #9]
+* Fixed --version option (+ added cucumber scenario) [fixed #8]
+* Cleaned up the common.rb steps
+
 == 1.0.6 2008-11-05
 
 * Removed cucumber references in newgem's Rakefile, hopefully fixing #7
