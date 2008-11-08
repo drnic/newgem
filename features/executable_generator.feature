@@ -39,7 +39,7 @@ Feature: Generate an executable/CLI scaffold
     When run unit tests for test file 'test/test_my_app_cli.rb'
     Then all 1 tests pass
 
-  Scenario: Run unit tests after executable generator should all pass for rspec
+  Scenario: Run examples after executable generator should all pass for rspec
     Given an existing newgem scaffold using options '-T rspec' [called 'my_project']
     And 'executable' generator is invoked with arguments 'my_app'
     When run unit tests for test file 'spec/my_app_cli_spec.rb'

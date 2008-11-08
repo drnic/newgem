@@ -20,3 +20,17 @@ Feature: Write and test C-extensions
     And file 'ext/my_ext/my_ext.c' is created
     And file 'spec/my_ext_extn_spec.rb' is created
     And file '.autotest' is created
+
+  Scenario: Run unit tests after executable generator should all pass for test/unit
+    Given an existing newgem scaffold [called 'my_project']
+    And 'extconf' generator is invoked with arguments 'my_ext'
+    When task 'rake compile' is invoked
+    And run unit tests for test file 'test/test_my_ext_extn.rb'
+    Then all 1 tests pass
+
+  Scenario: Run examples after executable generator should all pass for rspec
+    Given an existing newgem scaffold using options '-T rspec' [called 'my_project']
+    And 'extconf' generator is invoked with arguments 'my_ext'
+    When task 'rake compile' is invoked
+    And run unit tests for test file 'spec/my_ext_extn_spec.rb'
+    Then all 1 examples pass
