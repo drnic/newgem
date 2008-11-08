@@ -32,9 +32,13 @@ class ExtconfGenerator < RubiGen::Base
       m.file     "tasks/extconf.rake",  "tasks/extconf.rake"
       m.file     "tasks/extconf_name.rake",  "tasks/extconf/#{name}.rake"
 
-      m.file     "autotest.rb",         ".autotest"
+      m.template "autotest.rb.erb",         ".autotest"
       m.readme   "README.txt"
     end
+  end
+
+  def using_rspec?
+    !Dir[File.join(destination_root, 'spec')].empty?
   end
 
   protected
@@ -49,7 +53,4 @@ USAGE: #{$0} #{spec.name} name
 EOS
     end
 
-    def using_rspec?
-      !Dir[File.join(destination_root, 'spec')].empty?
-    end
 end

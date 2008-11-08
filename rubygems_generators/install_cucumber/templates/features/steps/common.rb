@@ -114,6 +114,15 @@ Then %r{^output (does|does not) match \/(.*)\/} do |does, regex|
     actual_output.should_not(match(/#{regex}/)) 
 end
 
+Then %r{^contents of file '(.*)' (does|does not) match \/(.*)\/} do |file, does, regex|
+  in_project_folder do
+    actual_output = File.read(file)
+    (does == 'does') ?
+      actual_output.should(match(/#{regex}/)) :
+      actual_output.should_not(match(/#{regex}/))
+  end
+end
+
 Then %r{^all (\d+) tests pass} do |expected_test_count|
   expected = %r{^#{expected_test_count} tests, \d+ assertions, 0 failures, 0 errors}
   actual_output = File.read(@stdout)

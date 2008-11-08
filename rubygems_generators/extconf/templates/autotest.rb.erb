@@ -1,6 +1,10 @@
 Autotest.add_hook :initialize do |at|
   at.add_mapping(/ext\/.*\/(.*)\.[ch]/) do |_, m|
+    <% if using_rspec? -%>
+    ["spec/#{m[1]}_extn_spec.rb"]
+    <% else -%>
     ["test/test_#{m[1]}_extn.rb"]
+    <% end -%>
   end
 end
 
