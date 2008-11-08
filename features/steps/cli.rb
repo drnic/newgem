@@ -4,7 +4,7 @@ Given %r{^an existing newgem scaffold \[called '(.*)'\]} do |project_name|
   setup_active_project_folder project_name
   FileUtils.chdir @tmp_root do
     @stdout = "newgem.out"
-    system "ruby #{newgem} #{project_name} > #{@stdout}"
+    system "ruby #{newgem} #{project_name} > #{@stdout} 2> #{@stdout}"
     force_local_lib_override
   end
 end
@@ -15,7 +15,7 @@ Given %r{^an existing newgem scaffold using options '(.*)' \[called '(.*)'\]} do
   setup_active_project_folder project_name
   FileUtils.chdir @tmp_root do
     @stdout = "newgem.out"
-    system "ruby #{newgem} #{arguments} #{project_name} > #{@stdout}"
+    system "ruby #{newgem} #{arguments} #{project_name} > #{@stdout} 2> #{@stdout}"
     force_local_lib_override
   end
 end
