@@ -115,9 +115,9 @@ h2. Package and test locally
 
 Before releasing a new version of a gem, it is a great idea to install the gem locally and do some sanity checks. You know, to limit the chance of you looking like a noob.
 
-<pre>rake local_deploy</pre>
+<pre>rake install_gem</pre>
 
-This generates the website html files into your website folder, and locally installs the gem, ready for testing and local use.
+This locally installs the gem, ready for testing and local use.
 
 Now pretend to be a user, and do some tests - especially of new functionality - so you are comfortable all the files have been packaged up, and you haven't missed anything in the <code>Manifest.txt</code>.
 
