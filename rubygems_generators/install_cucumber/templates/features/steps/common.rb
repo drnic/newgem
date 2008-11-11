@@ -3,10 +3,16 @@ def in_project_folder(&block)
   FileUtils.chdir(project_folder, &block)
 end
 
+def in_home_folder(&block)
+  FileUtils.chdir(@home_path, &block)
+end
+
 Given %r{^a safe folder} do
   FileUtils.rm_rf   @tmp_root = File.dirname(__FILE__) + "/../../tmp"
   FileUtils.mkdir_p @tmp_root
+  FileUtils.mkdir_p @home_path = File.join(@tmp_root, "home")
   @lib_path = File.expand_path(File.dirname(__FILE__) + '/../../lib')
+  Given "env variable $HOME set to '#{@home_path}'"
 end
 
 Given %r{^this project is active project folder} do

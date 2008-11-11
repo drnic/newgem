@@ -32,6 +32,15 @@ Given /^project website configuration for safe folder on local machine$/ do
   end  
 end
 
+Given /^~\/([^\s]+) contains (\{.*\})$/ do |file, config|
+  in_home_folder do
+    File.open(file, 'w') do |f|
+      yaml = eval(config)
+      f << yaml.to_yaml
+    end
+  end
+end
+
 def newgem_cmd
   File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
 end
