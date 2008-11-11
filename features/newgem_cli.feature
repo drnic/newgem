@@ -64,9 +64,20 @@ Feature: Can run 'newgem' to create RubyGem scaffolds
     When newgem is executed for project 'my_project' with options ''
     Then does invoke generator 'install_rspec'
     And does invoke generator 'install_cucumber'
+    And does not invoke generator 'install_website'
     And does not invoke generator 'install_test_unit'
     And Rakefile can display tasks successfully
-  
+
+  Scenario: Run newgem to pull in defaults from ~/.newgem.yml file and merge with runtime args
+    Given a safe folder
+    And ~/.newgem.yml contains {"default" => "-T rspec -i cucumber"}
+    When newgem is executed for project 'my_project' with options '-i website'
+    Then does invoke generator 'install_rspec'
+    And does invoke generator 'install_cucumber'
+    And does invoke generator 'install_website'
+    And does not invoke generator 'install_test_unit'
+    And Rakefile can display tasks successfully
+
   Scenario: Run newgem and show current version number
     Given a safe folder
     When newgem is executed only with options '--version'
