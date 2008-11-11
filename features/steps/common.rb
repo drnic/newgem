@@ -10,7 +10,7 @@ end
 Given %r{^a safe folder} do
   FileUtils.rm_rf   @tmp_root = File.dirname(__FILE__) + "/../../tmp"
   FileUtils.mkdir_p @tmp_root
-  FileUtils.mkdir_p @home_path = File.join(@tmp_root, "home")
+  FileUtils.mkdir_p @home_path = File.expand_path(File.join(@tmp_root, "home"))
   @lib_path = File.expand_path(File.dirname(__FILE__) + '/../../lib')
   Given "env variable $HOME set to '#{@home_path}'"
 end

@@ -27,7 +27,7 @@ class NewgemGenerator < RubiGen::Base
   attr_reader :is_jruby
 
   def initialize(runtime_args, runtime_options = {})
-    super
+    super(config_args_and_runtime_args(runtime_args), runtime_options)
     usage if args.empty?
     @destination_root = File.expand_path(args.shift)
     @gem_name = base_name
@@ -162,6 +162,18 @@ EOS
       @is_jruby           = options[:jruby]
       @project_name       = options[:project] if options.include?(:project)
       @install_generators = options[:install] || []
+    end
+    
+    # first attempt to merge config args (single string) and runtime args
+    def config_args_and_runtime_args(runtime_args)
+      newgem_config = File.expand_path(File.join(ENV['HOME'], '.newgem.yml'))
+      if File.exists?(newgem_config)
+        config = YAML.load(File.read(newgem_config))
+        if config_args = (config["default"] || config[config.keys.first])
+          return config_args.split(" ") + runtime_args
+        end
+      end
+      runtime_args
     end
 
   # Installation skeleton.  Intermediate directories are automatically

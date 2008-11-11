@@ -20,7 +20,7 @@ Given %r{^an existing newgem scaffold using options '(.*)' \[called '(.*)'\]} do
   end
 end
 
-Given /^project website configuration for safe folder on local machine$/ do
+Given %r{^project website configuration for safe folder on local machine$} do
   @remote_folder = File.expand_path(File.join(@tmp_root, 'website'))
   FileUtils.rm_rf   @remote_folder
   FileUtils.mkdir_p @remote_folder
@@ -32,7 +32,7 @@ Given /^project website configuration for safe folder on local machine$/ do
   end  
 end
 
-Given /^~\/([^\s]+) contains (\{.*\})$/ do |file, config|
+Given %r{^~\/([^\s]+) contains (\{.*\})$} do |file, config|
   in_home_folder do
     File.open(file, 'w') do |f|
       yaml = eval(config)

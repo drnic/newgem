@@ -58,9 +58,10 @@ Feature: Can run 'newgem' to create RubyGem scaffolds
     And does not invoke generator 'install_rspec'
     And Rakefile can display tasks successfully
 
-  Scenario: Run newgem to pull in defaults from ~/.newgem.yml file
+  Scenario: Run newgem to pull in defaults from ~/.newgem.yml file and no argument options
     Given a safe folder
     And ~/.newgem.yml contains {"default" => "-T rspec -i cucumber"}
+    When newgem is executed for project 'my_project' with options ''
     Then does invoke generator 'install_rspec'
     And does invoke generator 'install_cucumber'
     And does not invoke generator 'install_test_unit'
