@@ -1,8 +1,12 @@
+def in_tmp_folder(&block)
+  FileUtils.chdir(@tmp_root, &block)
+end
+
 Given %r{^an existing newgem scaffold \[called '(.*)'\]} do |project_name|
   Given "a safe folder"
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
   setup_active_project_folder project_name
-  FileUtils.chdir @tmp_root do
+  in_tmp_folder do
     @stdout = "newgem.out"
     system "ruby #{newgem} #{project_name} > #{@stdout} 2> #{@stdout}"
     force_local_lib_override
@@ -13,7 +17,7 @@ Given %r{^an existing newgem scaffold using options '(.*)' \[called '(.*)'\]} do
   Given "a safe folder"
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
   setup_active_project_folder project_name
-  FileUtils.chdir @tmp_root do
+  in_tmp_folder do
     @stdout = "newgem.out"
     system "ruby #{newgem} #{arguments} #{project_name} > #{@stdout} 2> #{@stdout}"
     force_local_lib_override
@@ -48,7 +52,7 @@ end
 When %r{^newgem is executed for project '(.*)' with no options$} do |project_name|
   @newgem_cmd = newgem_cmd
   setup_active_project_folder project_name
-  FileUtils.chdir @tmp_root do
+  in_tmp_folder do
     @stdout = "newgem.out"
     system "ruby #{@newgem_cmd} #{project_name} > #{@stdout}"
     force_local_lib_override
@@ -58,7 +62,7 @@ end
 When %r{^newgem is executed for project '(.*)' with options '(.*)'$} do |project_name, arguments|
   @newgem_cmd = newgem_cmd
   setup_active_project_folder project_name
-  FileUtils.chdir @tmp_root do
+  in_tmp_folder do
     @stdout = "newgem.out"
     system "ruby #{@newgem_cmd} #{arguments} #{project_name} > #{@stdout}"
     force_local_lib_override
@@ -67,7 +71,7 @@ end
 
 When /^newgem is executed only with options '(.*)'$/ do |arguments|
   @newgem_cmd = newgem_cmd
-  FileUtils.chdir @tmp_root do
+  in_tmp_folder do
     @stdout = "newgem.out"
     system "ruby #{@newgem_cmd} #{arguments} > #{@stdout}"
   end

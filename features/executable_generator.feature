@@ -23,14 +23,14 @@ Feature: Generate an executable/CLI scaffold
   Scenario: Run CLI app from executable generator to show help
     Given an existing newgem scaffold [called 'my_project']
     Given 'executable' generator is invoked with arguments 'my_app'
-    When run executable 'bin/my_app' with arguments '-h'
+    When run project executable 'bin/my_app' with arguments '-h'
     Then help options '-h' and '--help' are displayed
     Then help options '-p' and '--path' are displayed
 
   Scenario: Run CLI app from executable generator should not fail
     Given an existing newgem scaffold [called 'my_project']
     Given 'executable' generator is invoked with arguments 'my_app'
-    When run executable 'bin/my_app' with arguments ''
+    When run project executable 'bin/my_app' with arguments ''
     Then output does match /lib\/my_app\/cli.rb/
   
   Scenario: Run unit tests after executable generator should all pass for test/unit

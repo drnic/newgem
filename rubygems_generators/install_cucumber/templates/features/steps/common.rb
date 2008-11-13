@@ -54,11 +54,16 @@ When %r{^'(.*)' generator is invoked with arguments '(.*)'$} do |generator, argu
   end
 end
 
-When %r{run executable '(.*)' with arguments '(.*)'} do |executable, arguments|
+When %r{run project executable '(.*)' with arguments '(.*)'} do |executable, arguments|
   @stdout = File.expand_path(File.join(@tmp_root, "executable.out"))
-  FileUtils.chdir(@active_project_folder) do
-    system "ruby #{executable} #{arguments} > #{@stdout}"
+  in_project_folder do
+    system "ruby #{executable} #{arguments} > #{@stdout} 2> #{@stdout}"
   end
+end
+
+When %r{run local executable '(.*)' with arguments '(.*)'} do |executable, arguments|
+  @stdout = File.expand_path(File.join(@tmp_root, "executable.out"))
+  system "ruby bin/#{executable} #{arguments} > #{@stdout} 2> #{@stdout}"
 end
 
 When %r{^task 'rake (.*)' is invoked$} do |task|
