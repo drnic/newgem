@@ -1,3 +1,7 @@
+== 1.2.0 2008-12-11
+
+* Newgem + RubiGen are Ruby 1.9.1 compliant.
+
 == 1.1.0 2008-11-11
 
 * Support for ~/.newgem.yml file for default CLI arguments
