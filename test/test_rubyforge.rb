@@ -1,5 +1,5 @@
 require File.join(File.dirname(__FILE__), "test_helper.rb")
-require 'newgem/rubyforge'
+require 'newgem/rubyforge-ext'
 
 class TestRubyforge < Test::Unit::TestCase
   

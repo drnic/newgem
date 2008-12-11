@@ -7,6 +7,7 @@ class TestNewgemGenerator < Test::Unit::TestCase
   def setup
     bare_setup
     @gem_name = File.basename(File.expand_path(APP_ROOT))
+    ENV['HOME'] = "/some/path" # so it doesn't find dev's local ~/.newgem.yml
   end
 
   def teardown

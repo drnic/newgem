@@ -87,7 +87,7 @@ EOS
 
     def github_username
       @github_username ||= begin
-        require File.dirname(__FILE__) + '/../../lib/newgem/rubyforge'
+        require File.dirname(__FILE__) + '/../../lib/newgem/rubyforge-ext' unless Newgem.const_defined?("Rubyforge")
         rubyforge_config = Newgem::Rubyforge.new
         rubyforge_config.github_username
       end

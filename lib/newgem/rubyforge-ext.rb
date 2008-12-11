@@ -1,5 +1,10 @@
-require 'rubygems'
-require 'rubyforge'
+begin
+  require 'rubyforge'
+rescue LoadError
+  require 'rubygems'
+  gem 'rubyforge'
+  require 'rubyforge'
+end
 
 module Newgem
   class Rubyforge
