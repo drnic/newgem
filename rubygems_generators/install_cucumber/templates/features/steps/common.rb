@@ -44,13 +44,18 @@ Given %r{'(.*)' folder is deleted} do |folder|
 end
 
 When %r{^'(.*)' generator is invoked with arguments '(.*)'$} do |generator, arguments|
+  @stdout = StringIO.new
   FileUtils.chdir(@active_project_folder) do
     if Object.const_defined?("APP_ROOT")
       APP_ROOT.replace(FileUtils.pwd)
     else 
       APP_ROOT = FileUtils.pwd
     end
-    run_generator(generator, arguments.split(' '), SOURCES)
+    run_generator(generator, arguments.split(' '), SOURCES, :stdout => @stdout)
+  end
+  File.open(File.join(@tmp_root, "generator.out"), "w") do |f|
+    @stdout.rewind
+    f << @stdout.read
   end
 end
 

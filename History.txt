@@ -1,3 +1,8 @@
+== 1.2.1 2008-12-15
+
+* Fixed 'uninitialized constant NewgemGenerator::Newgem' bug [#14]
+* Fixed some cucumber steps after rubigen refactoring
+
 == 1.2.0 2008-12-11
 
 * Newgem + RubiGen are Ruby 1.9.1 compliant.
