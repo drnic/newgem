@@ -11,6 +11,7 @@
 .test-result/TestNewgemGenerator/test_gem_name_should_come_from_project/passed
 .test-result/TestNewgemGenerator/test_module_name_does_not_change_if_project_name_is_overriden/passed
 .test-result/TestNewgemGenerator/test_module_name_should_come_from_gem_name/passed
+.test-result/TestNewgemGenerator/test_newgem/passed
 .test-result/TestNewgemGenerator/test_newgem_with_executable/passed
 .test-result/TestNewgemGenerator/test_newgem_with_jruby/passed
 .test-result/TestNewgemGenerator/test_newgem_with_no_website/passed

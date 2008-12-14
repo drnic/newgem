@@ -25,5 +25,5 @@ RubiGen::Base.prepend_sources(*[
 if ARGV.delete "--simple"
   RubiGen::Scripts::Generate.new.run(ARGV, :generator => 'newgem_simple')
 else
-  RubiGen::Scripts::Generate.new.run(ARGV, :generator => 'newgem')
+  RubiGen::Scripts::Generate.new.run(ARGV, :generator => 'newgem', :backtrace => true)
 end

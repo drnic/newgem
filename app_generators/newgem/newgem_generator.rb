@@ -151,7 +151,7 @@ EOS
       @author            = options[:author]
       @email             = options[:email]
       unless @author && @email
-        require File.dirname(__FILE__) + '/../../lib/newgem/rubyforge-ext' unless Newgem.const_defined?("Rubyforge")
+        require File.dirname(__FILE__) + '/../../lib/newgem/rubyforge-ext' unless Object.const_defined?("Newgem") && Newgem.const_defined?("Rubyforge")
         rubyforge_config = Newgem::Rubyforge.new
         @author ||= rubyforge_config.full_name
         @email  ||= rubyforge_config.email
