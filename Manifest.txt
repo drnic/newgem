@@ -121,6 +121,7 @@ rubygems_generators/extconf/templates/spec/spec.rb.erb
 rubygems_generators/extconf/templates/tasks/extconf.rake
 rubygems_generators/extconf/templates/tasks/extconf_name.rake
 rubygems_generators/extconf/templates/test/test.rb.erb
+rubygems_generators/install_cucumber/USAGE
 rubygems_generators/install_cucumber/install_cucumber_generator.rb
 rubygems_generators/install_cucumber/templates/features/development.feature
 rubygems_generators/install_cucumber/templates/features/steps/common.rb
