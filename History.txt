@@ -1,3 +1,8 @@
+== 1.2.2 2008-12-27
+
+* Added USAGE file to install_cucumber generator so it shows up in lists of available generators
+* Some improvements to common.rb
+
 == 1.2.1 2008-12-15
 
 * Fixed 'uninitialized constant NewgemGenerator::Newgem' bug [#14]
