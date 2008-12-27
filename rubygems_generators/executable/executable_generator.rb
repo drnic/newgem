@@ -46,7 +46,7 @@ class ExecutableGenerator < RubiGen::Base
 Create an executable Ruby script that is deployed
 with this RubyGem.
 
-USAGE: #{$0} generate bin_name"
+USAGE: #{$0} executable bin_name"
 EOS
     end
 

@@ -3,8 +3,7 @@ require '<%= bin_name %>/cli'
 
 class Test<%= module_name %>Cli < Test::Unit::TestCase
   def setup
-    @stdout_io = StringIO.new
-    <%= module_name %>::CLI.execute(@stdout_io, [])
+    <%= module_name %>::CLI.execute(@stdout_io = StringIO.new, [])
     @stdout_io.rewind
     @stdout = @stdout_io.read
   end
