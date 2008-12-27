@@ -59,6 +59,13 @@ When %r{^'(.*)' generator is invoked with arguments '(.*)'$} do |generator, argu
   end
 end
 
+When %r{run executable '(.*)' with arguments '(.*)'} do |executable, arguments|
+  @stdout = File.expand_path(File.join(@tmp_root, "executable.out"))
+  in_project_folder do
+    system "#{executable} #{arguments} > #{@stdout} 2> #{@stdout}"
+  end
+end
+
 When %r{run project executable '(.*)' with arguments '(.*)'} do |executable, arguments|
   @stdout = File.expand_path(File.join(@tmp_root, "executable.out"))
   in_project_folder do
@@ -68,7 +75,10 @@ end
 
 When %r{run local executable '(.*)' with arguments '(.*)'} do |executable, arguments|
   @stdout = File.expand_path(File.join(@tmp_root, "executable.out"))
-  system "ruby bin/#{executable} #{arguments} > #{@stdout} 2> #{@stdout}"
+  executable = File.expand_path(File.join(File.dirname(__FILE__), "/../../bin", executable))
+  in_project_folder do
+    system "ruby #{executable} #{arguments} > #{@stdout} 2> #{@stdout}"
+  end
 end
 
 When %r{^task 'rake (.*)' is invoked$} do |task|
@@ -78,9 +88,9 @@ When %r{^task 'rake (.*)' is invoked$} do |task|
   end
 end
 
-Then %r{^folder '(.*)' is created} do |folder|
+Then %r{^folder '(.*)' (is|is not) created} do |folder, is|
   in_project_folder do
-    File.exists?(folder).should be_true
+    File.exists?(folder).should(is == 'is' ? be_true : be_false)
   end
 end
 
@@ -111,7 +121,7 @@ Then %r{^output same as contents of '(.*)'$} do |file|
 end
 
 Then %r{^(does|does not) invoke generator '(.*)'$} do |does_invoke, generator|
-  actual_output = File.read(File.dirname(__FILE__) + "/../../tmp/#{@stdout}")
+  actual_output = File.read(@stdout)
   does_invoke == "does" ?
     actual_output.should(match(/dependency\s+#{generator}/)) :
     actual_output.should_not(match(/dependency\s+#{generator}/))
