@@ -2,6 +2,7 @@
 
 * 'rake features' uses --format progress now
 * bump rubigen to 1.5.1
+* move website to gh-pages branch, and official homepage to http://drnic.github.com/newgem
 
 == 1.2.2 2008-12-27
 
