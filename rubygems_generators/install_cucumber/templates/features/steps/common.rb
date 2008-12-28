@@ -116,7 +116,7 @@ end
 
 Then %r{^output same as contents of '(.*)'$} do |file|
   expected_output = File.read(File.join(File.dirname(__FILE__) + "/../expected_outputs", file))
-  actual_output = File.read(File.dirname(__FILE__) + "/../../tmp/#{@stdout}")
+  actual_output = File.read(@stdout)
   actual_output.should == expected_output
 end
 

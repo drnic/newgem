@@ -53,7 +53,7 @@ When %r{^newgem is executed for project '(.*)' with no options$} do |project_nam
   @newgem_cmd = newgem_cmd
   setup_active_project_folder project_name
   in_tmp_folder do
-    @stdout = "newgem.out"
+    @stdout = File.expand_path("newgem.out")
     system "ruby #{@newgem_cmd} #{project_name} > #{@stdout}"
     force_local_lib_override
   end
@@ -63,7 +63,7 @@ When %r{^newgem is executed for project '(.*)' with options '(.*)'$} do |project
   @newgem_cmd = newgem_cmd
   setup_active_project_folder project_name
   in_tmp_folder do
-    @stdout = "newgem.out"
+    @stdout = File.expand_path("newgem.out")
     system "ruby #{@newgem_cmd} #{arguments} #{project_name} > #{@stdout}"
     force_local_lib_override
   end
@@ -72,7 +72,7 @@ end
 When /^newgem is executed only with options '(.*)'$/ do |arguments|
   @newgem_cmd = newgem_cmd
   in_tmp_folder do
-    @stdout = "newgem.out"
+    @stdout = File.expand_path("newgem.out")
     system "ruby #{@newgem_cmd} #{arguments} > #{@stdout}"
   end
 end
@@ -98,6 +98,6 @@ Then %r{^remote file '(.*)' (is|is not) created} do |file, is|
 end
 
 Then /^shows version number$/ do
-  stdout = File.read(File.join(@tmp_root, @stdout))
+  stdout = File.read(@stdout)
   stdout.should =~ /#{Newgem::VERSION}/
 end

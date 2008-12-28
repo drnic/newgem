@@ -23,7 +23,5 @@ Feature: RubyGems have features to be described and tested
     And 'install_cucumber' generator is invoked with arguments ''
     When task 'rake features' is invoked
     Then task 'rake features' is executed successfully
-    And output does match /Feature: Development processes of newgem itself \(rake tasks\)/
-    And output does match /And file with name matching 'pkg/\*\.gem' is created/
-    And output does not match /You can use these snippets to implement pending steps/
+    And output does match /\.{6}/
 

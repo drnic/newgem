@@ -4,5 +4,5 @@ $:.unshift(File.dirname(__FILE__)) unless
 require "hoe-patched"
 
 module Newgem
-  VERSION = '1.2.2'
+  VERSION = '1.2.3'
 end
