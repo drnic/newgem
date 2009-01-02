@@ -60,6 +60,8 @@ class NewgemGenerator < RubiGen::Base
         m.dependency "install_test_unit", [gem_name], :destination => destination_root, :collision => :force
       when "rspec"
         m.dependency "install_rspec", [gem_name], :destination => destination_root, :collision => :force
+      when "shoulda"
+        m.dependency "install_shoulda", [gem_name], :destination => destination_root, :collision => :force
       end
 
       # Website
