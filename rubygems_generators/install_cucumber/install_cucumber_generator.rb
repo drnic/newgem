@@ -16,10 +16,11 @@ class InstallCucumberGenerator < RubiGen::Base
     record do |m|
       script_options     = { :chmod => 0755, :shebang => options[:shebang] == DEFAULT_SHEBANG ? nil : options[:shebang] }
 
-      m.directory 'features/steps'
+      m.directory 'features/step_definitions'
+      m.directory 'features/support'
       m.file      'features/development.feature', 'features/development.feature'
-      m.file      'features/steps/common.rb', 'features/steps/common.rb'
-      m.template  'features/steps/env.rb.erb', 'features/steps/env.rb'
+      m.file      'features/step_definitions/common_steps.rb', 'features/step_definitions/common_steps.rb'
+      m.template  'features/support/env.rb.erb', 'features/support/env.rb'
     end
   end
 

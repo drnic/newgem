@@ -27,8 +27,8 @@ class TestInstallCucumberGenerator < Test::Unit::TestCase
   
   def test_generator_without_options
     run_generator('install_cucumber', [], sources)
-    assert_directory_exists("features/steps")
-    assert_generated_file("features/steps/env.rb") do |body|
+    assert_directory_exists("features/step_definitions")
+    assert_generated_file("features/support/env.rb") do |body|
       assert_match(/#{PROJECT_NAME}/, body)
     end
   end

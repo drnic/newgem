@@ -40,10 +40,10 @@ features/install_cucumber.feature
 features/install_website.feature
 features/newgem_cli.feature
 features/rubygem_tasks.feature
-features/steps/cli.rb
-features/steps/common.rb
-features/steps/env.rb
-features/steps/rubygems.rb
+features/step_definitions/cli_steps.rb
+features/step_definitions/common_steps.rb
+features/step_definitions/rubygems_steps.rb
+features/support/env.rb
 lib/hoe-patched.rb
 lib/newgem.rb
 lib/newgem/quick_template.rb
@@ -90,8 +90,8 @@ rubygems_generators/extconf/templates/test/test.rb.erb
 rubygems_generators/install_cucumber/USAGE
 rubygems_generators/install_cucumber/install_cucumber_generator.rb
 rubygems_generators/install_cucumber/templates/features/development.feature
-rubygems_generators/install_cucumber/templates/features/steps/common.rb
-rubygems_generators/install_cucumber/templates/features/steps/env.rb.erb
+rubygems_generators/install_cucumber/templates/features/step_definitions/common_steps.rb
+rubygems_generators/install_cucumber/templates/features/support/env.rb.erb
 rubygems_generators/install_jruby/USAGE
 rubygems_generators/install_jruby/install_jruby_generator.rb
 rubygems_generators/install_jruby/templates/tasks/jruby.rake
