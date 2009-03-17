@@ -1,7 +1,7 @@
 begin
   require 'rubyforge'
 rescue LoadError
-  require 'rubygems'
+  require 'rubygems' unless ENV['NO_RUBYGEMS']
   gem 'rubyforge'
   require 'rubyforge'
 end

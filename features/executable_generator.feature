@@ -11,6 +11,8 @@ Feature: Generate an executable/CLI scaffold
     And file 'bin/my_app' is created
     And file 'lib/my_app/cli.rb' is created
     And file 'test/test_my_app_cli.rb' is created
+    When I run unit tests for test file 'test/test_my_app_cli.rb'
+    Then all 1 tests pass
 
   Scenario: Run executable generator with name of executable on rspec project
     Given an existing newgem scaffold using options '-T rspec' [called 'my_project']
@@ -19,6 +21,17 @@ Feature: Generate an executable/CLI scaffold
     And file 'bin/my_app' is created
     And file 'lib/my_app/cli.rb' is created
     And file 'spec/my_app_cli_spec.rb' is created
+    When I enable rspec autorun
+    And I run unit tests for test file 'spec/my_app_cli_spec.rb'
+    Then all 1 examples pass
+  
+  Scenario: Run executable generator with name of executable on shoulda project
+    Given an existing newgem scaffold using options '-T shoulda' [called 'my_project']
+    When I invoke 'executable' generator with arguments 'my_app'
+    Then folder 'bin/my_app' is created
+    And file 'bin/my_app' is created
+    And file 'lib/my_app/cli.rb' is created
+    And file 'test/test_my_app_cli.rb' is created
   
   Scenario: Run CLI app from executable generator to show help
     Given an existing newgem scaffold [called 'my_project']
@@ -29,7 +42,7 @@ Feature: Generate an executable/CLI scaffold
 
   Scenario: Run CLI app from executable generator should not fail
     Given an existing newgem scaffold [called 'my_project']
-    Given I invoke 'executable' generator with arguments 'my_app'
+    And I invoke 'executable' generator with arguments 'my_app'
     When I run project executable 'bin/my_app' with arguments ''
     Then output does match /lib\/my_app\/cli.rb/
   
@@ -42,5 +55,6 @@ Feature: Generate an executable/CLI scaffold
   Scenario: Run examples after executable generator should all pass for rspec
     Given an existing newgem scaffold using options '-T rspec' [called 'my_project']
     And I invoke 'executable' generator with arguments 'my_app'
-    When I run unit tests for test file 'spec/my_app_cli_spec.rb'
+    When I enable rspec autorun
+    And I run unit tests for test file 'spec/my_app_cli_spec.rb'
     Then all 1 examples pass

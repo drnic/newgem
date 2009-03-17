@@ -1,4 +1,5 @@
-%w[rubygems rake rake/clean fileutils rubigen].each { |f| require f }
+require 'rubygems' unless ENV['NO_RUBYGEMS']
+%w[rake rake/clean fileutils rubigen].each { |f| require f }
 require File.dirname(__FILE__) + '/lib/newgem'
 
 # Generate all the Rake tasks

@@ -23,7 +23,7 @@ end
 begin
   require 'rubigen'
 rescue LoadError
-  require 'rubygems'
+  require 'rubygems' unless ENV['NO_RUBYGEMS']
   require 'rubigen'
 end
 require 'rubigen/helpers/generator_test_helper'

@@ -1,7 +1,7 @@
 begin
   require 'shoulda'
 rescue LoadError
-  require 'rubygems'
+  require 'rubygems' unless ENV['NO_RUBYGEMS']
   require 'shoulda'
 end
 

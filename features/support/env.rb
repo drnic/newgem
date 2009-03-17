@@ -5,7 +5,7 @@ require 'spec'
 
 require 'pp'
 require 'fileutils'
-require 'rubygems'
+require 'rubygems' unless ENV['NO_RUBYGEMS']
 
 # Following lines from original Rails cucumber generator. 
 # Not sure how to translate/reuse etc yet.
@@ -22,12 +22,7 @@ require 'rubygems'
 # code from test/test_generator_helper.rb
 TMP_ROOT = File.dirname(__FILE__) + "/tmp" unless defined?(TMP_ROOT)
 
-begin
-  require 'rubigen'
-rescue LoadError
-  require 'rubygems'
-  require 'rubigen'
-end
+require 'rubigen'
 require 'rubigen/helpers/generator_test_helper'
 include RubiGen::GeneratorTestHelper
 

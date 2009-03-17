@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'rubygems'
+require 'rubygems' unless ENV['NO_RUBYGEMS']
 require 'rubigen'
 
 if %w(-v --version).include? ARGV.first

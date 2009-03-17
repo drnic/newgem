@@ -77,6 +77,14 @@ When /^I run unit tests for test file '(.*)'$/ do |test_file|
   end
 end
 
+When /^I enable rspec autorun$/ do
+  in_project_folder do
+    File.open("spec/spec_helper.rb", "a") do |f|
+      f << "require 'spec/autorun'"
+    end
+  end
+end
+
 Then /^remote folder '(.*)' is created/ do |folder|
   FileUtils.chdir @remote_folder do
     File.exists?(folder).should be_true

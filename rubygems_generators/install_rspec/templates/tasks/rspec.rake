@@ -1,7 +1,7 @@
 begin
   require 'spec'
 rescue LoadError
-  require 'rubygems'
+  require 'rubygems' unless ENV['NO_RUBYGEMS']
   require 'spec'
 end
 begin
