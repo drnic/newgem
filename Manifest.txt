@@ -43,6 +43,8 @@ features/rubygem_tasks.feature
 features/step_definitions/cli_steps.rb
 features/step_definitions/common_steps.rb
 features/step_definitions/rubygems_steps.rb
+features/support/cli.rb
+features/support/common.rb
 features/support/env.rb
 lib/hoe-patched.rb
 lib/newgem.rb
@@ -91,6 +93,7 @@ rubygems_generators/install_cucumber/USAGE
 rubygems_generators/install_cucumber/install_cucumber_generator.rb
 rubygems_generators/install_cucumber/templates/features/development.feature
 rubygems_generators/install_cucumber/templates/features/step_definitions/common_steps.rb
+rubygems_generators/install_cucumber/templates/features/support/common.rb
 rubygems_generators/install_cucumber/templates/features/support/env.rb.erb
 rubygems_generators/install_jruby/USAGE
 rubygems_generators/install_jruby/install_jruby_generator.rb

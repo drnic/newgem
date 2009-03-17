@@ -1,4 +1,4 @@
-Given %r{^an existing newgem scaffold \[called '(.*)'\]} do |project_name|
+Given /^an existing newgem scaffold \[called '(.*)'\]/ do |project_name|
   Given "a safe folder"
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
   setup_active_project_folder project_name
@@ -9,7 +9,7 @@ Given %r{^an existing newgem scaffold \[called '(.*)'\]} do |project_name|
   end
 end
 
-Given %r{^an existing newgem scaffold using options '(.*)' \[called '(.*)'\]} do |arguments, project_name|
+Given /^an existing newgem scaffold using options '(.*)' \[called '(.*)'\]/ do |arguments, project_name|
   Given "a safe folder"
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
   setup_active_project_folder project_name
@@ -20,7 +20,7 @@ Given %r{^an existing newgem scaffold using options '(.*)' \[called '(.*)'\]} do
   end
 end
 
-Given %r{^project website configuration for safe folder on local machine$} do
+Given /^project website configuration for safe folder on local machine$/ do
   @remote_folder = File.expand_path(File.join(@tmp_root, 'website'))
   FileUtils.rm_rf   @remote_folder
   FileUtils.mkdir_p @remote_folder
@@ -32,7 +32,7 @@ Given %r{^project website configuration for safe folder on local machine$} do
   end  
 end
 
-Given %r{^~\/([^\s]+) contains (\{.*\})$} do |file, config|
+Given /^~\/([^\s]+) contains (\{.*\})$/ do |file, config|
   in_home_folder do
     File.open(file, 'w') do |f|
       yaml = eval(config)
@@ -41,7 +41,7 @@ Given %r{^~\/([^\s]+) contains (\{.*\})$} do |file, config|
   end
 end
 
-When %r{^newgem is executed for project '(.*)' with no options$} do |project_name|
+When /^newgem is executed for project '(.*)' with no options$/ do |project_name|
   @newgem_cmd = newgem_cmd
   setup_active_project_folder project_name
   in_tmp_folder do
@@ -51,7 +51,7 @@ When %r{^newgem is executed for project '(.*)' with no options$} do |project_nam
   end
 end
 
-When %r{^newgem is executed for project '(.*)' with options '(.*)'$} do |project_name, arguments|
+When /^newgem is executed for project '(.*)' with options '(.*)'$/ do |project_name, arguments|
   @newgem_cmd = newgem_cmd
   setup_active_project_folder project_name
   in_tmp_folder do
@@ -77,13 +77,13 @@ When /^run unit tests for test file '(.*)'$/ do |test_file|
   end
 end
 
-Then %r{^remote folder '(.*)' is created} do |folder|
+Then /^remote folder '(.*)' is created/ do |folder|
   FileUtils.chdir @remote_folder do
     File.exists?(folder).should be_true
   end
 end
 
-Then %r{^remote file '(.*)' (is|is not) created} do |file, is|
+Then /^remote file '(.*)' (is|is not) created/ do |file, is|
   FileUtils.chdir @remote_folder do
     File.exists?(file).should(is == 'is' ? be_true : be_false)
   end
