@@ -1,5 +1,11 @@
-## install_cucumber
+## post_rubyflow
 
-* don't generate tasks/cucumber.rake since its already loaded from newgem
+Code blocks:
+* use <code>
+* indent spaces must be &nbsp;
 
-## Rakefile
+Need title + method description
+
+Probably need to move away from current History.txt paragraph parsing
+
+Store rubyflow login details in .hoerc or .rubyforge?
