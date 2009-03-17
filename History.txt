@@ -1,4 +1,5 @@
 * common_steps.rb - When steps all started with 'I ...'
+* common.rb - using module instead of creating methods against global namespace; no more kittens killed [thx Ben Mabey]
 
 == 1.3.0 2009-03-17
 
