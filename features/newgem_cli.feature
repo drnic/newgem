@@ -18,6 +18,8 @@ Feature: Can run 'newgem' to create RubyGem scaffolds
     And file 'config/website.yml' is not created
     And output same as contents of 'newgem.out'
     And Rakefile can display tasks successfully
+    When I invoke task 'rake test'
+    Then all 1 tests pass
 
   Scenario: Run newgem with project name containing hypens
     Given a safe folder
@@ -33,6 +35,19 @@ Feature: Can run 'newgem' to create RubyGem scaffolds
     And does not invoke generator 'install_shoulda'
     And does not invoke generator 'install_cucumber'
     And Rakefile can display tasks successfully
+    When I invoke task 'rake spec'
+    Then all 1 examples pass
+
+  Scenario: Run newgem to include shoulda
+    Given a safe folder
+    When newgem is executed for project 'my_shoulda_project' with options '-T shoulda'
+    Then does invoke generator 'install_shoulda'
+    And does not invoke generator 'install_test_unit'
+    And does not invoke generator 'install_rspec'
+    And does not invoke generator 'install_cucumber'
+    And Rakefile can display tasks successfully
+    When I invoke task 'rake test'
+    Then all 1 tests pass
 
   Scenario: Run newgem to enable website
     Given a safe folder
