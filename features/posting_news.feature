@@ -7,7 +7,7 @@ Feature: Post interesting project news to remote services (rubyflow, rubyforge, 
     Given an existing newgem scaffold [called 'my_project']
     And I expect to post news to rubyforge
     When I embed and invoke task 'rake post_news'
-    Then I post auto-generated news
+    Then I post auto-generated news to rubyforge
   
   Scenario: Post latest News.rdoc to rubyflow
     Given an existing newgem scaffold [called 'my_project']

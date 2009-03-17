@@ -15,7 +15,10 @@ Given /^I expect to post news to rubyforge$/ do
     EOS
 end
 
-Then /^I post auto\-generated news$/ do
+Then /^I post auto\-generated news to rubyforge$/ do
   Then "output does match /Posted to rubyforge/"
 end
 
+Given /^I expect to post news to rubyflow$/ do
+  Rubyflow.any_instance.expects(:login)
+end
