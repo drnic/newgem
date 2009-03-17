@@ -1,7 +1,3 @@
-def in_tmp_folder(&block)
-  FileUtils.chdir(@tmp_root, &block)
-end
-
 Given %r{^an existing newgem scaffold \[called '(.*)'\]} do |project_name|
   Given "a safe folder"
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
@@ -43,10 +39,6 @@ Given %r{^~\/([^\s]+) contains (\{.*\})$} do |file, config|
       f << yaml.to_yaml
     end
   end
-end
-
-def newgem_cmd
-  File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
 end
 
 When %r{^newgem is executed for project '(.*)' with no options$} do |project_name|
