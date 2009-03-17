@@ -1,9 +1,8 @@
 begin
-  require 'spec'
+  require 'shoulda'
 rescue LoadError
   require 'rubygems'
-  gem 'Shoulda'
-  require 'Shoulda'
+  require 'shoulda'
 end
 
 $:.unshift(File.dirname(__FILE__) + '/../lib')
