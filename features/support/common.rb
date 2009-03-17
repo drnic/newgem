@@ -24,6 +24,23 @@ module CommonHelpers
     @active_project_folder = File.join(@tmp_root, project_name)
     @project_name = project_name
   end
+  
+  def project_name
+    in_project_folder { return File.basename(File.expand_path(".")) }
+  end
+  
+  def pipe_stdout_and_stderr_to(path, &block)
+    old_stdout, old_stderr = $stdout, $stderr
+    $stderr = $stdout = StringIO.new
+
+    yield
+
+    $stdout.rewind
+    File.open(path, "w") do |f|
+      f << $stdout.read
+    end
+    $stdout, $stderr = old_stdout, old_stderr
+  end
 end
 
 World { |world| world.extend CommonHelpers }
