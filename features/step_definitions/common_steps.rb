@@ -16,12 +16,10 @@ Given /^env variable \$([\w_]+) set to '(.*)'/ do |env_var, value|
 end
 
 Given /'(.*)' folder is deleted/ do |folder|
-  in_project_folder do
-    FileUtils.rm_rf folder
-  end
+  in_project_folder { FileUtils.rm_rf folder }
 end
 
-When /^'(.*)' generator is invoked with arguments '(.*)'$/ do |generator, arguments|
+When /^I invoke '(.*)' generator with arguments '(.*)'$/ do |generator, arguments|
   @stdout = StringIO.new
   FileUtils.chdir(@active_project_folder) do
     if Object.const_defined?("APP_ROOT")
@@ -37,21 +35,21 @@ When /^'(.*)' generator is invoked with arguments '(.*)'$/ do |generator, argume
   end
 end
 
-When /run executable '(.*)' with arguments '(.*)'/ do |executable, arguments|
+When /^I run executable '(.*)' with arguments '(.*)'/ do |executable, arguments|
   @stdout = File.expand_path(File.join(@tmp_root, "executable.out"))
   in_project_folder do
     system "#{executable} #{arguments} > #{@stdout} 2> #{@stdout}"
   end
 end
 
-When /run project executable '(.*)' with arguments '(.*)'/ do |executable, arguments|
+When /^I run project executable '(.*)' with arguments '(.*)'/ do |executable, arguments|
   @stdout = File.expand_path(File.join(@tmp_root, "executable.out"))
   in_project_folder do
     system "ruby #{executable} #{arguments} > #{@stdout} 2> #{@stdout}"
   end
 end
 
-When /run local executable '(.*)' with arguments '(.*)'/ do |executable, arguments|
+When /^I run local executable '(.*)' with arguments '(.*)'/ do |executable, arguments|
   @stdout = File.expand_path(File.join(@tmp_root, "executable.out"))
   executable = File.expand_path(File.join(File.dirname(__FILE__), "/../../bin", executable))
   in_project_folder do
@@ -59,7 +57,7 @@ When /run local executable '(.*)' with arguments '(.*)'/ do |executable, argumen
   end
 end
 
-When /^task 'rake (.*)' is invoked$/ do |task|
+When /^I invoke task 'rake (.*)'/ do |task|
   @stdout = File.expand_path(File.join(@tmp_root, "tests.out"))
   FileUtils.chdir(@active_project_folder) do
     system "rake #{task} --trace > #{@stdout} 2> #{@stdout}"
@@ -81,6 +79,15 @@ end
 Then /^file with name matching '(.*)' is created/ do |pattern|
   in_project_folder do
     Dir[pattern].should_not be_empty
+  end
+end
+
+Then /^file '(.*)' contents (does|does not) match \/(.*)\// do |file, does, regex|
+  in_project_folder do
+    actual_output = File.read(file)
+    (does == 'does') ?
+      actual_output.should(match(/#{regex}/)) :
+      actual_output.should_not(match(/#{regex}/))
   end
 end
 
@@ -116,15 +123,6 @@ Then /^output (does|does not) match \/(.*)\// do |does, regex|
   (does == 'does') ?
     actual_output.should(match(/#{regex}/)) :
     actual_output.should_not(match(/#{regex}/)) 
-end
-
-Then /^contents of file '(.*)' (does|does not) match \/(.*)\// do |file, does, regex|
-  in_project_folder do
-    actual_output = File.read(file)
-    (does == 'does') ?
-      actual_output.should(match(/#{regex}/)) :
-      actual_output.should_not(match(/#{regex}/))
-  end
 end
 
 Then /^all (\d+) tests pass/ do |expected_test_count|

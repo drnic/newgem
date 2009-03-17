@@ -8,7 +8,7 @@ class Test<%= module_name %>Cli < Test::Unit::TestCase
     @stdout = @stdout_io.read
   end
   
-  def test_not_print_default_output
-    assert_no_match(/To update this executable/, @stdout)
+  def test_print_default_output
+    assert_match(/To update this executable/, @stdout)
   end
 end

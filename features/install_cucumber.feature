@@ -6,7 +6,7 @@ Feature: RubyGems have features to be described and tested
   
   Scenario: Install Cucumber into a RubyGem
     Given an existing newgem scaffold [called 'my_project']
-    When 'install_cucumber' generator is invoked with arguments ''
+    When I invoke 'install_cucumber' generator with arguments ''
     Then folder 'features/step_definitions' is created
     Then folder 'features/support' is created
     And file 'features/development.feature' is created
@@ -17,15 +17,15 @@ Feature: RubyGems have features to be described and tested
 
   Scenario: NewGem and generated gems should share some common files
     Given an existing newgem scaffold [called 'my_project']
-    When 'install_cucumber' generator is invoked with arguments ''
+    When I invoke 'install_cucumber' generator with arguments ''
     Then gem file 'features/step_definitions/common_steps.rb' and generated file 'features/step_definitions/common_steps.rb' should be the same
     Then gem file 'features/support/common.rb' and generated file 'features/support/common.rb' should be the same
     Then gem file 'features/development.feature' and generated file 'features/development.feature' should be the same
 
   Scenario: Installed Cucumber includes a 'rake features' task
     Given an existing newgem scaffold [called 'my_project']
-    And 'install_cucumber' generator is invoked with arguments ''
-    When task 'rake features' is invoked
+    And I invoke 'install_cucumber' generator with arguments ''
+    When I invoke task 'rake features'
     Then task 'rake features' is executed successfully
     And output does match /\.{6}/
 

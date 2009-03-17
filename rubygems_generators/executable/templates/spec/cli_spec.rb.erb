@@ -9,7 +9,7 @@ describe <%= module_name %>::CLI, "execute" do
     @stdout = @stdout_io.read
   end
   
-  it "should do something" do
-    @stdout.should_not =~ /To update this executable/
+  it "should print default output" do
+    @stdout.should =~ /To update this executable/
   end
 end
