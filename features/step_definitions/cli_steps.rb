@@ -72,7 +72,7 @@ end
 
 When /^I run unit tests for test file '(.*)'$/ do |test_file|
   @stdout = File.expand_path(File.join(@tmp_root, "tests.out"))
-  FileUtils.chdir(@active_project_folder) do
+  in_project_folder do
     system "ruby #{test_file} > #{@stdout}"
   end
 end
