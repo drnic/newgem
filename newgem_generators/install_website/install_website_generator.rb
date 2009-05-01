@@ -17,7 +17,7 @@ class InstallWebsiteGenerator < RubiGen::Base
     super
     @destination_root   = File.expand_path(destination_root)
     @gem_name           = base_name
-    @module_name        = @gem_name.camelcase
+    @module_name        = @gem_name.gsub('-','_').camelize
     @rubyforge_username = ENV['RUBYFORGE_USERNAME'].nil? || ENV['RUBYFORGE_USERNAME'].empty? ? 'unknown' : ENV['RUBYFORGE_USERNAME']
     extract_options
   end

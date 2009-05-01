@@ -9,7 +9,7 @@ class InstallRspecGenerator < RubiGen::Base
     super
     @destination_root = File.expand_path(destination_root)
     @gem_name = base_name
-    @module_name  = @gem_name.camelcase
+    @module_name  = @gem_name.gsub('-','_').camelize
     extract_options
   end
 

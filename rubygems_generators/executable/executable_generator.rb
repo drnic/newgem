@@ -11,7 +11,7 @@ class ExecutableGenerator < RubiGen::Base
     super
     usage if args.empty?
     @bin_name     = args.shift
-    @module_name  = @bin_name.classify
+    @module_name  = @bin_name.gsub('-','_').camelize
     @project_name = File.basename(File.expand_path(destination_root))
     extract_options
   end

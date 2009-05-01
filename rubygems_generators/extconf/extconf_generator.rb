@@ -8,7 +8,7 @@ class ExtconfGenerator < RubiGen::Base
     super
     usage if args.empty?
     @name = args.shift
-    @module_name = name.camelcase
+    @module_name = name.gsub('-','_').camelize
     @test_module_name = @module_name + "Extn"
   end
 
