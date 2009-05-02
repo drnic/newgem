@@ -34,7 +34,6 @@ cucumber_generators/feature/templates/feature.erb
 cucumber_generators/feature/templates/steps.erb
 features/development.feature
 features/executable_generator.feature
-features/expected_outputs/newgem.out
 features/extconf.feature
 features/install_cucumber.feature
 features/install_website.feature
@@ -46,6 +45,7 @@ features/step_definitions/rubygems_steps.rb
 features/support/cli.rb
 features/support/common.rb
 features/support/env.rb
+features/support/matchers.rb
 lib/hoe-patched.rb
 lib/newgem.rb
 lib/newgem/quick_template.rb

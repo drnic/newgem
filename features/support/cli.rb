@@ -4,5 +4,5 @@ module CliHelpers
   end
 end
 
-World { |world| world.extend CliHelpers }
+World(CliHelpers)
 

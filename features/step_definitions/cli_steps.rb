@@ -1,4 +1,4 @@
-Given /^an existing newgem scaffold \[called '(.*)'\]/ do |project_name|
+Given /^an existing newgem scaffold \[called "(.*)"\]/ do |project_name|
   Given "a safe folder"
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
   setup_active_project_folder project_name
@@ -9,7 +9,7 @@ Given /^an existing newgem scaffold \[called '(.*)'\]/ do |project_name|
   end
 end
 
-Given /^an existing newgem scaffold using options '(.*)' \[called '(.*)'\]/ do |arguments, project_name|
+Given /^an existing newgem scaffold using options "(.*)" \[called "(.*)"\]/ do |arguments, project_name|
   Given "a safe folder"
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
   setup_active_project_folder project_name
@@ -41,7 +41,7 @@ Given /^~\/([^\s]+) contains (\{.*\})$/ do |file, config|
   end
 end
 
-When /^newgem is executed for project '(.*)' with no options$/ do |project_name|
+When /^newgem is executed for project "(.*)" with no options$/ do |project_name|
   @newgem_cmd = newgem_cmd
   setup_active_project_folder project_name
   in_tmp_folder do
@@ -51,7 +51,7 @@ When /^newgem is executed for project '(.*)' with no options$/ do |project_name|
   end
 end
 
-When /^newgem is executed for project '(.*)' with options '(.*)'$/ do |project_name, arguments|
+When /^newgem is executed for project "(.*)" with options "(.*)"$/ do |project_name, arguments|
   @newgem_cmd = newgem_cmd
   setup_active_project_folder project_name
   in_tmp_folder do
@@ -61,7 +61,7 @@ When /^newgem is executed for project '(.*)' with options '(.*)'$/ do |project_n
   end
 end
 
-When /^newgem is executed only with options '(.*)'$/ do |arguments|
+When /^newgem is executed only with options "(.*)"$/ do |arguments|
   @newgem_cmd = newgem_cmd
   in_tmp_folder do
     @stdout = File.expand_path("newgem.out")
@@ -70,7 +70,7 @@ When /^newgem is executed only with options '(.*)'$/ do |arguments|
 end
 
 
-When /^I run unit tests for test file '(.*)'$/ do |test_file|
+When /^I run unit tests for test file "(.*)"$/ do |test_file|
   @stdout = File.expand_path(File.join(@tmp_root, "tests.out"))
   in_project_folder do
     system "ruby #{test_file} > #{@stdout}"
@@ -85,13 +85,13 @@ When /^I enable rspec autorun$/ do
   end
 end
 
-Then /^remote folder '(.*)' is created/ do |folder|
+Then /^remote folder "(.*)" is created/ do |folder|
   FileUtils.chdir @remote_folder do
     File.exists?(folder).should be_true
   end
 end
 
-Then /^remote file '(.*)' (is|is not) created/ do |file, is|
+Then /^remote file "(.*)" (is|is not) created/ do |file, is|
   FileUtils.chdir @remote_folder do
     File.exists?(file).should(is == 'is' ? be_true : be_false)
   end

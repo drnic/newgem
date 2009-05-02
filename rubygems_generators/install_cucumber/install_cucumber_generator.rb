@@ -22,6 +22,7 @@ class InstallCucumberGenerator < RubiGen::Base
       m.file      'features/step_definitions/common_steps.rb', 'features/step_definitions/common_steps.rb'
       m.template  'features/support/env.rb.erb', 'features/support/env.rb'
       m.file      'features/support/common.rb', 'features/support/common.rb'
+      m.file      'features/support/matchers.rb', 'features/support/matchers.rb'
     end
   end
 

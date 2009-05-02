@@ -3,7 +3,7 @@ Given /^a safe folder/ do
   FileUtils.mkdir_p @tmp_root
   FileUtils.mkdir_p @home_path = File.expand_path(File.join(@tmp_root, "home"))
   @lib_path = File.expand_path(File.dirname(__FILE__) + '/../../lib')
-  Given "env variable $HOME set to '#{@home_path}'"
+  Given %Q{env variable $HOME set to "#{@home_path}"}
 end
 
 Given /^this project is active project folder/ do
@@ -11,15 +11,15 @@ Given /^this project is active project folder/ do
   @active_project_folder = File.expand_path(File.dirname(__FILE__) + "/../..")
 end
 
-Given /^env variable \$([\w_]+) set to '(.*)'/ do |env_var, value|
+Given /^env variable \$([\w_]+) set to "(.*)"/ do |env_var, value|
   ENV[env_var] = value
 end
 
-Given /'(.*)' folder is deleted/ do |folder|
+Given /"(.*)" folder is deleted/ do |folder|
   in_project_folder { FileUtils.rm_rf folder }
 end
 
-When /^I invoke '(.*)' generator with arguments '(.*)'$/ do |generator, arguments|
+When /^I invoke "(.*)" generator with arguments "(.*)"$/ do |generator, arguments|
   @stdout = StringIO.new
   in_project_folder do
     if Object.const_defined?("APP_ROOT")
@@ -35,21 +35,21 @@ When /^I invoke '(.*)' generator with arguments '(.*)'$/ do |generator, argument
   end
 end
 
-When /^I run executable '(.*)' with arguments '(.*)'/ do |executable, arguments|
+When /^I run executable "(.*)" with arguments "(.*)"/ do |executable, arguments|
   @stdout = File.expand_path(File.join(@tmp_root, "executable.out"))
   in_project_folder do
     system "#{executable} #{arguments} > #{@stdout} 2> #{@stdout}"
   end
 end
 
-When /^I run project executable '(.*)' with arguments '(.*)'/ do |executable, arguments|
+When /^I run project executable "(.*)" with arguments "(.*)"/ do |executable, arguments|
   @stdout = File.expand_path(File.join(@tmp_root, "executable.out"))
   in_project_folder do
     system "ruby #{executable} #{arguments} > #{@stdout} 2> #{@stdout}"
   end
 end
 
-When /^I run local executable '(.*)' with arguments '(.*)'/ do |executable, arguments|
+When /^I run local executable "(.*)" with arguments "(.*)"/ do |executable, arguments|
   @stdout = File.expand_path(File.join(@tmp_root, "executable.out"))
   executable = File.expand_path(File.join(File.dirname(__FILE__), "/../../bin", executable))
   in_project_folder do
@@ -57,32 +57,32 @@ When /^I run local executable '(.*)' with arguments '(.*)'/ do |executable, argu
   end
 end
 
-When /^I invoke task 'rake (.*)'/ do |task|
+When /^I invoke task "rake (.*)"/ do |task|
   @stdout = File.expand_path(File.join(@tmp_root, "tests.out"))
   in_project_folder do
     system "rake #{task} --trace > #{@stdout} 2> #{@stdout}"
   end
 end
 
-Then /^folder '(.*)' (is|is not) created/ do |folder, is|
+Then /^folder "(.*)" (is|is not) created/ do |folder, is|
   in_project_folder do
     File.exists?(folder).should(is == 'is' ? be_true : be_false)
   end
 end
 
-Then /^file '(.*)' (is|is not) created/ do |file, is|
+Then /^file "(.*)" (is|is not) created/ do |file, is|
   in_project_folder do
     File.exists?(file).should(is == 'is' ? be_true : be_false)
   end
 end
 
-Then /^file with name matching '(.*)' is created/ do |pattern|
+Then /^file with name matching "(.*)" is created/ do |pattern|
   in_project_folder do
     Dir[pattern].should_not be_empty
   end
 end
 
-Then /^file '(.*)' contents (does|does not) match \/(.*)\// do |file, does, regex|
+Then /^file "(.*)" contents (does|does not) match \/(.*)\// do |file, does, regex|
   in_project_folder do
     actual_output = File.read(file)
     (does == 'does') ?
@@ -91,7 +91,7 @@ Then /^file '(.*)' contents (does|does not) match \/(.*)\// do |file, does, rege
   end
 end
 
-Then /gem file '(.*)' and generated file '(.*)' should be the same/ do |gem_file, project_file|
+Then /gem file "(.*)" and generated file "(.*)" should be the same/ do |gem_file, project_file|
   File.exists?(gem_file).should be_true
   File.exists?(project_file).should be_true
   gem_file_contents = File.read(File.dirname(__FILE__) + "/../../#{gem_file}")
@@ -99,45 +99,47 @@ Then /gem file '(.*)' and generated file '(.*)' should be the same/ do |gem_file
   project_file_contents.should == gem_file_contents
 end
 
-Then /^output same as contents of '(.*)'$/ do |file|
-  expected_output = File.read(File.join(File.dirname(__FILE__) + "/../expected_outputs", file))
-  actual_output = File.read(@stdout)
-  actual_output.should == expected_output
-end
-
-Then /^(does|does not) invoke generator '(.*)'$/ do |does_invoke, generator|
+Then /^(does|does not) invoke generator "(.*)"$/ do |does_invoke, generator|
   actual_output = File.read(@stdout)
   does_invoke == "does" ?
     actual_output.should(match(/dependency\s+#{generator}/)) :
     actual_output.should_not(match(/dependency\s+#{generator}/))
 end
 
-Then /help options '(.*)' and '(.*)' are displayed/ do |opt1, opt2|
+Then /help options "(.*)" and "(.*)" are displayed/ do |opt1, opt2|
   actual_output = File.read(@stdout)
   actual_output.should match(/#{opt1}/)
   actual_output.should match(/#{opt2}/)
 end
 
-Then /^output (does|does not) match \/(.*)\// do |does, regex|
+Then /^I should see$/ do |text|
   actual_output = File.read(@stdout)
-  (does == 'does') ?
-    actual_output.should(match(/#{regex}/)) :
-    actual_output.should_not(match(/#{regex}/)) 
+  actual_output.should contain(text)
 end
 
-Then /^all (\d+) tests pass/ do |expected_test_count|
+Then /^I should not see$/ do |text|
+  actual_output = File.read(@stdout)
+  actual_output.should_not contain(text)
+end
+
+Then /^I should see exactly$/ do |text|
+  actual_output = File.read(@stdout)
+  actual_output.should == text
+end
+
+Then /^I should see all (\d+) tests pass/ do |expected_test_count|
   expected = %r{^#{expected_test_count} tests, \d+ assertions, 0 failures, 0 errors}
   actual_output = File.read(@stdout)
   actual_output.should match(expected)
 end
 
-Then /^all (\d+) examples pass/ do |expected_test_count|
+Then /^I should see all (\d+) examples pass/ do |expected_test_count|
   expected = %r{^#{expected_test_count} examples?, 0 failures}
   actual_output = File.read(@stdout)
   actual_output.should match(expected)
 end
 
-Then /^yaml file '(.*)' contains (\{.*\})/ do |file, yaml|
+Then /^yaml file "(.*)" contains (\{.*\})/ do |file, yaml|
   in_project_folder do
     yaml = eval yaml
     YAML.load(File.read(file)).should == yaml
@@ -153,14 +155,14 @@ Then /^Rakefile can display tasks successfully/ do
   actual_output.should match(/^rake\s+\w+\s+#\s.*/)
 end
 
-Then /^task 'rake (.*)' is executed successfully/ do |task|
+Then /^task "rake (.*)" is executed successfully/ do |task|
   @stdout.should_not be_nil
   actual_output = File.read(@stdout)
   actual_output.should_not match(/^Don't know how to build task '#{task}'/)
   actual_output.should_not match(/Error/i)
 end
 
-Then /^gem spec key '(.*)' contains \/(.*)\// do |key, regex|
+Then /^gem spec key "(.*)" contains \/(.*)\// do |key, regex|
   in_project_folder do
     gem_file = Dir["pkg/*.gem"].first
     gem_spec = Gem::Specification.from_yaml(`gem spec #{gem_file}`)

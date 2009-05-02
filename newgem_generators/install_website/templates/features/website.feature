@@ -7,8 +7,8 @@ Feature: Can deploy a website to a remote server via rsycn
     Given copy this project for test
     Given a safe folder for dummy deployment
     Given project website configuration for safe folder on local machine
-    When I invoke task 'rake website'
-    Then file 'website/index.html' is created
-    Then remote file 'index.html' is created after local rsync
-    Then remote folder 'rdoc' is created after local rsync
+    When I invoke task "rake website"
+    Then file "website/index.html" is created
+    Then remote file "index.html" is created after local rsync
+    Then remote folder "rdoc" is created after local rsync
   

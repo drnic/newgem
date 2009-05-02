@@ -26,4 +26,4 @@ module CommonHelpers
   end
 end
 
-World { |world| world.extend CommonHelpers }
+World(CommonHelpers)
