@@ -95,6 +95,7 @@ rubygems_generators/install_cucumber/templates/features/development.feature
 rubygems_generators/install_cucumber/templates/features/step_definitions/common_steps.rb
 rubygems_generators/install_cucumber/templates/features/support/common.rb
 rubygems_generators/install_cucumber/templates/features/support/env.rb.erb
+rubygems_generators/install_cucumber/templates/features/support/matchers.rb
 rubygems_generators/install_jruby/USAGE
 rubygems_generators/install_jruby/install_jruby_generator.rb
 rubygems_generators/install_jruby/templates/tasks/jruby.rake

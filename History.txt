@@ -1,3 +1,7 @@
+== 1.4.1 2009-05-02
+
+* missing file from manifest.. I hate manifests.
+
 == 1.4.0 2009-05-02
 
 * install_shoulda - use "newgem -T shoulda" to use shoulda for testing instead of test_unit or rspec
