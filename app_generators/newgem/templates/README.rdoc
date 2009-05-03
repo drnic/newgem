@@ -1,6 +1,6 @@
 = <%= gem_name %>
 
-* FIX (url)
+* <%= project_url %>
 
 == DESCRIPTION:
 

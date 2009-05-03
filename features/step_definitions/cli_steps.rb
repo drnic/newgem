@@ -1,3 +1,8 @@
+Given /^default env variables setup for name and email$/ do
+  Given 'env variable $NAME set to "Dr Nic"'
+  Given 'env variable $EMAIL set to "drnicwilliams@gmail.com"'
+end
+
 Given /^an existing newgem scaffold \[called "(.*)"\]/ do |project_name|
   Given "a safe folder"
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")

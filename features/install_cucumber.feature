@@ -5,7 +5,8 @@ Feature: RubyGems have features to be described and tested
   So that I can describe each feature of the project in readable text
   
   Scenario: Install Cucumber into a RubyGem
-    Given an existing newgem scaffold [called "my_project"]
+    Given default env variables setup for name and email
+    And an existing newgem scaffold [called "my_project"]
     When I invoke "install_cucumber" generator with arguments ""
     Then folder "features/step_definitions" is created
     Then folder "features/support" is created
@@ -17,7 +18,8 @@ Feature: RubyGems have features to be described and tested
     And file "tasks/cucumber.rake" is not created as it is loaded via newgem itself
 
   Scenario: NewGem and generated gems should share some common files
-    Given an existing newgem scaffold [called "my_project"]
+    Given default env variables setup for name and email
+    And an existing newgem scaffold [called "my_project"]
     When I invoke "install_cucumber" generator with arguments ""
     Then gem file "features/step_definitions/common_steps.rb" and generated file "features/step_definitions/common_steps.rb" should be the same
     Then gem file "features/support/common.rb" and generated file "features/support/common.rb" should be the same

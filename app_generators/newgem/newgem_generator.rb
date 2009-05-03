@@ -17,7 +17,7 @@ class NewgemGenerator < RubiGen::Base
 
 
   attr_reader :gem_name, :module_name, :project_name
-  attr_reader :version, :version_str, :author, :email
+  attr_reader :version, :version_str, :author, :email, :project_url
 
   # extensions/option
   attr_reader :test_framework
@@ -33,6 +33,8 @@ class NewgemGenerator < RubiGen::Base
     @gem_name = base_name
     @module_name  = gem_name.gsub('-','_').camelize
     @project_name = @gem_name
+    @github_username = 'FIXME'
+    @project_url  = 'http://github.com/#{github_username}/#{project_name}'
     extract_options
   end
 

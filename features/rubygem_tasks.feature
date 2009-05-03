@@ -3,8 +3,21 @@ Feature: Generated RubyGems have various rake tasks to aide their development
   As a RubyGem developer
   I want rake tasks to perform routine maintenance and deployment tasks
 
+  Scenario: Generate a gemspec that can build the RubyGem
+    Given default env variables setup for name and email
+    And an existing newgem scaffold [called "my_project"]
+    And "pkg" folder is deleted
+    When I invoke task "rake gemspec"
+    Then file "my_project.gemspec" is created
+    And gemspec builds the RubyGem successfully
+    Then I should see
+      """
+      Successfully built RubyGem
+      """
+
   Scenario: Generate RubyGem
-    Given an existing newgem scaffold [called "my_project"]
+    Given default env variables setup for name and email
+    And an existing newgem scaffold [called "my_project"]
     And "pkg" folder is deleted
     When I invoke task "rake gem"
     Then folder "pkg" is created
@@ -18,16 +31,5 @@ Feature: Generated RubyGems have various rake tasks to aide their development
     Then I should not see
       """
       README.txt is missing
-      """
-  
-  Scenario: Generate a gemspec that can build the RubyGem
-    Given an existing newgem scaffold [called "my_project"]
-    And "pkg" folder is deleted
-    When I invoke task "rake gemspec"
-    Then file "my_project.gemspec" is created
-    And gemspec builds the RubyGem successfully
-    Then I should see
-      """
-      Successfully built RubyGem
       """
   
