@@ -3,8 +3,8 @@
 #  Created <%= "by #{author} " if author %>on <%= (now = Time.now).year %>-<%= now.month %>-<%= now.day %>.
 #  Copyright (c) <%= now.year %>. All rights reserved.
 
+require 'rubygems'
 require File.expand_path(File.dirname(__FILE__) + "/../lib/<%= project_name %>")
-
 require "<%= bin_name %>/cli"
 
 <%= module_name %>::CLI.execute(STDOUT, ARGV)

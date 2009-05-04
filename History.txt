@@ -1,3 +1,5 @@
+* executable: generated executable includes: require 'rubygems'
+
 == 1.4.1 2009-05-02
 
 * missing file from manifest.. I hate manifests.
