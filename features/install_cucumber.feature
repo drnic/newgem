@@ -27,7 +27,8 @@ Feature: RubyGems have features to be described and tested
     Then gem file "features/development.feature" and generated file "features/development.feature" should be the same
 
   Scenario: Installed Cucumber includes a "rake features" task
-    Given an existing newgem scaffold [called "my_project"]
+    Given default env variables setup for name and email
+    And an existing newgem scaffold [called "my_project"]
     And I invoke "install_cucumber" generator with arguments ""
     And I invoke task "rake manifest"
     When I invoke task "rake features"
