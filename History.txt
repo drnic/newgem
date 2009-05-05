@@ -1,3 +1,4 @@
+* 'Given a safe place' is now in a common Before block; so no longer explicitly required
 * executable: generated executable includes: require 'rubygems'
 
 == 1.4.1 2009-05-02

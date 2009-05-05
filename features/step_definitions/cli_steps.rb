@@ -4,7 +4,6 @@ Given /^default env variables setup for name and email$/ do
 end
 
 Given /^an existing newgem scaffold \[called "(.*)"\]/ do |project_name|
-  Given "a safe folder"
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
   setup_active_project_folder project_name
   in_tmp_folder do
@@ -15,7 +14,6 @@ Given /^an existing newgem scaffold \[called "(.*)"\]/ do |project_name|
 end
 
 Given /^an existing newgem scaffold using options "(.*)" \[called "(.*)"\]/ do |arguments, project_name|
-  Given "a safe folder"
   newgem = File.expand_path(File.dirname(__FILE__) + "/../../bin/newgem")
   setup_active_project_folder project_name
   in_tmp_folder do
