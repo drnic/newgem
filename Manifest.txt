@@ -47,6 +47,8 @@ features/support/common.rb
 features/support/env.rb
 features/support/matchers.rb
 lib/hoe/manifest.rb
+lib/hoe/newgem.rb
+lib/hoe/website.rb
 lib/newgem.rb
 lib/newgem/quick_template.rb
 lib/newgem/rubyforge-ext.rb
@@ -58,7 +60,6 @@ newgem_generators/install_website/templates/config/website.yml.sample.erb
 newgem_generators/install_website/templates/features/website.feature
 newgem_generators/install_website/templates/script/txt2html
 newgem_generators/install_website/templates/script/win_script.cmd
-newgem_generators/install_website/templates/tasks/website.rake
 newgem_generators/install_website/templates/website/index.html
 newgem_generators/install_website/templates/website/index.txt
 newgem_theme_generators/long_box_theme/USAGE
@@ -118,9 +119,6 @@ script/generate
 script/txt2html
 tasks/bundles.rake
 tasks/cucumber.rake
-tasks/deployment.rake
-tasks/environment.rake
-tasks/website.rake
 test/fixtures/home/.rubyforge/auto-config.yml
 test/fixtures/home/.rubyforge/user-config.yml
 test/test_executable_generator.rb

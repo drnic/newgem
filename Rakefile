@@ -4,6 +4,9 @@ require "./../hoe/lib/hoe"
 %w[fileutils rubigen].each { |f| require f }
 require './lib/newgem'
 
+Hoe.plugin :newgem
+Hoe.plugin :website
+
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
 $hoe = Hoe.spec 'newgem' do

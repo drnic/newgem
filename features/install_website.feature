@@ -5,7 +5,7 @@ Feature: RubyGems can have a website to promote and teach
   So that I can spend time on the tests and code, and not excessive time on maintenance processes
 
   Scenario: Deploy project website via local rsync
-    Given an existing newgem scaffold [called "my_project"]
+    Given an existing newgem scaffold using options "-w" [called "my_project"]
     And project website configuration for safe folder on local machine
     When I invoke "install_website" generator with arguments ""
     And I invoke task "rake website"

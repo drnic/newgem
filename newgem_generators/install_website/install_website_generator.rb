@@ -32,14 +32,11 @@ class InstallWebsiteGenerator < RubiGen::Base
       m.directory 'website/stylesheets'
       m.directory 'config'
       m.directory 'script'
-      m.directory 'tasks'
 
       # Website
       m.template_copy_each %w( index.txt index.html ), "website"
 
       m.template "config/website.yml.sample.erb", "config/website.yml.sample"
-
-      # m.file_copy_each %w[ website.rake ], "tasks"
 
       %w( txt2html ).each do |file|
         m.template "script/#{file}",        "script/#{file}", script_options

@@ -4,7 +4,8 @@ require 'hoe'
 %w[rake rake/clean fileutils newgem].each { |f| require f }
 require './lib/<%= gem_name %>'
 
-Hoe.plugin :manifest
+Hoe.plugin :newgem
+<%= enable_website ? '' : '# ' %>Hoe.plugin :website
 
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
