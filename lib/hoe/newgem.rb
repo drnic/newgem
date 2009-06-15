@@ -7,6 +7,16 @@
 # release
 
 module Hoe::Newgem
+  def initialize_newgem
+    self.clean_globs |= %w[**/.DS_Store tmp *.log]
+    path = (self.rubyforge_name == self.name) ? self.rubyforge_name : "\#{self.rubyforge_name}/\#{self.name}"
+    self.remote_rdoc_dir = File.join(path.gsub(/^#{self.rubyforge_name}\/?/,''), 'rdoc')
+    self.rsync_args = '-av --delete --ignore-errors'
+    self.readme_file = "README.rdoc"
+
+    require File.dirname(__FILE__) + '/../newgem/support/tasks'
+  end
+  
   # Define +gemspec+ task if not already defined
   def define_newgem_tasks
     

@@ -16,18 +16,12 @@ $hoe = Hoe.spec 'newgem' do
     ['activesupport','>= 2.0.2'],
     ['rubigen',">= #{RubiGen::VERSION}"],
     ['hoe', ">= #{Hoe::VERSION}"],
-    ['RedCloth','>= 4.0.0'], # for website generation
+    ['RedCloth','= 4.0.0'], # for website generation
     ['syntax','>= 1.0.0']
   ]
   self.extra_dev_deps = [
     ['cucumber', ">= 0.1.8"]
   ]
-  self.clean_globs |= %w[**/.DS_Store tmp *.log]
-  path = (self.rubyforge_name == self.name) ? self.rubyforge_name : "\#{self.rubyforge_name}/\#{self.name}"
-  self.remote_rdoc_dir = File.join(path.gsub(/^#{self.rubyforge_name}\/?/,''), 'rdoc')
-  self.rsync_args = '-av --delete --ignore-errors'
-  self.readme_file = "README.rdoc"
-  self.history_section_prefix = "=="
 end
 
 require 'newgem/tasks' # load /tasks/*.rake

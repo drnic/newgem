@@ -22,11 +22,6 @@ $hoe = Hoe.spec '<%= gem_name %>' do
   <% if is_jruby -%>
   self.spec_extras['platform'] = 'jruby' # JRuby gem created, e.g. <%= gem_name %>-X.Y.Z-jruby.gem
   <% end -%>
-  self.readme_file = "README.rdoc"
-  self.clean_globs |= %w[**/.DS_Store tmp *.log]
-  path = (self.rubyforge_name == self.name) ? self.rubyforge_name : "\#{self.rubyforge_name}/\#{self.name}"
-  self.remote_rdoc_dir = File.join(path.gsub(/^#{self.rubyforge_name}\/?/,''), 'rdoc')
-  self.rsync_args = '-av --delete --ignore-errors'
 end
 
 require 'newgem/tasks' # load /tasks/*.rake
