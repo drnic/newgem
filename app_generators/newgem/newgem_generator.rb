@@ -22,7 +22,7 @@ class NewgemGenerator < RubiGen::Base
   # extensions/option
   attr_reader :test_framework
   attr_reader :bin_names_list
-  attr_reader :enable_website
+  attr_reader :enable_website, :enable_cucumber
   attr_reader :manifest
   attr_reader :is_jruby
 
@@ -166,6 +166,7 @@ EOS
       @is_jruby           = options[:jruby]
       @project_name       = options[:project] if options.include?(:project)
       @install_generators = options[:install] || []
+      @enable_cucumber    = @install_generators.include?('cucumber')
     end
     
     # first attempt to merge config args (single string) and runtime args
@@ -183,9 +184,7 @@ EOS
   # Installation skeleton.  Intermediate directories are automatically
   # created so don't sweat their absence here.
   BASEDIRS = %w(
-    doc
     lib
     script
-    tasks
   )
 end

@@ -46,6 +46,7 @@ features/support/cli.rb
 features/support/common.rb
 features/support/env.rb
 features/support/matchers.rb
+lib/hoe/cucumber_features.rb
 lib/hoe/manifest.rb
 lib/hoe/newgem.rb
 lib/hoe/website.rb
@@ -118,7 +119,6 @@ script/destroy
 script/generate
 script/txt2html
 tasks/bundles.rake
-tasks/cucumber.rake
 test/fixtures/home/.rubyforge/auto-config.yml
 test/fixtures/home/.rubyforge/user-config.yml
 test/test_executable_generator.rb

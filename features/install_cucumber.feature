@@ -8,6 +8,7 @@ Feature: RubyGems have features to be described and tested
     Given default env variables setup for name and email
     And an existing newgem scaffold [called "my_project"]
     When I invoke "install_cucumber" generator with arguments ""
+    And I enable hoe plugin "cucumber_features"
     Then folder "features/step_definitions" is created
     Then folder "features/support" is created
     And file "features/development.feature" is created
@@ -21,6 +22,7 @@ Feature: RubyGems have features to be described and tested
     Given default env variables setup for name and email
     And an existing newgem scaffold [called "my_project"]
     When I invoke "install_cucumber" generator with arguments ""
+    And I enable hoe plugin "cucumber_features"
     Then gem file "features/step_definitions/common_steps.rb" and generated file "features/step_definitions/common_steps.rb" should be the same
     Then gem file "features/support/common.rb" and generated file "features/support/common.rb" should be the same
     Then gem file "features/support/matchers.rb" and generated file "features/support/matchers.rb" should be the same
@@ -30,6 +32,7 @@ Feature: RubyGems have features to be described and tested
     Given default env variables setup for name and email
     And an existing newgem scaffold [called "my_project"]
     And I invoke "install_cucumber" generator with arguments ""
+    And I enable hoe plugin "cucumber_features"
     And I invoke task "rake manifest"
     When I invoke task "rake features"
     Then task "rake features" is executed successfully

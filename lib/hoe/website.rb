@@ -1,5 +1,5 @@
 ##
-# Gemspec plugin for hoe.
+# Website plugin for hoe.
 #
 # === Tasks Provided:
 #
