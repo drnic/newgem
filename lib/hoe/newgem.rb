@@ -19,6 +19,10 @@ module Hoe::Newgem
   
   # Define +gemspec+ task if not already defined
   def define_newgem_tasks
+    unless self.extra_dev_deps.find { |dep| dep.first == 'newgem' }
+      self.extra_dev_deps ||= []
+      self.extra_dev_deps << ['newgem', ">= #{::Newgem::VERSION}"]
+    end
     
     return if Rake::Task.tasks.find { |t| t.name == 'gemspec' }
     desc "Generate a #{name}.gemspec file"

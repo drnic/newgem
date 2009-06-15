@@ -20,9 +20,7 @@ $hoe = Hoe.spec 'newgem' do
     ['RedCloth','= 4.1.1'], # for website generation
     ['syntax','>= 1.0.0']
   ]
-  self.extra_dev_deps = [
-    ['cucumber', ">= 0.1.8"]
-  ]
+  self.extra_dev_deps = [['cucumber', ">= 0.3.9"]]
 end
 
 require 'newgem/tasks'
