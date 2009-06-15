@@ -31,7 +31,19 @@ task :install_gem_no_doc => [:clean, :package] do
   sh "#{'sudo ' unless Hoe::WINDOZE }gem install pkg/*.gem --no-rdoc --no-ri"
 end
 
-desc 'Recreate Manifest.txt to include ALL files'
-task :manifest do
-  `rake check_manifest | patch -p0 > Manifest.txt`
+desc 'Recreate Manifest.txt to include ALL files to be deployed'
+task :manifest => :clean do
+  require 'find'
+  files = []
+  $hoe.with_config do |config, _|
+    exclusions = config["exclude"]
+    abort "exclude entry missing from .hoerc. Aborting." if exclusions.nil?
+    Find.find '.' do |path|
+      next unless File.file? path
+      next if path =~ exclusions
+      files << path[2..-1]
+    end
+    files = files.sort.join "\n"
+    File.open 'Manifest.txt', 'w' do |fp| fp.puts files end
+  end
 end
