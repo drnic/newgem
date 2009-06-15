@@ -46,6 +46,7 @@ features/support/cli.rb
 features/support/common.rb
 features/support/env.rb
 features/support/matchers.rb
+lib/hoe/manifest.rb
 lib/newgem.rb
 lib/newgem/quick_template.rb
 lib/newgem/rubyforge-ext.rb
