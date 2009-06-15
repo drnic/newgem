@@ -18,10 +18,8 @@ Feature: Can run "newgem" to create RubyGem scaffolds
     And I should see
       """
             create  
-            create  doc
             create  lib
             create  script
-            create  tasks
             create  lib/my_project
             create  History.txt
             create  Rakefile

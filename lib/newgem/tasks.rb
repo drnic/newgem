@@ -1,2 +1,10 @@
-require File.dirname(__FILE__) + '/support/tasks'
-Dir[File.join(File.dirname(__FILE__), %w[.. .. tasks], '**/*.rake')].each { |rake| load rake }
+Rake::TaskManager.class_eval do
+  def remove_task(task_name)
+    @tasks.delete(task_name.to_s)
+  end
+end
+
+def remove_task(task_name)
+  Rake.application.remove_task(task_name)
+end
+

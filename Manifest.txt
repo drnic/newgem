@@ -23,10 +23,6 @@ app_generators/newgem_simple/templates/lib/templates.rb
 app_generators/newgem_simple/templates/spec/spec_helper.rb
 app_generators/newgem_simple/templates/spec/templates_spec.rb.erb
 bin/newgem
-bundles/RubyGem.tmbundle/Snippets/History header trunk.tmSnippet
-bundles/RubyGem.tmbundle/Snippets/History header.tmSnippet
-bundles/RubyGem.tmbundle/Syntaxes/Rdoc.tmLanguage
-bundles/RubyGem.tmbundle/info.plist
 config/website.yml
 cucumber_generators/feature/USAGE
 cucumber_generators/feature/feature_generator.rb
@@ -53,7 +49,6 @@ lib/hoe/website.rb
 lib/newgem.rb
 lib/newgem/quick_template.rb
 lib/newgem/rubyforge-ext.rb
-lib/newgem/support/tasks.rb
 lib/newgem/tasks.rb
 newgem_generators/install_website/USAGE
 newgem_generators/install_website/install_website_generator.rb
@@ -118,7 +113,6 @@ rubygems_generators/install_test_unit/templates/test/test_helper.rb
 script/destroy
 script/generate
 script/txt2html
-tasks/bundles.rake
 test/fixtures/home/.rubyforge/auto-config.yml
 test/fixtures/home/.rubyforge/user-config.yml
 test/test_executable_generator.rb

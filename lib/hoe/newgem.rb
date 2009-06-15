@@ -14,7 +14,7 @@ module Hoe::Newgem
     self.rsync_args = '-av --delete --ignore-errors'
     self.readme_file = "README.rdoc"
 
-    require File.dirname(__FILE__) + '/../newgem/support/tasks'
+    require File.dirname(__FILE__) + '/../newgem/tasks'
   end
   
   # Define +gemspec+ task if not already defined

@@ -27,7 +27,7 @@ module Hoe::Website
   end
   
   def initialize_website
-    require File.dirname(__FILE__) + '/../newgem/support/tasks'
+    require File.dirname(__FILE__) + '/../newgem/tasks'
   end
 
   def define_website_tasks

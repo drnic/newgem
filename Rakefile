@@ -25,7 +25,7 @@ $hoe = Hoe.spec 'newgem' do
   ]
 end
 
-require 'newgem/tasks' # load /tasks/*.rake
+require 'newgem/tasks'
 
 remove_task :default
 task :default => :features
