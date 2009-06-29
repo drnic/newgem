@@ -1,7 +1,7 @@
 gem 'hoe', '>= 2.3.0'
 require 'hoe'
 %w[fileutils rubigen].each { |f| require f }
-require './lib/newgem'
+$:.unshift(File.dirname(__FILE__) + "/lib")
 
 Hoe.plugin :newgem
 Hoe.plugin :website

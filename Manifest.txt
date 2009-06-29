@@ -42,7 +42,7 @@ features/support/cli.rb
 features/support/common.rb
 features/support/env.rb
 features/support/matchers.rb
-lib/hoe/cucumber_features.rb
+lib/hoe/cucumberfeatures.rb
 lib/hoe/manifest.rb
 lib/hoe/newgem.rb
 lib/hoe/website.rb
