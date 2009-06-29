@@ -1,7 +1,7 @@
 require 'rubygems'
 gem 'hoe', '>= 2.1.0'
 require 'hoe'
-%w[rake rake/clean fileutils newgem].each { |f| require f }
+require 'fileutils'
 require './lib/<%= gem_name %>'
 
 Hoe.plugin :newgem
@@ -15,9 +15,9 @@ $hoe = Hoe.spec '<%= gem_name %>' do
   self.post_install_message = 'PostInstall.txt' # TODO remove if post-install message not required
   self.rubyforge_name       = self.name # TODO this is default value
   # self.extra_deps         = [['activesupport','>= 2.0.2']]
-  <% if is_jruby -%>
+  <%- if is_jruby -%>
   self.spec_extras['platform'] = 'jruby' # JRuby gem created, e.g. <%= gem_name %>-X.Y.Z-jruby.gem
-  <% end -%>
+  <%- end -%>
 end
 
 require 'newgem/tasks'

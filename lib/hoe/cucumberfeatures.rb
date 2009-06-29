@@ -5,9 +5,9 @@
 #
 # features::  Run cucumber feature
 
-module Hoe::CucumberFeatures
+module Hoe::Cucumberfeatures
   
-  def define_cucumber_features_tasks
+  def define_cucumberfeatures_tasks
     begin
       gem 'cucumber'
       require 'cucumber/rake/task'

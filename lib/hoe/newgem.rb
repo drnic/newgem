@@ -8,18 +8,20 @@
 
 module Hoe::Newgem
   def initialize_newgem
+    require(File.dirname(__FILE__) + "/../newgem")
+    require 'newgem/tasks'
+
     self.clean_globs |= %w[**/.DS_Store tmp *.log]
     path = (self.rubyforge_name == self.name) ? self.rubyforge_name : "\#{self.rubyforge_name}/\#{self.name}"
     self.remote_rdoc_dir = File.join(path.gsub(/^#{self.rubyforge_name}\/?/,''), 'rdoc')
     self.rsync_args = '-av --delete --ignore-errors'
     self.readme_file = "README.rdoc"
-
-    require File.dirname(__FILE__) + '/../newgem/tasks'
   end
   
   # Define +gemspec+ task if not already defined
   def define_newgem_tasks
     unless self.extra_dev_deps.find { |dep| dep.first == 'newgem' }
+      require File.dirname(__FILE__) + '/../newgem'
       self.extra_dev_deps ||= []
       self.extra_dev_deps << ['newgem', ">= #{::Newgem::VERSION}"]
     end

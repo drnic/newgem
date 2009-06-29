@@ -1,17 +1,16 @@
-# gem 'hoe', '>= 2.1.1'
-# require 'hoe'
-require "./../hoe/lib/hoe"
+gem 'hoe', '>= 2.3.0'
+require 'hoe'
 %w[fileutils rubigen].each { |f| require f }
 require './lib/newgem'
 
 Hoe.plugin :newgem
 Hoe.plugin :website
-Hoe.plugin :cucumber_features
+Hoe.plugin :cucumberfeatures
 
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
 $hoe = Hoe.spec 'newgem' do
-  self.developer 'Dr Nic Williams', 'drnicwilliams@gmail.com'
+  developer 'Dr Nic Williams', 'drnicwilliams@gmail.com'
   self.post_install_message = 'PostInstall.txt'
   self.extra_deps           = [
     ['activesupport','>= 2.0.2'],
@@ -20,7 +19,7 @@ $hoe = Hoe.spec 'newgem' do
     ['RedCloth','= 4.1.1'], # for website generation
     ['syntax','>= 1.0.0']
   ]
-  self.extra_dev_deps = [['cucumber', ">= 0.3.9"]]
+  extra_dev_deps << ['cucumber', ">= 0.3.11"]
 end
 
 require 'newgem/tasks'

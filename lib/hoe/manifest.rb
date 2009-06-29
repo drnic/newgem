@@ -6,12 +6,7 @@
 # manifest::  Recreate the Manifest.txt
 
 module Hoe::Manifest
-  Hoe.plugin :manifest # activate globally, fine for general purpose tasks
-
-  ##
-  # Initialize plugin and do mysterious things to Hoe object
-  def initialize_manifest
-  end
+  Hoe.plugin :manifest
 
   ##
   # Define tasks for plugin.
