@@ -6,7 +6,6 @@
 # manifest::  Recreate the Manifest.txt
 
 module Hoe::Manifest
-  Hoe.plugin :manifest
 
   ##
   # Define tasks for plugin.

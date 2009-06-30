@@ -6,6 +6,8 @@
 # gemspec::  Generate the gemspec file
 # release
 
+Hoe.plugin :manifest
+
 module Hoe::Newgem
   def initialize_newgem
     require(File.dirname(__FILE__) + "/../newgem")
