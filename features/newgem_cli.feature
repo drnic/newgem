@@ -18,9 +18,8 @@ Feature: Can run "newgem" to create RubyGem scaffolds
     And I should see
       """
             create  
-            create  lib
-            create  script
             create  lib/my_project
+            create  script
             create  History.txt
             create  Rakefile
             create  README.rdoc
@@ -114,4 +113,15 @@ Feature: Can run "newgem" to create RubyGem scaffolds
   Scenario: Run newgem and show current version number
     When newgem is executed only with options "--version"
     Then shows version number
+  
+  Scenario: Display help
+    When newgem is executed only with options "--help"
+    Then I should see
+      """
+      Usage: newgem
+      """
+    But I should not see
+      """
+      rubigen/options.rb
+      """
   

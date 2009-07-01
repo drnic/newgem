@@ -6,7 +6,7 @@ require './lib/<%= gem_name %>'
 
 Hoe.plugin :newgem
 <%= enable_website ? '' : '# ' %>Hoe.plugin :website
-<%= enable_cucumber ? '' : '# ' %>Hoe.plugin :cucumber_features
+<%= enable_cucumber ? '' : '# ' %>Hoe.plugin :cucumberfeatures
 
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)

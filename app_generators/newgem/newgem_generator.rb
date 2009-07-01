@@ -46,9 +46,9 @@ class NewgemGenerator < RubiGen::Base
     record do |m|
       # Root directory and all subdirectories.
       m.directory ''
-      BASEDIRS.each { |path| m.directory path }
-
       m.directory "lib/#{gem_name}"
+      m.directory 'script'
+
 
       # Root
       m.template_copy_each %w( History.txt Rakefile README.rdoc PostInstall.txt )
@@ -97,6 +97,11 @@ class NewgemGenerator < RubiGen::Base
   end
 
   protected
+    def usage(message = usage_message)
+      puts @option_parser
+      exit
+    end
+  
     def banner
       <<-EOS
 Take any library or Rails plugin or command line application,
@@ -180,11 +185,4 @@ EOS
       end
       runtime_args
     end
-
-  # Installation skeleton.  Intermediate directories are automatically
-  # created so don't sweat their absence here.
-  BASEDIRS = %w(
-    lib
-    script
-  )
 end
