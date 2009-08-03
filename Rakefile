@@ -16,7 +16,7 @@ $hoe = Hoe.spec 'newgem' do
     ['activesupport','>= 2.0.2'],
     ['rubigen',">= #{RubiGen::VERSION}"],
     ['hoe', ">= #{Hoe::VERSION}"],
-    ['RedCloth','= 4.1.1'], # for website generation
+    ['RedCloth','>= 4.1.1'], # for website generation
     ['syntax','>= 1.0.0']
   ]
   extra_dev_deps << ['cucumber', ">= 0.3.11"]

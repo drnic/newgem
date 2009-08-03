@@ -25,7 +25,7 @@ module Hoe::Newgem
     unless self.extra_dev_deps.find { |dep| dep.first == 'newgem' }
       require File.dirname(__FILE__) + '/../newgem'
       self.extra_dev_deps ||= []
-      self.extra_dev_deps << ['newgem', ">= #{::Newgem::VERSION}"]
+      self.extra_dev_deps << ['newgem', ">= #{::Newgem::VERSION}"] unless name == 'newgem'
     end
     
     return if Rake::Task.tasks.find { |t| t.name == 'gemspec' }

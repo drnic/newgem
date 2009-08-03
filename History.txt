@@ -1,3 +1,7 @@
+=== 1.5.2 2009-08-03
+
+* allow any recent redcloth version for ruby 1.9 support
+
 === 1.5.1 2009-07-01
 
 * Fixed "newgem --help" to not show backtrace summary
