@@ -22,7 +22,7 @@ Feature: Generated RubyGems have various rake tasks to aide their development
     When I invoke task "rake gem"
     Then folder "pkg" is created
     And file with name matching "pkg/my_project-0.0.1.gem" is created
-    And gem spec key "rdoc_options" contains /--mainREADME.rdoc/
+    And gem spec key "rdoc_options" contains /(--mainREADME.rdoc|\[\"--main\", \"README.rdoc\"\])/
     And gem spec key "dependencies" contains /newgem \(>= [\d.]+, development\)/
 
   Scenario: Hoe does not bitch about README.txt being missing
