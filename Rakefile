@@ -1,3 +1,4 @@
+require 'rubygems'
 gem 'hoe', '>= 2.3.0'
 require 'hoe'
 %w[fileutils rubigen].each { |f| require f }
