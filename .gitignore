@@ -4,3 +4,4 @@ doc
 tmp
 *.log
 .test-result
+*.gem
