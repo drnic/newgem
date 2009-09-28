@@ -20,7 +20,7 @@ module <%= module_name %>
           Options are:
         BANNER
         opts.separator ""
-        opts.on("-p", "--path=PATH", String,
+        opts.on("-p", "--path PATH", String,
                 "This is a sample message.",
                 "For multiple lines, add more strings.",
                 "Default: ~") { |arg| options[:path] = arg }
