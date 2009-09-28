@@ -5,6 +5,7 @@ require 'hoe'
 $:.unshift(File.dirname(__FILE__) + "/lib")
 
 Hoe.plugin :newgem
+Hoe.plugin :git
 Hoe.plugin :website
 Hoe.plugin :cucumberfeatures
 
