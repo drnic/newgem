@@ -1,7 +1,7 @@
 Feature: RubyGems have features to be described and tested
 
   As a RubyGem developer
-  I want to describe the project"s features using Cucumber
+  I want to describe the project's features using Cucumber
   So that I can describe each feature of the project in readable text
   
   Scenario: Install Cucumber into a RubyGem

@@ -155,7 +155,7 @@ Then /^task "rake (.*)" is executed successfully/ do |task|
   @stdout.should_not be_nil
   actual_output = File.read(@stdout)
   actual_output.should_not match(/^Don't know how to build task '#{task}'/)
-  actual_output.should_not match(/Error/i)
+  actual_output.should_not match(/Error/)
 end
 
 Then /^gem spec key "(.*)" contains \/(.*)\// do |key, regex|
