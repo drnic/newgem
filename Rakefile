@@ -15,7 +15,7 @@ $hoe = Hoe.spec 'newgem' do
   developer 'Dr Nic Williams', 'drnicwilliams@gmail.com'
   self.post_install_message = 'PostInstall.txt'
   self.extra_deps           = [
-    ['activesupport','>= 2.0.2'],
+    ['activesupport','~> 2.3.4'],
     ['rubigen',">= #{RubiGen::VERSION}"],
     ['hoe', ">= #{Hoe::VERSION}"],
     ['RedCloth','>= 4.1.1'], # for website generation
