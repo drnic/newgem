@@ -1,3 +1,6 @@
+=== 1.5.3 2010-03-04
+
+* Do not load activesupport 3.0, only 2.3
 * In generated projects:
   * Added step: I should see "..."
   * Defined @lib_path in env.rb
