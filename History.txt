@@ -1,3 +1,5 @@
+=== 1.5.4 2011-01-12
+* install_rubyforge: required by 1.5.3
 === 1.5.3 2010-03-04
 
 * Do not load activesupport 3.0, only 2.3
