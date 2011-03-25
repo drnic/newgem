@@ -48,6 +48,7 @@ class NewgemGenerator < RubiGen::Base
       m.directory ''
       m.directory "lib/#{gem_name}"
       m.directory 'script'
+      m.directory 'tasks'
 
 
       # Root
