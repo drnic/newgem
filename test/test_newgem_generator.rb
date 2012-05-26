@@ -81,7 +81,6 @@ class TestNewgemGenerator < Test::Unit::TestCase
     assert_directory_exists("tasks")
     assert_generated_file("spec/#{gem_name}_spec.rb")
     assert_generated_file("spec/spec_helper.rb")
-    assert_generated_file("tasks/rspec.rake")
 
     assert_manifest_complete
   end

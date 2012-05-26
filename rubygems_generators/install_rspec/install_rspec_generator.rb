@@ -18,11 +18,9 @@ class InstallRspecGenerator < RubiGen::Base
       # Ensure appropriate folder(s) exists
       m.directory 'spec'
       m.directory 'tasks'
-
-      m.template           'spec.rb', "spec/#{gem_name}_spec.rb"
-      
-      m.template_copy_each %w( spec.opts spec_helper.rb ), 'spec'
-      m.file_copy_each     %w( rspec.rake ), 'tasks'
+      m.template      'spec.rb', "spec/#{gem_name}_spec.rb"
+      m.template      '.rspec', '.rspec'
+      m.template      'spec/spec_helper.rb', 'spec/spec_helper.rb'
     end
   end
 

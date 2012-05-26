@@ -97,10 +97,9 @@ rubygems_generators/install_jruby/install_jruby_generator.rb
 rubygems_generators/install_jruby/templates/tasks/jruby.rake
 rubygems_generators/install_rspec/USAGE
 rubygems_generators/install_rspec/install_rspec_generator.rb
+rubygems_generators/install_rspec/templates/.rspec
 rubygems_generators/install_rspec/templates/spec.rb
-rubygems_generators/install_rspec/templates/spec/spec.opts
 rubygems_generators/install_rspec/templates/spec/spec_helper.rb
-rubygems_generators/install_rspec/templates/tasks/rspec.rake
 rubygems_generators/install_shoulda/USAGE
 rubygems_generators/install_shoulda/install_shoulda_generator.rb
 rubygems_generators/install_shoulda/templates/tasks/shoulda.rake

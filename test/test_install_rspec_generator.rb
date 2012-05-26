@@ -18,7 +18,7 @@ class TestInstallRspecGenerator < Test::Unit::TestCase
     assert_directory_exists("tasks")
     assert_generated_file("spec/#{name}_spec.rb")
     assert_generated_file("spec/spec_helper.rb")
-    assert_generated_file("tasks/rspec.rake")
+    assert_generated_file(".rspec")
   end
   
   private
